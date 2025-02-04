@@ -47,5 +47,5 @@ make
 ### 6. Run the Executable
 
 ``` bash
-./pointy <path-to-source-file> or ./pointy <path-to-source-directory>
+./ptrVision <path-to-source-file> or ./ptrVision <path-to-source-directory>
 ```
