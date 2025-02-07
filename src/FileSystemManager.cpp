@@ -43,7 +43,7 @@ void FileSystemManager::processDirectory(const std::string& directoryPath, std::
 
 #if defined(__APPLE__) || defined(__linux__)
     FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
-#else if defined(_WIN32)
+#elif defined(_WIN32)
     FixedCompilationDatabase EmptyDB("C:\\Temp", compileArgs);
 #endif
     ClangTool Tool(EmptyDB, sourcePaths);
