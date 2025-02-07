@@ -22,7 +22,7 @@ git clone https://github.com/mendax0110/ptrVision.git
 ### 2. Navigate to the Project Directory
 
 ``` bash
-cd pointy
+cd ptrVision
 ```
 
 ### 3. Create a Build Directory
