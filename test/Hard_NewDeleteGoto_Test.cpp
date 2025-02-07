@@ -19,7 +19,7 @@ int main()
 
     for (int i = 0; i < 5; ++i)
     {
-        *(arr + i);
+        int a = *(arr + i);
     }
 
     int x = 5, y = 3;

@@ -42,6 +42,11 @@ int main(int argc, const char **argv)
     {
         FileSystemManager::processFile(inputPath, compileArgs);
     }
+    else if (argc == 4)
+    {
+		std::string snippet = argv[3];
+		FileSystemManager::processSnippetFromSpecifiedFile(inputPath, compileArgs, snippet);
+	}
     else
     {
         errs() << "Invalid input path: " << inputPath << "\n";

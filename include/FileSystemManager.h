@@ -36,6 +36,15 @@ namespace clang
          * @param compileArgs -> compilation arguments
          */
         static void processDirectory(const std::string& directoryPath, std::vector<std::string>& compileArgs);
+
+        /**
+         * @brief Processes a directory, creating a ClangTool to run the PointerReferenceAction
+         * 
+         * @param filePath -> path to the file
+         * @param compileArgs -> compilation arguments
+         * @param marker -> marker to identify the snippet, which will be processed
+         */
+        static void processSnippetFromSpecifiedFile(const std::string& filePath, std::vector<std::string>& compileArgs, const std::string& marker);
     };
 } // namespace clang
 
