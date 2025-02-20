@@ -49,3 +49,29 @@ make
 ``` bash
 ./ptrVision <path-to-source-file> or ./ptrVision <path-to-source-directory>
 ```
+
+## 7. Scan speficic snippets of code
+
+``` bash
+ptrVision.exe <path-to-source-file> <marker>
+```
+
+## Example Usage
+
+### Analyzing a snippet in a file
+
+``` bash
+ptrVision.exe ..\..\test\snippet_code_test.cpp CODE
+```
+
+### Analyzing a file
+
+``` bash
+ptrVision.exe ..\..\test\snippet_code_test.cpp
+```
+
+### Analyzing a directory
+
+``` bash
+ptrVision.exe ..\..\test
+```

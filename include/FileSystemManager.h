@@ -44,7 +44,7 @@ namespace clang
          * @param compileArgs -> compilation arguments
          * @param marker -> marker to identify the snippet, which will be processed
          */
-        static void processSnippetFromSpecifiedFile(const std::string& filePath, std::vector<std::string>& compileArgs, const std::string& marker);
+        static void processSnippetFromSpecifiedFile(const std::string& filePath, const std::string& marker);
     };
 } // namespace clang
 

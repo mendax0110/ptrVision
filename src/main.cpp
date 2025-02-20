@@ -5,6 +5,7 @@
 #include <llvm/ADT/StringRef.h>
 #include <filesystem>
 #include <vector>
+#include <cstring>
 
 namespace fs = std::filesystem;
 
@@ -14,7 +15,14 @@ using namespace llvm;
 
 static cl::OptionCategory Tool("ptrVision");
 
-int main(int argc, const char **argv)
+static void showHelp()
+{
+    errs() << "Usage: ptrVision <file|directory> [marker] [options]\n";
+    errs() << "Options:\n";
+    errs() << "  -help\t\tShow this help message\n";
+}
+
+int main(int argc, const char** argv)
 {
     auto ExpectedParser = CommonOptionsParser::create(argc, argv, Tool);
     if (!ExpectedParser)
@@ -22,8 +30,8 @@ int main(int argc, const char **argv)
         errs() << "Error: " << toString(ExpectedParser.takeError()) << "\n";
         return 1;
     }
-    
-    CommonOptionsParser &OptionsParser = ExpectedParser.get();
+
+    CommonOptionsParser& OptionsParser = ExpectedParser.get();
     std::vector<std::string> compileArgs;
 
     if (argc < 2)
@@ -34,7 +42,12 @@ int main(int argc, const char **argv)
 
     std::string inputPath = argv[1];
 
-    if (fs::is_directory(inputPath))
+    if (argc == 3)
+    {
+        std::string marker = argv[2];
+        FileSystemManager::processSnippetFromSpecifiedFile(inputPath, marker);
+    }
+    else if (fs::is_directory(inputPath))
     {
         FileSystemManager::processDirectory(inputPath, compileArgs);
     }
@@ -42,11 +55,6 @@ int main(int argc, const char **argv)
     {
         FileSystemManager::processFile(inputPath, compileArgs);
     }
-    else if (argc == 4)
-    {
-		std::string snippet = argv[3];
-		FileSystemManager::processSnippetFromSpecifiedFile(inputPath, compileArgs, snippet);
-	}
     else
     {
         errs() << "Invalid input path: " << inputPath << "\n";
@@ -54,5 +62,4 @@ int main(int argc, const char **argv)
     }
 
     return 0;
-
 }

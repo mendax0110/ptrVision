@@ -1,3 +1,5 @@
+#define $CODE 
+
 int function()
 {
     // ptr arithmetic
