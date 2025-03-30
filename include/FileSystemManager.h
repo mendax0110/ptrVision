@@ -11,10 +11,12 @@
 #include <llvm/Support/FileSystem.h>
 #include <llvm/ADT/StringRef.h>
 
+
+/// @brief The clang namespace \namespace clang
 namespace clang
 {
     /**
-     * @brief FileSystemManager is a class that processes files and directories
+     * @brief FileSystemManager is a class that processes files and directories \class FileSystemManager
      * 
      */
     class FileSystemManager

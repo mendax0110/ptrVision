@@ -24,7 +24,14 @@ static void showHelp()
 
 int main(int argc, const char** argv)
 {
+
+#if LLVM_VERSION_MAJOR >= 14
     auto ExpectedParser = CommonOptionsParser::create(argc, argv, Tool);
+#elif LLVM_VERSION_MAJOR <= 12
+    auto ExpectedParser = CommonOptionsParser::create(argc, argv, Tool,
+        llvm::cl::OneOrMore, nullptr);
+#endif
+
     if (!ExpectedParser)
     {
         errs() << "Error: " << toString(ExpectedParser.takeError()) << "\n";

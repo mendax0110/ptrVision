@@ -10,7 +10,7 @@ PointerReferenceVisitor::PointerReferenceVisitor(SourceManager &SM) : SM(SM)
 {
 }
 
-bool PointerReferenceVisitor::VisitBinaryOperator(BinaryOperator* BO)
+/*bool PointerReferenceVisitor::VisitBinaryOperator(BinaryOperator* BO)
 {
     if (BO->getOpcode() == BO_Add || BO->getOpcode() == BO_Sub)
     {
@@ -46,7 +46,62 @@ bool PointerReferenceVisitor::VisitBinaryOperator(BinaryOperator* BO)
     }
 
     return true;
+}*/
+
+bool PointerReferenceVisitor::VisitBinaryOperator(BinaryOperator* BO)
+{
+    if (BO->getOpcode() == BO_Add || BO->getOpcode() == BO_Sub)
+    {
+        if (BO->getLHS()->getType()->isPointerType() || BO->getRHS()->getType()->isPointerType())
+        {
+            FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
+            llvm::outs() << "Pointer arithmetic detected at "
+                << fullLoc.getSpellingLineNumber() << ":"
+                << fullLoc.getSpellingColumnNumber() << " -> ";
+
+            if (BO->getLHS()->getType()->isPointerType())
+                printHighlightedPointer(BO->getLHS()->getType().getAsString());
+            else
+                printHighlightedPointer(BO->getRHS()->getType().getAsString());
+
+            llvm::outs() << " " << (BO->getOpcode() == BO_Add ? "+" : "-") << " ";
+
+            if (BO->getRHS()->getType()->isPointerType())
+                printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            else
+                printHighlightedPointer(BO->getLHS()->getType().getAsString());
+
+            llvm::outs() << "\n";
+        }
+    }
+
+    if (BO->getOpcode() == BO_Mul)
+    {
+        FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
+        llvm::outs() << "Multiplication operator detected at "
+            << fullLoc.getSpellingLineNumber() << ":"
+            << fullLoc.getSpellingColumnNumber() << " -> ";
+        printHighlightedPointer(BO->getLHS()->getType().getAsString());
+        llvm::outs() << " * ";
+        printHighlightedPointer(BO->getRHS()->getType().getAsString());
+        llvm::outs() << "\n";
+    }
+
+    if (BO->getOpcode() == BO_And)
+    {
+        FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
+        llvm::outs() << "Bitwise AND operator detected at "
+            << fullLoc.getSpellingLineNumber() << ":"
+            << fullLoc.getSpellingColumnNumber() << " -> ";
+        printHighlightedKeyword(BO->getLHS()->getType().getAsString());
+        llvm::outs() << " & ";
+        printHighlightedKeyword(BO->getRHS()->getType().getAsString());
+        llvm::outs() << "\n";
+    }
+
+    return true;
 }
+
 
 bool PointerReferenceVisitor::VisitUnaryOperator(UnaryOperator* UO)
 {

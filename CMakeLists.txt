@@ -24,6 +24,27 @@ if (WIN32)
     set(LIBXML2_LIBRARY "C:/libxml/libxml2-2.9.1-win32-x86_64/lib/libxml2.dll.a")
 endif()
 
+if (__linux__)
+    find_program(LLVM_CONFIG llvm-config-12)
+
+    if (LLVM_CONFIG)
+        execute_process(
+            COMMAND ${LLVM_CONFIG} --prefix
+            OUTPUT_VARIABLE LLVM_PREFIX
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+
+        message(STATUS "LLVM_PREFIX is ${LLVM_PREFIX}")
+
+        set(LLVM_DIR "/usr/lib/llvm-12/lib/cmake/llvm")
+        set(CLANG_DIR "/usr/lib/llvm-12/lib/cmake/clang")
+        set(LIBXML2_INCLUDE_DIR "/usr/include/libxml2")
+        set(LIBXML2_LIBRARY "/lib/x86_64-linux-gnu/libxml2.so")
+    else()
+        message(FATAL_ERROR "llvm-config-12 not found!")
+    endif()
+endif()
+
 
 find_package(LLVM REQUIRED CONFIG)
 find_package(Clang REQUIRED CONFIG)

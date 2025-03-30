@@ -1,7 +1,12 @@
+# Ignore the Build folder on WIN, LINUX and macOS
 /build
+
+/build-linux
 
 /cmake-build-debug
 
+# Ignore the .vscode  folder
 .vscode
 
+# Ignore the .idea folder on Clion
 .idea

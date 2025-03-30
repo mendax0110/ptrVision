@@ -4,10 +4,12 @@
 #include <clang/AST/ASTConsumer.h>
 #include <clang/Frontend/CompilerInstance.h>
 
+
+/// @brief The clang namespace \namespace clang
 namespace clang
 {
     /**
-     * @brief PointerReferenceConsumer is an ASTConsumer that processes the AST of a translation unit
+     * @brief PointerReferenceConsumer is an ASTConsumer that processes the AST of a translation unit \class PointerReferenceConsumer
      * 
      */
     class PointerReferenceConsumer : public ASTConsumer

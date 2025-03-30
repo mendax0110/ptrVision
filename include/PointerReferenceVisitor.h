@@ -8,10 +8,11 @@
 #include <clang/Tooling/Tooling.h>
 
 
+/// @brief The clang namespace \namespace clang
 namespace clang
 {
     /**
-     * @brief PointerReferenceVisitor is a RecursiveASTVisitor that visits the AST nodes of a translation unit
+     * @brief PointerReferenceVisitor is a RecursiveASTVisitor that visits the AST nodes of a translation unit \class PointerReferenceVisitor
      * 
      */
     class PointerReferenceVisitor : public RecursiveASTVisitor<PointerReferenceVisitor>
