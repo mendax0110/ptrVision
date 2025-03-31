@@ -12,7 +12,7 @@ namespace clang
      * @brief PointerReferenceConsumer is an ASTConsumer that processes the AST of a translation unit \class PointerReferenceConsumer
      * 
      */
-    class PointerReferenceConsumer : public ASTConsumer
+    class PointerReferenceConsumer final : public ASTConsumer
     {
     public:
 

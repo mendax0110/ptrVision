@@ -47,11 +47,11 @@ int main(int argc, const char** argv)
         return 1;
     }
 
-    std::string inputPath = argv[1];
+    const std::string inputPath = argv[1];
 
     if (argc == 3)
     {
-        std::string marker = argv[2];
+        const std::string marker = argv[2];
         FileSystemManager::processSnippetFromSpecifiedFile(inputPath, marker);
     }
     else if (fs::is_directory(inputPath))

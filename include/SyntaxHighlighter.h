@@ -116,4 +116,34 @@ inline void printInfo(const std::string &message)
 #endif
 }
 
+/**
+ * @brief Prints the type of cast in blue
+ * @param castType -> the cast type
+ */
+inline void printHighlightedCast(const std::string &castType)
+{
+#ifdef _WIN32
+    setConsoleColor(9);
+    llvm::outs() << castType;
+    setConsoleColor(7);
+#else
+    llvm::outs() << BLUE_COLOR << castType << RESET_COLOR;
+#endif
+}
+
+/**
+ * @brief Prints a highlighted type (e.g., int*, MyClass*)
+ * @param type -> type being highlighted
+ */
+inline void printHighlightedType(const std::string &type)
+{
+#ifdef _WIN32
+    setConsoleColor(36);  // Cyan for types
+    llvm::outs() << type;
+    setConsoleColor(7);
+#else
+    llvm::outs() << CYAN_COLOR << type << RESET_COLOR;
+#endif
+}
+
 #endif // SYNTAXHIGHLIGHTER_H

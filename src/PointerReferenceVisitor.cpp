@@ -10,102 +10,127 @@ PointerReferenceVisitor::PointerReferenceVisitor(SourceManager &SM) : SM(SM)
 {
 }
 
-/*bool PointerReferenceVisitor::VisitBinaryOperator(BinaryOperator* BO)
+bool PointerReferenceVisitor::VisitBinaryOperator(const BinaryOperator* BO) const
 {
-    if (BO->getOpcode() == BO_Add || BO->getOpcode() == BO_Sub)
+    const FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
+
+    if (BO->getLHS()->getType()->isPointerType() || BO->getRHS()->getType()->isPointerType())
     {
-        if (BO->getLHS()->getType()->isPointerType() || BO->getRHS()->getType()->isPointerType())
+        const QualType lhsType = BO->getLHS()->getType();
+        const QualType rhsType = BO->getRHS()->getType();
+
+        if (lhsType->isVoidPointerType() || rhsType->isVoidPointerType())
         {
-            FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
+            llvm::outs() << "ERROR: Illegal void* arithmetic detected at "
+                         << fullLoc.getSpellingLineNumber() << ":"
+                         << fullLoc.getSpellingColumnNumber() << " -> ";
+            printHighlightedPointer(lhsType.getAsString());
+            llvm::outs() << " " << BO->getOpcodeStr() << " ";
+            printHighlightedPointer(rhsType.getAsString());
+            llvm::outs() << " (Pointer arithmetic on void* is not allowed!)\n";
+        }
+        else
+        {
             llvm::outs() << "Pointer arithmetic detected at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << " -> ";
-            printHighlightedPointer(BO->getLHS()->getType().getAsString() + " + " + BO->getRHS()->getType().getAsString());
+            printHighlightedPointer(lhsType.getAsString());
+            llvm::outs() << " " << BO->getOpcodeStr() << " ";
+            printHighlightedPointer(rhsType.getAsString());
             llvm::outs() << "\n";
         }
     }
 
-    if (BO->getOpcode() == BO_Mul)
-    {
-        FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
-        llvm::outs() << "Multiplication operator detected at "
-                     << fullLoc.getSpellingLineNumber() << ":"
-                     << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedPointer(BO->getLHS()->getType().getAsString() + " * " + BO->getRHS()->getType().getAsString());
-        llvm::outs() << "\n";
-    }
-
-    if (BO->getOpcode() == BO_And)
-    {
-        FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
-        llvm::outs() << "Bitwise AND operator detected at "
-                     << fullLoc.getSpellingLineNumber() << ":"
-                     << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedKeyword(BO->getLHS()->getType().getAsString() + " & " + BO->getRHS()->getType().getAsString());
-        llvm::outs() << "\n";
-    }
-
-    return true;
-}*/
-
-bool PointerReferenceVisitor::VisitBinaryOperator(BinaryOperator* BO)
-{
     if (BO->getOpcode() == BO_Add || BO->getOpcode() == BO_Sub)
     {
         if (BO->getLHS()->getType()->isPointerType() || BO->getRHS()->getType()->isPointerType())
         {
-            FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
             llvm::outs() << "Pointer arithmetic detected at "
-                << fullLoc.getSpellingLineNumber() << ":"
-                << fullLoc.getSpellingColumnNumber() << " -> ";
-
-            if (BO->getLHS()->getType()->isPointerType())
-                printHighlightedPointer(BO->getLHS()->getType().getAsString());
-            else
-                printHighlightedPointer(BO->getRHS()->getType().getAsString());
-
+                         << fullLoc.getSpellingLineNumber() << ":"
+                         << fullLoc.getSpellingColumnNumber() << " -> ";
+            printHighlightedPointer(BO->getLHS()->getType().getAsString());
             llvm::outs() << " " << (BO->getOpcode() == BO_Add ? "+" : "-") << " ";
-
-            if (BO->getRHS()->getType()->isPointerType())
-                printHighlightedPointer(BO->getRHS()->getType().getAsString());
-            else
-                printHighlightedPointer(BO->getLHS()->getType().getAsString());
-
+            printHighlightedPointer(BO->getRHS()->getType().getAsString());
             llvm::outs() << "\n";
+        }
+    }
+
+    if (BO->isCompoundAssignmentOp() && (BO->getOpcode() == BO_AddAssign || BO->getOpcode() == BO_SubAssign))
+    {
+        if (BO->getLHS()->getType()->isPointerType())
+        {
+            llvm::outs() << "Pointer compound assignment detected at "
+                         << fullLoc.getSpellingLineNumber() << ":"
+                         << fullLoc.getSpellingColumnNumber() << " -> ";
+            printHighlightedPointer(BO->getLHS()->getType().getAsString());
+            llvm::outs() << " " << BO->getOpcodeStr() << " ";
+            printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            llvm::outs() << " (Possible pointer arithmetic issue)\n";
         }
     }
 
     if (BO->getOpcode() == BO_Mul)
     {
-        FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
-        llvm::outs() << "Multiplication operator detected at "
-            << fullLoc.getSpellingLineNumber() << ":"
-            << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedPointer(BO->getLHS()->getType().getAsString());
-        llvm::outs() << " * ";
-        printHighlightedPointer(BO->getRHS()->getType().getAsString());
-        llvm::outs() << "\n";
+        const bool lhsPointer = BO->getLHS()->getType()->isPointerType();
+        const bool rhsPointer = BO->getRHS()->getType()->isPointerType();
+        const bool lhsInteger = BO->getLHS()->getType()->isIntegerType();
+        const bool rhsInteger = BO->getRHS()->getType()->isIntegerType();
+
+        if (lhsInteger && rhsInteger)
+        {
+            llvm::outs() << "Multiplication detected at "
+                         << fullLoc.getSpellingLineNumber() << ":"
+                         << fullLoc.getSpellingColumnNumber() << "\n";
+        }
+        else if (lhsPointer || rhsPointer)
+        {
+            if (!lhsInteger && !rhsInteger)
+            {
+                llvm::outs() << "ERROR: Suspicious pointer multiplication detected at "
+                             << fullLoc.getSpellingLineNumber() << ":"
+                             << fullLoc.getSpellingColumnNumber() << " -> ";
+                printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
+                                                   : BO->getRHS()->getType().getAsString());
+                llvm::outs() << " * ";
+                printHighlightedPointer(rhsPointer ? BO->getRHS()->getType().getAsString()
+                                                   : BO->getLHS()->getType().getAsString());
+                llvm::outs() << " (Invalid operation!)\n";
+            }
+            else
+            {
+                llvm::outs() << "WARNING: Potential pointer scaling detected at "
+                             << fullLoc.getSpellingLineNumber() << ":"
+                             << fullLoc.getSpellingColumnNumber() << " -> ";
+                printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
+                                                   : BO->getRHS()->getType().getAsString());
+                llvm::outs() << " * integer\n";
+            }
+        }
     }
 
     if (BO->getOpcode() == BO_And)
     {
-        FullSourceLoc fullLoc(BO->getBeginLoc(), SM);
-        llvm::outs() << "Bitwise AND operator detected at "
-            << fullLoc.getSpellingLineNumber() << ":"
-            << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedKeyword(BO->getLHS()->getType().getAsString());
-        llvm::outs() << " & ";
-        printHighlightedKeyword(BO->getRHS()->getType().getAsString());
-        llvm::outs() << "\n";
+        if (BO->getLHS()->getType()->isIntegerType() && BO->getRHS()->getType()->isIntegerType())
+        {
+            llvm::outs() << "Bitwise AND detected at "
+                         << fullLoc.getSpellingLineNumber() << ":"
+                         << fullLoc.getSpellingColumnNumber() << "\n";
+        }
+        else
+        {
+            llvm::outs() << "Suspicious AND operation? Possible misuse at "
+                         << fullLoc.getSpellingLineNumber() << ":"
+                         << fullLoc.getSpellingColumnNumber() << "\n";
+        }
     }
 
     return true;
 }
 
 
-bool PointerReferenceVisitor::VisitUnaryOperator(UnaryOperator* UO)
+bool PointerReferenceVisitor::VisitUnaryOperator(const UnaryOperator* UO) const
 {
-    FullSourceLoc fullLoc(UO->getBeginLoc(), SM);
+    const FullSourceLoc fullLoc(UO->getBeginLoc(), SM);
 
     if (UO->getOpcode() == UO_Deref)
     {
@@ -127,9 +152,9 @@ bool PointerReferenceVisitor::VisitUnaryOperator(UnaryOperator* UO)
     return true;
 }
 
-bool PointerReferenceVisitor::VisitDeclRefExpr(DeclRefExpr* DRE)
+bool PointerReferenceVisitor::VisitDeclRefExpr(const DeclRefExpr* DRE) const
 {
-    FullSourceLoc fullLoc(DRE->getBeginLoc(), SM);
+    const FullSourceLoc fullLoc(DRE->getBeginLoc(), SM);
 
     if (DRE->getType()->isReferenceType())
     {
@@ -152,24 +177,65 @@ bool PointerReferenceVisitor::VisitDeclRefExpr(DeclRefExpr* DRE)
     return true;
 }
 
-bool PointerReferenceVisitor::VisitMemberExpr(MemberExpr* ME)
+bool PointerReferenceVisitor::VisitVarDecl(const VarDecl *VD) const
+{
+    const FullSourceLoc fullLoc(VD->getBeginLoc(), SM);
+
+    if (VD->getType()->isReferenceType())
+    {
+        llvm::outs() << "Reference variable declared at "
+                     << fullLoc.getSpellingLineNumber() << ":"
+                     << fullLoc.getSpellingColumnNumber() << " ->";
+        printHighlightedReference(VD->getType().getAsString());
+        llvm::outs() << " " << VD->getNameAsString() << "\n";
+    }
+    return true;
+}
+
+bool PointerReferenceVisitor::VisitMemberExpr(const MemberExpr* ME) const
 {
     if (ME->getBase()->getType()->isPointerType())
     {
-        FullSourceLoc fullLoc(ME->getBeginLoc(), SM);
+        const FullSourceLoc fullLoc(ME->getBeginLoc(), SM);
         llvm::outs() << "Pointer dereference in member expression detected at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " -> ";
         printHighlightedPointer(ME->getBase()->getType().getAsString());
         llvm::outs() << "->" << ME->getMemberDecl()->getName() << "\n";
     }
-
     return true;
 }
 
-bool PointerReferenceVisitor::VisitCXXNewExpr(CXXNewExpr* NewExpr)
+bool PointerReferenceVisitor::VisitArraySubscriptExpr(const ArraySubscriptExpr* ASE) const
 {
-    FullSourceLoc fullLoc(NewExpr->getBeginLoc(), SM);
+    const FullSourceLoc fullLoc(ASE->getBeginLoc(), SM);
+    const QualType baseType = ASE->getBase()->getType().getCanonicalType();
+
+    if (baseType->isPointerType() || baseType->isArrayType())
+    {
+        llvm::outs() << "Pointer array indexing detected at "
+                     << fullLoc.getSpellingLineNumber() << ":"
+                     << fullLoc.getSpellingColumnNumber() << " -> ";
+
+        QualType elementType;
+        if (baseType->isArrayType())
+        {
+            elementType = baseType->getAsArrayTypeUnsafe()->getElementType();
+        }
+        else if (baseType->isPointerType())
+        {
+            elementType = baseType->getPointeeType();
+        }
+
+        printHighlightedPointer(elementType.getAsString() + "[index]");
+        llvm::outs() << "\n";
+    }
+    return true;
+}
+
+bool PointerReferenceVisitor::VisitCXXNewExpr(const CXXNewExpr* NewExpr) const
+{
+    const FullSourceLoc fullLoc(NewExpr->getBeginLoc(), SM);
     llvm::outs() << "New expression detected at "
                  << fullLoc.getSpellingLineNumber() << ":"
                  << fullLoc.getSpellingColumnNumber() << " -> ";
@@ -179,9 +245,9 @@ bool PointerReferenceVisitor::VisitCXXNewExpr(CXXNewExpr* NewExpr)
     return true;
 }
 
-bool PointerReferenceVisitor::VisitCXXDeleteExpr(CXXDeleteExpr* DeleteExpr)
+bool PointerReferenceVisitor::VisitCXXDeleteExpr(const CXXDeleteExpr* DeleteExpr) const
 {
-    FullSourceLoc fullLoc(DeleteExpr->getBeginLoc(), SM);
+    const FullSourceLoc fullLoc(DeleteExpr->getBeginLoc(), SM);
     llvm::outs() << "Delete expression detected at "
                  << fullLoc.getSpellingLineNumber() << ":"
                  << fullLoc.getSpellingColumnNumber() << " -> ";
@@ -191,9 +257,9 @@ bool PointerReferenceVisitor::VisitCXXDeleteExpr(CXXDeleteExpr* DeleteExpr)
     return true;
 }
 
-bool PointerReferenceVisitor::VisitGotoStmt(GotoStmt* GS)
+bool PointerReferenceVisitor::VisitGotoStmt(const GotoStmt* GS) const
 {
-    FullSourceLoc fullLoc(GS->getBeginLoc(), SM);
+    const FullSourceLoc fullLoc(GS->getBeginLoc(), SM);
     llvm::outs() << "Goto statement detected at "
                  << fullLoc.getSpellingLineNumber() << ":"
                  << fullLoc.getSpellingColumnNumber() << " -> ";
@@ -202,3 +268,57 @@ bool PointerReferenceVisitor::VisitGotoStmt(GotoStmt* GS)
 
     return true;
 }
+
+/*bool PointerReferenceVisitor::VisitCastExpr(const CastExpr* CastExpr) const
+{
+    const FullSourceLoc fullLoc(CastExpr->getBeginLoc(), SM);
+
+    if (CastExpr->getType()->isPointerType())
+    {
+        llvm::outs() << "Pointer cast detected at "
+                     << fullLoc.getSpellingLineNumber() << ":"
+                     << fullLoc.getSpellingColumnNumber() << "\n";
+
+        std::string castType;
+
+        if (llvm::isa<CStyleCastExpr>(CastExpr))
+        {
+            castType = "(C-Style cast)";
+        }
+        else if (llvm::isa<CXXStaticCastExpr>(CastExpr))
+        {
+            castType = "static_cast";
+        }
+        else if (llvm::isa<CXXReinterpretCastExpr>(CastExpr))
+        {
+            castType = "reinterpret_cast";
+        }
+        else
+        {
+            castType = "unknown_cast";
+        }
+
+        printHighlightedCast(castType);
+        llvm::outs() << " ";
+        printHighlightedType(CastExpr->getType().getAsString());
+        llvm::outs() << "\n";
+    }
+
+    return true;
+}
+
+bool PointerReferenceVisitor::VisitCStyleCastExpr(const CStyleCastExpr* CastExpr) const
+{
+    return VisitCastExpr(CastExpr);
+}
+
+bool PointerReferenceVisitor::VisitCXXStaticCastExpr(const CXXStaticCastExpr* CastExpr) const
+{
+    return VisitCastExpr(CastExpr);
+}
+
+bool PointerReferenceVisitor::VisitCXXReinterpretCastExpr(const CXXReinterpretCastExpr *ReprCastExpr) const
+{
+    return VisitCastExpr(ReprCastExpr);
+}*/
+

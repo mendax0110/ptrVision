@@ -11,7 +11,7 @@ namespace clang
      * @brief PointerReferenceAction is an ASTFrontendAction that creates an ASTConsumer
      * 
      */
-    class PointerReferenceAction : public ASTFrontendAction
+    class PointerReferenceAction final : public ASTFrontendAction
     {
     public:
 

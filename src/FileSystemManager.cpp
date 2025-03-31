@@ -12,7 +12,7 @@ using namespace llvm;
 void FileSystemManager::processFile(const std::string& filePath, std::vector<std::string>& compileArgs)
 {
     llvm::outs() << "Processing file: " << filePath << "\n";
-    std::vector<std::string> sourcePaths = { filePath };
+    const std::vector<std::string> sourcePaths = { filePath };
 #if defined(__APPLE__) || defined(__linux__)
     FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
 #elif defined(_WIN32)
@@ -83,7 +83,7 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
         return;
     }
 
-    size_t bracePos = content.find("{", startPos);
+    size_t bracePos = content.find('{', startPos);
     if (bracePos == std::string::npos)
     {
         printError("Opening brace '{' not found for function '" + functionName + "'.");
