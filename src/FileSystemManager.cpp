@@ -3,20 +3,24 @@
 #include "PointerReferenceAction.h"
 #include <regex>
 #include <fstream>
+#include <optional>
 
 namespace fs = std::filesystem;
 using namespace clang;
 using namespace clang::tooling;
 using namespace llvm;
 
+
 void FileSystemManager::processFile(const std::string& filePath, std::vector<std::string>& compileArgs)
 {
-    llvm::outs() << "Processing file: " << filePath << "\n";
-    const std::vector<std::string> sourcePaths = { filePath };
-#if defined(__APPLE__) || defined(__linux__)
-    FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
-#elif defined(_WIN32)
+    printCanonicalFilePath(filePath);
+
+    const std::vector<std::string> sourcePaths = { filePath};
+
+#if defined(_WIN32)
     FixedCompilationDatabase EmptyDB("C:\\Temp", compileArgs);
+#else
+    FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
 #endif
     ClangTool Tool(EmptyDB, sourcePaths);
     Tool.run(newFrontendActionFactory<PointerReferenceAction>().get());
@@ -24,9 +28,10 @@ void FileSystemManager::processFile(const std::string& filePath, std::vector<std
 
 void FileSystemManager::processDirectory(const std::string& directoryPath, std::vector<std::string>& compileArgs)
 {
-    llvm::outs() << "Processing directory: " << directoryPath << "\n";
+    printCanonicalDirectoryPath(directoryPath);
+
     std::vector<std::string> sourcePaths;
-    
+
     for (const auto& entry : fs::directory_iterator(directoryPath))
     {
         if (entry.is_regular_file() && entry.path().extension() == ".cpp")
@@ -41,10 +46,10 @@ void FileSystemManager::processDirectory(const std::string& directoryPath, std::
         return;
     }
 
-#if defined(__APPLE__) || defined(__linux__)
-    FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
-#elif defined(_WIN32)
+#if defined(_WIN32)
     FixedCompilationDatabase EmptyDB("C:\\Temp", compileArgs);
+#else
+    FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
 #endif
     ClangTool Tool(EmptyDB, sourcePaths);
     Tool.run(newFrontendActionFactory<PointerReferenceAction>().get());
@@ -76,23 +81,23 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
     std::string functionName = match[1].str();
 
     // extract the function definition
-    size_t startPos = content.find(functionName + "(");
-    if (startPos == std::string::npos)
+    std::optional<size_t> startPos = content.find(functionName + "(");
+    if (!startPos.has_value() || startPos == std::string::npos)
     {
         printError("Function '" + functionName + "' not found in file.");
         return;
     }
 
-    size_t bracePos = content.find('{', startPos);
-    if (bracePos == std::string::npos)
+    std::optional<size_t> bracePos = content.find('{', startPos.value());
+    if (!bracePos.has_value() || bracePos == std::string::npos)
     {
         printError("Opening brace '{' not found for function '" + functionName + "'.");
         return;
     }
 
-    //  count brace to find the closing brace
+    // count braces to find the closing brace
     int braceCount = 1;
-    size_t endPos = bracePos + 1;
+    size_t endPos = bracePos.value() + 1;
     while (endPos < content.size() && braceCount > 0)
     {
         if (content[endPos] == '{') braceCount++;
@@ -107,7 +112,7 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
     }
 
     // extract text and ensure valid code
-    std::string functionCode = content.substr(startPos, endPos - startPos);
+    std::string functionCode = content.substr(startPos.value(), endPos - startPos.value());
     std::regex arrayFixRegex(R"(\b(int|float|double|char)\s+\w+\s*\[.*\]\s*=\s*\{[^}]*\})");
     functionCode = std::regex_replace(functionCode, arrayFixRegex, "$&;");
 
@@ -121,12 +126,15 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
 
     std::vector<std::string> sourcePaths = { tempFilePath };
 
-#if defined(__APPLE__) || defined(__linux__)
-    FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
-#elif defined(_WIN32)
-    FixedCompilationDatabase EmptyDB("C:\\Temp", compileArgs);
+    std::string tempPath =
+#if defined(_WIN32)
+        "C:\\Temp";
+#else
+        "/tmp";
 #endif
+    if (!fs::exists(tempPath)) fs::create_directory(tempPath);
 
+    FixedCompilationDatabase EmptyDB(tempPath, compileArgs);
     ClangTool Tool(EmptyDB, sourcePaths);
     Tool.run(newFrontendActionFactory<PointerReferenceAction>().get());
 
