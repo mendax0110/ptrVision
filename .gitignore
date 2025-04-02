@@ -1,8 +1,10 @@
-# Ignore the Build folder on WIN, LINUX and macOS
-/build
+# Ignore the build_windows folder
+/build_windows
 
-/build-linux
+# Ignore the build_linux folder
+/build_linux
 
+# Ignore the build_macos folder
 /cmake-build-debug
 
 # Ignore the .vscode  folder
