@@ -1,0 +1,196 @@
+\doxysection{Syntax\+Highlighter.\+h}
+\hypertarget{_syntax_highlighter_8h_source}{}\label{_syntax_highlighter_8h_source}\index{C:/Users/Adrian/Documents/git/ptrVision/include/SyntaxHighlighter.h@{C:/Users/Adrian/Documents/git/ptrVision/include/SyntaxHighlighter.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SYNTAXHIGHLIGHTER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SYNTAXHIGHLIGHTER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <llvm/Support/raw\_ostream.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ macOS\ and\ Linux}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ RESET\_COLOR\ \ \ "{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ RED\_COLOR\ \ \ \ \ "{}\(\backslash\)033[31m"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ GREEN\_COLOR\ \ \ "{}\(\backslash\)033[32m"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ YELLOW\_COLOR\ \ "{}\(\backslash\)033[33m"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ BLUE\_COLOR\ \ \ \ "{}\(\backslash\)033[34m"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ MAGENTA\_COLOR\ "{}\(\backslash\)033[35m"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ CYAN\_COLOR\ \ \ \ "{}\(\backslash\)033[36m"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Windows}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ RED\_WIN\_COLOR\ \ \ \ \ 4}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ GREEN\_WIN\_COLOR\ \ \ 2}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ YELLOW\_WIN\_COLOR\ \ 14}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ BLUE\_WIN\_COLOR\ \ \ \ 9}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ MAGENTA\_WIN\_COLOR\ 13}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ CYAN\_WIN\_COLOR\ \ \ \ 11}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ WHITE\_WIN\_COLOR\ \ \ 15}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ RESET\_WIN\_COLOR\ \ \ 7}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setConsoleColor(\textcolor{keywordtype}{int}\ color)}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ HANDLE\ hConsole\ =\ GetStdHandle(STD\_OUTPUT\_HANDLE);}
+\DoxyCodeLine{00040\ \ \ \ \ SetConsoleTextAttribute(hConsole,\ color);}
+\DoxyCodeLine{00041\ \}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{const}\ std::string\ rainbowColors[]\ =\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ RED\_COLOR,\ GREEN\_COLOR,\ YELLOW\_COLOR,\ BLUE\_COLOR,\ MAGENTA\_COLOR,\ CYAN\_COLOR}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ rainbowWinColors[]\ =\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ RED\_WIN\_COLOR,\ GREEN\_WIN\_COLOR,\ YELLOW\_WIN\_COLOR,\ BLUE\_WIN\_COLOR,\ MAGENTA\_WIN\_COLOR,\ CYAN\_WIN\_COLOR}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printHighlightedPointer(\textcolor{keyword}{const}\ std::string\&\ type)}
+\DoxyCodeLine{00057\ \{}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00059\ \ \ \ \ setConsoleColor(CYAN\_WIN\_COLOR);}
+\DoxyCodeLine{00060\ \ \ \ \ llvm::outs()\ <<\ type;}
+\DoxyCodeLine{00061\ \ \ \ \ setConsoleColor(RESET\_WIN\_COLOR);}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00063\ \ \ \ \ llvm::outs()\ <<\ CYAN\_COLOR\ <<\ type\ <<\ RESET\_COLOR;}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printHighlightedReference(\textcolor{keyword}{const}\ std::string\&\ type)}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00074\ \ \ \ \ setConsoleColor(GREEN\_WIN\_COLOR);}
+\DoxyCodeLine{00075\ \ \ \ \ llvm::outs()\ <<\ type;}
+\DoxyCodeLine{00076\ \ \ \ \ setConsoleColor(RESET\_WIN\_COLOR);}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00078\ \ \ \ \ llvm::outs()\ <<\ GREEN\_COLOR\ <<\ type\ <<\ RESET\_COLOR;}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00080\ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printHighlightedKeyword(\textcolor{keyword}{const}\ std::string\&\ keyword)}
+\DoxyCodeLine{00087\ \{}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00089\ \ \ \ \ setConsoleColor(BLUE\_WIN\_COLOR);}
+\DoxyCodeLine{00090\ \ \ \ \ llvm::outs()\ <<\ keyword;}
+\DoxyCodeLine{00091\ \ \ \ \ setConsoleColor(RESET\_WIN\_COLOR);}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00093\ \ \ \ \ llvm::outs()\ <<\ BLUE\_COLOR\ <<\ keyword\ <<\ RESET\_COLOR;}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00095\ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printError(\textcolor{keyword}{const}\ std::string\&\ message)}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00104\ \ \ \ \ setConsoleColor(12);}
+\DoxyCodeLine{00105\ \ \ \ \ llvm::outs()\ <<\ \textcolor{stringliteral}{"{}[ERROR]\ "{}}\ <<\ message\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00106\ \ \ \ \ setConsoleColor(7);}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00108\ \ \ \ \ llvm::errs()\ <<\ RED\_COLOR\ <<\ \textcolor{stringliteral}{"{}[ERROR]\ "{}}\ <<\ message\ <<\ RESET\_COLOR\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00110\ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printWarning(\textcolor{keyword}{const}\ std::string\&\ message)}
+\DoxyCodeLine{00117\ \{}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00119\ \ \ \ \ setConsoleColor(YELLOW\_WIN\_COLOR);}
+\DoxyCodeLine{00120\ \ \ \ \ llvm::outs()\ <<\ \textcolor{stringliteral}{"{}[WARNING]\ "{}}\ <<\ message\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00121\ \ \ \ \ setConsoleColor(RESET\_WIN\_COLOR);}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00123\ \ \ \ \ llvm::outs()\ <<\ YELLOW\_COLOR\ <<\ \textcolor{stringliteral}{"{}[WARNING]\ "{}}\ <<\ message\ <<\ RESET\_COLOR\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00125\ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printInfo(\textcolor{keyword}{const}\ std::string\&\ message)}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00134\ \ \ \ \ setConsoleColor(MAGENTA\_WIN\_COLOR);}
+\DoxyCodeLine{00135\ \ \ \ \ llvm::outs()\ <<\ \textcolor{stringliteral}{"{}[INFO]\ "{}}\ <<\ message\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ setConsoleColor(RESET\_WIN\_COLOR);}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00138\ \ \ \ \ llvm::outs()\ <<\ MAGENTA\_COLOR\ <<\ \textcolor{stringliteral}{"{}[INFO]\ "{}}\ <<\ message\ <<\ RESET\_COLOR\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00140\ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00146\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printHighlightedCast(\textcolor{keyword}{const}\ std::string\&\ castType)}
+\DoxyCodeLine{00147\ \{}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00149\ \ \ \ \ setConsoleColor(BLUE\_WIN\_COLOR);}
+\DoxyCodeLine{00150\ \ \ \ \ llvm::outs()\ <<\ castType;}
+\DoxyCodeLine{00151\ \ \ \ \ setConsoleColor(RESET\_WIN\_COLOR);}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00153\ \ \ \ \ llvm::outs()\ <<\ BLUE\_COLOR\ <<\ castType\ <<\ RESET\_COLOR;}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00155\ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printHighlightedType(\textcolor{keyword}{const}\ std::string\&\ type)}
+\DoxyCodeLine{00162\ \{}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00164\ \ \ \ \ setConsoleColor(CYAN\_WIN\_COLOR);}
+\DoxyCodeLine{00165\ \ \ \ \ llvm::outs()\ <<\ type;}
+\DoxyCodeLine{00166\ \ \ \ \ setConsoleColor(RESET\_WIN\_COLOR);}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00168\ \ \ \ \ llvm::outs()\ <<\ CYAN\_COLOR\ <<\ type\ <<\ RESET\_COLOR;}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00170\ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00176\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printCanonicalDirectoryPath(\textcolor{keyword}{const}\ std::string\&\ directoryPath)}
+\DoxyCodeLine{00177\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00179\ \ \ \ \ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ std::string\ pathStr\ =\ std::filesystem::canonical(directoryPath).string();}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ pathStr.size();\ ++i)}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ setConsoleColor(rainbowWinColors[i\ \%\ 6]);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ pathStr[i];}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ setConsoleColor(WHITE\_WIN\_COLOR);}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ pathStr.size();\ ++i)}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ rainbowColors[i\ \%\ 6]\ <<\ pathStr[i]\ <<\ RESET\_COLOR;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00196\ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::filesystem::filesystem\_error\&\ e)}
+\DoxyCodeLine{00198\ \ \ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ printError(\textcolor{stringliteral}{"{}Resolving\ canonical\ path:\ "{}}\ +\ std::string(e.what()));}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00207\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ printCanonicalFilePath(\textcolor{keyword}{const}\ std::string\&\ filePath)}
+\DoxyCodeLine{00208\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00210\ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ std::string\ pathStr\ =\ std::filesystem::canonical(filePath).string();}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ pathStr.size();\ ++i)}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ setConsoleColor(rainbowWinColors[i\ \%\ 6]);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ pathStr[i];}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ setConsoleColor(WHITE\_WIN\_COLOR);}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ pathStr.size();\ ++i)}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ rainbowColors[i\ \%\ 6]\ <<\ pathStr[i]\ <<\ RESET\_COLOR;}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ llvm::outs()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00227\ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::filesystem::filesystem\_error\&\ e)}
+\DoxyCodeLine{00229\ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ printError(\textcolor{stringliteral}{"{}Resolving\ canonical\ path:\ "{}}\ +\ std::string(e.what()));}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SYNTAXHIGHLIGHTER\_H}}
+
+\end{DoxyCode}

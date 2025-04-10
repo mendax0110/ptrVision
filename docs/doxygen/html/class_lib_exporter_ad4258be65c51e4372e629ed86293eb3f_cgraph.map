@@ -1,0 +1,5 @@
+<map id="LibExporter::ProcessFile" name="LibExporter::ProcessFile">
+<area shape="rect" id="Node000001" title="Processes a single file." alt="" coords="5,13,170,40"/>
+<area shape="rect" id="Node000002" href="$classclang_1_1_file_system_manager.html#ad893039bab3dce8bb255f0388f3a5bd6" title="Processes a file, creating a ClangTool to run the PointerReferenceAction." alt="" coords="218,5,394,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,24,202,24,202,29,170,29"/>
+</map>

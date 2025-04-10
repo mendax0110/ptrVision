@@ -1,0 +1,38 @@
+\doxysection{Lib\+Exporter.\+h}
+\hypertarget{_lib_exporter_8h_source}{}\label{_lib_exporter_8h_source}\index{C:/Users/Adrian/Documents/git/ptrVision/include/LibExporter.h@{C:/Users/Adrian/Documents/git/ptrVision/include/LibExporter.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LIBEXPORTER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LIBEXPORTER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ NOMINMAX\ \ \ }}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ EXPORT\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ EXPORT\_C\ extern\ "{}C"{}\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ EXPORT\_API\ \_\_attribute\_\_((visibility("{}default"{})))}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ EXPORT\_C\ extern\ "{}C"{}\ \_\_attribute\_\_((visibility("{}default"{})))}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }EXPORT\_API\ \mbox{\hyperlink{class_lib_exporter}{LibExporter}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_lib_exporter}{LibExporter}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ ProcessFile(\textcolor{keyword}{const}\ std::string\&\ filePath,\ \textcolor{keyword}{const}\ std::string\&\ marker);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ ProcessDirectory(\textcolor{keyword}{const}\ std::string\&\ dirPath,\ \textcolor{keyword}{const}\ std::string\&\ marker);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ ProcessSnippetFromSpecifiedFile(\textcolor{keyword}{const}\ std::string\&\ filePath,\ \textcolor{keyword}{const}\ std::string\&\ marker);}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ EXPORT\_C\ \textcolor{keywordtype}{void}\ processFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filePath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ marker);}
+\DoxyCodeLine{00046\ EXPORT\_C\ \textcolor{keywordtype}{void}\ processDirectory(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dirPath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ marker);}
+\DoxyCodeLine{00047\ EXPORT\_C\ \textcolor{keywordtype}{void}\ processSnippetFromSpecifiedFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filePath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ marker);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LIBEXPORTER\_H}}
+
+\end{DoxyCode}

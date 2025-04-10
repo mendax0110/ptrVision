@@ -1,0 +1,5 @@
+<map id="clang::PointerReferenceConsumer" name="clang::PointerReferenceConsumer">
+<area shape="rect" id="Node000001" title="PointerReferenceConsumer is an ASTConsumer that processes the AST of a translation unit." alt="" coords="5,80,227,107"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="62,5,170,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,48,119,80,113,80,113,48"/>
+</map>

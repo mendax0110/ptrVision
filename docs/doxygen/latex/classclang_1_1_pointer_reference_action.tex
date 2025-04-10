@@ -1,0 +1,65 @@
+\doxysection{clang\+::Pointer\+Reference\+Action Class Reference}
+\hypertarget{classclang_1_1_pointer_reference_action}{}\label{classclang_1_1_pointer_reference_action}\index{clang::PointerReferenceAction@{clang::PointerReferenceAction}}
+
+
+\doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} is an ASTFrontend\+Action that creates an ASTConsumer.  
+
+
+
+
+{\ttfamily \#include $<$Pointer\+Reference\+Action.\+h$>$}
+
+
+
+Inheritance diagram for clang\+::Pointer\+Reference\+Action\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classclang_1_1_pointer_reference_action__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for clang\+::Pointer\+Reference\+Action\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classclang_1_1_pointer_reference_action__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ ASTConsumer $>$ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a39e9fc1988536586d55316b996df1f88}{Create\+ASTConsumer}} (Compiler\+Instance \&CI, llvm\+::\+String\+Ref file) override
+\begin{DoxyCompactList}\small\item\em Creates the ASTConsumer for the translation unit, which processes the AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} is an ASTFrontend\+Action that creates an ASTConsumer. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_pointer_reference_action_a39e9fc1988536586d55316b996df1f88}\label{classclang_1_1_pointer_reference_action_a39e9fc1988536586d55316b996df1f88} 
+\index{clang::PointerReferenceAction@{clang::PointerReferenceAction}!CreateASTConsumer@{CreateASTConsumer}}
+\index{CreateASTConsumer@{CreateASTConsumer}!clang::PointerReferenceAction@{clang::PointerReferenceAction}}
+\doxysubsubsection{\texorpdfstring{CreateASTConsumer()}{CreateASTConsumer()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ ASTConsumer $>$ clang\+::\+Pointer\+Reference\+Action\+::\+Create\+ASTConsumer (\begin{DoxyParamCaption}\item[{Compiler\+Instance \&}]{CI,  }\item[{llvm\+::\+String\+Ref}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Creates the ASTConsumer for the translation unit, which processes the AST. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em CI} & -\/\texorpdfstring{$>$}{>} Compiler\+Instance \\
+\hline
+{\em file} & -\/\texorpdfstring{$>$}{>} file name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::unique\+\_\+ptr$<$\+ASTConsumer$>$ -\/\texorpdfstring{$>$}{>} A unique pointer to the ASTConsumer 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Action.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,55 @@
+\doxysection{Pointer\+Reference\+Visitor.\+h}
+\hypertarget{_pointer_reference_visitor_8h_source}{}\label{_pointer_reference_visitor_8h_source}\index{C:/Users/Adrian/Documents/git/ptrVision/include/PointerReferenceVisitor.h@{C:/Users/Adrian/Documents/git/ptrVision/include/PointerReferenceVisitor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ POINTER\_REFERENCE\_VISITOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ POINTER\_REFERENCE\_VISITOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <clang/AST/ASTConsumer.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <clang/AST/RecursiveASTVisitor.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <clang/Frontend/CompilerInstance.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <clang/Frontend/FrontendActions.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <clang/Tooling/Tooling.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceclang}{clang}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classclang_1_1_pointer_reference_visitor}{PointerReferenceVisitor}}\ :\ \textcolor{keyword}{public}\ RecursiveASTVisitor<PointerReferenceVisitor>}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor}{PointerReferenceVisitor}}(SourceManager\ \&SM);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a3f76e0ee4a91a57be166a71257e31672}{VisitBinaryOperator}}(\textcolor{keyword}{const}\ BinaryOperator*\ BO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a916798a0bfd7e7b4c81b006afd36edd4}{VisitUnaryOperator}}(\textcolor{keyword}{const}\ UnaryOperator*\ UO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_aa2405a0b82d76aa9228f69e8007d6339}{VisitDeclRefExpr}}(\textcolor{keyword}{const}\ DeclRefExpr*\ DRE)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a9348d3430de1bb0a9f1cfa41d197daa6}{VisitMemberExpr}}(\textcolor{keyword}{const}\ MemberExpr*\ ME)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_abe1761ad8e8e9c9fcb4cec3b82317ff9}{VisitCXXNewExpr}}(\textcolor{keyword}{const}\ CXXNewExpr*\ NE)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_ad423d284aaca0c16bcb2012eff30d743}{VisitCXXDeleteExpr}}(\textcolor{keyword}{const}\ CXXDeleteExpr*\ DE)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a0fe3917a3ac30eff29bc2006ab226e9c}{VisitGotoStmt}}(\textcolor{keyword}{const}\ GotoStmt*\ GS)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a6901d59e49cde98845036d35834e19b3}{VisitVarDecl}}(\textcolor{keyword}{const}\ VarDecl*\ VD)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_aac0a0676541cf7f0c127231bd331ae2f}{VisitArraySubscriptExpr}}(\textcolor{keyword}{const}\ ArraySubscriptExpr*\ ASE)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//bool\ VisitCXXStaticCastExpr(const\ CXXStaticCastExpr*\ CastExpr)\ const;}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//bool\ VisitCXXReinterpretCastExpr(const\ CXXReinterpretCastExpr*\ ReprCastExpr)\ const;}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//bool\ VisitCStyleCastExpr(const\ CStyleCastExpr*\ CastExpr)\ const;}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//bool\ VisitCastExpr(const\ CastExpr*\ CastExpr)\ const;}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ SourceManager\ \&SM;}
+\DoxyCodeLine{00126\ \ \ \ \ \};}
+\DoxyCodeLine{00127\ \}\ \textcolor{comment}{//\ namespace\ clang}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POINTER\_REFERENCE\_VISITOR\_H}}
+
+\end{DoxyCode}

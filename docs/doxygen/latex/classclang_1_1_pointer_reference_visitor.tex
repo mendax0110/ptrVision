@@ -1,0 +1,227 @@
+\doxysection{clang\+::Pointer\+Reference\+Visitor Class Reference}
+\hypertarget{classclang_1_1_pointer_reference_visitor}{}\label{classclang_1_1_pointer_reference_visitor}\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+
+
+\doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} is a Recursive\+ASTVisitor that visits the AST nodes of a translation unit.  
+
+
+
+
+{\ttfamily \#include $<$Pointer\+Reference\+Visitor.\+h$>$}
+
+
+
+Inheritance diagram for clang\+::Pointer\+Reference\+Visitor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classclang_1_1_pointer_reference_visitor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for clang\+::Pointer\+Reference\+Visitor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classclang_1_1_pointer_reference_visitor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a57e957142df3e655902eb40ffdcc1863}\label{classclang_1_1_pointer_reference_visitor_a57e957142df3e655902eb40ffdcc1863} 
+{\bfseries Pointer\+Reference\+Visitor} (Source\+Manager \&SM)
+\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a3f76e0ee4a91a57be166a71257e31672}{Visit\+Binary\+Operator}} (const Binary\+Operator \texorpdfstring{$\ast$}{*}BO) const
+\begin{DoxyCompactList}\small\item\em Visit a Binary\+Operator node, and check if it is a pointer arithmetic operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a916798a0bfd7e7b4c81b006afd36edd4}{Visit\+Unary\+Operator}} (const Unary\+Operator \texorpdfstring{$\ast$}{*}UO) const
+\begin{DoxyCompactList}\small\item\em Visit a Unary\+Operator node, and check if it is a pointer dereference operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_aa2405a0b82d76aa9228f69e8007d6339}{Visit\+Decl\+Ref\+Expr}} (const Decl\+Ref\+Expr \texorpdfstring{$\ast$}{*}DRE) const
+\begin{DoxyCompactList}\small\item\em Visit a Decl\+Ref\+Expr node, and check if it is a pointer reference operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a9348d3430de1bb0a9f1cfa41d197daa6}{Visit\+Member\+Expr}} (const Member\+Expr \texorpdfstring{$\ast$}{*}ME) const
+\begin{DoxyCompactList}\small\item\em Visit a Member\+Expr node, and check if it is a pointer reference operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_abe1761ad8e8e9c9fcb4cec3b82317ff9}{Visit\+CXXNew\+Expr}} (const CXXNew\+Expr \texorpdfstring{$\ast$}{*}NE) const
+\begin{DoxyCompactList}\small\item\em Visit a CXXNew\+Expr node, and check if it is a pointer reference operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_ad423d284aaca0c16bcb2012eff30d743}{Visit\+CXXDelete\+Expr}} (const CXXDelete\+Expr \texorpdfstring{$\ast$}{*}DE) const
+\begin{DoxyCompactList}\small\item\em Visit a CXXDelete\+Expr node, and check if it is a pointer reference operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a0fe3917a3ac30eff29bc2006ab226e9c}{Visit\+Goto\+Stmt}} (const Goto\+Stmt \texorpdfstring{$\ast$}{*}GS) const
+\begin{DoxyCompactList}\small\item\em Visit a Goto\+Stmt node, and check if it is a pointer reference operation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a6901d59e49cde98845036d35834e19b3}{Visit\+Var\+Decl}} (const Var\+Decl \texorpdfstring{$\ast$}{*}VD) const
+\begin{DoxyCompactList}\small\item\em Visit a Var\+Decl node to check if it is a pointer declaration. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_aac0a0676541cf7f0c127231bd331ae2f}{Visit\+Array\+Subscript\+Expr}} (const Array\+Subscript\+Expr \texorpdfstring{$\ast$}{*}ASE) const
+\begin{DoxyCompactList}\small\item\em Visit an Array\+Subscript\+Expr node to check if it involves a pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} is a Recursive\+ASTVisitor that visits the AST nodes of a translation unit. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_aac0a0676541cf7f0c127231bd331ae2f}\label{classclang_1_1_pointer_reference_visitor_aac0a0676541cf7f0c127231bd331ae2f} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitArraySubscriptExpr@{VisitArraySubscriptExpr}}
+\index{VisitArraySubscriptExpr@{VisitArraySubscriptExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitArraySubscriptExpr()}{VisitArraySubscriptExpr()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+Array\+Subscript\+Expr (\begin{DoxyParamCaption}\item[{const Array\+Subscript\+Expr \texorpdfstring{$\ast$}{*}}]{ASE }\end{DoxyParamCaption}) const}
+
+
+
+Visit an Array\+Subscript\+Expr node to check if it involves a pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ASE} & -\/\texorpdfstring{$>$}{>} Array\+Subscript\+Expr node representing an array subscript operation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a3f76e0ee4a91a57be166a71257e31672}\label{classclang_1_1_pointer_reference_visitor_a3f76e0ee4a91a57be166a71257e31672} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitBinaryOperator@{VisitBinaryOperator}}
+\index{VisitBinaryOperator@{VisitBinaryOperator}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitBinaryOperator()}{VisitBinaryOperator()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+Binary\+Operator (\begin{DoxyParamCaption}\item[{const Binary\+Operator \texorpdfstring{$\ast$}{*}}]{BO }\end{DoxyParamCaption}) const}
+
+
+
+Visit a Binary\+Operator node, and check if it is a pointer arithmetic operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em BO} & -\/\texorpdfstring{$>$}{>} Binary\+Operator node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_ad423d284aaca0c16bcb2012eff30d743}\label{classclang_1_1_pointer_reference_visitor_ad423d284aaca0c16bcb2012eff30d743} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitCXXDeleteExpr@{VisitCXXDeleteExpr}}
+\index{VisitCXXDeleteExpr@{VisitCXXDeleteExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitCXXDeleteExpr()}{VisitCXXDeleteExpr()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+CXXDelete\+Expr (\begin{DoxyParamCaption}\item[{const CXXDelete\+Expr \texorpdfstring{$\ast$}{*}}]{DE }\end{DoxyParamCaption}) const}
+
+
+
+Visit a CXXDelete\+Expr node, and check if it is a pointer reference operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DE} & -\/\texorpdfstring{$>$}{>} CXXDelete\+Expr node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_abe1761ad8e8e9c9fcb4cec3b82317ff9}\label{classclang_1_1_pointer_reference_visitor_abe1761ad8e8e9c9fcb4cec3b82317ff9} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitCXXNewExpr@{VisitCXXNewExpr}}
+\index{VisitCXXNewExpr@{VisitCXXNewExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitCXXNewExpr()}{VisitCXXNewExpr()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+CXXNew\+Expr (\begin{DoxyParamCaption}\item[{const CXXNew\+Expr \texorpdfstring{$\ast$}{*}}]{NE }\end{DoxyParamCaption}) const}
+
+
+
+Visit a CXXNew\+Expr node, and check if it is a pointer reference operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em NE} & -\/\texorpdfstring{$>$}{>} CXXNew\+Expr node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_aa2405a0b82d76aa9228f69e8007d6339}\label{classclang_1_1_pointer_reference_visitor_aa2405a0b82d76aa9228f69e8007d6339} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitDeclRefExpr@{VisitDeclRefExpr}}
+\index{VisitDeclRefExpr@{VisitDeclRefExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitDeclRefExpr()}{VisitDeclRefExpr()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+Decl\+Ref\+Expr (\begin{DoxyParamCaption}\item[{const Decl\+Ref\+Expr \texorpdfstring{$\ast$}{*}}]{DRE }\end{DoxyParamCaption}) const}
+
+
+
+Visit a Decl\+Ref\+Expr node, and check if it is a pointer reference operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em DRE} & -\/\texorpdfstring{$>$}{>} Decl\+Ref\+Expr node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a0fe3917a3ac30eff29bc2006ab226e9c}\label{classclang_1_1_pointer_reference_visitor_a0fe3917a3ac30eff29bc2006ab226e9c} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitGotoStmt@{VisitGotoStmt}}
+\index{VisitGotoStmt@{VisitGotoStmt}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitGotoStmt()}{VisitGotoStmt()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+Goto\+Stmt (\begin{DoxyParamCaption}\item[{const Goto\+Stmt \texorpdfstring{$\ast$}{*}}]{GS }\end{DoxyParamCaption}) const}
+
+
+
+Visit a Goto\+Stmt node, and check if it is a pointer reference operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em GS} & -\/\texorpdfstring{$>$}{>} Goto\+Stmt node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a9348d3430de1bb0a9f1cfa41d197daa6}\label{classclang_1_1_pointer_reference_visitor_a9348d3430de1bb0a9f1cfa41d197daa6} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitMemberExpr@{VisitMemberExpr}}
+\index{VisitMemberExpr@{VisitMemberExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitMemberExpr()}{VisitMemberExpr()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+Member\+Expr (\begin{DoxyParamCaption}\item[{const Member\+Expr \texorpdfstring{$\ast$}{*}}]{ME }\end{DoxyParamCaption}) const}
+
+
+
+Visit a Member\+Expr node, and check if it is a pointer reference operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ME} & -\/\texorpdfstring{$>$}{>} Member\+Expr node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a916798a0bfd7e7b4c81b006afd36edd4}\label{classclang_1_1_pointer_reference_visitor_a916798a0bfd7e7b4c81b006afd36edd4} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitUnaryOperator@{VisitUnaryOperator}}
+\index{VisitUnaryOperator@{VisitUnaryOperator}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitUnaryOperator()}{VisitUnaryOperator()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+Unary\+Operator (\begin{DoxyParamCaption}\item[{const Unary\+Operator \texorpdfstring{$\ast$}{*}}]{UO }\end{DoxyParamCaption}) const}
+
+
+
+Visit a Unary\+Operator node, and check if it is a pointer dereference operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em UO} & -\/\texorpdfstring{$>$}{>} Unary\+Operator node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a6901d59e49cde98845036d35834e19b3}\label{classclang_1_1_pointer_reference_visitor_a6901d59e49cde98845036d35834e19b3} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitVarDecl@{VisitVarDecl}}
+\index{VisitVarDecl@{VisitVarDecl}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{VisitVarDecl()}{VisitVarDecl()}}
+{\footnotesize\ttfamily bool Pointer\+Reference\+Visitor\+::\+Visit\+Var\+Decl (\begin{DoxyParamCaption}\item[{const Var\+Decl \texorpdfstring{$\ast$}{*}}]{VD }\end{DoxyParamCaption}) const}
+
+
+
+Visit a Var\+Decl node to check if it is a pointer declaration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em VD} & -\/\texorpdfstring{$>$}{>} Var\+Decl node representing the variable declaration. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Visitor.\+h\item 
+C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/src/Pointer\+Reference\+Visitor.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="clang::FileSystemManager::processDirectory" name="clang::FileSystemManager::processDirectory">
+<area shape="rect" id="Node000001" title="Processes a directory, creating a ClangTool to run the PointerReferenceAction." alt="" coords="250,5,426,48"/>
+<area shape="rect" id="Node000002" href="$class_lib_exporter.html#a93361974bbdfd083d1dbb3893ae540e6" title="Processes all .cpp files in a specified directory." alt="" coords="5,13,202,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="234,29,202,29,202,24,234,24"/>
+</map>

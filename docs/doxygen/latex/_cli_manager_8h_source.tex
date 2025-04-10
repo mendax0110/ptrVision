@@ -1,0 +1,36 @@
+\doxysection{Cli\+Manager.\+h}
+\hypertarget{_cli_manager_8h_source}{}\label{_cli_manager_8h_source}\index{C:/Users/Adrian/Documents/git/ptrVision/include/CliManager.h@{C:/Users/Adrian/Documents/git/ptrVision/include/CliManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CLIMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CLIMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <llvm/Support/FileSystem.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SyntaxHighlighter.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <llvm/Support/raw\_ostream.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <llvm/Support/FileSystem.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <llvm/Support/Error.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <llvm/ADT/StringRef.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <llvm/ADT/StringExtras.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cli_manager}{CliManager}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cli_manager_aa1059437d73788d16bff8213acaac859}{showHelp}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cli_manager_aff43033dcc06e93d40765a4602be3695}{printError}}(llvm::Error\ errorMessage);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cli_manager_aff43033dcc06e93d40765a4602be3695}{printError}}(\textcolor{keyword}{const}\ std::string\&\ errorMessage);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ std::string\ helpText;}
+\DoxyCodeLine{00040\ \ \ \ \ std::string\ helpFilePath;}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CLIMANAGER\_H}}
+
+\end{DoxyCode}
