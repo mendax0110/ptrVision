@@ -26,8 +26,13 @@
 #define MAGENTA_WIN_COLOR 13
 #define CYAN_WIN_COLOR    11
 #define WHITE_WIN_COLOR   15
+#define RESET_WIN_COLOR   7
 
-// Windows
+
+/**
+ * @brief Sets the console color for Windows
+ * @param color -> color code to set 
+ */
 #ifdef _WIN32
 inline void setConsoleColor(int color)
 {
@@ -36,14 +41,13 @@ inline void setConsoleColor(int color)
 }
 #endif
 
-const std::string rainbowColors[] ={
+const std::string rainbowColors[] = {
     RED_COLOR, GREEN_COLOR, YELLOW_COLOR, BLUE_COLOR, MAGENTA_COLOR, CYAN_COLOR
 };
 
 const int rainbowWinColors[] = {
     RED_WIN_COLOR, GREEN_WIN_COLOR, YELLOW_WIN_COLOR, BLUE_WIN_COLOR, MAGENTA_WIN_COLOR, CYAN_WIN_COLOR
 };
-
 
 /**
  * @brief Prints a highlighted pointer in cyan
@@ -52,9 +56,9 @@ const int rainbowWinColors[] = {
 inline void printHighlightedPointer(const std::string& type)
 {
 #ifdef _WIN32
-    setConsoleColor(11);
+    setConsoleColor(CYAN_WIN_COLOR);
     llvm::outs() << type;
-    setConsoleColor(7);
+    setConsoleColor(RESET_WIN_COLOR);
 #else
     llvm::outs() << CYAN_COLOR << type << RESET_COLOR;
 #endif
@@ -67,9 +71,9 @@ inline void printHighlightedPointer(const std::string& type)
 inline void printHighlightedReference(const std::string& type)
 {
 #ifdef _WIN32
-    setConsoleColor(10);
+    setConsoleColor(GREEN_WIN_COLOR);
     llvm::outs() << type;
-    setConsoleColor(7);
+    setConsoleColor(RESET_WIN_COLOR);
 #else
     llvm::outs() << GREEN_COLOR << type << RESET_COLOR;
 #endif
@@ -82,9 +86,9 @@ inline void printHighlightedReference(const std::string& type)
 inline void printHighlightedKeyword(const std::string& keyword)
 {
 #ifdef _WIN32
-    setConsoleColor(9);
+    setConsoleColor(BLUE_WIN_COLOR);
     llvm::outs() << keyword;
-    setConsoleColor(7);
+    setConsoleColor(RESET_WIN_COLOR);
 #else
     llvm::outs() << BLUE_COLOR << keyword << RESET_COLOR;
 #endif
@@ -98,10 +102,10 @@ inline void printError(const std::string& message)
 {
 #ifdef _WIN32
     setConsoleColor(12);
-    llvm::outs() << message << "\n";
+    llvm::outs() << "[ERROR] " << message << "\n";
     setConsoleColor(7);
 #else
-    llvm::errs() << RED_COLOR << message << RESET_COLOR << "\n";
+    llvm::errs() << RED_COLOR << "[ERROR] " << message << RESET_COLOR << "\n";
 #endif
 }
 
@@ -112,11 +116,11 @@ inline void printError(const std::string& message)
 inline void printWarning(const std::string& message)
 {
 #ifdef _WIN32
-    setConsoleColor(14);
-    llvm::outs() << message << "\n";
-    setConsoleColor(7);
+    setConsoleColor(YELLOW_WIN_COLOR);
+    llvm::outs() << "[WARNING] " << message << "\n";
+    setConsoleColor(RESET_WIN_COLOR);
 #else
-    llvm::outs() << YELLOW_COLOR << message << RESET_COLOR << "\n";
+    llvm::outs() << YELLOW_COLOR << "[WARNING] " << message << RESET_COLOR << "\n";
 #endif
 }
 
@@ -127,11 +131,11 @@ inline void printWarning(const std::string& message)
 inline void printInfo(const std::string& message)
 {
 #ifdef _WIN32
-    setConsoleColor(13);
-    llvm::outs() << message << "\n";
-    setConsoleColor(7);
+    setConsoleColor(MAGENTA_WIN_COLOR);
+    llvm::outs() << "[INFO] " << message << "\n";
+    setConsoleColor(RESET_WIN_COLOR);
 #else
-    llvm::outs() << MAGENTA_COLOR << message << RESET_COLOR << "\n";
+    llvm::outs() << MAGENTA_COLOR << "[INFO] " << message << RESET_COLOR << "\n";
 #endif
 }
 
@@ -142,9 +146,9 @@ inline void printInfo(const std::string& message)
 inline void printHighlightedCast(const std::string& castType)
 {
 #ifdef _WIN32
-    setConsoleColor(9);
+    setConsoleColor(BLUE_WIN_COLOR);
     llvm::outs() << castType;
-    setConsoleColor(7);
+    setConsoleColor(RESET_WIN_COLOR);
 #else
     llvm::outs() << BLUE_COLOR << castType << RESET_COLOR;
 #endif
@@ -157,9 +161,9 @@ inline void printHighlightedCast(const std::string& castType)
 inline void printHighlightedType(const std::string& type)
 {
 #ifdef _WIN32
-    setConsoleColor(36);  // Cyan for types
+    setConsoleColor(CYAN_WIN_COLOR);
     llvm::outs() << type;
-    setConsoleColor(7);
+    setConsoleColor(RESET_WIN_COLOR);
 #else
     llvm::outs() << CYAN_COLOR << type << RESET_COLOR;
 #endif
@@ -173,26 +177,26 @@ inline void printCanonicalDirectoryPath(const std::string& directoryPath)
 {
     try
     {
-        std::filesystem::path canonicalPath = std::filesystem::canonical(directoryPath);
+        std::string pathStr = std::filesystem::canonical(directoryPath).string();
 #ifdef _WIN32
-        for (size_t i = 0; i < canonicalPath.string().size(); ++i)
+        for (size_t i = 0; i < pathStr.size(); ++i)
         {
             setConsoleColor(rainbowWinColors[i % 6]);
-            llvm::outs() << canonicalPath.string()[i];
+            llvm::outs() << pathStr[i];
         }
         setConsoleColor(WHITE_WIN_COLOR);
         llvm::outs() << "\n";
 #else
-        for (size_t i = 0; i < canonicalPath.string().size(); ++i)
+        for (size_t i = 0; i < pathStr.size(); ++i)
         {
-            llvm::outs() << rainbowColors[i % 6] << canonicalPath.string()[i] << RESET_COLOR;
+            llvm::outs() << rainbowColors[i % 6] << pathStr[i] << RESET_COLOR;
         }
         llvm::outs() << "\n";
 #endif
     }
     catch (const std::filesystem::filesystem_error& e)
     {
-        printError("Error resolving canonical path: " + std::string(e.what()));
+        printError("Resolving canonical path: " + std::string(e.what()));
     }
 }
 
@@ -204,26 +208,26 @@ inline void printCanonicalFilePath(const std::string& filePath)
 {
     try
     {
-        std::filesystem::path canonicalPath = std::filesystem::canonical(filePath);
+        std::string pathStr = std::filesystem::canonical(filePath).string();
 #ifdef _WIN32
-        for (size_t i = 0; i < canonicalPath.string().size(); ++i)
+        for (size_t i = 0; i < pathStr.size(); ++i)
         {
             setConsoleColor(rainbowWinColors[i % 6]);
-            llvm::outs() << canonicalPath.string()[i];
+            llvm::outs() << pathStr[i];
         }
         setConsoleColor(WHITE_WIN_COLOR);
         llvm::outs() << "\n";
 #else
-        for (size_t i = 0; i < canonicalPath.string().size(); ++i)
+        for (size_t i = 0; i < pathStr.size(); ++i)
         {
-            llvm::outs() << rainbowColors[i % 6] << canonicalPath.string()[i] << RESET_COLOR;
+            llvm::outs() << rainbowColors[i % 6] << pathStr[i] << RESET_COLOR;
         }
         llvm::outs() << "\n";
 #endif
     }
     catch (const std::filesystem::filesystem_error& e)
     {
-        printError("Error resolving canonical path: " + std::string(e.what()));
+        printError("Resolving canonical path: " + std::string(e.what()));
     }
 }
 

@@ -7,6 +7,9 @@
 # Ignore the build_macos folder
 /cmake-build-debug
 
+# Ignore the build folder
+/build
+
 # Ignore the .vscode  folder
 .vscode
 

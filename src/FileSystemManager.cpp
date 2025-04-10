@@ -1,6 +1,6 @@
-#include "FileSystemManager.h"
-#include "SyntaxHighlighter.h"
-#include "PointerReferenceAction.h"
+#include <FileSystemManager.h>
+#include <SyntaxHighlighter.h>
+#include <PointerReferenceAction.h>
 #include <regex>
 #include <fstream>
 #include <optional>

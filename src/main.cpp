@@ -1,4 +1,5 @@
-#include "FileSystemManager.h"
+#include <FileSystemManager.h>
+#include <CliManager.h>
 #include <clang/Tooling/CommonOptionsParser.h>
 #include <llvm/Support/raw_ostream.h>
 #include <llvm/Support/FileSystem.h>
@@ -15,12 +16,6 @@ using namespace llvm;
 
 static cl::OptionCategory Tool("ptrVision");
 
-static void showHelp()
-{
-    errs() << "Usage: ptrVision <file|directory> [marker] [options]\n";
-    errs() << "Options:\n";
-    errs() << "  -help\t\tShow this help message\n";
-}
 
 int main(int argc, const char** argv)
 {
@@ -65,6 +60,7 @@ int main(int argc, const char** argv)
     else
     {
         errs() << "Invalid input path: " << inputPath << "\n";
+        CliManager::showHelp();
         return 1;
     }
 

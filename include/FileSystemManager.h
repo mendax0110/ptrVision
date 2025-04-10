@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <filesystem>
-#include "PointerReferenceVisitor.h"
+#include <PointerReferenceVisitor.h>
 #include <clang/Tooling/CommonOptionsParser.h>
 #include <clang/Tooling/Tooling.h>
 #include <llvm/Support/raw_ostream.h>

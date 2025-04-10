@@ -1,5 +1,5 @@
-#include "PointerReferenceVisitor.h"
-#include "SyntaxHighlighter.h"
+#include <PointerReferenceVisitor.h>
+#include <SyntaxHighlighter.h>
 #include <clang/AST/Expr.h>
 #include <clang/Frontend/CompilerInstance.h>
 #include <llvm/Support/raw_ostream.h>

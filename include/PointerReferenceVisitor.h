@@ -7,7 +7,6 @@
 #include <clang/Frontend/FrontendActions.h>
 #include <clang/Tooling/Tooling.h>
 
-
 /// @brief The clang namespace \namespace clang
 namespace clang
 {

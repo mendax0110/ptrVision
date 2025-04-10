@@ -1,5 +1,5 @@
-#include "PointerReferenceConsumer.h"
-#include "PointerReferenceVisitor.h"
+#include <PointerReferenceConsumer.h>
+#include <PointerReferenceVisitor.h>
 
 using namespace clang;
 
