@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['climanager_0',['CliManager',['../class_cli_manager.html',1,'']]]
+  ['_5fwdir_0',['_WDIR',['../struct___w_d_i_r.html',1,'']]],
+  ['_5fwdirent_1',['_wdirent',['../struct__wdirent.html',1,'']]]
 ];

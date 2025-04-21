@@ -1,0 +1,11 @@
+digraph "clang::FileHandler::CreateFile"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="clang::FileHandler\l::CreateFile",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Create a file with the given name and path."];
+  Node1 -> Node2 [id="edge2_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="clang::FileHandler\l::FileExists",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classclang_1_1_file_handler.html#a85eca25f705bb5f5cba645fa60f72104",tooltip="Check if a file exists at the given path."];
+}

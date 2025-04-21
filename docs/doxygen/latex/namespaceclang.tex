@@ -8,15 +8,46 @@ The clang namespace.
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \mbox{\hyperlink{classclang_1_1_asm_gen}{Asm\+Gen}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_asm_gen}{Asm\+Gen} class generates assembly code from C++ source files. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classclang_1_1_file_handler}{File\+Handler}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_file_handler}{File\+Handler} class handles file operations such as creating files and checking if a file exists. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classclang_1_1_file_system_manager}{File\+System\+Manager}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classclang_1_1_file_system_manager}{File\+System\+Manager} is a class that processes files and directories. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classclang_1_1_gui_manager}{Gui\+Manager}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_gui_manager}{Gui\+Manager} class manages the GUI of the application. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classclang_1_1_json_parser}{Json\+Parser}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_json_parser}{Json\+Parser} class is responsible for parsing JSON files and populating the \doxylink{classclang_1_1_tree_node}{Tree\+Node} structure. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} is an ASTFrontend\+Action that creates an ASTConsumer. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} class is responsible for creating an AST consumer and handling the output. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classclang_1_1_pointer_reference_consumer}{Pointer\+Reference\+Consumer}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classclang_1_1_pointer_reference_consumer}{Pointer\+Reference\+Consumer} is an ASTConsumer that processes the AST of a translation unit. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Pointer\+Refernce\+Consumer class forward declaration. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classclang_1_1_pointer_reference_factory}{Pointer\+Reference\+Factory}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classclang_1_1_pointer_reference_factory}{Pointer\+Reference\+Factory} class is responsible for creating and managing \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} instances. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} is a Recursive\+ASTVisitor that visits the AST nodes of a translation unit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} class is responsible for visiting AST nodes and checking for pointer references. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classclang_1_1_project_explorer}{Project\+Explorer}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_project_explorer}{Project\+Explorer} class is responsible for displaying the project tree structure. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classclang_1_1_tree_node}{Tree\+Node} class represents a node in the file system tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespaceclang_ae1b19dac41eb00e8bf5f2f349d2a0e28}\label{namespaceclang_ae1b19dac41eb00e8bf5f2f349d2a0e28} 
+enum class \mbox{\hyperlink{namespaceclang_ae1b19dac41eb00e8bf5f2f349d2a0e28}{Active\+Dialog}} \{ {\bfseries None}
+, {\bfseries Open\+File}
+, {\bfseries Create\+File}
+, {\bfseries Save\+File}
+ \}
+\begin{DoxyCompactList}\small\item\em The Active\+Dialog enum class represents the type of active dialog in the GUI. \end{DoxyCompactList}\item 
+\Hypertarget{namespaceclang_a2078fefbefcd616534a8755e35d228da}\label{namespaceclang_a2078fefbefcd616534a8755e35d228da} 
+enum class \mbox{\hyperlink{namespaceclang_a2078fefbefcd616534a8755e35d228da}{Node\+Type}} \{ {\bfseries File}
+, {\bfseries Directory}
+ \}
+\begin{DoxyCompactList}\small\item\em The Node\+Type enum class represents the type of a node in the file system tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 The clang namespace. 
+
+Forward declaration of the \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} class. 

@@ -1,0 +1,274 @@
+\doxysection{Text\+Editor Class Reference}
+\hypertarget{class_text_editor}{}\label{class_text_editor}\index{TextEditor@{TextEditor}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_text_editor_1_1_breakpoint}{Breakpoint}}
+\item 
+struct \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}
+\item 
+struct \mbox{\hyperlink{struct_text_editor_1_1_glyph}{Glyph}}
+\item 
+struct \mbox{\hyperlink{struct_text_editor_1_1_identifier}{Identifier}}
+\item 
+struct \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_text_editor_acb9bdc8f59e2fd152f423db095672fd9}\label{class_text_editor_acb9bdc8f59e2fd152f423db095672fd9} 
+enum class {\bfseries Palette\+Index} \{ \newline
+{\bfseries Default}
+, {\bfseries Keyword}
+, {\bfseries Number}
+, {\bfseries String}
+, \newline
+{\bfseries Char\+Literal}
+, {\bfseries Punctuation}
+, {\bfseries Preprocessor}
+, {\bfseries Identifier}
+, \newline
+{\bfseries Known\+Identifier}
+, {\bfseries Preproc\+Identifier}
+, {\bfseries Comment}
+, {\bfseries Multi\+Line\+Comment}
+, \newline
+{\bfseries Background}
+, {\bfseries Cursor}
+, {\bfseries Selection}
+, {\bfseries Error\+Marker}
+, \newline
+{\bfseries Breakpoint}
+, {\bfseries Line\+Number}
+, {\bfseries Current\+Line\+Fill}
+, {\bfseries Current\+Line\+Fill\+Inactive}
+, \newline
+{\bfseries Current\+Line\+Edge}
+, {\bfseries Max}
+ \}
+\item 
+\Hypertarget{class_text_editor_aed0b92add3785d71e009dbf66b78490d}\label{class_text_editor_aed0b92add3785d71e009dbf66b78490d} 
+enum class {\bfseries Selection\+Mode} \{ {\bfseries Normal}
+, {\bfseries Word}
+, {\bfseries Line}
+ \}
+\item 
+\Hypertarget{class_text_editor_aa2450eefe35d90e2b8c86b87cd192df3}\label{class_text_editor_aa2450eefe35d90e2b8c86b87cd192df3} 
+typedef std\+::string {\bfseries String}
+\item 
+\Hypertarget{class_text_editor_a54711872295c656130c4f2946e0d2e63}\label{class_text_editor_a54711872295c656130c4f2946e0d2e63} 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{struct_text_editor_1_1_identifier}{Identifier}} $>$ {\bfseries Identifiers}
+\item 
+\Hypertarget{class_text_editor_a0b28c26a8de0ef1762e229d515901c5d}\label{class_text_editor_a0b28c26a8de0ef1762e229d515901c5d} 
+typedef std\+::unordered\+\_\+set$<$ std\+::string $>$ {\bfseries Keywords}
+\item 
+\Hypertarget{class_text_editor_a8f5a14943d791c164cce0ea5c21a7db6}\label{class_text_editor_a8f5a14943d791c164cce0ea5c21a7db6} 
+typedef std\+::map$<$ int, std\+::string $>$ {\bfseries Error\+Markers}
+\item 
+\Hypertarget{class_text_editor_ae64604817429c85d9d72ebc8b4f4ccef}\label{class_text_editor_ae64604817429c85d9d72ebc8b4f4ccef} 
+typedef std\+::unordered\+\_\+set$<$ int $>$ {\bfseries Breakpoints}
+\item 
+\Hypertarget{class_text_editor_af17c3c98577d3b2b921b78c6dfd0b742}\label{class_text_editor_af17c3c98577d3b2b921b78c6dfd0b742} 
+typedef std\+::array$<$ Im\+U32,(unsigned) Palette\+Index\+::\+Max $>$ {\bfseries Palette}
+\item 
+\Hypertarget{class_text_editor_af21128e61c5df0e0b511235b586f2caf}\label{class_text_editor_af21128e61c5df0e0b511235b586f2caf} 
+typedef uint8\+\_\+t {\bfseries Char}
+\item 
+\Hypertarget{class_text_editor_a7ada0152297f142456309cbce6730465}\label{class_text_editor_a7ada0152297f142456309cbce6730465} 
+typedef std\+::vector$<$ \mbox{\hyperlink{struct_text_editor_1_1_glyph}{Glyph}} $>$ {\bfseries Line}
+\item 
+\Hypertarget{class_text_editor_a1839e84e88e96c4c4291017ce5de2921}\label{class_text_editor_a1839e84e88e96c4c4291017ce5de2921} 
+typedef std\+::vector$<$ Line $>$ {\bfseries Lines}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_text_editor_afaa8970fac64b10c6a25b5fd4874bd29}\label{class_text_editor_afaa8970fac64b10c6a25b5fd4874bd29} 
+void {\bfseries Set\+Language\+Definition} (const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \&a\+Language\+Def)
+\item 
+\Hypertarget{class_text_editor_ae2ea700634885f60679e52ac631892af}\label{class_text_editor_ae2ea700634885f60679e52ac631892af} 
+const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries Get\+Language\+Definition} () const
+\item 
+\Hypertarget{class_text_editor_a76745e8f2986df055c73400407babc31}\label{class_text_editor_a76745e8f2986df055c73400407babc31} 
+const Palette \& {\bfseries Get\+Palette} () const
+\item 
+\Hypertarget{class_text_editor_a8d5d8543bd078aa1c22a0b35c45c197d}\label{class_text_editor_a8d5d8543bd078aa1c22a0b35c45c197d} 
+void {\bfseries Set\+Palette} (const Palette \&a\+Value)
+\item 
+\Hypertarget{class_text_editor_acd36f759126581773e1e2636073cb765}\label{class_text_editor_acd36f759126581773e1e2636073cb765} 
+void {\bfseries Set\+Error\+Markers} (const Error\+Markers \&a\+Markers)
+\item 
+\Hypertarget{class_text_editor_a9ab8532b374c1fe9e719b73e08da4106}\label{class_text_editor_a9ab8532b374c1fe9e719b73e08da4106} 
+void {\bfseries Set\+Breakpoints} (const Breakpoints \&a\+Markers)
+\item 
+\Hypertarget{class_text_editor_a7bbe3f9fc145306e38231bf19804b7a6}\label{class_text_editor_a7bbe3f9fc145306e38231bf19804b7a6} 
+void {\bfseries Render} (const char \texorpdfstring{$\ast$}{*}a\+Title, const \mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}} \&a\+Size=\mbox{\hyperlink{struct_im_vec2}{Im\+Vec2}}(), bool a\+Border=false)
+\item 
+\Hypertarget{class_text_editor_a9f79c30bb4ef88d828271958b252c2f7}\label{class_text_editor_a9f79c30bb4ef88d828271958b252c2f7} 
+void {\bfseries Set\+Text} (const std\+::string \&a\+Text)
+\item 
+\Hypertarget{class_text_editor_a581e92e7aff81a99dcd1ab8dcc95e909}\label{class_text_editor_a581e92e7aff81a99dcd1ab8dcc95e909} 
+std\+::string {\bfseries Get\+Text} () const
+\item 
+\Hypertarget{class_text_editor_aa2e19ed33fc0400df26fd513450ff4d6}\label{class_text_editor_aa2e19ed33fc0400df26fd513450ff4d6} 
+void {\bfseries Set\+Text\+Lines} (const std\+::vector$<$ std\+::string $>$ \&a\+Lines)
+\item 
+\Hypertarget{class_text_editor_a12b095b7d22bc7e83077eeae3b7980ec}\label{class_text_editor_a12b095b7d22bc7e83077eeae3b7980ec} 
+std\+::vector$<$ std\+::string $>$ {\bfseries Get\+Text\+Lines} () const
+\item 
+\Hypertarget{class_text_editor_ae65cee8d0412c79c93af5b1fd53ccc66}\label{class_text_editor_ae65cee8d0412c79c93af5b1fd53ccc66} 
+std\+::string {\bfseries Get\+Selected\+Text} () const
+\item 
+\Hypertarget{class_text_editor_a71f7d9d34a2616207a75555b642cdab5}\label{class_text_editor_a71f7d9d34a2616207a75555b642cdab5} 
+std\+::string {\bfseries Get\+Current\+Line\+Text} () const
+\item 
+\Hypertarget{class_text_editor_a5f18c920c40b861c757d96ed78e95d57}\label{class_text_editor_a5f18c920c40b861c757d96ed78e95d57} 
+int {\bfseries Get\+Total\+Lines} () const
+\item 
+\Hypertarget{class_text_editor_a6b64c4fe7b140847d55b51aba3bae672}\label{class_text_editor_a6b64c4fe7b140847d55b51aba3bae672} 
+bool {\bfseries Is\+Overwrite} () const
+\item 
+\Hypertarget{class_text_editor_a579ba6b05e5c59249f6921dd3ba2159d}\label{class_text_editor_a579ba6b05e5c59249f6921dd3ba2159d} 
+void {\bfseries Set\+Read\+Only} (bool a\+Value)
+\item 
+\Hypertarget{class_text_editor_a591376b6fcb865396b50d22e593380cd}\label{class_text_editor_a591376b6fcb865396b50d22e593380cd} 
+bool {\bfseries Is\+Read\+Only} () const
+\item 
+\Hypertarget{class_text_editor_a520b40ab8db8cb72c8802329bca2f13c}\label{class_text_editor_a520b40ab8db8cb72c8802329bca2f13c} 
+bool {\bfseries Is\+Text\+Changed} () const
+\item 
+\Hypertarget{class_text_editor_a0c7ddcca32e0a92332922647c63beb3c}\label{class_text_editor_a0c7ddcca32e0a92332922647c63beb3c} 
+bool {\bfseries Is\+Cursor\+Position\+Changed} () const
+\item 
+\Hypertarget{class_text_editor_a763e9612d817c27b750fca00e3dce228}\label{class_text_editor_a763e9612d817c27b750fca00e3dce228} 
+bool {\bfseries Is\+Colorizer\+Enabled} () const
+\item 
+\Hypertarget{class_text_editor_a2b7117fa02b6ccde6cc3f4b5de14cccd}\label{class_text_editor_a2b7117fa02b6ccde6cc3f4b5de14cccd} 
+void {\bfseries Set\+Colorizer\+Enable} (bool a\+Value)
+\item 
+\Hypertarget{class_text_editor_a4a612fee7deb8e2f0d27408846e94905}\label{class_text_editor_a4a612fee7deb8e2f0d27408846e94905} 
+\mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}} {\bfseries Get\+Cursor\+Position} () const
+\item 
+\Hypertarget{class_text_editor_ae4c199b04e01fecea83aed4c86778056}\label{class_text_editor_ae4c199b04e01fecea83aed4c86778056} 
+void {\bfseries Set\+Cursor\+Position} (const \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}} \&a\+Position)
+\item 
+\Hypertarget{class_text_editor_af02db961d791a55b3251ab219fcb5c82}\label{class_text_editor_af02db961d791a55b3251ab219fcb5c82} 
+void {\bfseries Set\+Handle\+Mouse\+Inputs} (bool a\+Value)
+\item 
+\Hypertarget{class_text_editor_a7336396ef0e745643c3ad8b2f52a573c}\label{class_text_editor_a7336396ef0e745643c3ad8b2f52a573c} 
+bool {\bfseries Is\+Handle\+Mouse\+Inputs\+Enabled} () const
+\item 
+\Hypertarget{class_text_editor_a668d286d305318be010962780e9baa50}\label{class_text_editor_a668d286d305318be010962780e9baa50} 
+void {\bfseries Set\+Handle\+Keyboard\+Inputs} (bool a\+Value)
+\item 
+\Hypertarget{class_text_editor_af25f13378ad752bde0541e9907bdb3e3}\label{class_text_editor_af25f13378ad752bde0541e9907bdb3e3} 
+bool {\bfseries Is\+Handle\+Keyboard\+Inputs\+Enabled} () const
+\item 
+\Hypertarget{class_text_editor_a903602fcbccef16b6e1c5e752b5b299a}\label{class_text_editor_a903602fcbccef16b6e1c5e752b5b299a} 
+void {\bfseries Set\+Im\+Gui\+Child\+Ignored} (bool a\+Value)
+\item 
+\Hypertarget{class_text_editor_ab4fa274b9193b5acb09d44d7599dad36}\label{class_text_editor_ab4fa274b9193b5acb09d44d7599dad36} 
+bool {\bfseries Is\+Im\+Gui\+Child\+Ignored} () const
+\item 
+\Hypertarget{class_text_editor_a500e234d757174662eec44ce6ee650b2}\label{class_text_editor_a500e234d757174662eec44ce6ee650b2} 
+void {\bfseries Set\+Show\+Whitespaces} (bool a\+Value)
+\item 
+\Hypertarget{class_text_editor_a0ca4fa142ca45a1c9d23b7b929866323}\label{class_text_editor_a0ca4fa142ca45a1c9d23b7b929866323} 
+bool {\bfseries Is\+Showing\+Whitespaces} () const
+\item 
+\Hypertarget{class_text_editor_aeae650d9eabfd8a0fcf73c63ee8f9025}\label{class_text_editor_aeae650d9eabfd8a0fcf73c63ee8f9025} 
+void {\bfseries Set\+Tab\+Size} (int a\+Value)
+\item 
+\Hypertarget{class_text_editor_a040a399ba8a9d531d2590f922c005ee8}\label{class_text_editor_a040a399ba8a9d531d2590f922c005ee8} 
+int {\bfseries Get\+Tab\+Size} () const
+\item 
+\Hypertarget{class_text_editor_a07ac26fc2d44b7affb5390cf03685d69}\label{class_text_editor_a07ac26fc2d44b7affb5390cf03685d69} 
+void {\bfseries Insert\+Text} (const std\+::string \&a\+Value)
+\item 
+\Hypertarget{class_text_editor_aa34cd3378f9bfd5c0dcb312556f4fa80}\label{class_text_editor_aa34cd3378f9bfd5c0dcb312556f4fa80} 
+void {\bfseries Insert\+Text} (const char \texorpdfstring{$\ast$}{*}a\+Value)
+\item 
+\Hypertarget{class_text_editor_a78f863c8a72bccdbd81ec02d239054c2}\label{class_text_editor_a78f863c8a72bccdbd81ec02d239054c2} 
+void {\bfseries Move\+Up} (int a\+Amount=1, bool a\+Select=false)
+\item 
+\Hypertarget{class_text_editor_aca5903f8d1fa80aec2557b3b36779579}\label{class_text_editor_aca5903f8d1fa80aec2557b3b36779579} 
+void {\bfseries Move\+Down} (int a\+Amount=1, bool a\+Select=false)
+\item 
+\Hypertarget{class_text_editor_a26da9822f21979b090290af64404d70c}\label{class_text_editor_a26da9822f21979b090290af64404d70c} 
+void {\bfseries Move\+Left} (int a\+Amount=1, bool a\+Select=false, bool a\+Word\+Mode=false)
+\item 
+\Hypertarget{class_text_editor_afcb5bc695b2ac9f05fa6f05a9753cc81}\label{class_text_editor_afcb5bc695b2ac9f05fa6f05a9753cc81} 
+void {\bfseries Move\+Right} (int a\+Amount=1, bool a\+Select=false, bool a\+Word\+Mode=false)
+\item 
+\Hypertarget{class_text_editor_a5f0239352d4bfeda5a539b46fad28268}\label{class_text_editor_a5f0239352d4bfeda5a539b46fad28268} 
+void {\bfseries Move\+Top} (bool a\+Select=false)
+\item 
+\Hypertarget{class_text_editor_a02fcfdb71859c528a3c6b92d9688005d}\label{class_text_editor_a02fcfdb71859c528a3c6b92d9688005d} 
+void {\bfseries Move\+Bottom} (bool a\+Select=false)
+\item 
+\Hypertarget{class_text_editor_a2e7564236465557858df1c3470b0f425}\label{class_text_editor_a2e7564236465557858df1c3470b0f425} 
+void {\bfseries Move\+Home} (bool a\+Select=false)
+\item 
+\Hypertarget{class_text_editor_a3a912ca81d46bd702a7b6db744d389a3}\label{class_text_editor_a3a912ca81d46bd702a7b6db744d389a3} 
+void {\bfseries Move\+End} (bool a\+Select=false)
+\item 
+\Hypertarget{class_text_editor_a5edbe1e3a7d422de01113112c525c669}\label{class_text_editor_a5edbe1e3a7d422de01113112c525c669} 
+void {\bfseries Set\+Selection\+Start} (const \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}} \&a\+Position)
+\item 
+\Hypertarget{class_text_editor_a33705fb369a393c362743918fb78b438}\label{class_text_editor_a33705fb369a393c362743918fb78b438} 
+void {\bfseries Set\+Selection\+End} (const \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}} \&a\+Position)
+\item 
+\Hypertarget{class_text_editor_af4de0071d66058fdf453af53e346fb36}\label{class_text_editor_af4de0071d66058fdf453af53e346fb36} 
+void {\bfseries Set\+Selection} (const \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}} \&a\+Start, const \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}} \&a\+End, Selection\+Mode a\+Mode=Selection\+Mode\+::\+Normal)
+\item 
+\Hypertarget{class_text_editor_a1a2d1d3248c5b180a56cbab1c1413f62}\label{class_text_editor_a1a2d1d3248c5b180a56cbab1c1413f62} 
+void {\bfseries Select\+Word\+Under\+Cursor} ()
+\item 
+\Hypertarget{class_text_editor_ab2c5efd64f70e046208a1c72c5490719}\label{class_text_editor_ab2c5efd64f70e046208a1c72c5490719} 
+void {\bfseries Select\+All} ()
+\item 
+\Hypertarget{class_text_editor_a5097fdb7707db742bbfdfb36333c43ce}\label{class_text_editor_a5097fdb7707db742bbfdfb36333c43ce} 
+bool {\bfseries Has\+Selection} () const
+\item 
+\Hypertarget{class_text_editor_ad71b4195221a533bdeea571b64357bf3}\label{class_text_editor_ad71b4195221a533bdeea571b64357bf3} 
+void {\bfseries Copy} ()
+\item 
+\Hypertarget{class_text_editor_a5cb9031218039668bb2b68dfdc99fc4f}\label{class_text_editor_a5cb9031218039668bb2b68dfdc99fc4f} 
+void {\bfseries Cut} ()
+\item 
+\Hypertarget{class_text_editor_a55c18a394c0264054dcc3be9e794186c}\label{class_text_editor_a55c18a394c0264054dcc3be9e794186c} 
+void {\bfseries Paste} ()
+\item 
+\Hypertarget{class_text_editor_a480028d578e5ba0254e848b61e613636}\label{class_text_editor_a480028d578e5ba0254e848b61e613636} 
+void {\bfseries Delete} ()
+\item 
+\Hypertarget{class_text_editor_af32748dc21529e571c2c8e872f3d7dbb}\label{class_text_editor_af32748dc21529e571c2c8e872f3d7dbb} 
+bool {\bfseries Can\+Undo} () const
+\item 
+\Hypertarget{class_text_editor_ae37c2ac5f93a3c4d9d1684b4168057a9}\label{class_text_editor_ae37c2ac5f93a3c4d9d1684b4168057a9} 
+bool {\bfseries Can\+Redo} () const
+\item 
+\Hypertarget{class_text_editor_a80976bc862188e508d6ecf34074e0769}\label{class_text_editor_a80976bc862188e508d6ecf34074e0769} 
+void {\bfseries Undo} (int a\+Steps=1)
+\item 
+\Hypertarget{class_text_editor_add90ddb7b266b51c3bf613b41a99660a}\label{class_text_editor_add90ddb7b266b51c3bf613b41a99660a} 
+void {\bfseries Redo} (int a\+Steps=1)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_text_editor_a36a929a82d045b43480326c73f383cb8}\label{class_text_editor_a36a929a82d045b43480326c73f383cb8} 
+static const Palette \& {\bfseries Get\+Dark\+Palette} ()
+\item 
+\Hypertarget{class_text_editor_a24ae5fc8e21b4b5a13f5d2151fece0eb}\label{class_text_editor_a24ae5fc8e21b4b5a13f5d2151fece0eb} 
+static const Palette \& {\bfseries Get\+Light\+Palette} ()
+\item 
+\Hypertarget{class_text_editor_a44eced83d4c60c753ea6eca08f9929d1}\label{class_text_editor_a44eced83d4c60c753ea6eca08f9929d1} 
+static const Palette \& {\bfseries Get\+Retro\+Blue\+Palette} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/external/\+Im\+Gui\+Color\+Text\+Edit/Text\+Editor.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/external/\+Im\+Gui\+Color\+Text\+Edit/Text\+Editor.\+cpp\end{DoxyCompactItemize}

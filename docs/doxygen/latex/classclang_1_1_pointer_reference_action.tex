@@ -2,7 +2,7 @@
 \hypertarget{classclang_1_1_pointer_reference_action}{}\label{classclang_1_1_pointer_reference_action}\index{clang::PointerReferenceAction@{clang::PointerReferenceAction}}
 
 
-\doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} is an ASTFrontend\+Action that creates an ASTConsumer.  
+The \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} class is responsible for creating an AST consumer and handling the output.  
 
 
 
@@ -11,55 +11,92 @@
 
 
 
-Inheritance diagram for clang\+::Pointer\+Reference\+Action\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=229pt]{classclang_1_1_pointer_reference_action__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for clang\+::Pointer\+Reference\+Action\+:
+% FIG 0
 
 
-Collaboration diagram for clang\+::Pointer\+Reference\+Action\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=229pt]{classclang_1_1_pointer_reference_action__coll__graph}
-\end{center}
-\end{figure}
+Collaboration diagram for clang\+::Pointer\+Reference\+Action\+:
+% FIG 1
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-std\+::unique\+\_\+ptr$<$ ASTConsumer $>$ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a39e9fc1988536586d55316b996df1f88}{Create\+ASTConsumer}} (Compiler\+Instance \&CI, llvm\+::\+String\+Ref file) override
-\begin{DoxyCompactList}\small\item\em Creates the ASTConsumer for the translation unit, which processes the AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{classclang_1_1_pointer_reference_action_acdd22a37c05f7f6a86a33bfad6ebf611}\label{classclang_1_1_pointer_reference_action_acdd22a37c05f7f6a86a33bfad6ebf611} 
+{\bfseries Pointer\+Reference\+Action} (\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}} \&\&)=delete
+\begin{DoxyCompactList}\small\item\em Movable constructor and assignment operator. \end{DoxyCompactList}\item 
+\Hypertarget{classclang_1_1_pointer_reference_action_a8cfba95e949cdc204b97699108e12692}\label{classclang_1_1_pointer_reference_action_a8cfba95e949cdc204b97699108e12692} 
+\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}} \& {\bfseries operator=} (\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}} \&\&)=delete
+\item 
+\Hypertarget{classclang_1_1_pointer_reference_action_a8964e23c1c0962fd018ec075fd3fd96b}\label{classclang_1_1_pointer_reference_action_a8964e23c1c0962fd018ec075fd3fd96b} 
+{\bfseries Pointer\+Reference\+Action} (const \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Non-\/copyable constructor and assignment operator. \end{DoxyCompactList}\item 
+\Hypertarget{classclang_1_1_pointer_reference_action_adca8b5943fdce015ace3a355c5584e7d}\label{classclang_1_1_pointer_reference_action_adca8b5943fdce015ace3a355c5584e7d} 
+\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}} \& {\bfseries operator=} (const \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}} \&)=delete
+\item 
+std\+::unique\+\_\+ptr$<$ ASTConsumer $>$ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a16e94175fdb81f75a6095fdbbc25c764}{Create\+ASTConsumer}} (Compiler\+Instance \&CI, llvm\+::\+String\+Ref file) override
+\begin{DoxyCompactList}\small\item\em Create an AST consumer for the given Compiler\+Instance and file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a4f7a028e63e4c1223212cf1ed0ccc71c}{get\+Output}} () const
+\begin{DoxyCompactList}\small\item\em Forwards the stdout and stderr streams to the output file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a50fac0e07985348c7c6fad9adae64010}{append\+Output}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Appends the given string to the output. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} is an ASTFrontend\+Action that creates an ASTConsumer. 
+The \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} class is responsible for creating an AST consumer and handling the output. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classclang_1_1_pointer_reference_action_a39e9fc1988536586d55316b996df1f88}\label{classclang_1_1_pointer_reference_action_a39e9fc1988536586d55316b996df1f88} 
-\index{clang::PointerReferenceAction@{clang::PointerReferenceAction}!CreateASTConsumer@{CreateASTConsumer}}
-\index{CreateASTConsumer@{CreateASTConsumer}!clang::PointerReferenceAction@{clang::PointerReferenceAction}}
-\doxysubsubsection{\texorpdfstring{CreateASTConsumer()}{CreateASTConsumer()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ ASTConsumer $>$ clang\+::\+Pointer\+Reference\+Action\+::\+Create\+ASTConsumer (\begin{DoxyParamCaption}\item[{Compiler\+Instance \&}]{CI,  }\item[{llvm\+::\+String\+Ref}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+\Hypertarget{classclang_1_1_pointer_reference_action_a50fac0e07985348c7c6fad9adae64010}\label{classclang_1_1_pointer_reference_action_a50fac0e07985348c7c6fad9adae64010} 
+\index{clang::PointerReferenceAction@{clang::PointerReferenceAction}!appendOutput@{appendOutput}}
+\index{appendOutput@{appendOutput}!clang::PointerReferenceAction@{clang::PointerReferenceAction}}
+\doxysubsubsection{\texorpdfstring{appendOutput()}{appendOutput()}}
+{\footnotesize\ttfamily void clang\+::\+Pointer\+Reference\+Action\+::append\+Output (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
-Creates the ASTConsumer for the translation unit, which processes the AST. 
+Appends the given string to the output. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em CI} & -\/\texorpdfstring{$>$}{>} Compiler\+Instance \\
+{\em str} & -\/\texorpdfstring{$>$}{>} The string to append \\
 \hline
-{\em file} & -\/\texorpdfstring{$>$}{>} file name \\
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{classclang_1_1_pointer_reference_action_a16e94175fdb81f75a6095fdbbc25c764}\label{classclang_1_1_pointer_reference_action_a16e94175fdb81f75a6095fdbbc25c764} 
+\index{clang::PointerReferenceAction@{clang::PointerReferenceAction}!CreateASTConsumer@{CreateASTConsumer}}
+\index{CreateASTConsumer@{CreateASTConsumer}!clang::PointerReferenceAction@{clang::PointerReferenceAction}}
+\doxysubsubsection{\texorpdfstring{CreateASTConsumer()}{CreateASTConsumer()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ ASTConsumer $>$ Pointer\+Reference\+Action\+::\+Create\+ASTConsumer (\begin{DoxyParamCaption}\item[{Compiler\+Instance \&}]{CI,  }\item[{llvm\+::\+String\+Ref}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Create an AST consumer for the given Compiler\+Instance and file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em CI} & -\/\texorpdfstring{$>$}{>} Compiler\+Instance object \\
+\hline
+{\em file} & -\/\texorpdfstring{$>$}{>} The name of the file being processed \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-std\+::unique\+\_\+ptr$<$\+ASTConsumer$>$ -\/\texorpdfstring{$>$}{>} A unique pointer to the ASTConsumer 
+-\/\texorpdfstring{$>$}{>} A unique pointer to the ASTConsumer object 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_action_a4f7a028e63e4c1223212cf1ed0ccc71c}\label{classclang_1_1_pointer_reference_action_a4f7a028e63e4c1223212cf1ed0ccc71c} 
+\index{clang::PointerReferenceAction@{clang::PointerReferenceAction}!getOutput@{getOutput}}
+\index{getOutput@{getOutput}!clang::PointerReferenceAction@{clang::PointerReferenceAction}}
+\doxysubsubsection{\texorpdfstring{getOutput()}{getOutput()}}
+{\footnotesize\ttfamily std\+::string clang\+::\+Pointer\+Reference\+Action\+::get\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Forwards the stdout and stderr streams to the output file. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A String with the output 
 \end{DoxyReturn}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Action.\+h\end{DoxyCompactItemize}
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Action.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Pointer\+Reference\+Action.\+cpp\end{DoxyCompactItemize}

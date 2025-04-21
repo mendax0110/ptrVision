@@ -1,0 +1,35 @@
+\chapter{Im\+Gui\+Color\+Text\+Edit}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e}{}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e}\index{ImGuiColorTextEdit@{ImGuiColorTextEdit}}
+\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md209}%
+\Hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md209}%
+Syntax highlighting text editor for Im\+Gui
+
+
+
+Demo project\+: \href{https://github.com/BalazsJako/ColorTextEditorDemo}{\texttt{ https\+://github.\+com/\+Balazs\+Jako/\+Color\+Text\+Editor\+Demo}}
+
+This started as my attempt to write a relatively simple widget which provides text editing functionality with syntax highlighting. Now there are other contributors who provide valuable additions.
+
+While it relies on Omar Cornut\textquotesingle{}s \href{https://github.com/ocornut/imgui}{\texttt{ https\+://github.\+com/ocornut/imgui}}, it does not follow the "{}pure"{} one widget -\/ one function approach. Since the editor has to maintain a relatively complex and large internal state, it did not seem to be practical to try and enforce fully immediate mode. It stores its internal state in an object instance which is reused across frames.
+
+The code is (still) work in progress, please report if you find any issues.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md210}{}\doxysection{\texorpdfstring{Main features}{Main features}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md210}
+
+\begin{DoxyItemize}
+\item approximates typical code editor look and feel (essential mouse/keyboard commands work -\/ I mean, the commands {\itshape I} normally use \+:))
+\item undo/redo
+\item UTF-\/8 support
+\item works with both fixed and variable-\/width fonts
+\item extensible syntax highlighting for multiple languages
+\item identifier declarations\+: a small piece of description can be associated with an identifier. The editor displays it in a tooltip when the mouse cursor is hovered over the identifier
+\item error markers\+: the user can specify a list of error messages together the line of occurence, the editor will highligh the lines with red backround and display error message in a tooltip when the mouse cursor is hovered over the line
+\item large files\+: there is no explicit limit set on file size or number of lines (below 2GB, performance is not affected when large files are loaded (except syntax coloring, see below)
+\item color palette support\+: you can switch between different color palettes, or even define your own
+\item whitespace indicators (TAB, space)
+\end{DoxyItemize}\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md211}{}\doxysection{\texorpdfstring{Known issues}{Known issues}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md211}
+
+\begin{DoxyItemize}
+\item syntax highligthing of most languages -\/ except C/\+C++ -\/ is based on std\+::regex, which is diasppointingly slow. Because of that, the highlighting process is amortized between multiple frames. C/\+C++ has a hand-\/written tokenizer which is much faster.
+\end{DoxyItemize}
+
+Please post your screenshots if you find this little piece of software useful. \+:)\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md212}{}\doxysection{\texorpdfstring{Contribute}{Contribute}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_color_text_edit_2_r_e_a_d_m_e_autotoc_md212}
+If you want to contribute, please refer to CONTRIBUTE file. 

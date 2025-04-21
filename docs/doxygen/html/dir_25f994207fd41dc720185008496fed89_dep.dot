@@ -1,0 +1,14 @@
+digraph "/Users/adriangossl/Documents/git/ptrVision/external/dearimgui/examples/example_glfw_wgpu"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_be5bf62cd749cc8cd913d646f71a524f {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="examples", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_be5bf62cd749cc8cd913d646f71a524f.html",tooltip=""]
+  dir_5bb83298da0c1df4c0652e13434e97d6 [label="libs", fillcolor="#a2b4d6", color="red", style="filled", URL="dir_5bb83298da0c1df4c0652e13434e97d6.html",tooltip=""];
+  dir_25f994207fd41dc720185008496fed89 [label="example_glfw_wgpu", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_25f994207fd41dc720185008496fed89.html",tooltip=""];
+  }
+  dir_25f994207fd41dc720185008496fed89->dir_5bb83298da0c1df4c0652e13434e97d6 [headlabel="1", labeldistance=1.5 headhref="dir_000026_000063.html" href="dir_000026_000063.html" color="steelblue1" fontcolor="steelblue1"];
+}

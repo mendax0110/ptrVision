@@ -80,7 +80,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classclang_1_1_pointer_reference_action.html" title="PointerReferenceAction is an ASTFrontendAction that creates an ASTConsumer.">PointerReferenceAction</a> is an ASTFrontendAction that creates an ASTConsumer.  
+<p>The <a class="el" href="classclang_1_1_pointer_reference_action.html" title="The PointerReferenceAction class is responsible for creating an AST consumer and handling the output.">PointerReferenceAction</a> class is responsible for creating an AST consumer and handling the output.  
  <a href="classclang_1_1_pointer_reference_action.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_pointer_reference_action_8h_source.html">PointerReferenceAction.h</a>&gt;</code></p>
@@ -107,15 +107,35 @@ Collaboration diagram for clang::PointerReferenceAction:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a39e9fc1988536586d55316b996df1f88" id="r_a39e9fc1988536586d55316b996df1f88"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; ASTConsumer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclang_1_1_pointer_reference_action.html#a39e9fc1988536586d55316b996df1f88">CreateASTConsumer</a> (CompilerInstance &amp;CI, llvm::StringRef file) override</td></tr>
-<tr class="memdesc:a39e9fc1988536586d55316b996df1f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the ASTConsumer for the translation unit, which processes the AST.  <br /></td></tr>
-<tr class="separator:a39e9fc1988536586d55316b996df1f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdd22a37c05f7f6a86a33bfad6ebf611" id="r_acdd22a37c05f7f6a86a33bfad6ebf611"><td class="memItemLeft" align="right" valign="top"><a id="acdd22a37c05f7f6a86a33bfad6ebf611" name="acdd22a37c05f7f6a86a33bfad6ebf611"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PointerReferenceAction</b> (<a class="el" href="classclang_1_1_pointer_reference_action.html">PointerReferenceAction</a> &amp;&amp;)=delete</td></tr>
+<tr class="memdesc:acdd22a37c05f7f6a86a33bfad6ebf611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movable constructor and assignment operator. <br /></td></tr>
+<tr class="separator:acdd22a37c05f7f6a86a33bfad6ebf611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cfba95e949cdc204b97699108e12692" id="r_a8cfba95e949cdc204b97699108e12692"><td class="memItemLeft" align="right" valign="top"><a id="a8cfba95e949cdc204b97699108e12692" name="a8cfba95e949cdc204b97699108e12692"></a>
+<a class="el" href="classclang_1_1_pointer_reference_action.html">PointerReferenceAction</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classclang_1_1_pointer_reference_action.html">PointerReferenceAction</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a8cfba95e949cdc204b97699108e12692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8964e23c1c0962fd018ec075fd3fd96b" id="r_a8964e23c1c0962fd018ec075fd3fd96b"><td class="memItemLeft" align="right" valign="top"><a id="a8964e23c1c0962fd018ec075fd3fd96b" name="a8964e23c1c0962fd018ec075fd3fd96b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PointerReferenceAction</b> (const <a class="el" href="classclang_1_1_pointer_reference_action.html">PointerReferenceAction</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a8964e23c1c0962fd018ec075fd3fd96b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-copyable constructor and assignment operator. <br /></td></tr>
+<tr class="separator:a8964e23c1c0962fd018ec075fd3fd96b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adca8b5943fdce015ace3a355c5584e7d" id="r_adca8b5943fdce015ace3a355c5584e7d"><td class="memItemLeft" align="right" valign="top"><a id="adca8b5943fdce015ace3a355c5584e7d" name="adca8b5943fdce015ace3a355c5584e7d"></a>
+<a class="el" href="classclang_1_1_pointer_reference_action.html">PointerReferenceAction</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classclang_1_1_pointer_reference_action.html">PointerReferenceAction</a> &amp;)=delete</td></tr>
+<tr class="separator:adca8b5943fdce015ace3a355c5584e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e94175fdb81f75a6095fdbbc25c764" id="r_a16e94175fdb81f75a6095fdbbc25c764"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; ASTConsumer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclang_1_1_pointer_reference_action.html#a16e94175fdb81f75a6095fdbbc25c764">CreateASTConsumer</a> (CompilerInstance &amp;CI, llvm::StringRef file) override</td></tr>
+<tr class="memdesc:a16e94175fdb81f75a6095fdbbc25c764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an AST consumer for the given CompilerInstance and file.  <br /></td></tr>
+<tr class="separator:a16e94175fdb81f75a6095fdbbc25c764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f7a028e63e4c1223212cf1ed0ccc71c" id="r_a4f7a028e63e4c1223212cf1ed0ccc71c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclang_1_1_pointer_reference_action.html#a4f7a028e63e4c1223212cf1ed0ccc71c">getOutput</a> () const</td></tr>
+<tr class="memdesc:a4f7a028e63e4c1223212cf1ed0ccc71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forwards the stdout and stderr streams to the output file.  <br /></td></tr>
+<tr class="separator:a4f7a028e63e4c1223212cf1ed0ccc71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50fac0e07985348c7c6fad9adae64010" id="r_a50fac0e07985348c7c6fad9adae64010"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclang_1_1_pointer_reference_action.html#a50fac0e07985348c7c6fad9adae64010">appendOutput</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:a50fac0e07985348c7c6fad9adae64010"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appends the given string to the output.  <br /></td></tr>
+<tr class="separator:a50fac0e07985348c7c6fad9adae64010"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classclang_1_1_pointer_reference_action.html" title="PointerReferenceAction is an ASTFrontendAction that creates an ASTConsumer.">PointerReferenceAction</a> is an ASTFrontendAction that creates an ASTConsumer. </p>
+<div class="textblock"><p>The <a class="el" href="classclang_1_1_pointer_reference_action.html" title="The PointerReferenceAction class is responsible for creating an AST consumer and handling the output.">PointerReferenceAction</a> class is responsible for creating an AST consumer and handling the output. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a39e9fc1988536586d55316b996df1f88" name="a39e9fc1988536586d55316b996df1f88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39e9fc1988536586d55316b996df1f88">&#9670;&#160;</a></span>CreateASTConsumer()</h2>
+<a id="a50fac0e07985348c7c6fad9adae64010" name="a50fac0e07985348c7c6fad9adae64010"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50fac0e07985348c7c6fad9adae64010">&#9670;&#160;</a></span>appendOutput()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -124,7 +144,46 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; ASTConsumer &gt; clang::PointerReferenceAction::CreateASTConsumer </td>
+          <td class="memname">void clang::PointerReferenceAction::appendOutput </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Appends the given string to the output. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>-&gt; The string to append </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classclang_1_1_pointer_reference_action_a50fac0e07985348c7c6fad9adae64010_icgraph.png" border="0" usemap="#aclassclang_1_1_pointer_reference_action_a50fac0e07985348c7c6fad9adae64010_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a16e94175fdb81f75a6095fdbbc25c764" name="a16e94175fdb81f75a6095fdbbc25c764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16e94175fdb81f75a6095fdbbc25c764">&#9670;&#160;</a></span>CreateASTConsumer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; ASTConsumer &gt; PointerReferenceAction::CreateASTConsumer </td>
           <td>(</td>
           <td class="paramtype">CompilerInstance &amp;&#160;</td>
           <td class="paramname"><em>CI</em>, </td>
@@ -143,25 +202,54 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates the ASTConsumer for the translation unit, which processes the AST. </p>
+<p>Create an AST consumer for the given CompilerInstance and file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">CI</td><td>-&gt; CompilerInstance </td></tr>
-    <tr><td class="paramname">file</td><td>-&gt; file name </td></tr>
+    <tr><td class="paramname">CI</td><td>-&gt; CompilerInstance object </td></tr>
+    <tr><td class="paramname">file</td><td>-&gt; The name of the file being processed </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr&lt;ASTConsumer&gt; -&gt; A unique pointer to the ASTConsumer </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; A unique pointer to the ASTConsumer object </dd></dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Adrian/Documents/git/ptrVision/include/<a class="el" href="_pointer_reference_action_8h_source.html">PointerReferenceAction.h</a></li>
+<a id="a4f7a028e63e4c1223212cf1ed0ccc71c" name="a4f7a028e63e4c1223212cf1ed0ccc71c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f7a028e63e4c1223212cf1ed0ccc71c">&#9670;&#160;</a></span>getOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clang::PointerReferenceAction::getOutput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Forwards the stdout and stderr streams to the output file. </p>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; A String with the output </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/Users/adriangossl/Documents/git/ptrVision/include/<a class="el" href="_pointer_reference_action_8h_source.html">PointerReferenceAction.h</a></li>
+<li>/Users/adriangossl/Documents/git/ptrVision/src/<b>PointerReferenceAction.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

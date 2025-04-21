@@ -1,0 +1,75 @@
+\doxysection{clang\+::File\+Handler Class Reference}
+\hypertarget{classclang_1_1_file_handler}{}\label{classclang_1_1_file_handler}\index{clang::FileHandler@{clang::FileHandler}}
+
+
+The \doxylink{classclang_1_1_file_handler}{File\+Handler} class handles file operations such as creating files and checking if a file exists.  
+
+
+
+
+{\ttfamily \#include $<$File\+Handler.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classclang_1_1_file_handler_ab08176a022e267ee7871855df0071729}{Create\+File}} (const std\+::string \&file\+Path, const std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Create a file with the given name and path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classclang_1_1_file_handler_a85eca25f705bb5f5cba645fa60f72104}{File\+Exists}} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Check if a file exists at the given path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classclang_1_1_file_handler}{File\+Handler} class handles file operations such as creating files and checking if a file exists. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_file_handler_ab08176a022e267ee7871855df0071729}\label{classclang_1_1_file_handler_ab08176a022e267ee7871855df0071729} 
+\index{clang::FileHandler@{clang::FileHandler}!CreateFile@{CreateFile}}
+\index{CreateFile@{CreateFile}!clang::FileHandler@{clang::FileHandler}}
+\doxysubsubsection{\texorpdfstring{CreateFile()}{CreateFile()}}
+{\footnotesize\ttfamily bool File\+Handler\+::\+Create\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path,  }\item[{const std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Create a file with the given name and path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & -\/\texorpdfstring{$>$}{>} The path where the file will be created. \\
+\hline
+{\em file\+Name} & -\/\texorpdfstring{$>$}{>} The name of the file to be created. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} True if the file was created successfully, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{classclang_1_1_file_handler_a85eca25f705bb5f5cba645fa60f72104}\label{classclang_1_1_file_handler_a85eca25f705bb5f5cba645fa60f72104} 
+\index{clang::FileHandler@{clang::FileHandler}!FileExists@{FileExists}}
+\index{FileExists@{FileExists}!clang::FileHandler@{clang::FileHandler}}
+\doxysubsubsection{\texorpdfstring{FileExists()}{FileExists()}}
+{\footnotesize\ttfamily bool File\+Handler\+::\+File\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if a file exists at the given path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & -\/\texorpdfstring{$>$}{>} The path to check for the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} True if the file exists, false otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/File\+Handler.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/File\+Handler.\+cpp\end{DoxyCompactItemize}

@@ -1,5 +1,5 @@
 \doxysection{Pointer\+Reference\+Action.\+h}
-\hypertarget{_pointer_reference_action_8h_source}{}\label{_pointer_reference_action_8h_source}\index{C:/Users/Adrian/Documents/git/ptrVision/include/PointerReferenceAction.h@{C:/Users/Adrian/Documents/git/ptrVision/include/PointerReferenceAction.h}}
+\hypertarget{_pointer_reference_action_8h_source}{}\label{_pointer_reference_action_8h_source}\index{/Users/adriangossl/Documents/git/ptrVision/include/PointerReferenceAction.h@{/Users/adriangossl/Documents/git/ptrVision/include/PointerReferenceAction.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ POINTER\_REFERENCE\_ACTION\_H}}
@@ -7,21 +7,36 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <clang/Frontend/FrontendActions.h>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <clang/Tooling/Tooling.h>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}PointerReferenceConsumer.h"{}}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceclang}{clang}}}
-\DoxyCodeLine{00009\ \{}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\ final\ :\ \textcolor{keyword}{public}\ ASTFrontendAction}
-\DoxyCodeLine{00015\ \ \ \ \ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::unique\_ptr<ASTConsumer>\ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a39e9fc1988536586d55316b996df1f88}{CreateASTConsumer}}(CompilerInstance\ \&CI,\ llvm::StringRef\ file)\textcolor{keyword}{\ override}}
-\DoxyCodeLine{00026\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<PointerReferenceConsumer>();}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00029\ \ \ \ \ \};}
-\DoxyCodeLine{00030\ \}\ \textcolor{comment}{//\ namespace\ clang}}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POINTER\_REFERENCE\_ACTION\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceclang}{clang}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{class\ }PointerReferenceConsumer;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\ final\ :\ \textcolor{keyword}{public}\ ASTFrontendAction}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_acdd22a37c05f7f6a86a33bfad6ebf611}{PointerReferenceAction}}(\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\&\&)\ =\ \textcolor{keyword}{delete};\ \textcolor{comment}{//\ was\ previously\ default}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\&\ operator=(\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\&\&)\ =\ \textcolor{keyword}{delete};\ \textcolor{comment}{//\ was\ previously\ default}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a8964e23c1c0962fd018ec075fd3fd96b}{PointerReferenceAction}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{PointerReferenceAction}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::unique\_ptr<ASTConsumer>\ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a16e94175fdb81f75a6095fdbbc25c764}{CreateASTConsumer}}(CompilerInstance\ \&CI,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ llvm::StringRef\ file)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a4f7a028e63e4c1223212cf1ed0ccc71c}{getOutput}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ output;\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classclang_1_1_pointer_reference_action_a50fac0e07985348c7c6fad9adae64010}{appendOutput}}(\textcolor{keyword}{const}\ std::string\ \&str)\ \{\ output\ +=\ str;\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::string\ output;}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ \}\ \textcolor{comment}{//\ namespace\ clang}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POINTER\_REFERENCE\_ACTION\_H}}
 
 \end{DoxyCode}

@@ -1,0 +1,213 @@
+\doxysection{logger\+Internals\+::Logger Class Reference}
+\hypertarget{classlogger_internals_1_1_logger}{}\label{classlogger_internals_1_1_logger}\index{loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_a00fdcdbeb39a2d5d4fb27cc36c35c101}{set\+Log\+Level}} (Log\+Level level)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_ab71481584af2dd9d7fe307a500fe3f5f}{set\+Output\+Stream}} (llvm\+::raw\+\_\+ostream \&os)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_a38b544d566463a65d0dbf4ff7f867962}{debug}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_a5164af2f632902fa3c477d5c0cb463f7}{warning}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_ab6042fdfcbb14026098e0df9d6b32f27}{error}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_aed3ed4c4ba36c54a42feff7f2531ff39}{critical}} (const std\+::string \&message)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_a4653f1782170550250de4b05c5caad65}{print\+Highlighted\+Pointer}} (const std\+::string \&type)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_ad5437ce0e9d93bbe9a8137f64c45e282}{print\+Highlighted\+Reference}} (const std\+::string \&type)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_af2677ae80c5f0b71aa1454c2148f84a4}{print\+Highlighted\+Keyword}} (const std\+::string \&keyword)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_a4b1a6621b92aee6b8f5e70848a533c5f}{print\+Highlighted\+Type}} (const std\+::string \&type)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_aed41591b4eaadcc92b7b99a65a03057d}{print\+Highlighted\+Cast}} (const std\+::string \&cast\+Type)
+\item 
+void \mbox{\hyperlink{classlogger_internals_1_1_logger_ae8f5641a5d974eafc7413e2612916c29}{print\+Canonical\+Path}} (const std\+::filesystem\+::path \&path)
+\item 
+\Hypertarget{classlogger_internals_1_1_logger_a850ff37e9ae1ab60a88fd6f8a589f21d}\label{classlogger_internals_1_1_logger_a850ff37e9ae1ab60a88fd6f8a589f21d} 
+{\bfseries Logger} (const \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}} \&)=delete
+\item 
+\Hypertarget{classlogger_internals_1_1_logger_a0b258d727a02ff5cb3200c250c6ca7da}\label{classlogger_internals_1_1_logger_a0b258d727a02ff5cb3200c250c6ca7da} 
+\mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}} \& {\bfseries operator=} (const \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}} \& \mbox{\hyperlink{classlogger_internals_1_1_logger_acebb37f5538780e6c14f13de6ec497bc}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classlogger_internals_1_1_logger_aed3ed4c4ba36c54a42feff7f2531ff39}\label{classlogger_internals_1_1_logger_aed3ed4c4ba36c54a42feff7f2531ff39} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!critical@{critical}}
+\index{critical@{critical}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{critical()}{critical()}}
+{\footnotesize\ttfamily void Logger\+::critical (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogger_internals_1_1_logger_a38b544d566463a65d0dbf4ff7f867962}\label{classlogger_internals_1_1_logger_a38b544d566463a65d0dbf4ff7f867962} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!debug@{debug}}
+\index{debug@{debug}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{debug()}{debug()}}
+{\footnotesize\ttfamily void Logger\+::debug (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogger_internals_1_1_logger_ab6042fdfcbb14026098e0df9d6b32f27}\label{classlogger_internals_1_1_logger_ab6042fdfcbb14026098e0df9d6b32f27} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!error@{error}}
+\index{error@{error}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily void Logger\+::error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{classlogger_internals_1_1_logger_acebb37f5538780e6c14f13de6ec497bc}\label{classlogger_internals_1_1_logger_acebb37f5538780e6c14f13de6ec497bc} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}} \& Logger\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+@\+Getter for the actual instance of the logger \begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} \doxylink{classlogger_internals_1_1_logger}{Logger}\& -\/\texorpdfstring{$>$}{>} reference to the logger instance 
+\end{DoxyReturn}
+\Hypertarget{classlogger_internals_1_1_logger_ab4c4d86279176eb0ede726bc5b4d5ddb}\label{classlogger_internals_1_1_logger_ab4c4d86279176eb0ede726bc5b4d5ddb} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!info@{info}}
+\index{info@{info}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily void Logger\+::info (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogger_internals_1_1_logger_ae8f5641a5d974eafc7413e2612916c29}\label{classlogger_internals_1_1_logger_ae8f5641a5d974eafc7413e2612916c29} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!printCanonicalPath@{printCanonicalPath}}
+\index{printCanonicalPath@{printCanonicalPath}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{printCanonicalPath()}{printCanonicalPath()}}
+{\footnotesize\ttfamily void Logger\+::print\+Canonical\+Path (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{path }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classlogger_internals_1_1_logger_aed41591b4eaadcc92b7b99a65a03057d}\label{classlogger_internals_1_1_logger_aed41591b4eaadcc92b7b99a65a03057d} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!printHighlightedCast@{printHighlightedCast}}
+\index{printHighlightedCast@{printHighlightedCast}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{printHighlightedCast()}{printHighlightedCast()}}
+{\footnotesize\ttfamily void Logger\+::print\+Highlighted\+Cast (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cast\+Type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em cast\+Type} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogger_internals_1_1_logger_af2677ae80c5f0b71aa1454c2148f84a4}\label{classlogger_internals_1_1_logger_af2677ae80c5f0b71aa1454c2148f84a4} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!printHighlightedKeyword@{printHighlightedKeyword}}
+\index{printHighlightedKeyword@{printHighlightedKeyword}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{printHighlightedKeyword()}{printHighlightedKeyword()}}
+{\footnotesize\ttfamily void Logger\+::print\+Highlighted\+Keyword (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{keyword }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{classlogger_internals_1_1_logger_a4653f1782170550250de4b05c5caad65}\label{classlogger_internals_1_1_logger_a4653f1782170550250de4b05c5caad65} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!printHighlightedPointer@{printHighlightedPointer}}
+\index{printHighlightedPointer@{printHighlightedPointer}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{printHighlightedPointer()}{printHighlightedPointer()}}
+{\footnotesize\ttfamily void Logger\+::print\+Highlighted\+Pointer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{classlogger_internals_1_1_logger_ad5437ce0e9d93bbe9a8137f64c45e282}\label{classlogger_internals_1_1_logger_ad5437ce0e9d93bbe9a8137f64c45e282} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!printHighlightedReference@{printHighlightedReference}}
+\index{printHighlightedReference@{printHighlightedReference}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{printHighlightedReference()}{printHighlightedReference()}}
+{\footnotesize\ttfamily void Logger\+::print\+Highlighted\+Reference (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{classlogger_internals_1_1_logger_a4b1a6621b92aee6b8f5e70848a533c5f}\label{classlogger_internals_1_1_logger_a4b1a6621b92aee6b8f5e70848a533c5f} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!printHighlightedType@{printHighlightedType}}
+\index{printHighlightedType@{printHighlightedType}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{printHighlightedType()}{printHighlightedType()}}
+{\footnotesize\ttfamily void Logger\+::print\+Highlighted\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogger_internals_1_1_logger_a00fdcdbeb39a2d5d4fb27cc36c35c101}\label{classlogger_internals_1_1_logger_a00fdcdbeb39a2d5d4fb27cc36c35c101} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!setLogLevel@{setLogLevel}}
+\index{setLogLevel@{setLogLevel}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{setLogLevel()}{setLogLevel()}}
+{\footnotesize\ttfamily void Logger\+::set\+Log\+Level (\begin{DoxyParamCaption}\item[{logger\+Internals\+::\+Log\+Level}]{level }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogger_internals_1_1_logger_ab71481584af2dd9d7fe307a500fe3f5f}\label{classlogger_internals_1_1_logger_ab71481584af2dd9d7fe307a500fe3f5f} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!setOutputStream@{setOutputStream}}
+\index{setOutputStream@{setOutputStream}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{setOutputStream()}{setOutputStream()}}
+{\footnotesize\ttfamily void Logger\+::set\+Output\+Stream (\begin{DoxyParamCaption}\item[{llvm\+::raw\+\_\+ostream \&}]{os }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classlogger_internals_1_1_logger_a5164af2f632902fa3c477d5c0cb463f7}\label{classlogger_internals_1_1_logger_a5164af2f632902fa3c477d5c0cb463f7} 
+\index{loggerInternals::Logger@{loggerInternals::Logger}!warning@{warning}}
+\index{warning@{warning}!loggerInternals::Logger@{loggerInternals::Logger}}
+\doxysubsubsection{\texorpdfstring{warning()}{warning()}}
+{\footnotesize\ttfamily void Logger\+::warning (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Logger.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Logger.\+cpp\end{DoxyCompactItemize}

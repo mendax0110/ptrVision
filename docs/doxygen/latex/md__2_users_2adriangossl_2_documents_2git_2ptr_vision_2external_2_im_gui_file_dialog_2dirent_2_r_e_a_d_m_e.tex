@@ -1,0 +1,66 @@
+\chapter{Dirent}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e}{}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e}\index{Dirent@{Dirent}}
+\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md213}%
+\Hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md213}%
+Dirent is a C/\+C++ programming interface that allows programmers to retrieve information about files and directories under Linux/\+UNIX. This project provides Linux compatible Dirent interface for Microsoft Windows.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md214}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md214}
+Download the latest Dirent installation package from \href{https://github.com/tronkko/dirent/releases}{\texttt{ Git\+Hub}} and unpack the installation file with 7-\/zip, for example. The installation package contains \doxylink{dirent_8h_source}{dirent.\+h} file as well as a few example programs and tests.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md215}{}\doxysubsection{\texorpdfstring{Install Dirent for All Programs}{Install Dirent for All Programs}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md215}
+To make \doxylink{dirent_8h_source}{dirent.\+h} available for all C/\+C++ programs, simply copy the {\ttfamily include/dirent.\+h} file to the system include directory. System include directory contains header files such as assert.\+h and windows.\+h. In Visual Studio 2008, for example, the system include may be found at {\ttfamily C\+:\textbackslash{}Program Files\textbackslash{}Microsoft Visual Studio 9.\+0\textbackslash{}VC\textbackslash{}include}.
+
+Everything you need is included in the single \doxylink{dirent_8h_source}{dirent.\+h} file, and you can start using Dirent immediately -- there is no need to add files to your Visual Studio project.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md216}{}\doxysubsection{\texorpdfstring{Embed Dirent into Your Own Project}{Embed Dirent into Your Own Project}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md216}
+If you wish to distribute \doxylink{dirent_8h_source}{dirent.\+h} alongside with your own source code, then copy {\ttfamily include/dirent.\+h} file to a new sub-\/directory within your project and add that directory to include path on Windows while omitting the directory under Linux/\+UNIX. This allows your project to be compiled against native \doxylink{dirent_8h_source}{dirent.\+h} on Linux/\+UNIX while substituting the functionality on Microsoft Windows.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md217}{}\doxysubsection{\texorpdfstring{Examples}{Examples}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md217}
+The installation package contains four example programs\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Program   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Purpose    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Program   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Purpose    }\\\cline{1-2}
+\endhead
+ls   &List files in a directory, e.\+g. ls "{}c\+:\textbackslash{}\+Program Files"{}    \\\cline{1-2}
+find   &Find files in subdirectories, e.\+g. find "{}c\+:\textbackslash{}\+Program Files\textbackslash{}\+CMake"{}    \\\cline{1-2}
+updatedb   &Build database of files in a drive, e.\+g. updatedb c\+:\textbackslash{}    \\\cline{1-2}
+locate   &Locate a file from database, e.\+g. locate notepad.\+exe   \\\cline{1-2}
+\end{longtabu}
+
+
+To build the example programs, first install \href{https://cmake.org/}{\texttt{ CMake}}. Then, with CMake installed, open command prompt and create a temporary directory {\ttfamily c\+:\textbackslash{}temp\textbackslash{}dirent} for the build files as
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{c:\(\backslash\)}
+\DoxyCodeLine{mkdir\ temp}
+\DoxyCodeLine{mkdir\ temp\(\backslash\)dirent}
+\DoxyCodeLine{cd\ temp\(\backslash\)dirent}
+
+\end{DoxyCode}
+
+
+Generate build files as
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ d:\(\backslash\)dirent}
+
+\end{DoxyCode}
+
+
+where {\ttfamily d\+:\textbackslash{}dirent} is the root directory of the Dirent package (containing this README.\+md and LICENSE file).
+
+Once CMake is finished, open Visual Studio, load the generated dirent.\+sln file from the build directory and build the solution. Once the build completes, run the example programs from the command prompt as
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ Debug}
+\DoxyCodeLine{ls\ .}
+\DoxyCodeLine{find\ .}
+\DoxyCodeLine{updatedb\ c:\(\backslash\)}
+\DoxyCodeLine{locate\ cmd.exe}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md218}{}\doxysection{\texorpdfstring{Copying}{Copying}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md218}
+Dirent may be freely distributed under the MIT license. See the \mbox{[}LICENSE\mbox{]}(LICENSE) file for details.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md219}{}\doxysection{\texorpdfstring{Alternatives to Dirent}{Alternatives to Dirent}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2dirent_2_r_e_a_d_m_e_autotoc_md219}
+I ported Dirent to Microsoft Windows in 1998 when only a few alternatives were available. However, the situation has changed since then and nowadays both \href{http://www.cygwin.com}{\texttt{ Cygwin}} and \href{http://www.mingw.org}{\texttt{ MingW}} allow you to compile a great number of UNIX programs in Microsoft Windows. They both provide a full dirent API as well as many other UNIX APIs. MingW can even be used for commercial applications! 

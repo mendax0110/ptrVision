@@ -1,0 +1,11 @@
+digraph "clang::PointerReferenceVisitor::VisitArraySubscriptExpr"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="clang::PointerReferenceVisitor\l::VisitArraySubscriptExpr",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Visit an ArraySubscriptExpr node to check if it involves a pointer."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="loggerInternals::Logger\l::printHighlightedPointer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classlogger_internals_1_1_logger.html#a4653f1782170550250de4b05c5caad65",tooltip=" "];
+}

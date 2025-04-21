@@ -1,0 +1,395 @@
+\doxysection{Text\+Editor.\+h}
+\hypertarget{_text_editor_8h_source}{}\label{_text_editor_8h_source}\index{/Users/adriangossl/Documents/git/ptrVision/external/ImGuiColorTextEdit/TextEditor.h@{/Users/adriangossl/Documents/git/ptrVision/external/ImGuiColorTextEdit/TextEditor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_text_editor}{TextEditor}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{enum\ class}\ PaletteIndex}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ Default,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ Keyword,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Number,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ String,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ CharLiteral,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ Punctuation,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ Preprocessor,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_identifier}{Identifier}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ KnownIdentifier,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ PreprocIdentifier,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Comment,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ MultiLineComment,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ Background,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ Cursor,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Selection,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ ErrorMarker,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_breakpoint}{Breakpoint}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ LineNumber,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ CurrentLineFill,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ CurrentLineFillInactive,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ CurrentLineEdge,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ Max}
+\DoxyCodeLine{00040\ \ \ \ \ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{enum\ class}\ SelectionMode}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ Normal,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ Word,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ Line}
+\DoxyCodeLine{00047\ \ \ \ \ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_text_editor_1_1_breakpoint}{Breakpoint}}}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mLine;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ mEnabled;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::string\ mCondition;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_breakpoint}{Breakpoint}}()}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ :\ mLine(-\/1)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ ,\ mEnabled(\textcolor{keyword}{false})}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{\}}
+\DoxyCodeLine{00059\ \ \ \ \ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Represents\ a\ character\ coordinate\ from\ the\ user's\ point\ of\ view,}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ i.\ e.\ consider\ an\ uniform\ grid\ (assuming\ fixed-\/width\ font)\ on\ the}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ screen\ as\ it\ is\ rendered,\ and\ each\ cell\ has\ its\ own\ coordinate,\ starting\ from\ 0.}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ Tabs\ are\ counted\ as\ [1..mTabSize]\ count\ empty\ spaces,\ depending\ on}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ how\ many\ space\ is\ necessary\ to\ reach\ the\ next\ tab\ stop.}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ For\ example,\ coordinate\ (1,\ 5)\ represents\ the\ character\ 'B'\ in\ a\ line\ "{}\(\backslash\)tABC"{},\ when\ mTabSize\ =\ 4,}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ because\ it\ is\ rendered\ as\ "{}\ \ \ \ ABC"{}\ on\ the\ screen.}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mLine,\ mColumn;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}()\ :\ mLine(0),\ mColumn(0)\ \{\}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}(\textcolor{keywordtype}{int}\ aLine,\ \textcolor{keywordtype}{int}\ aColumn)\ :\ mLine(aLine),\ mColumn(aColumn)}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ assert(aLine\ >=\ 0);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ assert(aColumn\ >=\ 0);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\ Invalid()\ \{\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\ invalid(-\/1,\ -\/1);\ \textcolor{keywordflow}{return}\ invalid;\ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\&\ o)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mLine\ ==\ o.mLine\ \&\&}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mColumn\ ==\ o.mColumn;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\&\ o)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00087\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mLine\ !=\ o.mLine\ ||}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mColumn\ !=\ o.mColumn;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ <(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\&\ o)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00094\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mLine\ !=\ o.mLine)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mLine\ <\ o.mLine;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mColumn\ <\ o.mColumn;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ >(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\&\ o)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mLine\ !=\ o.mLine)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mLine\ >\ o.mLine;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mColumn\ >\ o.mColumn;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ <=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\&\ o)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00108\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mLine\ !=\ o.mLine)}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mLine\ <\ o.mLine;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mColumn\ <=\ o.mColumn;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ >=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\&\ o)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00115\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mLine\ !=\ o.mLine)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mLine\ >\ o.mLine;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mColumn\ >=\ o.mColumn;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_text_editor_1_1_identifier}{Identifier}}}
+\DoxyCodeLine{00123\ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{Coordinates}}\ mLocation;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ std::string\ mDeclaration;}
+\DoxyCodeLine{00126\ \ \ \ \ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{typedef}\ std::string\ String;}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{typedef}\ std::unordered\_map<std::string,\ Identifier>\ Identifiers;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{typedef}\ std::unordered\_set<std::string>\ Keywords;}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{typedef}\ std::map<int,\ std::string>\ ErrorMarkers;}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{typedef}\ std::unordered\_set<int>\ Breakpoints;}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{typedef}\ std::array<ImU32,\ (unsigned)PaletteIndex::Max>\ Palette;}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keyword}{typedef}\ uint8\_t\ Char;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_text_editor_1_1_glyph}{Glyph}}}
+\DoxyCodeLine{00137\ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ Char\ mChar;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ PaletteIndex\ mColorIndex\ =\ PaletteIndex::Default;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ mComment\ :\ 1;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ mMultiLineComment\ :\ 1;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ mPreprocessor\ :\ 1;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_glyph}{Glyph}}(Char\ aChar,\ PaletteIndex\ aColorIndex)\ :\ mChar(aChar),\ mColorIndex(aColorIndex),}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ mComment(\textcolor{keyword}{false}),\ mMultiLineComment(\textcolor{keyword}{false}),\ mPreprocessor(\textcolor{keyword}{false})\ \{\}}
+\DoxyCodeLine{00146\ \ \ \ \ \};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<Glyph>\ Line;}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<Line>\ Lines;}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}}
+\DoxyCodeLine{00152\ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ std::pair<std::string,\ PaletteIndex>\ TokenRegexString;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<TokenRegexString>\ TokenRegexStrings;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ bool(*TokenizeCallback)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ in\_begin,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ in\_end,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\&\ out\_begin,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\&\ out\_end,\ PaletteIndex\ \&\ paletteIndex);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ std::string\ mName;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ Keywords\ mKeywords;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ Identifiers\ mIdentifiers;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ Identifiers\ mPreprocIdentifiers;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ std::string\ mCommentStart,\ mCommentEnd,\ mSingleLineComment;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ mPreprocChar;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ mAutoIndentation;}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ TokenizeCallback\ mTokenize;}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ TokenRegexStrings\ mTokenRegexStrings;}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ mCaseSensitive;}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}()}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ :\ mPreprocChar(\textcolor{charliteral}{'\#'}),\ mAutoIndentation(\textcolor{keyword}{true}),\ mTokenize(\textcolor{keyword}{nullptr}),\ mCaseSensitive(\textcolor{keyword}{true})}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ CPlusPlus();}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ HLSL();}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ GLSL();}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ C();}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ SQL();}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ AngelScript();}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ Lua();}
+\DoxyCodeLine{00183\ \ \ \ \ \};}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{class_text_editor}{TextEditor}}();}
+\DoxyCodeLine{00186\ \ \ \ \ \mbox{\hyperlink{class_text_editor}{\string~TextEditor}}();}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLanguageDefinition(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ aLanguageDef);}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{LanguageDefinition}}\&\ GetLanguageDefinition()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mLanguageDefinition;\ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{const}\ Palette\&\ GetPalette()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mPaletteBase;\ \}}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPalette(\textcolor{keyword}{const}\ Palette\&\ aValue);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{void}\ SetErrorMarkers(\textcolor{keyword}{const}\ ErrorMarkers\&\ aMarkers)\ \{\ mErrorMarkers\ =\ aMarkers;\ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{void}\ SetBreakpoints(\textcolor{keyword}{const}\ Breakpoints\&\ aMarkers)\ \{\ mBreakpoints\ =\ aMarkers;\ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{void}\ Render(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ aTitle,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\&\ aSize\ =\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}(),\ \textcolor{keywordtype}{bool}\ aBorder\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ SetText(\textcolor{keyword}{const}\ std::string\&\ aText);}
+\DoxyCodeLine{00199\ \ \ \ \ std::string\ GetText()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTextLines(\textcolor{keyword}{const}\ std::vector<std::string>\&\ aLines);}
+\DoxyCodeLine{00202\ \ \ \ \ std::vector<std::string>\ GetTextLines()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ std::string\ GetSelectedText()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00205\ \ \ \ \ std::string\ GetCurrentLineText()\textcolor{keyword}{const};}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{int}\ GetTotalLines()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})mLines.size();\ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsOverwrite()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mOverwrite;\ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keywordtype}{void}\ SetReadOnly(\textcolor{keywordtype}{bool}\ aValue);}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsReadOnly()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mReadOnly;\ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsTextChanged()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mTextChanged;\ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsCursorPositionChanged()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mCursorPositionChanged;\ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsColorizerEnabled()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mColorizerEnabled;\ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{void}\ SetColorizerEnable(\textcolor{keywordtype}{bool}\ aValue);}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ Coordinates\ GetCursorPosition()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ GetActualCursorCoordinates();\ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCursorPosition(\textcolor{keyword}{const}\ Coordinates\&\ aPosition);}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetHandleMouseInputs\ \ \ \ (\textcolor{keywordtype}{bool}\ aValue)\{\ mHandleMouseInputs\ \ \ \ =\ aValue;\}}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsHandleMouseInputsEnabled()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mHandleKeyboardInputs;\ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetHandleKeyboardInputs\ (\textcolor{keywordtype}{bool}\ aValue)\{\ mHandleKeyboardInputs\ =\ aValue;\}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsHandleKeyboardInputsEnabled()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mHandleKeyboardInputs;\ \}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetImGuiChildIgnored\ \ \ \ (\textcolor{keywordtype}{bool}\ aValue)\{\ mIgnoreImGuiChild\ \ \ \ \ =\ aValue;\}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsImGuiChildIgnored()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mIgnoreImGuiChild;\ \}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ SetShowWhitespaces(\textcolor{keywordtype}{bool}\ aValue)\ \{\ mShowWhitespaces\ =\ aValue;\ \}}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsShowingWhitespaces()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mShowWhitespaces;\ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTabSize(\textcolor{keywordtype}{int}\ aValue);}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ GetTabSize()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mTabSize;\ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordtype}{void}\ InsertText(\textcolor{keyword}{const}\ std::string\&\ aValue);}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{void}\ InsertText(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ aValue);}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveUp(\textcolor{keywordtype}{int}\ aAmount\ =\ 1,\ \textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveDown(\textcolor{keywordtype}{int}\ aAmount\ =\ 1,\ \textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveLeft(\textcolor{keywordtype}{int}\ aAmount\ =\ 1,\ \textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ aWordMode\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveRight(\textcolor{keywordtype}{int}\ aAmount\ =\ 1,\ \textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ aWordMode\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveTop(\textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveBottom(\textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveHome(\textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordtype}{void}\ MoveEnd(\textcolor{keywordtype}{bool}\ aSelect\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSelectionStart(\textcolor{keyword}{const}\ Coordinates\&\ aPosition);}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSelectionEnd(\textcolor{keyword}{const}\ Coordinates\&\ aPosition);}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSelection(\textcolor{keyword}{const}\ Coordinates\&\ aStart,\ \textcolor{keyword}{const}\ Coordinates\&\ aEnd,\ SelectionMode\ aMode\ =\ SelectionMode::Normal);}
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectWordUnderCursor();}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectAll();}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordtype}{bool}\ HasSelection()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{void}\ Copy();}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{void}\ Cut();}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordtype}{void}\ Paste();}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{void}\ Delete();}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordtype}{bool}\ CanUndo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{bool}\ CanRedo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordtype}{void}\ Undo(\textcolor{keywordtype}{int}\ aSteps\ =\ 1);}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordtype}{void}\ Redo(\textcolor{keywordtype}{int}\ aSteps\ =\ 1);}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Palette\&\ GetDarkPalette();}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Palette\&\ GetLightPalette();}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Palette\&\ GetRetroBluePalette();}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<std::pair<std::regex,\ PaletteIndex>>\ RegexList;}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keyword}{struct\ }EditorState}
+\DoxyCodeLine{00273\ \ \ \ \ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ Coordinates\ mSelectionStart;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ Coordinates\ mSelectionEnd;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ Coordinates\ mCursorPosition;}
+\DoxyCodeLine{00277\ \ \ \ \ \};}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keyword}{class\ }UndoRecord}
+\DoxyCodeLine{00280\ \ \ \ \ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ UndoRecord()\ \{\}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \string~UndoRecord()\ \{\}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ UndoRecord(}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ aAdded,}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{TextEditor::Coordinates}}\ aAddedStart,}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{TextEditor::Coordinates}}\ aAddedEnd,}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ aRemoved,}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{TextEditor::Coordinates}}\ aRemovedStart,}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_text_editor_1_1_coordinates}{TextEditor::Coordinates}}\ aRemovedEnd,}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ TextEditor::EditorState\&\ aBefore,}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ TextEditor::EditorState\&\ aAfter);}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Undo(\mbox{\hyperlink{class_text_editor}{TextEditor}}*\ aEditor);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Redo(\mbox{\hyperlink{class_text_editor}{TextEditor}}*\ aEditor);}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ std::string\ mAdded;}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ Coordinates\ mAddedStart;}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ Coordinates\ mAddedEnd;}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ std::string\ mRemoved;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ Coordinates\ mRemovedStart;}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ Coordinates\ mRemovedEnd;}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ EditorState\ mBefore;}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ EditorState\ mAfter;}
+\DoxyCodeLine{00310\ \ \ \ \ \};}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \ \ \ \textcolor{keyword}{typedef}\ std::vector<UndoRecord>\ UndoBuffer;}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordtype}{void}\ ProcessInputs();}
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordtype}{void}\ Colorize(\textcolor{keywordtype}{int}\ aFromLine\ =\ 0,\ \textcolor{keywordtype}{int}\ aCount\ =\ -\/1);}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keywordtype}{void}\ ColorizeRange(\textcolor{keywordtype}{int}\ aFromLine\ =\ 0,\ \textcolor{keywordtype}{int}\ aToLine\ =\ 0);}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keywordtype}{void}\ ColorizeInternal();}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordtype}{float}\ TextDistanceToLineStart(\textcolor{keyword}{const}\ Coordinates\&\ aFrom)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keywordtype}{void}\ EnsureCursorVisible();}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordtype}{int}\ GetPageSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00321\ \ \ \ \ std::string\ GetText(\textcolor{keyword}{const}\ Coordinates\&\ aStart,\ \textcolor{keyword}{const}\ Coordinates\&\ aEnd)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00322\ \ \ \ \ Coordinates\ GetActualCursorCoordinates()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00323\ \ \ \ \ Coordinates\ SanitizeCoordinates(\textcolor{keyword}{const}\ Coordinates\&\ aValue)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordtype}{void}\ Advance(Coordinates\&\ aCoordinates)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordtype}{void}\ DeleteRange(\textcolor{keyword}{const}\ Coordinates\&\ aStart,\ \textcolor{keyword}{const}\ Coordinates\&\ aEnd);}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{int}\ InsertTextAt(Coordinates\&\ aWhere,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ aValue);}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordtype}{void}\ AddUndo(UndoRecord\&\ aValue);}
+\DoxyCodeLine{00328\ \ \ \ \ Coordinates\ ScreenPosToCoordinates(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\&\ aPosition)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00329\ \ \ \ \ Coordinates\ FindWordStart(\textcolor{keyword}{const}\ Coordinates\&\ aFrom)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00330\ \ \ \ \ Coordinates\ FindWordEnd(\textcolor{keyword}{const}\ Coordinates\&\ aFrom)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00331\ \ \ \ \ Coordinates\ FindNextWord(\textcolor{keyword}{const}\ Coordinates\&\ aFrom)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordtype}{int}\ GetCharacterIndex(\textcolor{keyword}{const}\ Coordinates\&\ aCoordinates)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keywordtype}{int}\ GetCharacterColumn(\textcolor{keywordtype}{int}\ aLine,\ \textcolor{keywordtype}{int}\ aIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keywordtype}{int}\ GetLineCharacterCount(\textcolor{keywordtype}{int}\ aLine)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keywordtype}{int}\ GetLineMaxColumn(\textcolor{keywordtype}{int}\ aLine)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsOnWordBoundary(\textcolor{keyword}{const}\ Coordinates\&\ aAt)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00337\ \ \ \ \ \textcolor{keywordtype}{void}\ RemoveLine(\textcolor{keywordtype}{int}\ aStart,\ \textcolor{keywordtype}{int}\ aEnd);}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keywordtype}{void}\ RemoveLine(\textcolor{keywordtype}{int}\ aIndex);}
+\DoxyCodeLine{00339\ \ \ \ \ Line\&\ InsertLine(\textcolor{keywordtype}{int}\ aIndex);}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{void}\ EnterCharacter(ImWchar\ aChar,\ \textcolor{keywordtype}{bool}\ aShift);}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordtype}{void}\ Backspace();}
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keywordtype}{void}\ DeleteSelection();}
+\DoxyCodeLine{00343\ \ \ \ \ std::string\ GetWordUnderCursor()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00344\ \ \ \ \ std::string\ GetWordAt(\textcolor{keyword}{const}\ Coordinates\&\ aCoords)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00345\ \ \ \ \ ImU32\ GetGlyphColor(\textcolor{keyword}{const}\ Glyph\&\ aGlyph)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleKeyboardInputs();}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordtype}{void}\ HandleMouseInputs();}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordtype}{void}\ Render();}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keywordtype}{float}\ mLineSpacing;}
+\DoxyCodeLine{00352\ \ \ \ \ Lines\ mLines;}
+\DoxyCodeLine{00353\ \ \ \ \ EditorState\ mState;}
+\DoxyCodeLine{00354\ \ \ \ \ UndoBuffer\ mUndoBuffer;}
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keywordtype}{int}\ mUndoIndex;}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{keywordtype}{int}\ mTabSize;}
+\DoxyCodeLine{00358\ \ \ \ \ \textcolor{keywordtype}{bool}\ mOverwrite;}
+\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keywordtype}{bool}\ mReadOnly;}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordtype}{bool}\ mWithinRender;}
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keywordtype}{bool}\ mScrollToCursor;}
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keywordtype}{bool}\ mScrollToTop;}
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{keywordtype}{bool}\ mTextChanged;}
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keywordtype}{bool}\ mColorizerEnabled;}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keywordtype}{float}\ mTextStart;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ position\ (in\ pixels)\ where\ a\ code\ line\ starts\ relative\ to\ the\ left\ of\ the\ TextEditor.}}
+\DoxyCodeLine{00366\ \ \ \ \ \textcolor{keywordtype}{int}\ \ mLeftMargin;}
+\DoxyCodeLine{00367\ \ \ \ \ \textcolor{keywordtype}{bool}\ mCursorPositionChanged;}
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{keywordtype}{int}\ mColorRangeMin,\ mColorRangeMax;}
+\DoxyCodeLine{00369\ \ \ \ \ SelectionMode\ mSelectionMode;}
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordtype}{bool}\ mHandleKeyboardInputs;}
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keywordtype}{bool}\ mHandleMouseInputs;}
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordtype}{bool}\ mIgnoreImGuiChild;}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keywordtype}{bool}\ mShowWhitespaces;}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ \ \ \ \ Palette\ mPaletteBase;}
+\DoxyCodeLine{00376\ \ \ \ \ Palette\ mPalette;}
+\DoxyCodeLine{00377\ \ \ \ \ LanguageDefinition\ mLanguageDefinition;}
+\DoxyCodeLine{00378\ \ \ \ \ RegexList\ mRegexList;}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keywordtype}{bool}\ mCheckComments;}
+\DoxyCodeLine{00381\ \ \ \ \ Breakpoints\ mBreakpoints;}
+\DoxyCodeLine{00382\ \ \ \ \ ErrorMarkers\ mErrorMarkers;}
+\DoxyCodeLine{00383\ \ \ \ \ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ mCharAdvance;}
+\DoxyCodeLine{00384\ \ \ \ \ Coordinates\ mInteractiveStart,\ mInteractiveEnd;}
+\DoxyCodeLine{00385\ \ \ \ \ std::string\ mLineBuffer;}
+\DoxyCodeLine{00386\ \ \ \ \ uint64\_t\ mStartTime;}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keywordtype}{float}\ mLastClick;}
+\DoxyCodeLine{00389\ \};}
+
+\end{DoxyCode}

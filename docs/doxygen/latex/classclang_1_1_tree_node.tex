@@ -1,0 +1,162 @@
+\doxysection{clang\+::Tree\+Node Class Reference}
+\hypertarget{classclang_1_1_tree_node}{}\label{classclang_1_1_tree_node}\index{clang::TreeNode@{clang::TreeNode}}
+
+
+The \doxylink{classclang_1_1_tree_node}{Tree\+Node} class represents a node in the file system tree.  
+
+
+
+
+{\ttfamily \#include $<$Tree\+Node.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classclang_1_1_tree_node_a559256df03ceb20057320599a45b27ae}\label{classclang_1_1_tree_node_a559256df03ceb20057320599a45b27ae} 
+{\bfseries Tree\+Node} (std\+::string name, const std\+::string \&base\+Path, \mbox{\hyperlink{namespaceclang_a2078fefbefcd616534a8755e35d228da}{Node\+Type}} type)
+\item 
+const std\+::string \& \mbox{\hyperlink{classclang_1_1_tree_node_a6332515ef025c8fc1164c1f8ceb5b0ee}{Get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of the node. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classclang_1_1_tree_node_ad318f7523336727d4a3e2fe2b0df836d}{Get\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Get the path of the node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceclang_a2078fefbefcd616534a8755e35d228da}{Node\+Type}} \mbox{\hyperlink{classclang_1_1_tree_node_a32eb6eb90f30b78fab54559215e90000}{Get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Get the type of the node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classclang_1_1_tree_node_a70dfc9f3b72183aa3a560e637de82ee4}{Add\+Child}} (\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*}child)
+\begin{DoxyCompactList}\small\item\em Add a child node to the current node. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{classclang_1_1_tree_node_aeac551f086e28bc4764e469e56ebc42d}{Get\+Children}} () const
+\begin{DoxyCompactList}\small\item\em Get the children of the node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classclang_1_1_tree_node_aef160a559bf9126a710566159a86f4f5}{Scan\+Directory}} (const fs\+::path \&dir\+Path)
+\begin{DoxyCompactList}\small\item\em Scan a directory and create a \doxylink{classclang_1_1_tree_node}{Tree\+Node} for each file and subdirectory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classclang_1_1_tree_node_ab7d71d9ae869fb0881833b2810cc80a3}{Build\+Project\+Tree}} (const std\+::string \&root\+Path)
+\begin{DoxyCompactList}\small\item\em Build a project tree from the given root path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classclang_1_1_tree_node}{Tree\+Node} class represents a node in the file system tree. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_tree_node_a70dfc9f3b72183aa3a560e637de82ee4}\label{classclang_1_1_tree_node_a70dfc9f3b72183aa3a560e637de82ee4} 
+\index{clang::TreeNode@{clang::TreeNode}!AddChild@{AddChild}}
+\index{AddChild@{AddChild}!clang::TreeNode@{clang::TreeNode}}
+\doxysubsubsection{\texorpdfstring{AddChild()}{AddChild()}}
+{\footnotesize\ttfamily void Tree\+Node\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*}}]{child }\end{DoxyParamCaption})}
+
+
+
+Add a child node to the current node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & -\/\texorpdfstring{$>$}{>} The child node to add. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{classclang_1_1_tree_node_ab7d71d9ae869fb0881833b2810cc80a3}\label{classclang_1_1_tree_node_ab7d71d9ae869fb0881833b2810cc80a3} 
+\index{clang::TreeNode@{clang::TreeNode}!BuildProjectTree@{BuildProjectTree}}
+\index{BuildProjectTree@{BuildProjectTree}!clang::TreeNode@{clang::TreeNode}}
+\doxysubsubsection{\texorpdfstring{BuildProjectTree()}{BuildProjectTree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*} Tree\+Node\+::\+Build\+Project\+Tree (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{root\+Path }\end{DoxyParamCaption})}
+
+
+
+Build a project tree from the given root path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root\+Path} & -\/\texorpdfstring{$>$}{>} The root path of the project. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A pointer to the root \doxylink{classclang_1_1_tree_node}{Tree\+Node} of the project tree. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classclang_1_1_tree_node_aeac551f086e28bc4764e469e56ebc42d}\label{classclang_1_1_tree_node_aeac551f086e28bc4764e469e56ebc42d} 
+\index{clang::TreeNode@{clang::TreeNode}!GetChildren@{GetChildren}}
+\index{GetChildren@{GetChildren}!clang::TreeNode@{clang::TreeNode}}
+\doxysubsubsection{\texorpdfstring{GetChildren()}{GetChildren()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*} $>$ \& clang\+::\+Tree\+Node\+::\+Get\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the children of the node. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A vector of pointers to the child nodes. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{classclang_1_1_tree_node_a6332515ef025c8fc1164c1f8ceb5b0ee}\label{classclang_1_1_tree_node_a6332515ef025c8fc1164c1f8ceb5b0ee} 
+\index{clang::TreeNode@{clang::TreeNode}!GetName@{GetName}}
+\index{GetName@{GetName}!clang::TreeNode@{clang::TreeNode}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily const std\+::string \& clang\+::\+Tree\+Node\+::\+Get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the name of the node. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} The name of the node. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{classclang_1_1_tree_node_ad318f7523336727d4a3e2fe2b0df836d}\label{classclang_1_1_tree_node_ad318f7523336727d4a3e2fe2b0df836d} 
+\index{clang::TreeNode@{clang::TreeNode}!GetPath@{GetPath}}
+\index{GetPath@{GetPath}!clang::TreeNode@{clang::TreeNode}}
+\doxysubsubsection{\texorpdfstring{GetPath()}{GetPath()}}
+{\footnotesize\ttfamily const std\+::string \& clang\+::\+Tree\+Node\+::\+Get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the path of the node. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} The path of the node. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{classclang_1_1_tree_node_a32eb6eb90f30b78fab54559215e90000}\label{classclang_1_1_tree_node_a32eb6eb90f30b78fab54559215e90000} 
+\index{clang::TreeNode@{clang::TreeNode}!GetType@{GetType}}
+\index{GetType@{GetType}!clang::TreeNode@{clang::TreeNode}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceclang_a2078fefbefcd616534a8755e35d228da}{Node\+Type}} clang\+::\+Tree\+Node\+::\+Get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the type of the node. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} The type of the node. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{classclang_1_1_tree_node_aef160a559bf9126a710566159a86f4f5}\label{classclang_1_1_tree_node_aef160a559bf9126a710566159a86f4f5} 
+\index{clang::TreeNode@{clang::TreeNode}!ScanDirectory@{ScanDirectory}}
+\index{ScanDirectory@{ScanDirectory}!clang::TreeNode@{clang::TreeNode}}
+\doxysubsubsection{\texorpdfstring{ScanDirectory()}{ScanDirectory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \texorpdfstring{$\ast$}{*} Tree\+Node\+::\+Scan\+Directory (\begin{DoxyParamCaption}\item[{const fs\+::path \&}]{dir\+Path }\end{DoxyParamCaption})}
+
+
+
+Scan a directory and create a \doxylink{classclang_1_1_tree_node}{Tree\+Node} for each file and subdirectory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+Path} & -\/\texorpdfstring{$>$}{>} The path of the directory to scan. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A pointer to the root \doxylink{classclang_1_1_tree_node}{Tree\+Node} of the scanned directory. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Tree\+Node.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Tree\+Node.\+cpp\end{DoxyCompactItemize}

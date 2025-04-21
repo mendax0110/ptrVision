@@ -1,0 +1,50 @@
+\doxysection{clang\+::Project\+Explorer Class Reference}
+\hypertarget{classclang_1_1_project_explorer}{}\label{classclang_1_1_project_explorer}\index{clang::ProjectExplorer@{clang::ProjectExplorer}}
+
+
+The \doxylink{classclang_1_1_project_explorer}{Project\+Explorer} class is responsible for displaying the project tree structure.  
+
+
+
+
+{\ttfamily \#include $<$Project\+Explorer.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::pair$<$ std\+::string, std\+::pair$<$ std\+::string, std\+::pair$<$ std\+::string, bool $>$ $>$ $>$ \mbox{\hyperlink{classclang_1_1_project_explorer_a0b5c70e27ec42767cbd166422de2fb09}{Display\+Tree\+Node}} (\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \&node)
+\begin{DoxyCompactList}\small\item\em Display the project tree structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classclang_1_1_project_explorer}{Project\+Explorer} class is responsible for displaying the project tree structure. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_project_explorer_a0b5c70e27ec42767cbd166422de2fb09}\label{classclang_1_1_project_explorer_a0b5c70e27ec42767cbd166422de2fb09} 
+\index{clang::ProjectExplorer@{clang::ProjectExplorer}!DisplayTreeNode@{DisplayTreeNode}}
+\index{DisplayTreeNode@{DisplayTreeNode}!clang::ProjectExplorer@{clang::ProjectExplorer}}
+\doxysubsubsection{\texorpdfstring{DisplayTreeNode()}{DisplayTreeNode()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::string, std\+::pair$<$ std\+::string, std\+::pair$<$ std\+::string, bool $>$ $>$ $>$ Project\+Explorer\+::\+Display\+Tree\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Display the project tree structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/\texorpdfstring{$>$}{>} The root node of the tree to display. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A pair containing the project name and a pair of the file path and a pair of the file name and a boolean indicating if the file is a directory. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Project\+Explorer.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Project\+Explorer.\+cpp\end{DoxyCompactItemize}

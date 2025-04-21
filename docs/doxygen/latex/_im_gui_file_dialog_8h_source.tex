@@ -1,0 +1,1205 @@
+\doxysection{Im\+Gui\+File\+Dialog.\+h}
+\hypertarget{_im_gui_file_dialog_8h_source}{}\label{_im_gui_file_dialog_8h_source}\index{/Users/adriangossl/Documents/git/ptrVision/external/ImGuiFileDialog/ImGuiFileDialog.h@{/Users/adriangossl/Documents/git/ptrVision/external/ImGuiFileDialog/ImGuiFileDialog.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \_\_\_\_\_\ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_\_\_\_\ \ \ \ \ \ \ \ \ \_\ \ \_\_\_\_\_\_\ \ \_\ \ \_\ \ \ \ \ \ \ \ \_\_\_\_\_\ \ \ \_\ \ \ \ \ \ \ \ \ \_}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ |\_\ \ \ \_|\ \ \ \ \ \ \ \ \ \ \ \ /\ \_\_\_\_|\ \ \ \ \ \ \ (\_)|\ \ \_\_\_\_|(\_)|\ |\ \ \ \ \ \ |\ \ \_\_\ \(\backslash\)\ (\_)\ \ \ \ \ \ \ |\ |}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ |\ |\ \ \ \_\ \_\_\ \_\_\_\ \ |\ |\ \ \_\_\ \ \_\ \ \ \_\ \ \_\ |\ |\_\_\ \ \ \ \_\ |\ |\ \ \_\_\_\ |\ |\ \ |\ |\ \_\ \ \ \_\_\ \_\ |\ |\ \ \_\_\_\ \ \ \ \_\_\ \_}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ \ |\ |\ \ |\ '\_\ \`{}\ \_\ \(\backslash\)\ |\ |\ |\_\ ||\ |\ |\ ||\ ||\ \ \_\_|\ \ |\ ||\ |\ /\ \_\ \(\backslash\)|\ |\ \ |\ ||\ |\ /\ \_`\ ||\ |\ /\ \_\ \(\backslash\)\ \ /\ \_`\ |}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \_|\ |\_\ |\ |\ |\ |\ |\ ||\ |\_\_|\ ||\ |\_|\ ||\ ||\ |\ \ \ \ \ |\ ||\ ||\ \ \_\_/|\ |\_\_|\ ||\ ||\ (\_|\ ||\ ||\ (\_)\ ||\ (\_|\ |}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ |\_\_\_\_\_||\_|\ |\_|\ |\_|\ \(\backslash\)\_\_\_\_\_|\ \(\backslash\)\_\_,\_||\_||\_|\ \ \ \ \ |\_||\_|\ \(\backslash\)\_\_\_||\_\_\_\_\_/\ |\_|\ \(\backslash\)\_\_,\_||\_|\ \(\backslash\)\_\_\_/\ \ \(\backslash\)\_\_,\ |}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_/\ |}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\_\_\_/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_\_\ \ \ \ \ \ \_\_\ \ \ \ \ \_\_\_}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /\ \_\ \(\backslash\)\ \ \ \ /\ /\ \ \ \ /\ \_\ \(\backslash\)}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_\ \ \ \_\_|\ |\ |\ |\ \ /\ /\_\ \ \ |\ (\_)\ |}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)\ \(\backslash\)\ /\ /|\ |\ |\ |\ |\ '\_\ \(\backslash\)\ \ \ >\ \_\ <}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)\ V\ /\ |\ |\_|\ |\_|\ (\_)\ |\_|\ (\_)\ |}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)\_/\ \ \ \(\backslash\)\_\_\_/(\_)\(\backslash\)\_\_\_/(\_)\(\backslash\)\_\_\_/}}
+\DoxyCodeLine{00016\ \textcolor{comment}{}}
+\DoxyCodeLine{00017\ \textcolor{comment}{GITHUB\ REPOT\ :\ https://github.com/aiekick/ImGuiFileDialog}}
+\DoxyCodeLine{00018\ \textcolor{comment}{DOCUMENTATION\ :\ see\ the\ attached\ Documentation.md}}
+\DoxyCodeLine{00019\ \textcolor{comment}{}}
+\DoxyCodeLine{00020\ \textcolor{comment}{generated\ with\ "{}Text\ to\ ASCII\ Art\ Generator\ (TAAG)"{}}}
+\DoxyCodeLine{00021\ \textcolor{comment}{https://patorjk.com/software/taag/\#p=display\&h=1\&v=0\&f=Big\&t=ImGuiFileDialog\%0Av0.6.8}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{MIT\ License}}
+\DoxyCodeLine{00024\ \textcolor{comment}{}}
+\DoxyCodeLine{00025\ \textcolor{comment}{Copyright\ (c)\ 2018-\/2024\ Stephane\ Cuillerdier\ (aka\ aiekick)}}
+\DoxyCodeLine{00026\ \textcolor{comment}{}}
+\DoxyCodeLine{00027\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{00028\ \textcolor{comment}{of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{00029\ \textcolor{comment}{in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{00030\ \textcolor{comment}{to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{00031\ \textcolor{comment}{copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{00032\ \textcolor{comment}{furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00033\ \textcolor{comment}{}}
+\DoxyCodeLine{00034\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{00035\ \textcolor{comment}{copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00036\ \textcolor{comment}{}}
+\DoxyCodeLine{00037\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00038\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00039\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00040\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00041\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00042\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{00043\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{00044\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ IGFD\_VERSION\ "{}v0.6.8"{}}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ IGFD\_IMGUI\_SUPPORTED\_VERSION\ "{}1.90.5\ WIP"{}}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ Config\ file}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifndef\ CUSTOM\_IMGUIFILEDIALOG\_CONFIG}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#include\ "{}ImGuiFileDialogConfig.h"{}}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{//\ CUSTOM\_IMGUIFILEDIALOG\_CONFIG}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ CUSTOM\_IMGUIFILEDIALOG\_CONFIG}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ CUSTOM\_IMGUIFILEDIALOG\_CONFIG}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ Define\ attributes\ of\ all\ API\ symbols\ declarations\ (e.g.\ for\ DLL\ under\ Windows)}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ Using\ ImGuiFileDialog\ via\ a\ shared\ library\ is\ not\ recommended,\ because\ we\ don't\ guarantee}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ backward\ nor\ forward\ ABI\ compatibility\ and\ also\ function\ call\ overhead.\ If\ you}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ do\ use\ ImGuiFileDialog\ as\ a\ DLL,\ be\ sure\ to\ call\ ImGui::SetImGuiContext\ (see\ ImGui\ doc\ Miscellanous\ section).}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#ifndef\ IGFD\_API}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ IGFD\_API}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ IGFD\_API}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ file\ style\ enum\ for\ file\ display\ (color,\ icon,\ font)}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ IGFD\_FileStyleFlags;\ \ \textcolor{comment}{//\ -\/>\ enum\ IGFD\_FileStyleFlags\_}}
+\DoxyCodeLine{00073\ \textcolor{keyword}{enum}\ IGFD\_FileStyleFlags\_\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ by\ evaluation\ /\ priority\ order}}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ IGFD\_FileStyle\_None\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ define\ none\ style}}
+\DoxyCodeLine{00076\ \ \ \ \ IGFD\_FileStyleByTypeFile\ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 0),\ \ \textcolor{comment}{//\ define\ style\ for\ all\ files}}
+\DoxyCodeLine{00077\ \ \ \ \ IGFD\_FileStyleByTypeDir\ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 1),\ \ \textcolor{comment}{//\ define\ style\ for\ all\ dir}}
+\DoxyCodeLine{00078\ \ \ \ \ IGFD\_FileStyleByTypeLink\ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 2),\ \ \textcolor{comment}{//\ define\ style\ for\ all\ link}}
+\DoxyCodeLine{00079\ \ \ \ \ IGFD\_FileStyleByExtention\ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 3),\ \ \textcolor{comment}{//\ define\ style\ by\ extention,\ for\ files\ or\ links}}
+\DoxyCodeLine{00080\ \ \ \ \ IGFD\_FileStyleByFullName\ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 4),\ \ \textcolor{comment}{//\ define\ style\ for\ particular\ file/dir/link\ full\ name\ (filename\ +\ extention)}}
+\DoxyCodeLine{00081\ \ \ \ \ IGFD\_FileStyleByContainedInFullName\ =\ (1\ <<\ 5),\ \ \textcolor{comment}{//\ define\ style\ for\ file/dir/link\ when\ criteria\ is\ contained\ in\ full\ name}}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ ImGuiFileDialogFlags;\ \ \textcolor{comment}{//\ -\/>\ enum\ ImGuiFileDialogFlags\_}}
+\DoxyCodeLine{00085\ \textcolor{keyword}{enum}\ ImGuiFileDialogFlags\_\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ ImGuiFileDialogFlags\_None\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ define\ none\ default\ flag}}
+\DoxyCodeLine{00087\ \ \ \ \ ImGuiFileDialogFlags\_ConfirmOverwrite\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 0),\ \ \ \textcolor{comment}{//\ show\ confirm\ to\ overwrite\ dialog}}
+\DoxyCodeLine{00088\ \ \ \ \ ImGuiFileDialogFlags\_DontShowHiddenFiles\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 1),\ \ \ \textcolor{comment}{//\ dont\ show\ hidden\ file\ (file\ starting\ with\ a\ .)}}
+\DoxyCodeLine{00089\ \ \ \ \ ImGuiFileDialogFlags\_DisableCreateDirectoryButton\ \ \ \ \ \ =\ (1\ <<\ 2),\ \ \ \textcolor{comment}{//\ disable\ the\ create\ directory\ button}}
+\DoxyCodeLine{00090\ \ \ \ \ ImGuiFileDialogFlags\_HideColumnType\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 3),\ \ \ \textcolor{comment}{//\ hide\ column\ file\ type}}
+\DoxyCodeLine{00091\ \ \ \ \ ImGuiFileDialogFlags\_HideColumnSize\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 4),\ \ \ \textcolor{comment}{//\ hide\ column\ file\ size}}
+\DoxyCodeLine{00092\ \ \ \ \ ImGuiFileDialogFlags\_HideColumnDate\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 5),\ \ \ \textcolor{comment}{//\ hide\ column\ file\ date}}
+\DoxyCodeLine{00093\ \ \ \ \ ImGuiFileDialogFlags\_NoDialog\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 6),\ \ \ \textcolor{comment}{//\ let\ the\ dialog\ embedded\ in\ your\ own\ imgui\ begin\ /\ end\ scope}}
+\DoxyCodeLine{00094\ \ \ \ \ ImGuiFileDialogFlags\_ReadOnlyFileNameField\ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 7),\ \ \ \textcolor{comment}{//\ don't\ let\ user\ type\ in\ filename\ field\ for\ file\ open\ style\ dialogs}}
+\DoxyCodeLine{00095\ \ \ \ \ ImGuiFileDialogFlags\_CaseInsensitiveExtentionFiltering\ =\ (1\ <<\ 8),\ \ \ \textcolor{comment}{//\ the\ file\ extentions\ filtering\ will\ not\ take\ into\ account\ the\ case}}
+\DoxyCodeLine{00096\ \ \ \ \ ImGuiFileDialogFlags\_Modal\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 9),\ \ \ \textcolor{comment}{//\ modal}}
+\DoxyCodeLine{00097\ \ \ \ \ ImGuiFileDialogFlags\_DisableThumbnailMode\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 10),\ \ \textcolor{comment}{//\ disable\ the\ thumbnail\ mode}}
+\DoxyCodeLine{00098\ \ \ \ \ ImGuiFileDialogFlags\_DisablePlaceMode\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 11),\ \ \textcolor{comment}{//\ disable\ the\ place\ mode}}
+\DoxyCodeLine{00099\ \ \ \ \ ImGuiFileDialogFlags\_DisableQuickPathSelection\ \ \ \ \ \ \ \ \ =\ (1\ <<\ 12),\ \ \textcolor{comment}{//\ disable\ the\ quick\ path\ selection}}
+\DoxyCodeLine{00100\ \ \ \ \ ImGuiFileDialogFlags\_ShowDevicesButton\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 13),\ \ \textcolor{comment}{//\ show\ the\ devices\ selection\ button}}
+\DoxyCodeLine{00101\ \ \ \ \ ImGuiFileDialogFlags\_NaturalSorting\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ (1\ <<\ 14),\ \ \textcolor{comment}{//\ enable\ the\ antural\ sorting\ for\ filenames\ and\ extentions,\ slower\ than\ standard\ sorting}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ default\ behavior\ when\ no\ flags\ is\ defined.\ seems\ to\ be\ the\ more\ common\ cases}}
+\DoxyCodeLine{00104\ \ \ \ \ ImGuiFileDialogFlags\_Default\ =\ ImGuiFileDialogFlags\_ConfirmOverwrite\ |\ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiFileDialogFlags\_Modal\ |\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiFileDialogFlags\_HideColumnType}
+\DoxyCodeLine{00107\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ flags\ used\ for\ GetFilePathName(flag)\ or\ GetSelection(flag)}}
+\DoxyCodeLine{00110\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ IGFD\_ResultMode;\ \ \textcolor{comment}{//\ -\/>\ enum\ IGFD\_ResultMode\_}}
+\DoxyCodeLine{00111\ \textcolor{keyword}{enum}\ IGFD\_ResultMode\_\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ IGFD\_ResultMode\_AddIfNoFileExt}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ add\ the\ file\ ext\ only\ if\ there\ is\ no\ file\ ext}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.cpp,.h\}\ with\ file\ :}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.h\ =>\ toto.h}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h\ =>\ toto.a.h}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.\ =>\ toto.a.cpp}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.\ =>\ toto.cpp}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto\ =>\ toto.cpp}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.z,.a.b\}\ with\ file\ :}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h\ =>\ toto.a.h}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.\ =>\ toto.z}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto\ =>\ toto.z}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.g.z,.a\}\ with\ file\ :}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h\ =>\ toto.a.h}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.\ =>\ toto.g.z}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto\ =>\ toto.g.z}}
+\DoxyCodeLine{00128\ \ \ \ \ IGFD\_ResultMode\_AddIfNoFileExt\ =\ 0,\ \ \textcolor{comment}{//\ default}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ IGFD\_ResultMode\_OverwriteFileExt}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ Overwrite\ the\ file\ extention\ by\ the\ current\ filter\ :}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.cpp,.h\}\ with\ file\ :}}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.h\ =>\ toto.cpp}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h\ =>\ toto.a.cpp}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.\ =>\ toto.a.cpp}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h.t\ =>\ toto.a.h.cpp}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.\ =>\ toto.cpp}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto\ =>\ toto.cpp}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.z,.a.b\}\ with\ file\ :}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h\ =>\ toto.z}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h.t\ =>\ toto.a.z}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.\ =>\ toto.z}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto\ =>\ toto.z}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.g.z,.a\}\ with\ file\ :}}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h\ =>\ toto.g.z}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.h.y\ =>\ toto.a.g.z}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.a.\ =>\ toto.g.z}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto.\ =>\ toto.g.z}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ toto\ =>\ toto.g.z}}
+\DoxyCodeLine{00150\ \ \ \ \ IGFD\_ResultMode\_OverwriteFileExt\ =\ 1,\ \ \textcolor{comment}{//\ behavior\ pre\ IGFD\ v0.6.6}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ IGFD\_ResultMode\_KeepInputFile}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ keep\ the\ input\ file\ =>\ no\ modification\ :}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.cpp,.h\}\ with\ file\ :}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto.h\ =>\ toto.h}}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto.\ =>\ toto.}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto\ =>\ toto}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.z,.a.b\}\ with\ file\ :}}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto.a.h\ =>\ toto.a.h}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto.\ =>\ toto.}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto\ =>\ toto}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//\ \ \ filter\ \{.g.z,.a\}\ with\ file\ :}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto.a.h\ =>\ toto.a.h}}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto.\ =>\ toto.}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ toto\ =>\ toto}}
+\DoxyCodeLine{00166\ \ \ \ \ IGFD\_ResultMode\_KeepInputFile\ =\ 2}
+\DoxyCodeLine{00167\ \};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#ifdef\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00174\ \textcolor{keyword}{struct\ }IGFD\_Thumbnail\_Info\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{int}\ isReadyToDisplay\ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ ready\ to\ be\ rendered,\ so\ texture\ created}}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{int}\ isReadyToUpload\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ ready\ to\ upload\ to\ gpu}}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{int}\ isLoadingOrLoaded\ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ was\ sent\ to\ laoding\ or\ loaded}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{int}\ textureWidth\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ width\ of\ the\ texture\ to\ upload}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{int}\ textureHeight\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ height\ of\ the\ texture\ to\ upload}}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{int}\ textureChannels\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ count\ channels\ of\ the\ texture\ to\ upload}}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ textureFileDatas\ =\ 0;\ \ \textcolor{comment}{//\ file\ texture\ datas,\ will\ be\ rested\ to\ null\ after\ gpu\ upload}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{void}*\ textureID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ 2d\ texture\ id\ (void*\ is\ like\ ImtextureID\ type)\ (GL,\ DX,\ VK,\ Etc..)}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{void}*\ userDatas\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ user\ datas}}
+\DoxyCodeLine{00184\ \};}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{comment}{//\ stdint\ is\ used\ for\ cpp\ and\ c\ apî\ (cstdint\ is\ only\ for\ cpp)}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#ifndef\ IMGUI\_DEFINE\_MATH\_OPERATORS}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ IMGUI\_DEFINE\_MATH\_OPERATORS}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ IMGUI\_DEFINE\_MATH\_OPERATORS}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#ifdef\ IMGUI\_INCLUDE}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#include\ IMGUI\_INCLUDE}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{//\ IMGUI\_INCLUDE}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ IMGUI\_INCLUDE}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#include\ <condition\_variable>}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#include\ <cfloat>}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#ifndef\ defaultSortField}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ defaultSortField\ FIELD\_FILENAME}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ defaultSortField}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#ifndef\ defaultSortOrderFilename}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ defaultSortOrderFilename\ true}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ defaultSortOrderFilename}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#ifndef\ defaultSortOrderType}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ defaultSortOrderType\ true}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ defaultSortOrderType}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#ifndef\ defaultSortOrderSize}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ defaultSortOrderSize\ true}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ defaultSortOrderSize}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#ifndef\ defaultSortOrderDate}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ defaultSortOrderDate\ true}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ defaultSortOrderDate}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#ifndef\ defaultSortOrderThumbnails}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#define\ defaultSortOrderThumbnails\ true}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ defaultSortOrderThumbnails}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#ifndef\ MAX\_FILE\_DIALOG\_NAME\_BUFFER}}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#define\ MAX\_FILE\_DIALOG\_NAME\_BUFFER\ 1024}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ MAX\_FILE\_DIALOG\_NAME\_BUFFER}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#ifndef\ MAX\_PATH\_BUFFER\_SIZE}}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#define\ MAX\_PATH\_BUFFER\_SIZE\ 1024}}
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ MAX\_PATH\_BUFFER\_SIZE}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\#ifndef\ EXT\_MAX\_LEVEL}}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#define\ EXT\_MAX\_LEVEL\ 10U}}
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ EXT\_MAX\_LEVEL}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \textcolor{keyword}{namespace\ }IGFD\ \{}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00254\ \textcolor{keyword}{class\ }SearchableVector\ \{}
+\DoxyCodeLine{00255\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00256\ \ \ \ \ std::unordered\_map<T,\ size\_t>\ m\_Dico;}
+\DoxyCodeLine{00257\ \ \ \ \ std::vector<T>\ m\_Array;}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordtype}{void}\ clear()\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ m\_Dico.clear();}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ m\_Array.clear();}
+\DoxyCodeLine{00263\ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{bool}\ empty()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array.empty();}
+\DoxyCodeLine{00266\ \ \ \ \ \}}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array.size();}
+\DoxyCodeLine{00269\ \ \ \ \ \}}
+\DoxyCodeLine{00270\ \ \ \ \ T\&\ operator[](\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vIdx)\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array[vIdx];}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ T\&\ at(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vIdx)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array.at(vIdx);}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keyword}{typename}\ std::vector<T>::iterator\ begin()\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array.begin();}
+\DoxyCodeLine{00278\ \ \ \ \ \}}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keyword}{typename}\ std::vector<T>::const\_iterator\ begin()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array.begin();}
+\DoxyCodeLine{00281\ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keyword}{typename}\ std::vector<T>::iterator\ end()\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array.end();}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{typename}\ std::vector<T>::const\_iterator\ end()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Array.end();}
+\DoxyCodeLine{00287\ \ \ \ \ \}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordtype}{bool}\ try\_add(T\ vKey)\ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!exist(vKey))\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Dico[vKey]\ =\ m\_Array.size();}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Array.push\_back(vKey);}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00296\ \ \ \ \ \}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordtype}{bool}\ try\_set\_existing(T\ vKey)\ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (exist(vKey))\ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ row\ \ \ \ \ =\ m\_Dico.at(vKey);}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Array[row]\ =\ vKey;}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00305\ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{bool}\ exist(\textcolor{keyword}{const}\ std::string\&\ vKey)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (m\_Dico.find(vKey)\ !=\ m\_Dico.end());}
+\DoxyCodeLine{00309\ \ \ \ \ \}}
+\DoxyCodeLine{00310\ \};}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \textcolor{keyword}{class\ }IGFD\_API\ FileInfos;}
+\DoxyCodeLine{00313\ \textcolor{keyword}{class\ }IGFD\_API\ FileDialogInternal;}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{keyword}{class\ }IGFD\_API\ Utils\ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }TestUtils;}
+\DoxyCodeLine{00317\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keyword}{struct\ }PathStruct\ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ std::string\ path;}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ std::string\ ext;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isOk\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00323\ \ \ \ \ \};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ ImSplitter(\textcolor{keywordtype}{bool}\ split\_vertically,\ \textcolor{keywordtype}{float}\ thickness,\ \textcolor{keywordtype}{float}*\ size1,\ \textcolor{keywordtype}{float}*\ size2,\ \textcolor{keywordtype}{float}\ min\_size1,\ \textcolor{keywordtype}{float}\ min\_size2,\ \textcolor{keywordtype}{float}\ splitter\_long\_axis\_size\ =\ -\/1.0f);}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ ReplaceString(std::string\&\ str,\ \textcolor{keyword}{const}\ std::string\&\ oldStr,\ \textcolor{keyword}{const}\ std::string\&\ newStr,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vMaxRecursion\ =\ 10U);}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ AppendToBuffer(\textcolor{keywordtype}{char}*\ vBuffer,\ \textcolor{keywordtype}{size\_t}\ vBufferLen,\ \textcolor{keyword}{const}\ std::string\&\ vStr);}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ ResetBuffer(\textcolor{keywordtype}{char}*\ vBuffer);}
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetBuffer(\textcolor{keywordtype}{char}*\ vBuffer,\ \textcolor{keywordtype}{size\_t}\ vBufferLen,\ \textcolor{keyword}{const}\ std::string\&\ vStr);}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ UTF8Encode(\textcolor{keyword}{const}\ std::wstring\&\ wstr);}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keyword}{static}\ std::wstring\ UTF8Decode(\textcolor{keyword}{const}\ std::string\&\ str);}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ SplitStringToVector(\textcolor{keyword}{const}\ std::string\&\ vText,\ \textcolor{keyword}{const}\ std::string\&\ vDelimiterPattern,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vPushEmpty);}
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ SplitStringToVector(\textcolor{keyword}{const}\ std::string\&\ vText,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\&\ vDelimiter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vPushEmpty);}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ LowerCaseString(\textcolor{keyword}{const}\ std::string\&\ vString);\ \ \textcolor{comment}{//\ turn\ all\ text\ in\ lower\ case\ for\ search\ facilitie}}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ GetCharCountInString(\textcolor{keyword}{const}\ std::string\&\ vString,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\&\ vChar);}
+\DoxyCodeLine{00337\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ GetLastCharPosWithMinCharCount(\textcolor{keyword}{const}\ std::string\&\ vString,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\&\ vChar,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vMinCharCount);}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ GetPathSeparator();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ the\ slash\ for\ any\ OS\ (\ \(\backslash\)\(\backslash\)\ win,\ /\ unix)}}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ RoundNumber(\textcolor{keywordtype}{double}\ vvalue,\ \textcolor{keywordtype}{int}\ n);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ custom\ rounding\ number}}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ FormatFileSize(\textcolor{keywordtype}{size\_t}\ vByteSize);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ format\ file\ size\ field}}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ NaturalCompare(\textcolor{keyword}{const}\ std::string\&\ vA,\ \textcolor{keyword}{const}\ std::string\&\ vB,\ \textcolor{keywordtype}{bool}\ vInsensitiveCase,\ \textcolor{keywordtype}{bool}\ vDescending);\ \ \textcolor{comment}{//\ natural\ sorting}}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ M\_IsAValidCharExt(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\&\ c);}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ M\_IsAValidCharSuffix(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\&\ c);}
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ M\_ExtractNumFromStringAtPos(\textcolor{keyword}{const}\ std::string\&\ str,\ \textcolor{keywordtype}{size\_t}\&\ pos,\ \textcolor{keywordtype}{double}\&\ vOutNum);}
+\DoxyCodeLine{00347\ \};}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \textcolor{keyword}{class\ }IGFD\_API\ FileStyle\ \{}
+\DoxyCodeLine{00350\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keyword}{typedef}\ std::function<bool(\textcolor{keyword}{const}\ FileInfos\&,\ FileStyle\&)>\ FileStyleFunctor;}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00354\ \ \ \ \ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}\ color\ =\ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00355\ \ \ \ \ std::string\ icon;}
+\DoxyCodeLine{00356\ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}*\ font\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00357\ \ \ \ \ IGFD\_FileStyleFlags\ flags\ =\ 0;}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00360\ \ \ \ \ FileStyle();}
+\DoxyCodeLine{00361\ \ \ \ \ FileStyle(\textcolor{keyword}{const}\ FileStyle\&\ vStyle);}
+\DoxyCodeLine{00362\ \ \ \ \ FileStyle(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}\&\ vColor,\ \textcolor{keyword}{const}\ std::string\&\ vIcon\ =\ \textcolor{stringliteral}{"{}"{}},\ \mbox{\hyperlink{struct_im_font}{ImFont}}*\ vFont\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00363\ \};}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \textcolor{keyword}{class\ }IGFD\_API\ SearchManager\ \{}
+\DoxyCodeLine{00366\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00367\ \ \ \ \ std::string\ searchTag;}
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{keywordtype}{char}\ searchBuffer[MAX\_FILE\_DIALOG\_NAME\_BUFFER]\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{keywordtype}{bool}\ searchInputIsActive\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordtype}{void}\ Clear();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ clear\ datas}}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keywordtype}{void}\ DrawSearchBar(FileDialogInternal\&\ vFileDialogInternal);\ \ \textcolor{comment}{//\ draw\ the\ search\ bar}}
+\DoxyCodeLine{00374\ \};}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \textcolor{keyword}{class\ }IGFD\_API\ FilterInfos\ \{}
+\DoxyCodeLine{00377\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{comment}{//\ just\ for\ return\ a\ default\ const\ std::string\&\ in\ getFirstFilter.}}
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{comment}{//\ cannot\ be\ const,\ because\ FilterInfos\ must\ be\ affected\ to\ an\ another\ FilterInfos}}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{comment}{//\ must\ stay\ empty\ all\ time}}
+\DoxyCodeLine{00381\ \ \ \ \ std::string\ empty\_string;}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00383\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00384\ \ \ \ \ std::string\ title;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ displayed\ filter.can\ be\ different\ than\ rela\ filter}}
+\DoxyCodeLine{00385\ \ \ \ \ SearchableVector<std::string>\ filters;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ filters}}
+\DoxyCodeLine{00386\ \ \ \ \ SearchableVector<std::string>\ filters\_optimized;\ \ \textcolor{comment}{//\ optimized\ filters\ for\ case\ insensitive\ search}}
+\DoxyCodeLine{00387\ \ \ \ \ std::vector<std::regex>\ filters\_regex;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ collection\ of\ regex\ filter\ type}}
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count\_dots\ =\ 0U;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ max\ count\ dot\ the\ max\ per\ filter\ of\ all\ filters}}
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00390\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordtype}{void}\ clear();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ clear\ the\ datas}}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{bool}\ empty()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ is\ filter\ empty}}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ getFirstFilter()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ first\ filter}}
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{keywordtype}{bool}\ regexExist(\textcolor{keyword}{const}\ std::string\&\ vFilter)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ is\ regex\ filter\ exist}}
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordtype}{bool}\ exist(\textcolor{keyword}{const}\ FileInfos\&\ vFileInfos,\ \textcolor{keywordtype}{bool}\ vIsCaseInsensitive)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ is\ filter\ exist}}
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keywordtype}{void}\ setCollectionTitle(\textcolor{keyword}{const}\ std::string\&\ vTitle);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ collection\ title}}
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{keywordtype}{void}\ addFilter(\textcolor{keyword}{const}\ std::string\&\ vFilter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vIsRegex);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ a\ filter}}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordtype}{void}\ addCollectionFilter(\textcolor{keyword}{const}\ std::string\&\ vFilter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vIsRegex);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ a\ filter\ in\ collection}}
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ transformAsteriskBasedFilterToRegex(\textcolor{keyword}{const}\ std::string\&\ vFilter);\ \ \textcolor{comment}{//\ will\ transform\ a\ filter\ who\ contain\ *\ to\ a\ regex}}
+\DoxyCodeLine{00400\ \};}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00402\ \textcolor{keyword}{class\ }IGFD\_API\ FilterManager\ \{}
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }TestFilterManager;}
+\DoxyCodeLine{00404\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00405\ \ \ \ \ std::vector<FilterInfos>\ m\_ParsedFilters;}
+\DoxyCodeLine{00406\ \ \ \ \ std::unordered\_map<IGFD\_FileStyleFlags,\ std::unordered\_map<std::string,\ std::shared\_ptr<FileStyle>\ >\ >\ m\_FilesStyle;\ \ \textcolor{comment}{//\ file\ infos\ for\ file}}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extention\ only}}
+\DoxyCodeLine{00408\ \ \ \ \ std::vector<FileStyle::FileStyleFunctor>\ m\_FilesStyleFunctors;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ style\ via\ lambda\ function}}
+\DoxyCodeLine{00409\ \ \ \ \ FilterInfos\ m\_SelectedFilter;}
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00411\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00412\ \ \ \ \ std::string\ dLGFilters;}
+\DoxyCodeLine{00413\ \ \ \ \ std::string\ dLGdefaultExt;}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{keyword}{const}\ FilterInfos\&\ GetSelectedFilter()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordtype}{void}\ ParseFilters(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFilters);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Parse\ filter\ syntax,\ detect\ and\ parse\ filter\ collection}}
+\DoxyCodeLine{00418\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSelectedFilterWithExt(\textcolor{keyword}{const}\ std::string\&\ vFilter);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Select\ filter}}
+\DoxyCodeLine{00419\ \ \ \ \ \textcolor{keywordtype}{bool}\ FillFileStyle(std::shared\_ptr<FileInfos>\ vFileInfos)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fill\ with\ the\ good\ style}}
+\DoxyCodeLine{00420\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFileStyle(\textcolor{keyword}{const}\ IGFD\_FileStyleFlags\&\ vFlags,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vCriteria,\ \textcolor{keyword}{const}\ FileStyle\&\ vInfos);\ \ \textcolor{comment}{//\ Set\ FileStyle}}
+\DoxyCodeLine{00421\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFileStyle(\textcolor{keyword}{const}\ IGFD\_FileStyleFlags\&\ vFlags,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vCriteria,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}\&\ vColor,\ \textcolor{keyword}{const}\ std::string\&\ vIcon,}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}*\ vFont);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ link\ file\ style\ to\ Color\ and\ Icon\ and\ Font}}
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFileStyle(FileStyle::FileStyleFunctor\ vFunctor);\ \ \textcolor{comment}{//\ lambda\ functor\ for\ set\ file\ style.}}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetFileStyle(\textcolor{keyword}{const}\ IGFD\_FileStyleFlags\&\ vFlags,\ \textcolor{keyword}{const}\ std::string\&\ vCriteria,\ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}*\ vOutColor,\ std::string*\ vOutIcon,}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}**\ vOutFont);\ \ \textcolor{comment}{//\ Get\ Color\ and\ Icon\ for\ Filter}}
+\DoxyCodeLine{00426\ \ \ \ \ \textcolor{keywordtype}{void}\ ClearFilesStyle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ clear\ m\_FileStyle}}
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsCoveredByFilters(\textcolor{keyword}{const}\ FileInfos\&\ vFileInfos,}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ vIsCaseInsensitive)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ current\ file\ extention\ (vExt)\ is\ covered\ by\ current\ filter,\ or\ by\ regex\ (vNameExt)}}
+\DoxyCodeLine{00429\ \ \ \ \ \textcolor{keywordtype}{float}\ GetFilterComboBoxWidth()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ will\ return\ the\ current\ combo\ box\ widget\ width}}
+\DoxyCodeLine{00430\ \ \ \ \ \textcolor{keywordtype}{bool}\ DrawFilterComboBox(FileDialogInternal\&\ vFileDialogInternal);\ \ \textcolor{comment}{//\ draw\ the\ filter\ combobox\ \ //\ get\ the\ current\ selected\ filter}}
+\DoxyCodeLine{00431\ \ \ \ \ std::string\ ReplaceExtentionWithCurrentFilterIfNeeded(\textcolor{keyword}{const}\ std::string\&\ vFileName,}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IGFD\_ResultMode\ vFlag)\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ replace\ the\ extention\ of\ the\ current\ file\ by\ the\ selected\ filter}}
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDefaultFilterIfNotDefined();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ define\ the\ first\ filter\ if\ no\ filter\ is\ selected}}
+\DoxyCodeLine{00434\ \};}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00436\ \textcolor{keyword}{class\ }IGFD\_API\ FileType\ \{}
+\DoxyCodeLine{00437\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keyword}{enum\ class}\ ContentType\ \{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ ordering\ will\ be\ used\ during\ sort.}}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ Invalid\ \ \ \ \ \ \ =\ -\/1,}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ Directory\ \ \ \ \ =\ 0,}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ File\ \ \ \ \ \ \ \ \ \ =\ 1,}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ LinkToUnknown\ =\ 2,\ \ \textcolor{comment}{//\ link\ to\ something\ that\ is\ not\ a\ regular\ file\ or\ directory.}}
+\DoxyCodeLine{00444\ \ \ \ \ \};}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00447\ \ \ \ \ ContentType\ m\_Content\ =\ ContentType::Invalid;}
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_Symlink\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00451\ \ \ \ \ FileType();}
+\DoxyCodeLine{00452\ \ \ \ \ FileType(\textcolor{keyword}{const}\ ContentType\&\ vContentType,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vIsSymlink);}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordtype}{void}\ SetContent(\textcolor{keyword}{const}\ ContentType\&\ vContentType);}
+\DoxyCodeLine{00455\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSymLink(\textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vIsSymlink);}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keywordtype}{bool}\ isValid()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00458\ \ \ \ \ \textcolor{keywordtype}{bool}\ isDir()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{keywordtype}{bool}\ isFile()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLinkToUnknown()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00461\ \ \ \ \ \textcolor{keywordtype}{bool}\ isSymLink()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{comment}{//\ Comparisons\ only\ care\ about\ the\ content\ type,\ ignoring\ whether\ it's\ a\ symlink\ or\ not.}}
+\DoxyCodeLine{00464\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ FileType\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ FileType\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacedetail_aac7ca91589afb0bad68baec5949daaa2}{operator<}}(\textcolor{keyword}{const}\ FileType\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00467\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator>(\textcolor{keyword}{const}\ FileType\&\ rhs)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00468\ \};}
+\DoxyCodeLine{00469\ }
+\DoxyCodeLine{00470\ \textcolor{keyword}{class\ }IGFD\_API\ FileInfos\ \{}
+\DoxyCodeLine{00471\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00472\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<FileInfos>\ create();}
+\DoxyCodeLine{00473\ }
+\DoxyCodeLine{00474\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{comment}{//\ extention\ of\ the\ file,\ the\ array\ is\ the\ levels\ of\ ext,\ by\ ex\ :\ .a.b.c,\ will\ be\ save\ in\ \{.a.b.c,\ .b.c,\ .c\}}}
+\DoxyCodeLine{00476\ \ \ \ \ \textcolor{comment}{//\ 10\ level\ max\ are\ sufficient\ i\ guess.\ the\ others\ levels\ will\ be\ checked\ if\ countExtDot\ >\ 1}}
+\DoxyCodeLine{00477\ \ \ \ \ std::array<std::string,\ EXT\_MAX\_LEVEL>\ fileExtLevels;}
+\DoxyCodeLine{00478\ \ \ \ \ std::array<std::string,\ EXT\_MAX\_LEVEL>\ fileExtLevels\_optimized;\ \ \textcolor{comment}{//\ optimized\ for\ search\ =>\ insensitivecase}}
+\DoxyCodeLine{00479\ \ \ \ \ \textcolor{comment}{//\ same\ for\ file\ name,\ can\ be\ sued\ in\ userFileAttributesFun}}
+\DoxyCodeLine{00480\ \ \ \ \ std::array<std::string,\ EXT\_MAX\_LEVEL>\ fileNameLevels;}
+\DoxyCodeLine{00481\ \ \ \ \ std::array<std::string,\ EXT\_MAX\_LEVEL>\ fileNameLevels\_optimized;\ \ \textcolor{comment}{//\ optimized\ for\ search\ =>\ insensitivecase}}
+\DoxyCodeLine{00482\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ countExtDot\ =\ 0U;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ count\ dots\ in\ file\ extention.\ this\ count\ will\ give\ the\ levels\ in\ fileExtLevels}}
+\DoxyCodeLine{00483\ \ \ \ \ FileType\ fileType;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fileType}}
+\DoxyCodeLine{00484\ \ \ \ \ std::string\ filePath;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ path\ of\ the\ file}}
+\DoxyCodeLine{00485\ \ \ \ \ std::string\ fileName;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ name\ only}}
+\DoxyCodeLine{00486\ \ \ \ \ std::string\ fileNameExt;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ filename\ of\ the\ file\ (file\ name\ +\ extention)\ (but\ no\ path)}}
+\DoxyCodeLine{00487\ \ \ \ \ std::string\ fileNameExt\_optimized;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ optimized\ for\ search\ =>\ insensitivecase}}
+\DoxyCodeLine{00488\ \ \ \ \ std::string\ deviceInfos;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ quick\ infos\ to\ display\ after\ name\ for\ devices}}
+\DoxyCodeLine{00489\ \ \ \ \ std::string\ tooltipMessage;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ message\ to\ display\ on\ the\ tooltip,\ is\ not\ empty}}
+\DoxyCodeLine{00490\ \ \ \ \ int32\_t\ tooltipColumn\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ tooltip\ will\ appears\ only\ when\ the\ mouse\ is\ over\ the\ tooltipColumn\ if\ >\ -\/1}}
+\DoxyCodeLine{00491\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ fileSize\ \ \ \ \ \ \ =\ 0U;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ sorting\ operations}}
+\DoxyCodeLine{00492\ \ \ \ \ std::string\ formatedFileSize;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ size\ formated\ (10\ o,\ 10\ ko,\ 10\ mo,\ 10\ go)}}
+\DoxyCodeLine{00493\ \ \ \ \ std::string\ fileModifDate;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ user\ defined\ format\ of\ the\ date\ (data\ +\ time\ by\ default)}}
+\DoxyCodeLine{00494\ \ \ \ \ std::shared\_ptr<FileStyle>\ fileStyle\ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ style\ of\ the\ file}}
+\DoxyCodeLine{00495\ \textcolor{preprocessor}{\#ifdef\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00496\ \ \ \ \ IGFD\_Thumbnail\_Info\ thumbnailInfo;\ \ \textcolor{comment}{//\ structre\ for\ the\ display\ for\ image\ file\ tetxure}}
+\DoxyCodeLine{00497\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{keywordtype}{bool}\ SearchForTag(\textcolor{keyword}{const}\ std::string\&\ vTag)\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ will\ search\ a\ tag\ in\ fileNameExt\ and\ fileNameExt\_optimized}}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordtype}{bool}\ SearchForExt(\textcolor{keyword}{const}\ std::string\&\ vExt,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vIsCaseInsensitive,}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vMaxLevel\ =\ EXT\_MAX\_LEVEL)\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ will\ check\ the\ fileExtLevels\ levels\ for\ vExt,\ until\ vMaxLevel}}
+\DoxyCodeLine{00503\ \ \ \ \ \textcolor{keywordtype}{bool}\ SearchForExts(\textcolor{keyword}{const}\ std::string\&\ vComaSepExts,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vIsCaseInsensitive,}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vMaxLevel\ =\ EXT\_MAX\_LEVEL)\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ will\ check\ the\ fileExtLevels\ levels\ for\ vExts\ (ext\ are\ coma\ separated),\ until\ vMaxLevel}}
+\DoxyCodeLine{00505\ \ \ \ \ \textcolor{keywordtype}{bool}\ FinalizeFileTypeParsing(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vMaxDotToExtract);\ \ \ \ \ \ \ \textcolor{comment}{//\ finalize\ the\ parsing\ the\ file\ (only\ a\ file\ or\ link\ to\ file.\ no\ dir)}}
+\DoxyCodeLine{00506\ \};}
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00508\ \textcolor{keyword}{typedef}\ std::pair<std::string,\ std::string>\ PathDisplayedName;}
+\DoxyCodeLine{00509\ }
+\DoxyCodeLine{00510\ \textcolor{keyword}{class\ }IFileSystem\ \{}
+\DoxyCodeLine{00511\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~IFileSystem()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00513\ \ \ \ \ \textcolor{comment}{//\ say\ if\ a\ directory\ can\ be\ openened\ or\ for\ any\ reason\ locked}}
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ IsDirectoryCanBeOpened(\textcolor{keyword}{const}\ std::string\&\ vName)\ =\ 0;}
+\DoxyCodeLine{00515\ \ \ \ \ \textcolor{comment}{//\ say\ if\ a\ directory\ exist}}
+\DoxyCodeLine{00516\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ IsDirectoryExist(\textcolor{keyword}{const}\ std::string\&\ vName)\ =\ 0;}
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{comment}{//\ say\ if\ a\ file\ exist}}
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ IsFileExist(\textcolor{keyword}{const}\ std::string\&\ vName)\ =\ 0;}
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{comment}{//\ say\ if\ a\ directory\ was\ created,\ return\ false\ if\ vName\ is\ invalid\ or\ alreayd\ exist}}
+\DoxyCodeLine{00520\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ CreateDirectoryIfNotExist(\textcolor{keyword}{const}\ std::string\&\ vName)\ =\ 0;}
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{comment}{//\ extract\ the\ component\ of\ a\ file\ path\ name,\ like\ path,\ name,\ ext}}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keyword}{virtual}\ IGFD::Utils::PathStruct\ ParsePathFileName(\textcolor{keyword}{const}\ std::string\&\ vPathFileName)\ =\ 0;}
+\DoxyCodeLine{00523\ \ \ \ \ \textcolor{comment}{//\ will\ return\ a\ list\ of\ files\ inside\ a\ path}}
+\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<IGFD::FileInfos>\ ScanDirectory(\textcolor{keyword}{const}\ std::string\&\ vPath)\ =\ 0;}
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{comment}{//\ say\ if\ the\ path\ is\ well\ a\ directory}}
+\DoxyCodeLine{00526\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ IsDirectory(\textcolor{keyword}{const}\ std::string\&\ vFilePathName)\ =\ 0;}
+\DoxyCodeLine{00527\ \ \ \ \ \textcolor{comment}{//\ return\ a\ device\ list\ (<path,\ device\ name>)\ on\ windows,\ but\ can\ be\ used\ on\ other\ platforms\ for\ give\ to\ the\ user\ a\ list\ of\ devices\ paths.}}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<IGFD::PathDisplayedName>\ GetDevicesList()\ =\ 0;}
+\DoxyCodeLine{00529\ \};}
+\DoxyCodeLine{00530\ }
+\DoxyCodeLine{00531\ \textcolor{keyword}{class\ }IGFD\_API\ FileManager\ \{}
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }TestFileManager;}
+\DoxyCodeLine{00533\ \textcolor{keyword}{public}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ types}}
+\DoxyCodeLine{00534\ \ \ \ \ \textcolor{keyword}{enum\ class}\ SortingFieldEnum\ \{\ \ \textcolor{comment}{//\ sorting\ for\ filetering\ of\ the\ file\ lsit}}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ FIELD\_NONE\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ no\ sorting\ reference,\ result\ indetermined\ haha..}}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ FIELD\_FILENAME,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sorted\ by\ filename}}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ FIELD\_TYPE,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sorted\ by\ filetype}}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ FIELD\_SIZE,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sorted\ by\ filesize\ (formated\ file\ size)}}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ FIELD\_DATE,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sorted\ by\ filedate}}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ FIELD\_THUMBNAILS,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sorted\ by\ thumbnails\ (comparaison\ by\ width\ then\ by\ height)}}
+\DoxyCodeLine{00541\ \ \ \ \ \};}
+\DoxyCodeLine{00542\ }
+\DoxyCodeLine{00543\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00544\ \ \ \ \ std::string\ m\_CurrentPath;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ current\ path\ (to\ be\ decomposed\ in\ m\_CurrentPathDecomposition}}
+\DoxyCodeLine{00545\ \ \ \ \ std::vector<std::string>\ m\_CurrentPathDecomposition;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ part\ words}}
+\DoxyCodeLine{00546\ \ \ \ \ std::vector<std::shared\_ptr<FileInfos>\ >\ m\_FileList;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ base\ container}}
+\DoxyCodeLine{00547\ \ \ \ \ std::vector<std::shared\_ptr<FileInfos>\ >\ m\_FilteredFileList;\ \ \textcolor{comment}{//\ filtered\ container\ (search,\ sorting,\ etc..)}}
+\DoxyCodeLine{00548\ \ \ \ \ std::vector<std::shared\_ptr<FileInfos>\ >\ m\_PathList;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ base\ container\ for\ path\ selection}}
+\DoxyCodeLine{00549\ \ \ \ \ std::vector<std::shared\_ptr<FileInfos>\ >\ m\_FilteredPathList;\ \ \textcolor{comment}{//\ filtered\ container\ for\ path\ selection\ (search,\ sorting,\ etc..)}}
+\DoxyCodeLine{00550\ \ \ \ \ std::vector<std::string>::iterator\ m\_PopupComposedPath;\ \ \ \ \ \ \ \textcolor{comment}{//\ iterator\ on\ m\_CurrentPathDecomposition\ for\ Current\ Path\ popup}}
+\DoxyCodeLine{00551\ \ \ \ \ std::string\ m\_LastSelectedFileName;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ shift\ multi\ selection}}
+\DoxyCodeLine{00552\ \ \ \ \ std::set<std::string>\ m\_SelectedFileNames;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ user\ selection\ of\ FilePathNames}}
+\DoxyCodeLine{00553\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_CreateDirectoryMode\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ create\ directory\ widget}}
+\DoxyCodeLine{00554\ \ \ \ \ std::string\ m\_FileSystemName;}
+\DoxyCodeLine{00555\ \ \ \ \ std::unique\_ptr<IFileSystem>\ m\_FileSystemPtr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00557\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordtype}{bool}\ inputPathActivated\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ show\ input\ for\ path\ edition}}
+\DoxyCodeLine{00559\ \ \ \ \ \textcolor{keywordtype}{bool}\ devicesClicked\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ event\ when\ a\ drive\ button\ is\ clicked}}
+\DoxyCodeLine{00560\ \ \ \ \ \textcolor{keywordtype}{bool}\ pathClicked\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ event\ when\ a\ path\ button\ was\ clicked}}
+\DoxyCodeLine{00561\ \ \ \ \ \textcolor{keywordtype}{char}\ inputPathBuffer[MAX\_PATH\_BUFFER\_SIZE]\ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ \textcolor{comment}{//\ input\ path\ buffer\ for\ imgui\ widget\ input\ text\ (displayed\ in\ palce\ of\ composer)}}
+\DoxyCodeLine{00562\ \ \ \ \ \textcolor{keywordtype}{char}\ variadicBuffer[MAX\_FILE\_DIALOG\_NAME\_BUFFER]\ \ \ \ \ \ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ \textcolor{comment}{//\ called\ by\ m\_SelectableItem}}
+\DoxyCodeLine{00563\ \ \ \ \ \textcolor{keywordtype}{char}\ fileNameBuffer[MAX\_FILE\_DIALOG\_NAME\_BUFFER]\ \ \ \ \ \ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ \textcolor{comment}{//\ file\ name\ buffer\ in\ footer\ for\ imgui\ widget\ input\ text}}
+\DoxyCodeLine{00564\ \ \ \ \ \textcolor{keywordtype}{char}\ directoryNameBuffer[MAX\_FILE\_DIALOG\_NAME\_BUFFER]\ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ \textcolor{comment}{//\ directory\ name\ buffer\ (when\ in\ directory\ mode)}}
+\DoxyCodeLine{00565\ \ \ \ \ std::string\ headerFileName;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ detail\ view\ name\ of\ column\ file}}
+\DoxyCodeLine{00566\ \ \ \ \ std::string\ headerFileType;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ detail\ view\ name\ of\ column\ type}}
+\DoxyCodeLine{00567\ \ \ \ \ std::string\ headerFileSize;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ detail\ view\ name\ of\ column\ size}}
+\DoxyCodeLine{00568\ \ \ \ \ std::string\ headerFileDate;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ detail\ view\ name\ of\ column\ date\ +\ time}}
+\DoxyCodeLine{00569\ \textcolor{preprocessor}{\#ifdef\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00570\ \ \ \ \ std::string\ headerFileThumbnails;\ \ \textcolor{comment}{//\ detail\ view\ name\ of\ column\ thumbnails}}
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{keywordtype}{bool}\ sortingDirection[5]\ =\ \{\ \ \ \ \ \ \ \textcolor{comment}{//\ true\ =>\ Ascending,\ false\ =>\ Descending}}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ defaultSortOrderFilename,\ defaultSortOrderType,\ defaultSortOrderSize,\ defaultSortOrderDate,\ defaultSortOrderThumbnails\};}
+\DoxyCodeLine{00573\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keywordtype}{bool}\ sortingDirection[4]\ =\ \{\ \ \textcolor{comment}{//\ true\ =>\ Ascending,\ false\ =>\ Descending}}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ defaultSortOrderFilename,\ defaultSortOrderType,\ defaultSortOrderSize,\ defaultSortOrderDate\};}
+\DoxyCodeLine{00576\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00577\ \ \ \ \ SortingFieldEnum\ sortingField\ =\ SortingFieldEnum::FIELD\_FILENAME;\ \ \textcolor{comment}{//\ detail\ view\ sorting\ column}}
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keywordtype}{bool}\ showDevices\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ devices\ are\ shown\ (only\ on\ os\ windows)}}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ \ \ \ \ std::string\ dLGpath;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ base\ path\ set\ by\ user\ when\ OpenDialog\ was\ called}}
+\DoxyCodeLine{00581\ \ \ \ \ std::string\ dLGDefaultFileName;\ \ \ \ \ \ \ \textcolor{comment}{//\ base\ default\ file\ path\ name\ set\ by\ user\ when\ OpenDialog\ was\ called}}
+\DoxyCodeLine{00582\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ dLGcountSelectionMax\ =\ 1U;\ \ \ \ \ \textcolor{comment}{//\ 0\ for\ infinite\ \ \ \ \ \ \ \ \ \ \ \ \ //\ base\ max\ selection\ count\ set\ by\ user\ when\ OpenDialog\ was\ called}}
+\DoxyCodeLine{00583\ \ \ \ \ \textcolor{keywordtype}{bool}\ dLGDirectoryMode\ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ is\ directory\ mode\ (defiend\ like\ :\ dLGDirectoryMode\ =\ (filters.empty()))}}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \ \ \ \ std::string\ fsRoot;}
+\DoxyCodeLine{00586\ }
+\DoxyCodeLine{00587\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00588\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ m\_CompleteFileInfos(\textcolor{keyword}{const}\ std::shared\_ptr<FileInfos>\&\ vInfos);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ time\ and\ date\ infos\ of\ a\ file\ (detail\ view\ mode)}}
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_RemoveFileNameInSelection(\textcolor{keyword}{const}\ std::string\&\ vFileName);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ selection\ :\ remove\ a\ file\ name}}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_AddFileNameInSelection(\textcolor{keyword}{const}\ std::string\&\ vFileName,\ \textcolor{keywordtype}{bool}\ vSetLastSelectionFileName);\ \ \textcolor{comment}{//\ selection\ :\ add\ a\ file\ name}}
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_AddFile(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,\ \textcolor{keyword}{const}\ std::string\&\ vPath,\ \textcolor{keyword}{const}\ std::string\&\ vFileName,}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FileType\&\ vFileType);\ \ \textcolor{comment}{//\ add\ file\ called\ by\ scandir}}
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_AddPath(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,\ \textcolor{keyword}{const}\ std::string\&\ vPath,\ \textcolor{keyword}{const}\ std::string\&\ vFileName,}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FileType\&\ vFileType);\ \ \textcolor{comment}{//\ add\ file\ called\ by\ scandir}}
+\DoxyCodeLine{00595\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_ScanDirForPathSelection(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vPath);\ \ \textcolor{comment}{//\ scan\ the\ directory\ for\ retrieve\ the\ path\ list}}
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_OpenPathPopup(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>::iterator\ vPathIter);\ \ \ \textcolor{comment}{//\ open\ the\ popup\ list\ of\ paths}}
+\DoxyCodeLine{00599\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_SetCurrentPath(std::vector<std::string>::iterator\ vPathIter);\ \ \textcolor{comment}{//\ set\ the\ current\ path,\ update\ the\ path\ bar}}
+\DoxyCodeLine{00600\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_ApplyFilteringOnFileList(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,\ std::vector<std::shared\_ptr<FileInfos>\ >\&\ vFileInfosList,\ std::vector<std::shared\_ptr<FileInfos>\ >\&\ vFileInfosFilteredList);}
+\DoxyCodeLine{00601\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ M\_SortStrings(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vInsensitiveCase,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vDescendingOrder,\ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vA,\ \textcolor{keyword}{const}\ std::string\&\ vB);}
+\DoxyCodeLine{00604\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_SortFields(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,\ std::vector<std::shared\_ptr<FileInfos>\ >\&\ vFileInfosList,}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<FileInfos>\ >\&\ vFileInfosFilteredList);\ \ \textcolor{comment}{//\ will\ sort\ a\ column}}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_CompleteFileInfosWithUserFileAttirbutes(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,\ \textcolor{keyword}{const}\ std::shared\_ptr<FileInfos>\&\ vInfos);}
+\DoxyCodeLine{00607\ }
+\DoxyCodeLine{00608\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00609\ \ \ \ \ FileManager();}
+\DoxyCodeLine{00610\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsComposerEmpty()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00611\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ GetComposerSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00612\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsFileListEmpty()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00613\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsPathListEmpty()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00614\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsFilteredListEmpty()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00615\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsPathFilteredListEmpty()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00616\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ GetFullFileListSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00617\ \ \ \ \ std::shared\_ptr<FileInfos>\ GetFullFileAt(\textcolor{keywordtype}{size\_t}\ vIdx);}
+\DoxyCodeLine{00618\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ GetFilteredListSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ GetPathFilteredListSize()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00620\ \ \ \ \ std::shared\_ptr<FileInfos>\ GetFilteredFileAt(\textcolor{keywordtype}{size\_t}\ vIdx);}
+\DoxyCodeLine{00621\ \ \ \ \ std::shared\_ptr<FileInfos>\ GetFilteredPathAt(\textcolor{keywordtype}{size\_t}\ vIdx);}
+\DoxyCodeLine{00622\ \ \ \ \ std::vector<std::string>::iterator\ GetCurrentPopupComposedPath()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00623\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsFileNameSelected(\textcolor{keyword}{const}\ std::string\&\ vFileName);}
+\DoxyCodeLine{00624\ \ \ \ \ std::string\ GetBack();}
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordtype}{void}\ ClearComposer();}
+\DoxyCodeLine{00626\ \ \ \ \ \textcolor{keywordtype}{void}\ ClearFileLists();\ \ \textcolor{comment}{//\ clear\ file\ list,\ will\ destroy\ thumbnail\ textures}}
+\DoxyCodeLine{00627\ \ \ \ \ \textcolor{keywordtype}{void}\ ClearPathLists();\ \ \textcolor{comment}{//\ clear\ path\ list,\ will\ destroy\ thumbnail\ textures}}
+\DoxyCodeLine{00628\ \ \ \ \ \textcolor{keywordtype}{void}\ ClearAll();}
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{keywordtype}{void}\ ApplyFilteringOnFileList(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal);}
+\DoxyCodeLine{00630\ \ \ \ \ \textcolor{keywordtype}{void}\ SortFields(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ will\ sort\ a\ column}}
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{keywordtype}{void}\ OpenCurrentPath(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal);\ \ \ \textcolor{comment}{//\ set\ the\ path\ of\ the\ dialog,\ will\ launch\ the\ scandir\ for\ populate\ the\ file\ listview}}
+\DoxyCodeLine{00632\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetDevices();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ list\ devices}}
+\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keywordtype}{bool}\ CreateDir(\textcolor{keyword}{const}\ std::string\&\ vPath);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ a\ directory\ on\ the\ file\ system}}
+\DoxyCodeLine{00634\ \ \ \ \ std::string\ ComposeNewPath(std::vector<std::string>::iterator\ vIter);\ \ \textcolor{comment}{//\ compose\ a\ path\ from\ the\ compose\ path\ widget}}
+\DoxyCodeLine{00635\ \ \ \ \ \textcolor{keywordtype}{bool}\ SetPathOnParentDirectoryIfAny();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compose\ paht\ on\ parent\ directory}}
+\DoxyCodeLine{00636\ \ \ \ \ std::string\ GetCurrentPath();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ current\ path}}
+\DoxyCodeLine{00637\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCurrentPath(\textcolor{keyword}{const}\ std::string\&\ vCurrentPath);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ current\ path}}
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDefaultFileName(\textcolor{keyword}{const}\ std::string\&\ vFileName);}
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{keywordtype}{bool}\ SelectDirectory(\textcolor{keyword}{const}\ std::shared\_ptr<FileInfos>\&\ vInfos);\ \ \textcolor{comment}{//\ enter\ directory}}
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectAllFileNames();}
+\DoxyCodeLine{00641\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectFileName(\textcolor{keyword}{const}\ std::shared\_ptr<FileInfos>\&\ vInfos);\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ a\ filename\ in\ selection}}
+\DoxyCodeLine{00642\ \ \ \ \ \textcolor{keywordtype}{void}\ SelectOrDeselectFileName(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,\ \textcolor{keyword}{const}\ std::shared\_ptr<FileInfos>\&\ vInfos);\ \ \textcolor{comment}{//\ add/remove\ a\ filename\ in\ selection}}
+\DoxyCodeLine{00643\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCurrentDir(\textcolor{keyword}{const}\ std::string\&\ vPath);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ define\ current\ directory\ for\ scan}}
+\DoxyCodeLine{00644\ \ \ \ \ \textcolor{keywordtype}{void}\ ScanDir(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal,}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vPath);\ \ \textcolor{comment}{//\ scan\ the\ directory\ for\ retrieve\ the\ file\ list}}
+\DoxyCodeLine{00646\ \ \ \ \ std::string\ GetResultingPath();}
+\DoxyCodeLine{00647\ \ \ \ \ std::string\ GetResultingFileName(FileDialogInternal\&\ vFileDialogInternal,\ IGFD\_ResultMode\ vFlag);}
+\DoxyCodeLine{00648\ \ \ \ \ std::string\ GetResultingFilePathName(FileDialogInternal\&\ vFileDialogInternal,\ IGFD\_ResultMode\ vFlag);}
+\DoxyCodeLine{00649\ \ \ \ \ std::map<std::string,\ std::string>\ GetResultingSelection(FileDialogInternal\&\ vFileDialogInternal,\ IGFD\_ResultMode\ vFlag);}
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00651\ \ \ \ \ \textcolor{keywordtype}{void}\ DrawDirectoryCreation(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal);\ \ \textcolor{comment}{//\ draw\ directory\ creation\ widget}}
+\DoxyCodeLine{00652\ \ \ \ \ \textcolor{keywordtype}{void}\ DrawPathComposer(\textcolor{keyword}{const}\ FileDialogInternal\&\ vFileDialogInternal);}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ \ \ \ \ IFileSystem*\ GetFileSystemInstance()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_FileSystemPtr.get();}
+\DoxyCodeLine{00656\ \ \ \ \ \}}
+\DoxyCodeLine{00657\ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ GetFileSystemName()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_FileSystemName;}
+\DoxyCodeLine{00659\ \ \ \ \ \}}
+\DoxyCodeLine{00660\ \};}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}*\ UserDatas;}
+\DoxyCodeLine{00663\ \textcolor{keyword}{typedef}\ std::function<void(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ UserDatas,\ \textcolor{keywordtype}{bool}*)>\ PaneFun;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ side\ pane\ function\ binding}}
+\DoxyCodeLine{00664\ \textcolor{keyword}{typedef}\ std::function<bool(FileInfos*,\ UserDatas)>\ UserFileAttributesFun;\ \ \textcolor{comment}{//\ custom\ file\ Attributes\ call\ back,\ reject\ file\ if\ false}}
+\DoxyCodeLine{00665\ }
+\DoxyCodeLine{00666\ \textcolor{keyword}{struct\ }IGFD\_API\ FileDialogConfig\ \{}
+\DoxyCodeLine{00667\ \ \ \ \ std::string\ path;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ path}}
+\DoxyCodeLine{00668\ \ \ \ \ std::string\ fileName;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ defaut\ file\ name}}
+\DoxyCodeLine{00669\ \ \ \ \ std::string\ filePathName;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ not\ empty,\ the\ filename\ and\ the\ path\ will\ be\ obtained\ from\ filePathName}}
+\DoxyCodeLine{00670\ \ \ \ \ int32\_t\ countSelectionMax\ \ =\ 1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ count\ selection\ max,\ 0\ for\ infinite}}
+\DoxyCodeLine{00671\ \ \ \ \ UserDatas\ userDatas\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{nullptr};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ user\ datas\ (can\ be\ retrieved\ in\ pane)}}
+\DoxyCodeLine{00672\ \ \ \ \ ImGuiFileDialogFlags\ flags\ =\ ImGuiFileDialogFlags\_None;\ \ \textcolor{comment}{//\ ImGuiFileDialogFlags}}
+\DoxyCodeLine{00673\ \ \ \ \ PaneFun\ sidePane;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ side\ pane\ callback}}
+\DoxyCodeLine{00674\ \ \ \ \ \textcolor{keywordtype}{float}\ sidePaneWidth\ =\ 250.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ side\ pane\ width}}
+\DoxyCodeLine{00675\ \ \ \ \ UserFileAttributesFun\ userFileAttributes;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ user\ file\ Attibutes\ callback}}
+\DoxyCodeLine{00676\ \};}
+\DoxyCodeLine{00677\ }
+\DoxyCodeLine{00678\ \textcolor{keyword}{class\ }IGFD\_API\ FileDialogInternal\ \{}
+\DoxyCodeLine{00679\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00680\ \ \ \ \ FileManager\ fileManager;\ \ \ \ \ \ \textcolor{comment}{//\ the\ file\ manager}}
+\DoxyCodeLine{00681\ \ \ \ \ FilterManager\ filterManager;\ \ \textcolor{comment}{//\ the\ filter\ manager}}
+\DoxyCodeLine{00682\ \ \ \ \ SearchManager\ searchManager;\ \ \textcolor{comment}{//\ the\ search\ manager}}
+\DoxyCodeLine{00683\ }
+\DoxyCodeLine{00684\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00685\ \ \ \ \ std::string\ name;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ internal\ dialog\ name\ (title\ +\ \#\#word)}}
+\DoxyCodeLine{00686\ \ \ \ \ \textcolor{keywordtype}{bool}\ showDialog\ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ dialog\ is\ shown}}
+\DoxyCodeLine{00687\ \ \ \ \ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ dialogCenterPos\ \ \ \ =\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}(0,\ 0);\ \ \textcolor{comment}{//\ center\ pos\ for\ display\ the\ confirm\ overwrite\ dialog}}
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordtype}{int}\ lastImGuiFrameCount\ \ \ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ to\ be\ sure\ than\ only\ one\ dialog\ displayed\ per\ frame}}
+\DoxyCodeLine{00689\ \ \ \ \ \textcolor{keywordtype}{float}\ footerHeight\ \ \ \ \ \ \ \ =\ 0.0f;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ footer\ height}}
+\DoxyCodeLine{00690\ \ \ \ \ \textcolor{keywordtype}{bool}\ canWeContinue\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ events}}
+\DoxyCodeLine{00691\ \ \ \ \ \textcolor{keywordtype}{bool}\ okResultToConfirm\ \ \ \ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ to\ confim\ if\ ok\ for\ OverWrite}}
+\DoxyCodeLine{00692\ \ \ \ \ \textcolor{keywordtype}{bool}\ isOk\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ is\ dialog\ ok\ button\ click}}
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{keywordtype}{bool}\ fileInputIsActive\ \ \ \ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ when\ input\ text\ for\ file\ or\ directory\ is\ active}}
+\DoxyCodeLine{00694\ \ \ \ \ \textcolor{keywordtype}{bool}\ fileListViewIsActive\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ when\ list\ view\ is\ active}}
+\DoxyCodeLine{00695\ \ \ \ \ std::string\ dLGkey;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ dialog\ key}}
+\DoxyCodeLine{00696\ \ \ \ \ std::string\ dLGtitle;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ dialog\ title}}
+\DoxyCodeLine{00697\ \ \ \ \ \textcolor{keywordtype}{bool}\ needToExitDialog\ \ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ we\ need\ to\ exit\ the\ dialog}}
+\DoxyCodeLine{00698\ \ \ \ \ \textcolor{keywordtype}{bool}\ puUseCustomLocale\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ custom\ user\ locale}}
+\DoxyCodeLine{00699\ \ \ \ \ \textcolor{keywordtype}{int}\ localeCategory\ \ \ \ \ =\ LC\_ALL;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ locale\ category\ to\ use}}
+\DoxyCodeLine{00700\ \ \ \ \ std::string\ localeBegin;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ locale\ who\ will\ be\ applied\ at\ start\ of\ the\ display\ dialog}}
+\DoxyCodeLine{00701\ \ \ \ \ std::string\ localeEnd;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ locale\ who\ will\ be\ applaied\ at\ end\ of\ the\ display\ dialog}}
+\DoxyCodeLine{00702\ }
+\DoxyCodeLine{00703\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00704\ \ \ \ \ FileDialogConfig\ m\_DialogConfig;}
+\DoxyCodeLine{00705\ }
+\DoxyCodeLine{00706\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00707\ \ \ \ \ \textcolor{keywordtype}{void}\ NewFrame();\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ new\ frame,\ so\ maybe\ neded\ to\ do\ somethings,\ like\ reset\ events}}
+\DoxyCodeLine{00708\ \ \ \ \ \textcolor{keywordtype}{void}\ EndFrame();\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ end\ frame,\ so\ maybe\ neded\ to\ do\ somethings\ fater\ all}}
+\DoxyCodeLine{00709\ \ \ \ \ \textcolor{keywordtype}{void}\ ResetForNewDialog();\ \ \textcolor{comment}{//\ reset\ what\ is\ needed\ to\ reset\ for\ the\ openging\ of\ a\ new\ dialog}}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00711\ \ \ \ \ \textcolor{keywordtype}{void}\ configureDialog(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ open\ simple\ dialog}}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vKey,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ key\ dialog}}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vTitle,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ title}}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFilters,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ filters,\ if\ null,\ will\ display\ only\ directories}}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FileDialogConfig\&\ vConfig);\ \ \textcolor{comment}{//\ FileDialogConfig}}
+\DoxyCodeLine{00716\ \ \ \ \ \textcolor{keyword}{const}\ FileDialogConfig\&\ getDialogConfig()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00717\ \ \ \ \ FileDialogConfig\&\ getDialogConfigRef();}
+\DoxyCodeLine{00718\ \};}
+\DoxyCodeLine{00719\ }
+\DoxyCodeLine{00720\ \textcolor{keyword}{class\ }IGFD\_API\ ThumbnailFeature\ \{}
+\DoxyCodeLine{00721\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00722\ \ \ \ \ ThumbnailFeature();}
+\DoxyCodeLine{00723\ \ \ \ \ \string~ThumbnailFeature();}
+\DoxyCodeLine{00724\ }
+\DoxyCodeLine{00725\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_NewThumbnailFrame(FileDialogInternal\&\ vFileDialogInternal);}
+\DoxyCodeLine{00726\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_EndThumbnailFrame(FileDialogInternal\&\ vFileDialogInternal);}
+\DoxyCodeLine{00727\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_QuitThumbnailFrame(FileDialogInternal\&\ vFileDialogInternal);}
+\DoxyCodeLine{00728\ }
+\DoxyCodeLine{00729\ \textcolor{preprocessor}{\#ifdef\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00730\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00731\ \ \ \ \ \textcolor{keyword}{typedef}\ std::function<void(IGFD\_Thumbnail\_Info*)>\ CreateThumbnailFun;\ \ \ \textcolor{comment}{//\ texture\ 2d\ creation\ function\ binding}}
+\DoxyCodeLine{00732\ \ \ \ \ \textcolor{keyword}{typedef}\ std::function<void(IGFD\_Thumbnail\_Info*)>\ DestroyThumbnailFun;\ \ \textcolor{comment}{//\ texture\ 2d\ destroy\ function\ binding}}
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00734\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keyword}{enum\ class}\ DisplayModeEnum\ \{\ FILE\_LIST\ =\ 0,\ THUMBNAILS\_LIST,\ THUMBNAILS\_GRID\ \};}
+\DoxyCodeLine{00736\ }
+\DoxyCodeLine{00737\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00738\ \ \ \ \ uint32\_t\ m\_CountFiles\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0U;}
+\DoxyCodeLine{00739\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_IsWorking\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00740\ \ \ \ \ std::shared\_ptr<std::thread>\ m\_ThumbnailGenerationThread\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00741\ \ \ \ \ std::list<std::shared\_ptr<FileInfos>\ >\ m\_ThumbnailFileDatasToGet;\ \ \textcolor{comment}{//\ base\ container}}
+\DoxyCodeLine{00742\ \ \ \ \ std::mutex\ m\_ThumbnailFileDatasToGetMutex;}
+\DoxyCodeLine{00743\ \ \ \ \ std::condition\_variable\ m\_ThumbnailFileDatasToGetCv;}
+\DoxyCodeLine{00744\ \ \ \ \ std::list<std::shared\_ptr<FileInfos>\ >\ m\_ThumbnailToCreate;\ \ \textcolor{comment}{//\ base\ container}}
+\DoxyCodeLine{00745\ \ \ \ \ std::mutex\ m\_ThumbnailToCreateMutex;}
+\DoxyCodeLine{00746\ \ \ \ \ std::list<IGFD\_Thumbnail\_Info>\ m\_ThumbnailToDestroy;\ \ \textcolor{comment}{//\ base\ container}}
+\DoxyCodeLine{00747\ \ \ \ \ std::mutex\ m\_ThumbnailToDestroyMutex;}
+\DoxyCodeLine{00748\ }
+\DoxyCodeLine{00749\ \ \ \ \ CreateThumbnailFun\ m\_CreateThumbnailFun\ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00750\ \ \ \ \ DestroyThumbnailFun\ m\_DestroyThumbnailFun\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00751\ }
+\DoxyCodeLine{00752\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00753\ \ \ \ \ DisplayModeEnum\ m\_DisplayMode\ =\ DisplayModeEnum::FILE\_LIST;}
+\DoxyCodeLine{00754\ }
+\DoxyCodeLine{00755\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00756\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_VariadicProgressBar(\textcolor{keywordtype}{float}\ fraction,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\&\ size\_arg,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fmt,\ ...);}
+\DoxyCodeLine{00757\ }
+\DoxyCodeLine{00758\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00759\ \ \ \ \ \textcolor{comment}{//\ will\ be\ call\ in\ cpu\ zone\ (imgui\ computations,\ will\ call\ a\ texture\ file\ retrieval\ thread)}}
+\DoxyCodeLine{00760\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_StartThumbnailFileDatasExtraction();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ the\ thread\ who\ will\ get\ byte\ buffer\ from\ image\ files}}
+\DoxyCodeLine{00761\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_StopThumbnailFileDatasExtraction();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stop\ the\ thread\ who\ will\ get\ byte\ buffer\ from\ image\ files}}
+\DoxyCodeLine{00762\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_ThreadThumbnailFileDatasExtractionFunc();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ thread\ who\ will\ get\ byte\ buffer\ from\ image\ files}}
+\DoxyCodeLine{00763\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_DrawThumbnailGenerationProgress();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ a\ little\ progressbar\ who\ will\ display\ the\ texture\ gen\ status}}
+\DoxyCodeLine{00764\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_AddThumbnailToLoad(\textcolor{keyword}{const}\ std::shared\_ptr<FileInfos>\&\ vFileInfos);\ \ \textcolor{comment}{//\ add\ texture\ to\ load\ in\ the\ thread}}
+\DoxyCodeLine{00765\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_AddThumbnailToCreate(\textcolor{keyword}{const}\ std::shared\_ptr<FileInfos>\&\ vFileInfos);}
+\DoxyCodeLine{00766\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_AddThumbnailToDestroy(\textcolor{keyword}{const}\ IGFD\_Thumbnail\_Info\&\ vIGFD\_Thumbnail\_Info);}
+\DoxyCodeLine{00767\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_DrawDisplayModeToolBar();\ \ \textcolor{comment}{//\ draw\ display\ mode\ toolbar\ (file\ list,\ thumbnails\ list,\ small\ thumbnails\ grid,\ big\ thumbnails\ grid)}}
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_ClearThumbnails(FileDialogInternal\&\ vFileDialogInternal);}
+\DoxyCodeLine{00769\ }
+\DoxyCodeLine{00770\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00771\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCreateThumbnailCallback(\textcolor{keyword}{const}\ CreateThumbnailFun\&\ vCreateThumbnailFun);}
+\DoxyCodeLine{00772\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDestroyThumbnailCallback(\textcolor{keyword}{const}\ DestroyThumbnailFun\&\ vCreateThumbnailFun);}
+\DoxyCodeLine{00773\ }
+\DoxyCodeLine{00774\ \ \ \ \ \textcolor{comment}{//\ must\ be\ call\ in\ gpu\ zone\ (rendering,\ possibly\ one\ rendering\ thread)}}
+\DoxyCodeLine{00775\ \ \ \ \ \textcolor{keywordtype}{void}\ ManageGPUThumbnails();\ \ \textcolor{comment}{//\ in\ gpu\ rendering\ zone,\ whill\ create\ or\ destroy\ texture}}
+\DoxyCodeLine{00776\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00777\ \};}
+\DoxyCodeLine{00778\ }
+\DoxyCodeLine{00779\ \textcolor{keyword}{class\ }IGFD\_API\ PlacesFeature\ \{}
+\DoxyCodeLine{00780\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00781\ \ \ \ \ PlacesFeature();}
+\DoxyCodeLine{00782\ }
+\DoxyCodeLine{00783\ \textcolor{preprocessor}{\#ifdef\ USE\_PLACES\_FEATURE}}
+\DoxyCodeLine{00784\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00785\ \ \ \ \ \textcolor{keyword}{struct\ }PlaceStruct\ \{}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ std::string\ name;\ \ \textcolor{comment}{//\ name\ of\ the\ place}}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ todo:\ the\ path\ could\ be\ relative,\ better\ if\ the\ app\ is\ moved\ but\ place\ path\ can\ be\ outside\ of\ the\ app}}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ std::string\ path;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ absolute\ path\ of\ the\ place}}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ canBeSaved\ =\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ defined\ by\ code,\ can\ be\ used\ for\ prevent\ serialization\ /\ deserialization}}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ FileStyle\ style;}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ thickness\ =\ 0.0f;\ \ \textcolor{comment}{//\ when\ more\ than\ 0.0f,\ is\ a\ separator}}
+\DoxyCodeLine{00792\ \ \ \ \ \};}
+\DoxyCodeLine{00793\ }
+\DoxyCodeLine{00794\ \ \ \ \ \textcolor{keyword}{struct\ }GroupStruct\ \{}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ canBeSaved\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ defined\ by\ code,\ can\ be\ used\ for\ prevent\ serialization\ /\ deserialization}}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ displayOrder\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0U;\ \ \ \ \ \textcolor{comment}{//\ the\ display\ order\ will\ be\ usedf\ first,\ then\ alphanumeric}}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ defaultOpened\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ the\ group\ is\ opened\ by\ default}}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ canBeEdited\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ will\ show\ +/-\/\ button\ for\ add/remove\ place\ in\ the\ group}}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ editBuffer[MAX\_FILE\_DIALOG\_NAME\_BUFFER]\ =\ \textcolor{stringliteral}{"{}"{}};\ \ \ \ \ \textcolor{comment}{//\ temp\ buffer\ for\ name\ edition}}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ int32\_t\ selectedPlaceForEdition\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ -\/1;}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ ImGuiTreeNodeFlags\ collapsingHeaderFlag\ \ \ \ \ \ =\ ImGuiTreeNodeFlags\_None;}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_gui_list_clipper}{ImGuiListClipper}}\ clipper;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ list\ clipper\ of\ the\ grou}}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ std::string\ name;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ group\ name,\ will\ be\ displayed}}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ std::vector<PlaceStruct>\ places;\ \ \ \ \textcolor{comment}{//\ the\ places\ (name\ +\ path)}}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ AddPlace(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ a\ place\ by\ code}}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vPlaceName,\ \ \textcolor{comment}{//\ place\ name}}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vPlacePath,\ \ \textcolor{comment}{//\ place\ path}}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vCanBeSaved,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ prevent\ serialization}}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FileStyle\&\ vStyle\ =\ \{\});\ \ \textcolor{comment}{//\ style}}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddPlaceSeparator(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\&\ vThickness\ =\ 1.0f);}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ RemovePlace(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ a\ place\ by\ code,\ return\ true\ if\ succeed}}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vPlaceName);\ \ \textcolor{comment}{//\ place\ name\ to\ remove}}
+\DoxyCodeLine{00813\ \ \ \ \ \};}
+\DoxyCodeLine{00814\ }
+\DoxyCodeLine{00815\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00816\ \ \ \ \ std::unordered\_map<std::string,\ std::shared\_ptr<GroupStruct>\ >\ m\_Groups;}
+\DoxyCodeLine{00817\ \ \ \ \ std::map<size\_t,\ std::weak\_ptr<GroupStruct>\ >\ m\_OrderedGroups;}
+\DoxyCodeLine{00818\ }
+\DoxyCodeLine{00819\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00820\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_PlacesPaneWidth\ =\ 200.0f;}
+\DoxyCodeLine{00821\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_PlacesPaneShown\ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00823\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00824\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_InitPlaces(FileDialogInternal\&\ vFileDialogInternal);}
+\DoxyCodeLine{00825\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_DrawPlacesButton();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ place\ button}}
+\DoxyCodeLine{00826\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_DrawPlacesPane(FileDialogInternal\&\ vFileDialogInternal,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\&\ vSize);\ \ \textcolor{comment}{//\ draw\ place\ Pane}}
+\DoxyCodeLine{00827\ }
+\DoxyCodeLine{00828\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00829\ \ \ \ \ std::string\ SerializePlaces(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ serialize\ place\ :\ return\ place\ buffer\ to\ save\ in\ a\ file}}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vForceSerialisationForAll\ =\ \textcolor{keyword}{true});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ avoid\ serialization\ of\ places\ with\ flag\ 'canBeSaved\ to\ false'}}
+\DoxyCodeLine{00831\ \ \ \ \ \textcolor{keywordtype}{void}\ DeserializePlaces(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ deserialize\ place\ :\ load\ place\ buffer\ to\ load\ in\ the\ dialog\ (saved\ from}}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vPlaces);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ previous\ use\ with\ SerializePlaces())\ place\ buffer\ to\ load}}
+\DoxyCodeLine{00833\ \ \ \ \ \textcolor{keywordtype}{bool}\ AddPlacesGroup(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ a\ group}}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vGroupName,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ group\ name}}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ vDisplayOrder,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ display\ roder\ of\ the\ group}}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vCanBeEdited\ \ \ \ \ =\ \textcolor{keyword}{false},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ let\ the\ user\ add/remove\ place\ in\ the\ group}}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vOpenedByDefault\ =\ \textcolor{keyword}{true});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hte\ group\ is\ opened\ by\ default}}
+\DoxyCodeLine{00838\ \ \ \ \ \textcolor{keywordtype}{bool}\ RemovePlacesGroup(\textcolor{keyword}{const}\ std::string\&\ vGroupName);\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ the\ group}}
+\DoxyCodeLine{00839\ \ \ \ \ GroupStruct*\ GetPlacesGroupPtr(\textcolor{keyword}{const}\ std::string\&\ vGroupName);\ \ \textcolor{comment}{//\ get\ the\ group,\ if\ not\ existed,\ will\ be\ created}}
+\DoxyCodeLine{00840\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ USE\_PLACES\_FEATURE}}
+\DoxyCodeLine{00841\ \};}
+\DoxyCodeLine{00842\ }
+\DoxyCodeLine{00843\ \textcolor{comment}{//\ file\ localization\ by\ input\ chat\ //\ widget\ flashing}}
+\DoxyCodeLine{00844\ \textcolor{keyword}{class\ }IGFD\_API\ KeyExplorerFeature\ \{}
+\DoxyCodeLine{00845\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00846\ \ \ \ \ KeyExplorerFeature();}
+\DoxyCodeLine{00847\ }
+\DoxyCodeLine{00848\ \textcolor{preprocessor}{\#ifdef\ USE\_EXPLORATION\_BY\_KEYS}}
+\DoxyCodeLine{00849\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00850\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_LocateFileByInputChar\_lastFound\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00851\ \ \ \ \ ImWchar\ m\_LocateFileByInputChar\_lastChar\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00852\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_FlashAlpha\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0.0f;\ \ \textcolor{comment}{//\ flash\ when\ select\ by\ char}}
+\DoxyCodeLine{00853\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_FlashAlphaAttenInSecs\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 1.0f;\ \ \textcolor{comment}{//\ fps\ display\ dependant}}
+\DoxyCodeLine{00854\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_LocateFileByInputChar\_InputQueueCharactersSize\ =\ 0;}
+\DoxyCodeLine{00855\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_FlashedItem\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ \textcolor{comment}{//\ flash\ when\ select\ by\ char}}
+\DoxyCodeLine{00856\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_LocateFileByInputChar\_lastFileIdx\ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00857\ }
+\DoxyCodeLine{00858\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00859\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_LocateByInputKey(FileDialogInternal\&\ vFileDialogInternal);\ \ \textcolor{comment}{//\ select\ a\ file\ line\ in\ listview\ according\ to\ char\ key}}
+\DoxyCodeLine{00860\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_LocateItem\_Loop(FileDialogInternal\&\ vFileDialogInternal,}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImWchar\ vC);\ \ \textcolor{comment}{//\ restrat\ for\ start\ of\ list\ view\ if\ not\ found\ a\ corresponding\ file}}
+\DoxyCodeLine{00862\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_ExploreWithkeys(FileDialogInternal\&\ vFileDialogInternal,}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiID\ vListViewID);\ \ \textcolor{comment}{//\ select\ file/directory\ line\ in\ listview\ accroding\ to\ up/down\ enter/backspace\ keys}}
+\DoxyCodeLine{00864\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_StartFlashItem(\textcolor{keywordtype}{size\_t}\ vIdx);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ define\ than\ an\ item\ must\ be\ flashed}}
+\DoxyCodeLine{00865\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_BeginFlashItem(\textcolor{keywordtype}{size\_t}\ vIdx);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ the\ flashing\ of\ a\ line\ in\ lsit\ view}}
+\DoxyCodeLine{00866\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ m\_EndFlashItem();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ end\ the\ fleshing\ accrdoin\ to\ var\ m\_FlashAlphaAttenInSecs}}
+\DoxyCodeLine{00867\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ m\_FlashableSelectable(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ label,\ \textcolor{keywordtype}{bool}\ selected\ =\ \textcolor{keyword}{false},\ ImGuiSelectableFlags\ flags\ =\ 0,\ \textcolor{keywordtype}{bool}\ vFlashing\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\&\ size\ =\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}(0,\ 0));\ \ \textcolor{comment}{//\ custom\ flashing\ selectable\ widgets,\ for\ flash\ the\ selected\ line\ in\ a\ short\ time}}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00870\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00871\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFlashingAttenuationInSeconds(\ \ \textcolor{comment}{//\ set\ the\ flashing\ time\ of\ the\ line\ in\ file\ list\ when\ use\ exploration\ keys}}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ vAttenValue);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ attenuation\ (from\ flashed\ to\ not\ flashed)\ in\ seconds}}
+\DoxyCodeLine{00873\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ USE\_EXPLORATION\_BY\_KEYS}}
+\DoxyCodeLine{00874\ \};}
+\DoxyCodeLine{00875\ }
+\DoxyCodeLine{00876\ \textcolor{keyword}{class\ }IGFD\_API\ FileDialog\ :\ \textcolor{keyword}{public}\ PlacesFeature,\ \textcolor{keyword}{public}\ KeyExplorerFeature,\ \textcolor{keyword}{public}\ ThumbnailFeature\ \{}
+\DoxyCodeLine{00877\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00878\ \ \ \ \ FileDialogInternal\ m\_FileDialogInternal;}
+\DoxyCodeLine{00879\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_list_clipper}{ImGuiListClipper}}\ m\_FileListClipper;}
+\DoxyCodeLine{00880\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_list_clipper}{ImGuiListClipper}}\ m\_PathListClipper;}
+\DoxyCodeLine{00881\ \ \ \ \ \textcolor{keywordtype}{float}\ prOkCancelButtonWidth\ =\ 0.0f;}
+\DoxyCodeLine{00882\ \ \ \ \ ImGuiWindowFlags\ m\_CurrentDisplayedFlags;}
+\DoxyCodeLine{00883\ }
+\DoxyCodeLine{00884\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00885\ \ \ \ \ \textcolor{comment}{//\ Singleton\ for\ easier\ accces\ form\ anywhere\ but\ only\ one\ dialog\ at\ a\ time}}
+\DoxyCodeLine{00886\ \ \ \ \ \textcolor{comment}{//\ vCopy\ or\ vForce\ can\ be\ used\ for\ share\ a\ memory\ pointer\ in\ a\ new\ memory\ space\ like\ a\ dll\ module}}
+\DoxyCodeLine{00887\ \ \ \ \ \textcolor{keyword}{static}\ FileDialog*\ Instance(FileDialog*\ vCopy\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{bool}\ vForce\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ FileDialog\ \_instance;}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ FileDialog*\ \_instance\_copy\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vCopy\ ||\ vForce)\ \{}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \ \ \ \ \_instance\_copy\ =\ vCopy;}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_instance\_copy)\ \{}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_instance\_copy;}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&\_instance;}
+\DoxyCodeLine{00897\ \ \ \ \ \}}
+\DoxyCodeLine{00898\ }
+\DoxyCodeLine{00899\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00900\ \ \ \ \ FileDialog();\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ Constructor.\ can\ be\ used\ for\ have\ many\ dialog\ at\ same\ time\ (not\ possible\ with\ singleton)}}
+\DoxyCodeLine{00901\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~FileDialog();\ \ \textcolor{comment}{//\ ImGuiFileDialog\ Destructor}}
+\DoxyCodeLine{00902\ }
+\DoxyCodeLine{00903\ \ \ \ \ \textcolor{comment}{//\ \ standard\ dialog}}
+\DoxyCodeLine{00904\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OpenDialog(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ open\ simple\ dialog}}
+\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vKey,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ key\ dialog}}
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vTitle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ title}}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFilters,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ filters,\ if\ null,\ will\ display\ only\ directories}}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FileDialogConfig\&\ vConfig\ =\ \{\});\ \ \textcolor{comment}{//\ FileDialogConfig}}
+\DoxyCodeLine{00909\ }
+\DoxyCodeLine{00910\ \ \ \ \ \textcolor{comment}{//\ Display\ /\ Close\ dialog\ form}}
+\DoxyCodeLine{00911\ \ \ \ \ \textcolor{keywordtype}{bool}\ Display(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Display\ the\ dialog.\ return\ true\ if\ a\ result\ was\ obtained\ (Ok\ or\ not)}}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vKey,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ key\ dialog\ to\ display\ (if\ not\ the\ same\ key\ as\ defined\ by\ OpenDialog\ =>\ no\ opening)}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ ImGuiWindowFlags\ vFlags\ =\ ImGuiWindowFlags\_NoCollapse,\ \ \textcolor{comment}{//\ ImGuiWindowFlags}}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vMinSize\ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}(0,\ 0),\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mininmal\ size\ contraint\ for\ the\ ImGuiWindow}}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vMaxSize\ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}(FLT\_MAX,\ FLT\_MAX));\ \ \ \ \textcolor{comment}{//\ maximal\ size\ contraint\ for\ the\ ImGuiWindow}}
+\DoxyCodeLine{00916\ }
+\DoxyCodeLine{00917\ \ \ \ \ \textcolor{keywordtype}{void}\ Close();\ \ \textcolor{comment}{//\ close\ dialog}}
+\DoxyCodeLine{00918\ }
+\DoxyCodeLine{00919\ \ \ \ \ \textcolor{comment}{//\ queries}}
+\DoxyCodeLine{00920\ \ \ \ \ \textcolor{keywordtype}{bool}\ WasOpenedThisFrame(\textcolor{keyword}{const}\ std::string\&\ vKey)\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ say\ if\ the\ dialog\ key\ was\ already\ opened\ this\ frame}}
+\DoxyCodeLine{00921\ \ \ \ \ \textcolor{keywordtype}{bool}\ WasOpenedThisFrame()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ say\ if\ the\ dialog\ was\ already\ opened\ this\ frame}}
+\DoxyCodeLine{00922\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsOpened(\textcolor{keyword}{const}\ std::string\&\ vKey)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ say\ if\ the\ key\ is\ opened}}
+\DoxyCodeLine{00923\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsOpened()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ say\ if\ the\ dialog\ is\ opened\ somewhere}}
+\DoxyCodeLine{00924\ \ \ \ \ std::string\ GetOpenedKey()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ the\ dialog\ key\ who\ is\ opened,\ return\ nothing\ if\ not\ opened}}
+\DoxyCodeLine{00925\ }
+\DoxyCodeLine{00926\ \ \ \ \ \textcolor{comment}{//\ get\ result}}
+\DoxyCodeLine{00927\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsOk()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ true\ =>\ Dialog\ Closed\ with\ Ok\ result\ /\ false\ :\ Dialog\ closed\ with\ cancel\ result}}
+\DoxyCodeLine{00928\ \ \ \ \ std::map<std::string,\ std::string>\ GetSelection(IGFD\_ResultMode\ vFlag\ =\ IGFD\_ResultMode\_KeepInputFile);\ \ \textcolor{comment}{//\ Open\ File\ behavior\ :\ will\ return\ selection\ via\ a}}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ map<FileName,\ FilePathName>}}
+\DoxyCodeLine{00930\ \ \ \ \ std::string\ GetFilePathName(IGFD\_ResultMode\ vFlag\ =\ IGFD\_ResultMode\_AddIfNoFileExt);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ File\ behavior\ :\ will\ return\ the\ current\ file\ path\ name}}
+\DoxyCodeLine{00931\ \ \ \ \ std::string\ GetCurrentFileName(IGFD\_ResultMode\ vFlag\ =\ IGFD\_ResultMode\_AddIfNoFileExt);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ File\ behavior\ :\ will\ return\ the\ content\ file\ name}}
+\DoxyCodeLine{00932\ \ \ \ \ std::string\ GetCurrentPath();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ will\ return\ current\ file\ path}}
+\DoxyCodeLine{00933\ \ \ \ \ std::string\ GetCurrentFilter();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ will\ return\ current\ filter}}
+\DoxyCodeLine{00934\ \ \ \ \ UserDatas\ GetUserDatas()\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ will\ return\ user\ datas\ send\ with\ Open\ Dialog}}
+\DoxyCodeLine{00935\ }
+\DoxyCodeLine{00936\ \ \ \ \ \textcolor{comment}{//\ file\ style\ by\ extentions}}
+\DoxyCodeLine{00937\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFileStyle(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SetExtention\ datas\ for\ have\ custom\ display\ of\ particular\ file\ type}}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ IGFD\_FileStyleFlags\&\ vFlags,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ style}}
+\DoxyCodeLine{00939\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vCriteria,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extention\ filter\ to\ tune}}
+\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FileStyle\&\ vInfos);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Filter\ Extention\ Struct\ who\ contain\ Color\ and\ Icon/Text\ for\ the\ display\ of\ the}}
+\DoxyCodeLine{00941\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ with\ extention\ filter}}
+\DoxyCodeLine{00942\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFileStyle(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SetExtention\ datas\ for\ have\ custom\ display\ of\ particular\ file\ type}}
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ IGFD\_FileStyleFlags\&\ vFlags,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ style}}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vCriteria,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extention\ filter\ to\ tune}}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}\&\ vColor,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ color\ for\ the\ display\ of\ the\ file\ with\ extention\ filter}}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vIcon\ =\ \textcolor{stringliteral}{"{}"{}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ text\ or\ icon\ of\ the\ file\ with\ extention\ filter}}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}*\ vFont\ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{nullptr});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ font}}
+\DoxyCodeLine{00948\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFileStyle(FileStyle::FileStyleFunctor\ vFunctor);\ \ \textcolor{comment}{//\ set\ file\ style\ via\ lambda\ function}}
+\DoxyCodeLine{00949\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetFileStyle(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GetExtention\ datas.\ return\ true\ is\ extention\ exist}}
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ IGFD\_FileStyleFlags\&\ vFlags,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ file\ style}}
+\DoxyCodeLine{00951\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vCriteria,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extention\ filter\ (same\ as\ used\ in\ SetExtentionInfos)}}
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}*\ vOutColor,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ color\ to\ retrieve}}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ std::string*\ vOutIcon\ =\ \textcolor{keyword}{nullptr},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ icon\ or\ text\ to\ retrieve}}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}**\ vOutFont\ \ \ \ \ =\ \textcolor{keyword}{nullptr});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ font\ to\ retreive}}
+\DoxyCodeLine{00955\ \ \ \ \ \textcolor{keywordtype}{void}\ ClearFilesStyle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ clear\ extentions\ setttings}}
+\DoxyCodeLine{00956\ }
+\DoxyCodeLine{00957\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLocales(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ locales\ to\ use\ before\ and\ after\ the\ dialog\ display}}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ vLocaleCategory,\ \ \ \ \ \ \ \textcolor{comment}{//\ set\ local\ category}}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vLocaleBegin,\ \ \textcolor{comment}{//\ locale\ to\ use\ at\ begining\ of\ the\ dialog\ display}}
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vLocaleEnd);\ \ \ \textcolor{comment}{//\ locale\ to\ use\ at\ the\ end\ of\ the\ dialog\ display}}
+\DoxyCodeLine{00961\ }
+\DoxyCodeLine{00962\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00963\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_NewFrame();\ \ \ \textcolor{comment}{//\ new\ frame\ just\ at\ begining\ of\ display}}
+\DoxyCodeLine{00964\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_EndFrame();\ \ \ \textcolor{comment}{//\ end\ frame\ just\ at\ end\ of\ display}}
+\DoxyCodeLine{00965\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_QuitFrame();\ \ \textcolor{comment}{//\ quit\ frame\ when\ qui\ quit\ the\ dialog}}
+\DoxyCodeLine{00966\ }
+\DoxyCodeLine{00967\ \ \ \ \ \textcolor{comment}{//\ others}}
+\DoxyCodeLine{00968\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_Confirm\_Or\_OpenOverWriteFileDialog\_IfNeeded(\textcolor{keywordtype}{bool}\ vLastAction,\ ImGuiWindowFlags\ vFlags);\ \ \textcolor{comment}{//\ treatment\ of\ the\ result,\ start\ the\ confirm\ to\ overwrite\ dialog}}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ needed\ (if\ defined\ with\ flag)}}
+\DoxyCodeLine{00970\ }
+\DoxyCodeLine{00971\ \ \ \ \ \textcolor{comment}{//\ dialog\ parts}}
+\DoxyCodeLine{00972\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_DrawHeader();\ \ \ \textcolor{comment}{//\ draw\ header\ part\ of\ the\ dialog\ (place\ btn,\ dir\ creation,\ path\ composer,\ search}}
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bar)}}
+\DoxyCodeLine{00974\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_DrawContent();\ \ \textcolor{comment}{//\ draw\ content\ part\ of\ the\ dialog\ (place\ pane,\ file\ list,\ side\ pane)}}
+\DoxyCodeLine{00975\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ m\_DrawFooter();\ \ \ \textcolor{comment}{//\ draw\ footer\ part\ of\ the\ dialog\ (file\ field,\ fitler\ combobox,\ ok/cancel\ btn's)}}
+\DoxyCodeLine{00976\ }
+\DoxyCodeLine{00977\ \ \ \ \ \textcolor{comment}{//\ widgets\ components}}
+\DoxyCodeLine{00978\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_DisplayPathPopup(\mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vSize);\ \ \textcolor{comment}{//\ draw\ path\ popup\ when\ click\ on\ a\ \(\backslash\)\ or\ /}}
+\DoxyCodeLine{00979\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ m\_DrawValidationButtons();\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ validations\ btns,\ ok,\ cancel\ buttons}}
+\DoxyCodeLine{00980\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ m\_DrawOkButton();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ ok\ button}}
+\DoxyCodeLine{00981\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ m\_DrawCancelButton();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ cancel\ button}}
+\DoxyCodeLine{00982\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_DrawSidePane(\textcolor{keywordtype}{float}\ vHeight);\ \ \ \ \ \textcolor{comment}{//\ draw\ side\ pane}}
+\DoxyCodeLine{00983\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ m\_Selectable(\textcolor{keywordtype}{int}\ vRowIdx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vLabel,\ \textcolor{keywordtype}{bool}\ vSelected,\ ImGuiSelectableFlags\ vFlags,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\&\ vSizeArg);}
+\DoxyCodeLine{00984\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_SelectableItem(\textcolor{keywordtype}{int}\ vRowIdx,\ std::shared\_ptr<FileInfos>\ vInfos,\ \textcolor{keywordtype}{bool}\ vSelected,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFmt,\ ...);\ \ \textcolor{comment}{//\ draw\ a\ custom\ selectable\ behavior\ item}}
+\DoxyCodeLine{00985\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_drawColumnText(\textcolor{keywordtype}{int}\ vColIdx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vLabel,\ \textcolor{keywordtype}{bool}\ vSelected,\ \textcolor{keywordtype}{bool}\ vHovered);}
+\DoxyCodeLine{00986\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_DrawFileListView(\mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vSize);\ \ \textcolor{comment}{//\ draw\ file\ list\ view\ (default\ mode)}}
+\DoxyCodeLine{00987\ }
+\DoxyCodeLine{00988\ \textcolor{preprocessor}{\#ifdef\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00989\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_DrawThumbnailsListView(\mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vSize);\ \ \textcolor{comment}{//\ draw\ file\ list\ view\ with\ small\ thumbnails\ on\ the\ same\ line}}
+\DoxyCodeLine{00990\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ m\_DrawThumbnailsGridView(\mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vSize);\ \ \textcolor{comment}{//\ draw\ a\ grid\ of\ small\ thumbnails}}
+\DoxyCodeLine{00991\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00992\ }
+\DoxyCodeLine{00993\ \ \ \ \ \textcolor{comment}{//\ to\ be\ called\ only\ by\ these\ function\ and\ theirs\ overrides}}
+\DoxyCodeLine{00994\ \ \ \ \ \textcolor{comment}{//\ -\/\ m\_DrawFileListView}}
+\DoxyCodeLine{00995\ \ \ \ \ \textcolor{comment}{//\ -\/\ m\_DrawThumbnailsListView}}
+\DoxyCodeLine{00996\ \ \ \ \ \textcolor{comment}{//\ -\/\ m\_DrawThumbnailsGridView}}
+\DoxyCodeLine{00997\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_BeginFileColorIconStyle(std::shared\_ptr<FileInfos>\ vFileInfos,\ \textcolor{keywordtype}{bool}\&\ vOutShowColor,\ std::string\&\ vOutStr,}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}**\ vOutFont);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ begin\ style\ apply\ of\ filter\ with\ color\ an\ icon\ if\ any}}
+\DoxyCodeLine{00999\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_EndFileColorIconStyle(\textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ vShowColor,\ \mbox{\hyperlink{struct_im_font}{ImFont}}*\ vFont);\ \ \textcolor{comment}{//\ end\ style\ apply\ of\ filter}}
+\DoxyCodeLine{01000\ }
+\DoxyCodeLine{01001\ \ \ \ \ \textcolor{keywordtype}{void}\ m\_DisplayFileInfosTooltip(\textcolor{keyword}{const}\ int32\_t\&\ vRowIdx,\ \textcolor{keyword}{const}\ int32\_t\&\ vColumnIdx,\ std::shared\_ptr<FileInfos>\ vFileInfos);}
+\DoxyCodeLine{01002\ \};}
+\DoxyCodeLine{01003\ }
+\DoxyCodeLine{01004\ \}\ \ \textcolor{comment}{//\ namespace\ IGFD}}
+\DoxyCodeLine{01005\ }
+\DoxyCodeLine{01006\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_\_cplusplus}}
+\DoxyCodeLine{01007\ }
+\DoxyCodeLine{01011\ }
+\DoxyCodeLine{01012\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{01013\ \textcolor{preprocessor}{\#define\ IGFD\_C\_API\ extern\ "{}C"{}\ IGFD\_API}}
+\DoxyCodeLine{01014\ \textcolor{keyword}{typedef}\ IGFD::UserDatas\ IGFDUserDatas;}
+\DoxyCodeLine{01015\ \textcolor{keyword}{typedef}\ IGFD::PaneFun\ IGFDPaneFun;}
+\DoxyCodeLine{01016\ \textcolor{keyword}{typedef}\ IGFD::FileDialog\ ImGuiFileDialog;}
+\DoxyCodeLine{01017\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{//\ \_\_cplusplus}}
+\DoxyCodeLine{01018\ \textcolor{preprocessor}{\#define\ IGFD\_C\_API}}
+\DoxyCodeLine{01019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }ImGuiFileDialog\ ImGuiFileDialog;}
+\DoxyCodeLine{01020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_g_f_d___selection___pair}{IGFD\_Selection\_Pair}}\ \mbox{\hyperlink{struct_i_g_f_d___selection___pair}{IGFD\_Selection\_Pair}};}
+\DoxyCodeLine{01021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_g_f_d___selection}{IGFD\_Selection}}\ \mbox{\hyperlink{struct_i_g_f_d___selection}{IGFD\_Selection}};}
+\DoxyCodeLine{01022\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_\_cplusplus}}
+\DoxyCodeLine{01023\ }
+\DoxyCodeLine{01024\ \textcolor{keyword}{typedef}\ void\ (*IGFD\_PaneFun)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\ \textcolor{keywordtype}{void}*,\ \textcolor{keywordtype}{bool}*);\ \ \textcolor{comment}{//\ callback\ fucntion\ for\ display\ the\ pane}}
+\DoxyCodeLine{01025\ }
+\DoxyCodeLine{01026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_g_f_d___file_dialog___config}{IGFD\_FileDialog\_Config}}\ \{}
+\DoxyCodeLine{01027\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ path}}
+\DoxyCodeLine{01028\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fileName;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ defaut\ file\ name}}
+\DoxyCodeLine{01029\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ filePathName;\ \ \ \ \textcolor{comment}{//\ if\ not\ empty,\ the\ filename\ and\ the\ path\ will\ be\ obtained\ from\ filePathName}}
+\DoxyCodeLine{01030\ \ \ \ \ int32\_t\ countSelectionMax;\ \ \ \textcolor{comment}{//\ count\ selection\ max}}
+\DoxyCodeLine{01031\ \ \ \ \ \textcolor{keywordtype}{void}*\ userDatas;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ user\ datas\ (can\ be\ retrieved\ in\ pane)}}
+\DoxyCodeLine{01032\ \ \ \ \ IGFD\_PaneFun\ sidePane;\ \ \ \ \ \ \ \textcolor{comment}{//\ side\ pane\ callback}}
+\DoxyCodeLine{01033\ \ \ \ \ \textcolor{keywordtype}{float}\ sidePaneWidth;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ side\ pane\ width\};}}
+\DoxyCodeLine{01034\ \ \ \ \ ImGuiFileDialogFlags\ flags;\ \ \textcolor{comment}{//\ ImGuiFileDialogFlags}}
+\DoxyCodeLine{01035\ \};}
+\DoxyCodeLine{01036\ IGFD\_C\_API\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_g_f_d___file_dialog___config}{IGFD\_FileDialog\_Config}}\ IGFD\_FileDialog\_Config\_Get();\ \ \textcolor{comment}{//\ return\ an\ initialized\ IGFD\_FileDialog\_Config}}
+\DoxyCodeLine{01037\ }
+\DoxyCodeLine{01038\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_g_f_d___selection___pair}{IGFD\_Selection\_Pair}}\ \{}
+\DoxyCodeLine{01039\ \ \ \ \ \textcolor{keywordtype}{char}*\ fileName;}
+\DoxyCodeLine{01040\ \ \ \ \ \textcolor{keywordtype}{char}*\ filePathName;}
+\DoxyCodeLine{01041\ \};}
+\DoxyCodeLine{01042\ }
+\DoxyCodeLine{01043\ IGFD\_C\_API\ \mbox{\hyperlink{struct_i_g_f_d___selection___pair}{IGFD\_Selection\_Pair}}\ IGFD\_Selection\_Pair\_Get();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ an\ initialized\ IGFD\_Selection\_Pair}}
+\DoxyCodeLine{01044\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_Selection\_Pair\_DestroyContent(\mbox{\hyperlink{struct_i_g_f_d___selection___pair}{IGFD\_Selection\_Pair}}*\ vSelection\_Pair);\ \ \textcolor{comment}{//\ destroy\ the\ content\ of\ a\ IGFD\_Selection\_Pair}}
+\DoxyCodeLine{01045\ }
+\DoxyCodeLine{01046\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_g_f_d___selection}{IGFD\_Selection}}\ \{}
+\DoxyCodeLine{01047\ \ \ \ \ \mbox{\hyperlink{struct_i_g_f_d___selection___pair}{IGFD\_Selection\_Pair}}*\ table;\ \ \textcolor{comment}{//\ 0}}
+\DoxyCodeLine{01048\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0U}}
+\DoxyCodeLine{01049\ \};}
+\DoxyCodeLine{01050\ }
+\DoxyCodeLine{01051\ IGFD\_C\_API\ \mbox{\hyperlink{struct_i_g_f_d___selection}{IGFD\_Selection}}\ IGFD\_Selection\_Get();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ an\ initialized\ IGFD\_Selection}}
+\DoxyCodeLine{01052\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_Selection\_DestroyContent(\mbox{\hyperlink{struct_i_g_f_d___selection}{IGFD\_Selection}}*\ vSelection);\ \ \textcolor{comment}{//\ destroy\ the\ content\ of\ a\ IGFD\_Selection}}
+\DoxyCodeLine{01053\ }
+\DoxyCodeLine{01054\ \textcolor{comment}{//\ constructor\ /\ destructor}}
+\DoxyCodeLine{01055\ IGFD\_C\_API\ ImGuiFileDialog*\ IGFD\_Create(\textcolor{keywordtype}{void});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ the\ filedialog\ context}}
+\DoxyCodeLine{01056\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_Destroy(ImGuiFileDialog*\ vContextPtr);\ \ \textcolor{comment}{//\ destroy\ the\ filedialog\ context}}
+\DoxyCodeLine{01057\ }
+\DoxyCodeLine{01058\ \textcolor{preprocessor}{\#ifdef\ USE\_THUMBNAILS}}
+\DoxyCodeLine{01059\ \textcolor{keyword}{typedef}\ void\ (*IGFD\_CreateThumbnailFun)(IGFD\_Thumbnail\_Info*);\ \ \ \textcolor{comment}{//\ callback\ function\ for\ create\ thumbnail\ texture}}
+\DoxyCodeLine{01060\ \textcolor{keyword}{typedef}\ void\ (*IGFD\_DestroyThumbnailFun)(IGFD\_Thumbnail\_Info*);\ \ \textcolor{comment}{//\ callback\ fucntion\ for\ destroy\ thumbnail\ texture}}
+\DoxyCodeLine{01061\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ USE\_THUMBNAILS}}
+\DoxyCodeLine{01062\ }
+\DoxyCodeLine{01063\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_OpenDialog(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ open\ a\ standard\ dialog}}
+\DoxyCodeLine{01064\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01065\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vKey,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ key\ dialog}}
+\DoxyCodeLine{01066\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vTitle,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ title}}
+\DoxyCodeLine{01067\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFilters,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ filters/filter\ collections.\ set\ it\ to\ null\ for\ directory\ mode}}
+\DoxyCodeLine{01068\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_i_g_f_d___file_dialog___config}{IGFD\_FileDialog\_Config}}\ vConfig);\ \ \textcolor{comment}{//\ config}}
+\DoxyCodeLine{01069\ }
+\DoxyCodeLine{01070\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_DisplayDialog(\ \ \textcolor{comment}{//\ Display\ the\ dialog}}
+\DoxyCodeLine{01071\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vKey,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ key\ dialog\ to\ display\ (if\ not\ the\ same\ key\ as\ defined\ by\ OpenDialog\ =>\ no\ opening)}}
+\DoxyCodeLine{01073\ \ \ \ \ ImGuiWindowFlags\ vFlags,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiWindowFlags}}
+\DoxyCodeLine{01074\ \ \ \ \ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vMinSize,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mininmal\ size\ contraint\ for\ the\ ImGuiWindow}}
+\DoxyCodeLine{01075\ \ \ \ \ \mbox{\hyperlink{struct_im_vec2}{ImVec2}}\ vMaxSize);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ maximal\ size\ contraint\ for\ the\ ImGuiWindow}}
+\DoxyCodeLine{01076\ }
+\DoxyCodeLine{01077\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_CloseDialog(\ \ \ \textcolor{comment}{//\ Close\ the\ dialog}}
+\DoxyCodeLine{01078\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01079\ }
+\DoxyCodeLine{01080\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_IsOk(\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ true\ =>\ Dialog\ Closed\ with\ Ok\ result\ /\ false\ :\ Dialog\ closed\ with\ cancel\ result}}
+\DoxyCodeLine{01081\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01082\ }
+\DoxyCodeLine{01083\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_WasKeyOpenedThisFrame(\ \ \textcolor{comment}{//\ say\ if\ the\ dialog\ key\ was\ already\ opened\ this\ frame}}
+\DoxyCodeLine{01084\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01085\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vKey);}
+\DoxyCodeLine{01086\ }
+\DoxyCodeLine{01087\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_WasOpenedThisFrame(\ \ \textcolor{comment}{//\ say\ if\ the\ dialog\ was\ already\ opened\ this\ frame}}
+\DoxyCodeLine{01088\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01089\ }
+\DoxyCodeLine{01090\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_IsKeyOpened(\ \ \ \ \textcolor{comment}{//\ say\ if\ the\ dialog\ key\ is\ opened}}
+\DoxyCodeLine{01091\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01092\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vCurrentOpenedKey);\ \ \textcolor{comment}{//\ the\ dialog\ key}}
+\DoxyCodeLine{01093\ }
+\DoxyCodeLine{01094\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_IsOpened(\ \ \ \ \ \ \textcolor{comment}{//\ say\ if\ the\ dialog\ is\ opened\ somewhere}}
+\DoxyCodeLine{01095\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01096\ }
+\DoxyCodeLine{01097\ IGFD\_C\_API\ \mbox{\hyperlink{struct_i_g_f_d___selection}{IGFD\_Selection}}\ IGFD\_GetSelection(\ \ \textcolor{comment}{//\ Open\ File\ behavior\ :\ will\ return\ selection\ via\ a\ map<FileName,\ FilePathName>}}
+\DoxyCodeLine{01098\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ user\ datas\ (can\ be\ retrieved\ in\ pane)}}
+\DoxyCodeLine{01099\ \ \ \ \ IGFD\_ResultMode\ vMode);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Result\ Mode}}
+\DoxyCodeLine{01100\ }
+\DoxyCodeLine{01101\ IGFD\_C\_API\ \textcolor{keywordtype}{char}*\ IGFD\_GetFilePathName(\ \ \textcolor{comment}{//\ Save\ File\ behavior\ :\ will\ always\ return\ the\ content\ of\ the\ field\ with\ current}}
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ filter\ extention\ and\ current\ path,\ WARNINGS\ you\ are\ responsible\ to\ free\ it}}
+\DoxyCodeLine{01103\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01104\ \ \ \ \ IGFD\_ResultMode\ vMode);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Result\ Mode}}
+\DoxyCodeLine{01105\ }
+\DoxyCodeLine{01106\ IGFD\_C\_API\ \textcolor{keywordtype}{char}*\ IGFD\_GetCurrentFileName(\ \ \textcolor{comment}{//\ Save\ File\ behavior\ :\ will\ always\ return\ the\ content\ of\ the\ field\ with}}
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ current\ filter\ extention,\ WARNINGS\ you\ are\ responsible\ to\ free\ it}}
+\DoxyCodeLine{01108\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01109\ \ \ \ \ IGFD\_ResultMode\ vMode);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Result\ Mode}}
+\DoxyCodeLine{01110\ }
+\DoxyCodeLine{01111\ IGFD\_C\_API\ \textcolor{keywordtype}{char}*\ IGFD\_GetCurrentPath(\ \ \textcolor{comment}{//\ will\ return\ current\ path,\ WARNINGS\ you\ are\ responsible\ to\ free\ it}}
+\DoxyCodeLine{01112\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01113\ }
+\DoxyCodeLine{01114\ IGFD\_C\_API\ \textcolor{keywordtype}{char}*\ IGFD\_GetCurrentFilter(\ \ \textcolor{comment}{//\ will\ return\ selected\ filter,\ WARNINGS\ you\ are\ responsible\ to\ free\ it}}
+\DoxyCodeLine{01115\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01116\ }
+\DoxyCodeLine{01117\ IGFD\_C\_API\ \textcolor{keywordtype}{void}*\ IGFD\_GetUserDatas(\ \ \textcolor{comment}{//\ will\ return\ user\ datas\ send\ with\ Open\ Dialog}}
+\DoxyCodeLine{01118\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01119\ }
+\DoxyCodeLine{01120\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_SetFileStyle(\ \ \ \ \ \ \ \ \textcolor{comment}{//\ SetExtention\ datas\ for\ have\ custom\ display\ of\ particular\ file\ type}}
+\DoxyCodeLine{01121\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01122\ \ \ \ \ IGFD\_FileStyleFlags\ vFileStyleFlags,\ \ \textcolor{comment}{//\ file\ style\ type}}
+\DoxyCodeLine{01123\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFilter,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extention\ filter\ to\ tune}}
+\DoxyCodeLine{01124\ \ \ \ \ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}\ vColor,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ color\ for\ the\ display\ of\ the\ file\ with\ extention\ filter}}
+\DoxyCodeLine{01125\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vIconText,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ text\ or\ icon\ of\ the\ file\ with\ extention\ filter\ (can\ be\ sued\ with\ font\ icon)}}
+\DoxyCodeLine{01126\ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}*\ vFont);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ font\ pointer}}
+\DoxyCodeLine{01127\ }
+\DoxyCodeLine{01128\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_SetFileStyle2(\ \ \ \ \ \ \ \textcolor{comment}{//\ SetExtention\ datas\ for\ have\ custom\ display\ of\ particular\ file\ type}}
+\DoxyCodeLine{01129\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01130\ \ \ \ \ IGFD\_FileStyleFlags\ vFileStyleFlags,\ \ \textcolor{comment}{//\ file\ style\ type}}
+\DoxyCodeLine{01131\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFilter,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extention\ filter\ to\ tune}}
+\DoxyCodeLine{01132\ \ \ \ \ \textcolor{keywordtype}{float}\ vR,\ \textcolor{keywordtype}{float}\ vG,\ \textcolor{keywordtype}{float}\ vB,}
+\DoxyCodeLine{01133\ \ \ \ \ \textcolor{keywordtype}{float}\ vA,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ color\ channels\ RGBA\ for\ the\ display\ of\ the\ file\ with\ extention\ filter}}
+\DoxyCodeLine{01134\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vIconText,\ \ \textcolor{comment}{//\ wanted\ text\ or\ icon\ of\ the\ file\ with\ extention\ filter\ (can\ be\ sued\ with\ font\ icon)}}
+\DoxyCodeLine{01135\ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}*\ vFont);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ font\ pointer}}
+\DoxyCodeLine{01136\ }
+\DoxyCodeLine{01137\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_GetFileStyle(ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IGFD\_FileStyleFlags\ vFileStyleFlags,\ \ \textcolor{comment}{//\ file\ style\ type}}
+\DoxyCodeLine{01139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vFilter,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ extention\ filter\ (same\ as\ used\ in\ SetExtentionInfos)}}
+\DoxyCodeLine{01140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}*\ vOutColor,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ color\ to\ retrieve}}
+\DoxyCodeLine{01141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}**\ vOutIconText,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ icon\ or\ text\ to\ retrieve,\ WARNINGS\ you\ are\ responsible\ to\ free\ it}}
+\DoxyCodeLine{01142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_font}{ImFont}}**\ vOutFont);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ font\ pointer\ to\ retrived}}
+\DoxyCodeLine{01143\ }
+\DoxyCodeLine{01144\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_ClearFilesStyle(\ \ \textcolor{comment}{//\ clear\ extentions\ setttings}}
+\DoxyCodeLine{01145\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01146\ }
+\DoxyCodeLine{01147\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ SetLocales(\ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ locales\ to\ use\ before\ and\ after\ display}}
+\DoxyCodeLine{01148\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01149\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ vCategory,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ local\ category}}
+\DoxyCodeLine{01150\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vBeginLocale,\ \ \ \ \ \ \textcolor{comment}{//\ locale\ to\ use\ at\ begining\ of\ the\ dialog\ display}}
+\DoxyCodeLine{01151\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vEndLocale);\ \ \ \ \ \ \ \textcolor{comment}{//\ locale\ to\ set\ at\ end\ of\ the\ dialog\ display}}
+\DoxyCodeLine{01152\ }
+\DoxyCodeLine{01153\ \textcolor{preprocessor}{\#ifdef\ USE\_EXPLORATION\_BY\_KEYS}}
+\DoxyCodeLine{01154\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_SetFlashingAttenuationInSeconds(\ \ \textcolor{comment}{//\ set\ the\ flashing\ time\ of\ the\ line\ in\ file\ list\ when\ use}}
+\DoxyCodeLine{01155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ exploration\ keys}}
+\DoxyCodeLine{01156\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01157\ \ \ \ \ \textcolor{keywordtype}{float}\ vAttenValue);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ attenuation\ (from\ flashed\ to\ not\ flashed)\ in\ seconds}}
+\DoxyCodeLine{01158\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01159\ }
+\DoxyCodeLine{01160\ \textcolor{preprocessor}{\#ifdef\ USE\_PLACES\_FEATURE}}
+\DoxyCodeLine{01161\ IGFD\_C\_API\ \textcolor{keywordtype}{char}*\ IGFD\_SerializePlaces(\ \ \ \ \textcolor{comment}{//\ serialize\ place\ :\ return\ place\ buffer\ to\ save\ in\ a\ file,\ WARNINGS}}
+\DoxyCodeLine{01162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ you\ are\ responsible\ to\ free\ it}}
+\DoxyCodeLine{01163\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01164\ \ \ \ \ \textcolor{keywordtype}{bool}\ vDontSerializeCodeBasedPlaces);\ \ \textcolor{comment}{//\ for\ avoid\ serialization\ of\ place\ added\ by\ code}}
+\DoxyCodeLine{01165\ }
+\DoxyCodeLine{01166\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ IGFD\_DeserializePlaces(\ \ \textcolor{comment}{//\ deserialize\ place\ :\ load\ bookmar\ buffer\ to\ load\ in\ the\ dialog\ (saved}}
+\DoxyCodeLine{01167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ from\ previous\ use\ with\ SerializePlaces())}}
+\DoxyCodeLine{01168\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01169\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vPlaces);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ place\ buffer\ to\ load}}
+\DoxyCodeLine{01170\ }
+\DoxyCodeLine{01171\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_AddPlacesGroup(\ \ \textcolor{comment}{//\ add\ a\ places\ group\ by\ code}}
+\DoxyCodeLine{01172\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01173\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vGroupName,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ group\ name}}
+\DoxyCodeLine{01174\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ vDisplayOrder,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ display\ roder\ of\ the\ group}}
+\DoxyCodeLine{01175\ \ \ \ \ \textcolor{keywordtype}{bool}\ vCanBeEdited);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ let\ the\ user\ add/remove\ place\ in\ the\ group}}
+\DoxyCodeLine{01176\ }
+\DoxyCodeLine{01177\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_RemovePlacesGroup(\ \ \textcolor{comment}{//\ remove\ a\ place\ group\ by\ code,\ return\ true\ if\ succeed}}
+\DoxyCodeLine{01178\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01179\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vGroupName);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ place\ name\ to\ remove}}
+\DoxyCodeLine{01180\ }
+\DoxyCodeLine{01181\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_AddPlace(\ \ \ \ \ \textcolor{comment}{//\ add\ a\ place\ by\ code}}
+\DoxyCodeLine{01182\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01183\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vGroupName,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ group\ name}}
+\DoxyCodeLine{01184\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vPlaceName,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ place\ name}}
+\DoxyCodeLine{01185\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vPlacePath,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ place\ path}}
+\DoxyCodeLine{01186\ \ \ \ \ \textcolor{keywordtype}{bool}\ vCanBeSaved,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ place\ can\ be\ saved}}
+\DoxyCodeLine{01187\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vIconText);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ wanted\ text\ or\ icon\ of\ the\ file\ with\ extention\ filter\ (can\ be\ used\ with\ font\ icon)}}
+\DoxyCodeLine{01188\ }
+\DoxyCodeLine{01189\ IGFD\_C\_API\ \textcolor{keywordtype}{bool}\ IGFD\_RemovePlace(\ \ \textcolor{comment}{//\ remove\ a\ place\ by\ code,\ return\ true\ if\ succeed}}
+\DoxyCodeLine{01190\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01191\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vGroupName,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ group\ name}}
+\DoxyCodeLine{01192\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ vPlaceName);\ \ \ \ \ \ \ \textcolor{comment}{//\ place\ name\ to\ remove}}
+\DoxyCodeLine{01193\ }
+\DoxyCodeLine{01194\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01195\ }
+\DoxyCodeLine{01196\ \textcolor{preprocessor}{\#ifdef\ USE\_THUMBNAILS}}
+\DoxyCodeLine{01197\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ SetCreateThumbnailCallback(\ \ \ \ \ \ \ \ \textcolor{comment}{//\ define\ the\ callback\ for\ create\ the\ thumbnails\ texture}}
+\DoxyCodeLine{01198\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01199\ \ \ \ \ IGFD\_CreateThumbnailFun\ vCreateThumbnailFun);\ \ \textcolor{comment}{//\ the\ callback\ for\ create\ the\ thumbnails\ texture}}
+\DoxyCodeLine{01200\ }
+\DoxyCodeLine{01201\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ SetDestroyThumbnailCallback(\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ define\ the\ callback\ for\ destroy\ the\ thumbnails\ texture}}
+\DoxyCodeLine{01202\ \ \ \ \ ImGuiFileDialog*\ vContextPtr,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01203\ \ \ \ \ IGFD\_DestroyThumbnailFun\ vDestroyThumbnailFun);\ \ \textcolor{comment}{//\ the\ callback\ for\ destroy\ the\ thumbnails\ texture}}
+\DoxyCodeLine{01204\ }
+\DoxyCodeLine{01205\ IGFD\_C\_API\ \textcolor{keywordtype}{void}\ ManageGPUThumbnails(\ \ \textcolor{comment}{//\ must\ be\ call\ in\ gpu\ zone,\ possibly\ a\ thread,\ will\ call\ the\ callback\ for\ create}}
+\DoxyCodeLine{01206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ /\ destroy\ the\ textures}}
+\DoxyCodeLine{01207\ \ \ \ \ ImGuiFileDialog*\ vContextPtr);\ \ \ \ \textcolor{comment}{//\ ImGuiFileDialog\ context}}
+\DoxyCodeLine{01208\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ USE\_THUMBNAILS}}
+
+\end{DoxyCode}

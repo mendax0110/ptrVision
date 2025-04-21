@@ -1,0 +1,96 @@
+\chapter{Im\+Gui\+File\+Dialog}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e}{}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e}\index{ImGuiFileDialog@{ImGuiFileDialog}}
+\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md235}%
+\Hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md235}%
+ \hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md236}{}\doxysection{\texorpdfstring{Build Matrix}{Build Matrix}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md236}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Win   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Linux   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mac\+Os    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Win   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Linux   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mac\+Os    }\\\cline{1-4}
+\endhead
+\PBS\centering Msvc   &\PBS\centering \href{https://github.com/aiekick/ImGuiFileDialog/actions/workflows/Win_Msvc.yml}{\texttt{ }}   &\PBS\centering &\PBS\centering \\\cline{1-4}
+\PBS\centering Gcc   &\PBS\centering &\PBS\centering \href{https://github.com/aiekick/ImGuiFileDialog/actions/workflows/Linux_Gcc.yml}{\texttt{ }}   &\PBS\centering \href{https://github.com/aiekick/ImGuiFileDialog/actions/workflows/Osx_Gcc.yml}{\texttt{ }}    \\\cline{1-4}
+\PBS\centering Clang   &\PBS\centering &\PBS\centering \href{https://github.com/aiekick/ImGuiFileDialog/actions/workflows/Linux_Clang.yml}{\texttt{ }}   &\PBS\centering \href{https://github.com/aiekick/ImGuiFileDialog/actions/workflows/Osx_Clang.yml}{\texttt{ }}    \\\cline{1-4}
+\PBS\centering Leak Sanitizer   &\PBS\centering &\PBS\centering \href{https://github.com/aiekick/ImGuiFileDialog/actions/workflows/Leak.yml}{\texttt{ }}   &\PBS\centering \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md237}{}\doxysection{\texorpdfstring{Purpose}{Purpose}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md237}
+Im\+Gui\+File\+Dialog is a file selection dialog built for (and using only) \href{https://github.com/ocornut/imgui}{\texttt{ Dear Im\+Gui}}.
+
+My primary goal was to have a custom pane with widgets according to file extension. This was not possible using other solutions.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md238}{}\doxysection{\texorpdfstring{Possible Dialog Customization}{Possible Dialog Customization}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md238}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md239}{}\doxysection{\texorpdfstring{Im\+Gui Supported Version}{ImGui Supported Version}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md239}
+\begin{quote}
+\mbox{[}!\+NOTE\mbox{]} Im\+Gui\+File\+Dialog follow the master and docking branch of Im\+Gui. Currently \+: \href{https://github.com/ocornut/imgui}{\texttt{ }} \end{quote}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md240}{}\doxysubsection{\texorpdfstring{Documentation \+:}{Documentation :}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md240}
+\begin{quote}
+\mbox{[}!\+NOTE\mbox{]} for a complete explanation and howto about Im\+Gui\+File\+Dialog Api, you can check the \href{https://github.com/aiekick/ImGuiFileDialog/blob/master/Documentation.md}{\texttt{ {\bfseries{Documentation}}}} \end{quote}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md241}{}\doxysection{\texorpdfstring{Structure}{Structure}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md241}
+
+\begin{DoxyItemize}
+\item The library is in \href{https://github.com/aiekick/ImGuiFileDialog/tree/master}{\texttt{ Master branch}}
+\item A demo app can be found in the \href{https://github.com/aiekick/ImGuiFileDialog/tree/DemoApp}{\texttt{ Demo\+App branch}}
+\end{DoxyItemize}
+
+This library is designed to be dropped into your source code rather than compiled separately.
+
+From your project directory\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ lib\ \ \ \ <or\ 3rdparty,\ or\ externals,\ etc.>}
+\DoxyCodeLine{cd\ lib}
+\DoxyCodeLine{git\ clone\ https://github.com/aiekick/ImGuiFileDialog.git}
+\DoxyCodeLine{git\ checkout\ master}
+
+\end{DoxyCode}
+
+
+These commands create a {\ttfamily lib} directory where you can store any third-\/party dependencies used in your project, downloads the Im\+Gui\+File\+Dialog git repository and checks out the Lib\+\_\+\+Only branch where the actual library code is located.
+
+Add {\ttfamily lib/\+Im\+Gui\+File\+Dialog/\+Im\+Gui\+File\+Dialog.\+cpp} to your build system and include {\ttfamily lib/\+Im\+Gui\+File\+Dialog/\+Im\+Gui\+File\+Dialog.\+h} in your source code. Im\+Gui\+File\+Lib will compile with and be included directly in your executable file.
+
+If, for example, your project uses cmake, look for a line like {\ttfamily add\+\_\+executable(my\+\_\+project\+\_\+name main.\+cpp)} and change it to {\ttfamily add\+\_\+executable(my\+\_\+project\+\_\+name lib/\+Im\+Gui\+File\+Dialog/\+Im\+Gui\+File\+Dialog.\+cpp main.\+cpp)}. This tells the compiler where to find the source code declared in {\ttfamily \doxylink{_im_gui_file_dialog_8h_source}{Im\+Gui\+File\+Dialog.\+h}} which you included in your own source code.\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md242}{}\doxysection{\texorpdfstring{Requirements\+:}{Requirements:}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md242}
+You must also, of course, have added \href{https://github.com/ocornut/imgui}{\texttt{ Dear Im\+Gui}} to your project for this to work at all.
+
+Imgui\+File\+Dialog is agnostic about the filesystem api you can use. It provides a IFile\+System you can override for your needs.
+
+By default you can use dirent or std\+::filesystem. you have also a demo of uisng boos filesystem api in the Demo\+App branch
+
+Android Requirements \+: Api 21 mini\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md243}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2external_2_im_gui_file_dialog_2_r_e_a_d_m_e_autotoc_md243}
+
+\begin{DoxyItemize}
+\item C Api (succesfully tested with Cim\+Gui)
+\item Separate system for call and display
+\begin{DoxyItemize}
+\item Can have many function calls with different parameters for one display function, for example
+\end{DoxyItemize}
+\item Can create a custom pane with any widgets via function binding
+\begin{DoxyItemize}
+\item This pane can block the validation of the dialog
+\item Can also display different things according to current filter and User\+Datas
+\end{DoxyItemize}
+\item Advanced file style for file/dir/link coloring / icons / font
+\begin{DoxyItemize}
+\item predefined form or user custom form by lambda function (the lambda mode is not available for the C API)
+\end{DoxyItemize}
+\item Multi-\/selection (ctrl/shift + click) \+:
+\begin{DoxyItemize}
+\item 0 =\texorpdfstring{$>$}{>} Infinite
+\item 1 =\texorpdfstring{$>$}{>} One file (default)
+\item n =\texorpdfstring{$>$}{>} n files
+\end{DoxyItemize}
+\item Compatible with Mac\+Os, Linux, Windows, Emscripten, Android
+\item Supports modal or standard dialog types
+\item Select files or directories
+\item Filter groups and custom filter names
+\item can ignore filter Case for file searching
+\item Keyboard navigation (arrows, backspace, enter)
+\item Exploring by entering characters (case insensitive)
+\item Custom places (bookmarks, system devices, whatever you want)
+\item Directory manual entry (right click on any path element)
+\item Optional \textquotesingle{}Confirm to Overwrite"{} dialog if file exists -\/ Thumbnails Display (agnostic way for compatibility with any backend, sucessfully tested with Open\+Gl and Vulkan) -\/ The dialog can be embedded in another user frame than the standard or modal dialog -\/ Can tune validation buttons (placements, widths, inversion) -\/ Can quick select a parrallel directory of a path, in the path composer (when you clikc on a / you have a popup) -\/ regex support for filters, collection of filters and filestyle (the regex is recognized when between (( and )) in a filter) -\/ multi layer extentions like \+: .\+a.\+b.\+c .\+json.\+cpp .\+vcxproj.\+filters etc.. -\/ advanced behavior regarding asterisk based filter. like \+: .\texorpdfstring{$\ast$}{*} .\texorpdfstring{$\ast$}{*}.\texorpdfstring{$\ast$}{*} .\+vcx.\texorpdfstring{$\ast$}{*} .\texorpdfstring{$\ast$}{*}.\+filters .\+vcs\texorpdfstring{$\ast$}{*}.\+filt.\texorpdfstring{$\ast$}{*} etc.. (internally regex is used) -\/ result modes Get\+File\+Path\+Name, Get\+File\+Name and Get\+Selection (overwrite file ext, keep file, add ext if no user ext exist) -\/ you can use your own File\+System Api     -\/ by default Api Dirent and std\+::filesystem are defined     -\/ you can override Get\+Drieve\+List for specify by ex on android other fs, like local and SDCards  @subsection autotoc\+\_\+md244 WARNINGS \+: -\/ the nav system keyboard behavior is not working as expected, so maybe full of bug for Im\+Gui\+File\+Dialog  @subsection autotoc\+\_\+md245 Simple Usage \+:  @icode\{cpp\}  void draw\+Gui() \{    // open Dialog Simple   if (\+Im\+Gui\+::\+Button("{}Open File Dialog"{})) \{     IGFD\+::\+File\+Dialog\+Config config;     config.\+path = "{}."{};     Im\+Gui\+File\+Dialog\+::\+Instance()-\/$>$\+Open\+Dialog("{}Choose\+File\+Dlg\+Key"{}, "{}Choose File"{}, "{}.cpp,.h,.hpp"{}, config);   \}   // display   if (\+Im\+Gui\+File\+Dialog\+::\+Instance()-\/$>$\+Display("{}Choose\+File\+Dlg\+Key"{})) \{     if (\+Im\+Gui\+File\+Dialog\+::\+Instance()-\/$>$\+Is\+Ok()) \{ // action if OK       std\+::string file\+Path\+Name = Im\+Gui\+File\+Dialog\+::\+Instance()-\/$>$\+Get\+File\+Path\+Name();       std\+::string file\+Path = Im\+Gui\+File\+Dialog\+::\+Instance()-\/$>$\+Get\+Current\+Path();       // action     \}          // close     Im\+Gui\+File\+Dialog\+::\+Instance()-\/$>$\+Close();   \} \} @endicode   $<$img src="{}\href{https://github.com/aiekick/ImGuiFileDialog/blob/DemoApp/doc/dlg_simple.gif}{\texttt{ https\+://github.\+com/aiekick/\+Im\+Gui\+File\+Dialog/blob/\+Demo\+App/doc/dlg\+\_\+simple.\+gif}}"{} alt="{}alt text"{}/$>$  @subsection autotoc\+\_\+md246 How to build the sample app  \+The sample app is $<$a href="{}\href{https://github.com/aiekick/ImGuiFileDialog/tree/master}{\texttt{ https\+://github.\+com/aiekick/\+Im\+Gui\+File\+Dialog/tree/master}}"{} $>$here in master branch$<$/a$>$  \+You need to use CMake. For the 3 Os (\+Win, Linux, Mac\+Os), the CMake usage is exactly the same, @iverbatim  \+Choose a build directory. (called here my\+\_\+build\+\_\+directory for instance) and \+Choose a Build Mode \+: "{}Release"{} / "{}Min\+Size\+Rel"{} / "{}Rel\+With\+Deb\+Info"{} / "{}Debug"{} (called here Build\+Mode for instance) \+Run CMake in console \+: (the first for generate cmake build files, the second for build the binary) @endiverbatim cmake -\/\+B my\+\_\+build\+\_\+directory -\/\+DCMAKE\+\_\+\+BUILD\+\_\+\+TYPE=\+Build\+Mode cmake --build my\+\_\+build\+\_\+directory --config Build\+Mode  \+Some CMake version need Build mode define via the directive CMAKE\+\_\+\+BUILD\+\_\+\+TYPE or via --\+Config when we launch the build. This is why i put the boths possibilities  \+By the way you need before, to make sure, you have needed dependencies.  @subsection autotoc\+\_\+md247 On Windows \+:  \+You need to have the opengl library installed  @subsection autotoc\+\_\+md248 On Linux \+:  \+You need many lib \+: (\+X11, xrandr, xinerama, xcursor, mesa)  \+If you are on debian you can run \+:  sudo apt-\/get update  sudo apt-\/get install libgl1-\/mesa-\/dev libx11-\/dev libxi-\/dev libxrandr-\/dev libxinerama-\/dev libxcursor-\/dev  @subsection autotoc\+\_\+md249 On Mac\+Os \+:  you need many lib \+: opengl and cocoa framework  $<$/blockquote$>$$<$/details$>$  @section autotoc\+\_\+md250 That\textquotesingle{}s all folks \+:-\/)  \+You can check by example in this repo with the file Custom\+Im\+Gui\+File\+Dialog\+Config.\+h \+: -\/ this trick was used to have custom icon font instead of labels for buttons or messages titles -\/ you can also use your custom imgui button, the button call stamp must be same by the way \+:)  \+The Custom Icon Font (in Custom\+Font.\+cpp and Custom\+Font.\+h) was made with Im\+Gui\+Font\+Studio (https\+://github.\+com/aiekick/\+Im\+Gui\+Font\+Studio) i wrote for that \+:) \+Im\+Gui\+Font\+Studio is also using Im\+Gui\+File\+Dialog.\$  $<$img src="{}\href{https://repobeats.axiom.co/api/embed/22a6eef207d0bce7c03519d94f55100973b451ca.svg}{\texttt{ https\+://repobeats.\+axiom.\+co/api/embed/22a6eef207d0bce7c03519d94f55100973b451ca.\+svg}}"{} alt="{}Alt"{} title="{}Repobeats analytics image"{}/\texorpdfstring{$>$}{>} 
+\end{DoxyItemize}

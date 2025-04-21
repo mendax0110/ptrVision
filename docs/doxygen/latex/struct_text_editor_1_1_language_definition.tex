@@ -1,0 +1,83 @@
+\doxysection{Text\+Editor\+::Language\+Definition Struct Reference}
+\hypertarget{struct_text_editor_1_1_language_definition}{}\label{struct_text_editor_1_1_language_definition}\index{TextEditor::LanguageDefinition@{TextEditor::LanguageDefinition}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_abfb75894b7d636fc35af95b28127a418}\label{struct_text_editor_1_1_language_definition_abfb75894b7d636fc35af95b28127a418} 
+typedef std\+::pair$<$ std\+::string, Palette\+Index $>$ {\bfseries Token\+Regex\+String}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a8d9d3b1eff76ed1b7e8192626d1984ec}\label{struct_text_editor_1_1_language_definition_a8d9d3b1eff76ed1b7e8192626d1984ec} 
+typedef std\+::vector$<$ Token\+Regex\+String $>$ {\bfseries Token\+Regex\+Strings}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a8ab84264ac8f88f35c4de22102507399}\label{struct_text_editor_1_1_language_definition_a8ab84264ac8f88f35c4de22102507399} 
+typedef bool(\texorpdfstring{$\ast$}{*} {\bfseries Tokenize\+Callback}) (const char \texorpdfstring{$\ast$}{*}in\+\_\+begin, const char \texorpdfstring{$\ast$}{*}in\+\_\+end, const char \texorpdfstring{$\ast$}{*}\&out\+\_\+begin, const char \texorpdfstring{$\ast$}{*}\&out\+\_\+end, Palette\+Index \&palette\+Index)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_aba26ce5704845dd024521fed8c19a9c9}\label{struct_text_editor_1_1_language_definition_aba26ce5704845dd024521fed8c19a9c9} 
+static const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries CPlus\+Plus} ()
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_ac57152f855eed0755732f395ccff8d3a}\label{struct_text_editor_1_1_language_definition_ac57152f855eed0755732f395ccff8d3a} 
+static const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries HLSL} ()
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a6bbb79cc9c996f12d49b5707013070ce}\label{struct_text_editor_1_1_language_definition_a6bbb79cc9c996f12d49b5707013070ce} 
+static const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries GLSL} ()
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a5f41009cf034aefa31ffda1985f44a03}\label{struct_text_editor_1_1_language_definition_a5f41009cf034aefa31ffda1985f44a03} 
+static const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries C} ()
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a0a05e293330d96c3966b5c04c9740926}\label{struct_text_editor_1_1_language_definition_a0a05e293330d96c3966b5c04c9740926} 
+static const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries SQL} ()
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_aa1aa65bebcb0632e2a933df3a52ec93e}\label{struct_text_editor_1_1_language_definition_aa1aa65bebcb0632e2a933df3a52ec93e} 
+static const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries Angel\+Script} ()
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a4e811b43370cba9ec8b8869ae2bfc4ff}\label{struct_text_editor_1_1_language_definition_a4e811b43370cba9ec8b8869ae2bfc4ff} 
+static const \mbox{\hyperlink{struct_text_editor_1_1_language_definition}{Language\+Definition}} \& {\bfseries Lua} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a2854052aa0b3b789c128895538e0bbe2}\label{struct_text_editor_1_1_language_definition_a2854052aa0b3b789c128895538e0bbe2} 
+std\+::string {\bfseries m\+Name}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a711208616bcfb7d671e268e8811bd64d}\label{struct_text_editor_1_1_language_definition_a711208616bcfb7d671e268e8811bd64d} 
+Keywords {\bfseries m\+Keywords}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a587cbc53434504d0c584004ebe03f7b6}\label{struct_text_editor_1_1_language_definition_a587cbc53434504d0c584004ebe03f7b6} 
+Identifiers {\bfseries m\+Identifiers}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a67baa43cd1ef6d9aef8739e2369fc8b7}\label{struct_text_editor_1_1_language_definition_a67baa43cd1ef6d9aef8739e2369fc8b7} 
+Identifiers {\bfseries m\+Preproc\+Identifiers}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a56144eb2c6152d4321fd16f6c8bb7f19}\label{struct_text_editor_1_1_language_definition_a56144eb2c6152d4321fd16f6c8bb7f19} 
+std\+::string {\bfseries m\+Comment\+Start}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_abf9ed270616ed79eb80c5f97805b184b}\label{struct_text_editor_1_1_language_definition_abf9ed270616ed79eb80c5f97805b184b} 
+std\+::string {\bfseries m\+Comment\+End}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a42439c9419dc8c07138db9d86ea89fb1}\label{struct_text_editor_1_1_language_definition_a42439c9419dc8c07138db9d86ea89fb1} 
+std\+::string {\bfseries m\+Single\+Line\+Comment}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a68dd7ed9ff3f921cdd5eba80ac61ec6b}\label{struct_text_editor_1_1_language_definition_a68dd7ed9ff3f921cdd5eba80ac61ec6b} 
+char {\bfseries m\+Preproc\+Char}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_ab0c6722298c1d597ae4f3e266935b318}\label{struct_text_editor_1_1_language_definition_ab0c6722298c1d597ae4f3e266935b318} 
+bool {\bfseries m\+Auto\+Indentation}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a67120ee6d2c4c9cecd7bb0f2ada62d5f}\label{struct_text_editor_1_1_language_definition_a67120ee6d2c4c9cecd7bb0f2ada62d5f} 
+Tokenize\+Callback {\bfseries m\+Tokenize}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a392b1db196a2fffbb3debc127238e8b0}\label{struct_text_editor_1_1_language_definition_a392b1db196a2fffbb3debc127238e8b0} 
+Token\+Regex\+Strings {\bfseries m\+Token\+Regex\+Strings}
+\item 
+\Hypertarget{struct_text_editor_1_1_language_definition_a77668454aaac7f3aa9358d01acda0376}\label{struct_text_editor_1_1_language_definition_a77668454aaac7f3aa9358d01acda0376} 
+bool {\bfseries m\+Case\+Sensitive}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/external/\+Im\+Gui\+Color\+Text\+Edit/Text\+Editor.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/external/\+Im\+Gui\+Color\+Text\+Edit/Text\+Editor.\+cpp\end{DoxyCompactItemize}

@@ -2,42 +2,52 @@
 \hypertarget{classclang_1_1_pointer_reference_consumer}{}\label{classclang_1_1_pointer_reference_consumer}\index{clang::PointerReferenceConsumer@{clang::PointerReferenceConsumer}}
 
 
-\doxylink{classclang_1_1_pointer_reference_consumer}{Pointer\+Reference\+Consumer} is an ASTConsumer that processes the AST of a translation unit.  
+Pointer\+Refernce\+Consumer class forward declaration.  
 
 
 
 
-{\ttfamily \#include $<$Pointer\+Reference\+Consumer.\+h$>$}
+{\ttfamily \#include $<$Pointer\+Reference\+Action.\+h$>$}
 
 
 
-Inheritance diagram for clang\+::Pointer\+Reference\+Consumer\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=246pt]{classclang_1_1_pointer_reference_consumer__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for clang\+::Pointer\+Reference\+Consumer\+:
+% FIG 0
 
 
-Collaboration diagram for clang\+::Pointer\+Reference\+Consumer\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=246pt]{classclang_1_1_pointer_reference_consumer__coll__graph}
-\end{center}
-\end{figure}
+Collaboration diagram for clang\+::Pointer\+Reference\+Consumer\+:
+% FIG 1
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\Hypertarget{classclang_1_1_pointer_reference_consumer_a07a7afc99c4cbf877615b4a3fb9fd6b1}\label{classclang_1_1_pointer_reference_consumer_a07a7afc99c4cbf877615b4a3fb9fd6b1} 
+{\bfseries Pointer\+Reference\+Consumer} (\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}} \texorpdfstring{$\ast$}{*}action)
+\begin{DoxyCompactList}\small\item\em Constructor that takes a \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} pointer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classclang_1_1_pointer_reference_consumer_afb62b072bef4867378842aa236a5efcc}{Handle\+Translation\+Unit}} (ASTContext \&Context) override
-\begin{DoxyCompactList}\small\item\em Handles the translation unit of the AST. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Handles the translation unit of the AST. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classclang_1_1_pointer_reference_consumer_aaf89efd578e3bc79996597c6a95b7aef}{get\+Output}} () const
+\begin{DoxyCompactList}\small\item\em Returns the output of the visitor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{classclang_1_1_pointer_reference_consumer}{Pointer\+Reference\+Consumer} is an ASTConsumer that processes the AST of a translation unit. 
+Pointer\+Refernce\+Consumer class forward declaration. 
+
+The \doxylink{classclang_1_1_pointer_reference_consumer}{Pointer\+Reference\+Consumer} class is responsible for consuming the AST and processing pointer references. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_pointer_reference_consumer_aaf89efd578e3bc79996597c6a95b7aef}\label{classclang_1_1_pointer_reference_consumer_aaf89efd578e3bc79996597c6a95b7aef} 
+\index{clang::PointerReferenceConsumer@{clang::PointerReferenceConsumer}!getOutput@{getOutput}}
+\index{getOutput@{getOutput}!clang::PointerReferenceConsumer@{clang::PointerReferenceConsumer}}
+\doxysubsubsection{\texorpdfstring{getOutput()}{getOutput()}}
+{\footnotesize\ttfamily std\+::string clang\+::\+Pointer\+Reference\+Consumer\+::get\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the output of the visitor. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A string with the output 
+\end{DoxyReturn}
 \Hypertarget{classclang_1_1_pointer_reference_consumer_afb62b072bef4867378842aa236a5efcc}\label{classclang_1_1_pointer_reference_consumer_afb62b072bef4867378842aa236a5efcc} 
 \index{clang::PointerReferenceConsumer@{clang::PointerReferenceConsumer}!HandleTranslationUnit@{HandleTranslationUnit}}
 \index{HandleTranslationUnit@{HandleTranslationUnit}!clang::PointerReferenceConsumer@{clang::PointerReferenceConsumer}}
@@ -53,9 +63,11 @@ Handles the translation unit of the AST.
 {\em Context} & -\/\texorpdfstring{$>$}{>} ASTContext of the translation unit \\
 \hline
 \end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 2
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Consumer.\+h\item 
-C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/src/Pointer\+Reference\+Consumer.\+cpp\end{DoxyCompactItemize}
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Consumer.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Pointer\+Reference\+Consumer.\+cpp\end{DoxyCompactItemize}

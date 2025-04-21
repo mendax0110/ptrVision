@@ -2,7 +2,7 @@
 \hypertarget{classclang_1_1_pointer_reference_visitor}{}\label{classclang_1_1_pointer_reference_visitor}\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
 
 
-\doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} is a Recursive\+ASTVisitor that visits the AST nodes of a translation unit.  
+The \doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} class is responsible for visiting AST nodes and checking for pointer references.  
 
 
 
@@ -11,22 +11,12 @@
 
 
 
-Inheritance diagram for clang\+::Pointer\+Reference\+Visitor\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=229pt]{classclang_1_1_pointer_reference_visitor__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for clang\+::Pointer\+Reference\+Visitor\+:
+% FIG 0
 
 
-Collaboration diagram for clang\+::Pointer\+Reference\+Visitor\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=229pt]{classclang_1_1_pointer_reference_visitor__coll__graph}
-\end{center}
-\end{figure}
+Collaboration diagram for clang\+::Pointer\+Reference\+Visitor\+:
+% FIG 1
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -50,13 +40,69 @@ bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a0fe3917a3ac30eff
 bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a6901d59e49cde98845036d35834e19b3}{Visit\+Var\+Decl}} (const Var\+Decl \texorpdfstring{$\ast$}{*}VD) const
 \begin{DoxyCompactList}\small\item\em Visit a Var\+Decl node to check if it is a pointer declaration. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_aac0a0676541cf7f0c127231bd331ae2f}{Visit\+Array\+Subscript\+Expr}} (const Array\+Subscript\+Expr \texorpdfstring{$\ast$}{*}ASE) const
-\begin{DoxyCompactList}\small\item\em Visit an Array\+Subscript\+Expr node to check if it involves a pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Visit an Array\+Subscript\+Expr node to check if it involves a pointer. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classclang_1_1_pointer_reference_visitor_a2051dffa0cbb1431ac0777276cad190c}{get\+Output}} () const
+\begin{DoxyCompactList}\small\item\em Visit a CXXStatic\+Cast\+Expr node to check for pointer casts using static\+\_\+cast. \end{DoxyCompactList}\item 
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a19d1e8f75654719987261c6b85f7950b}\label{classclang_1_1_pointer_reference_visitor_a19d1e8f75654719987261c6b85f7950b} 
+void {\bfseries clear\+Output} ()
+\begin{DoxyCompactList}\small\item\em Clear the output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} is a Recursive\+ASTVisitor that visits the AST nodes of a translation unit. 
+The \doxylink{classclang_1_1_pointer_reference_visitor}{Pointer\+Reference\+Visitor} class is responsible for visiting AST nodes and checking for pointer references. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_pointer_reference_visitor_a2051dffa0cbb1431ac0777276cad190c}\label{classclang_1_1_pointer_reference_visitor_a2051dffa0cbb1431ac0777276cad190c} 
+\index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!getOutput@{getOutput}}
+\index{getOutput@{getOutput}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
+\doxysubsubsection{\texorpdfstring{getOutput()}{getOutput()}}
+{\footnotesize\ttfamily std\+::string clang\+::\+Pointer\+Reference\+Visitor\+::get\+Output (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Visit a CXXStatic\+Cast\+Expr node to check for pointer casts using static\+\_\+cast. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Cast\+Expr} & -\/\texorpdfstring{$>$}{>} CXXStatic\+Cast\+Expr node representing the static\+\_\+cast operation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal).
+\end{DoxyReturn}
+Visit a CXXReinterpret\+Cast\+Expr node to check for pointer casts using reinterpret\+\_\+cast.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Repr\+Cast\+Expr} & -\/\texorpdfstring{$>$}{>} CXXReinterpret\+Cast\+Expr node representing the reinterpret\+\_\+cast operation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal).
+\end{DoxyReturn}
+Visit a CStyle\+Cast\+Expr node to check for C-\/style pointer casts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Cast\+Expr} & -\/\texorpdfstring{$>$}{>} CStyle\+Cast\+Expr node representing the C-\/style cast operation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal).
+\end{DoxyReturn}
+Visit a Cast\+Expr node to detect pointer-\/related cast operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Cast\+Expr} & -\/\texorpdfstring{$>$}{>} Cast\+Expr node representing the cast operation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true (always returns true to continue traversal).
+\end{DoxyReturn}
+Get the output of the visitor. \begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A string with the output 
+\end{DoxyReturn}
 \Hypertarget{classclang_1_1_pointer_reference_visitor_aac0a0676541cf7f0c127231bd331ae2f}\label{classclang_1_1_pointer_reference_visitor_aac0a0676541cf7f0c127231bd331ae2f} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitArraySubscriptExpr@{VisitArraySubscriptExpr}}
 \index{VisitArraySubscriptExpr@{VisitArraySubscriptExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -75,6 +121,8 @@ Visit an Array\+Subscript\+Expr node to check if it involves a pointer.
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 2
 \Hypertarget{classclang_1_1_pointer_reference_visitor_a3f76e0ee4a91a57be166a71257e31672}\label{classclang_1_1_pointer_reference_visitor_a3f76e0ee4a91a57be166a71257e31672} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitBinaryOperator@{VisitBinaryOperator}}
 \index{VisitBinaryOperator@{VisitBinaryOperator}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -93,6 +141,8 @@ Visit a Binary\+Operator node, and check if it is a pointer arithmetic operation
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
 \Hypertarget{classclang_1_1_pointer_reference_visitor_ad423d284aaca0c16bcb2012eff30d743}\label{classclang_1_1_pointer_reference_visitor_ad423d284aaca0c16bcb2012eff30d743} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitCXXDeleteExpr@{VisitCXXDeleteExpr}}
 \index{VisitCXXDeleteExpr@{VisitCXXDeleteExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -111,6 +161,8 @@ Visit a CXXDelete\+Expr node, and check if it is a pointer reference operation.
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 4
 \Hypertarget{classclang_1_1_pointer_reference_visitor_abe1761ad8e8e9c9fcb4cec3b82317ff9}\label{classclang_1_1_pointer_reference_visitor_abe1761ad8e8e9c9fcb4cec3b82317ff9} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitCXXNewExpr@{VisitCXXNewExpr}}
 \index{VisitCXXNewExpr@{VisitCXXNewExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -129,6 +181,8 @@ Visit a CXXNew\+Expr node, and check if it is a pointer reference operation.
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 5
 \Hypertarget{classclang_1_1_pointer_reference_visitor_aa2405a0b82d76aa9228f69e8007d6339}\label{classclang_1_1_pointer_reference_visitor_aa2405a0b82d76aa9228f69e8007d6339} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitDeclRefExpr@{VisitDeclRefExpr}}
 \index{VisitDeclRefExpr@{VisitDeclRefExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -147,6 +201,8 @@ Visit a Decl\+Ref\+Expr node, and check if it is a pointer reference operation.
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 6
 \Hypertarget{classclang_1_1_pointer_reference_visitor_a0fe3917a3ac30eff29bc2006ab226e9c}\label{classclang_1_1_pointer_reference_visitor_a0fe3917a3ac30eff29bc2006ab226e9c} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitGotoStmt@{VisitGotoStmt}}
 \index{VisitGotoStmt@{VisitGotoStmt}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -165,6 +221,8 @@ Visit a Goto\+Stmt node, and check if it is a pointer reference operation.
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
 \Hypertarget{classclang_1_1_pointer_reference_visitor_a9348d3430de1bb0a9f1cfa41d197daa6}\label{classclang_1_1_pointer_reference_visitor_a9348d3430de1bb0a9f1cfa41d197daa6} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitMemberExpr@{VisitMemberExpr}}
 \index{VisitMemberExpr@{VisitMemberExpr}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -183,6 +241,8 @@ Visit a Member\+Expr node, and check if it is a pointer reference operation.
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 8
 \Hypertarget{classclang_1_1_pointer_reference_visitor_a916798a0bfd7e7b4c81b006afd36edd4}\label{classclang_1_1_pointer_reference_visitor_a916798a0bfd7e7b4c81b006afd36edd4} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitUnaryOperator@{VisitUnaryOperator}}
 \index{VisitUnaryOperator@{VisitUnaryOperator}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -201,6 +261,8 @@ Visit a Unary\+Operator node, and check if it is a pointer dereference operation
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 9
 \Hypertarget{classclang_1_1_pointer_reference_visitor_a6901d59e49cde98845036d35834e19b3}\label{classclang_1_1_pointer_reference_visitor_a6901d59e49cde98845036d35834e19b3} 
 \index{clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}!VisitVarDecl@{VisitVarDecl}}
 \index{VisitVarDecl@{VisitVarDecl}!clang::PointerReferenceVisitor@{clang::PointerReferenceVisitor}}
@@ -219,9 +281,11 @@ Visit a Var\+Decl node to check if it is a pointer declaration.
 \begin{DoxyReturn}{Returns}
 true (always returns true to continue traversal). 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 10
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Visitor.\+h\item 
-C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/src/Pointer\+Reference\+Visitor.\+cpp\end{DoxyCompactItemize}
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Visitor.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Pointer\+Reference\+Visitor.\+cpp\end{DoxyCompactItemize}

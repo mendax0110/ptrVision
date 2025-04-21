@@ -1,0 +1,53 @@
+\doxysection{clang\+::Json\+Parser Class Reference}
+\hypertarget{classclang_1_1_json_parser}{}\label{classclang_1_1_json_parser}\index{clang::JsonParser@{clang::JsonParser}}
+
+
+The \doxylink{classclang_1_1_json_parser}{Json\+Parser} class is responsible for parsing JSON files and populating the \doxylink{classclang_1_1_tree_node}{Tree\+Node} structure.  
+
+
+
+
+{\ttfamily \#include $<$Json\+Parser.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classclang_1_1_json_parser_a22ea25a9567f9f81d04fb9df93acd683}{Parse}} (\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \&tree\+Node, const std\+::string \&base\+Path, const std\+::string \&project\+Name, bool set\+Project\+Name=true)
+\begin{DoxyCompactList}\small\item\em Parse a JSON file and populate the \doxylink{classclang_1_1_tree_node}{Tree\+Node} structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classclang_1_1_json_parser}{Json\+Parser} class is responsible for parsing JSON files and populating the \doxylink{classclang_1_1_tree_node}{Tree\+Node} structure. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_json_parser_a22ea25a9567f9f81d04fb9df93acd683}\label{classclang_1_1_json_parser_a22ea25a9567f9f81d04fb9df93acd683} 
+\index{clang::JsonParser@{clang::JsonParser}!Parse@{Parse}}
+\index{Parse@{Parse}!clang::JsonParser@{clang::JsonParser}}
+\doxysubsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily void Json\+Parser\+::\+Parse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classclang_1_1_tree_node}{Tree\+Node}} \&}]{tree\+Node,  }\item[{const std\+::string \&}]{base\+Path,  }\item[{const std\+::string \&}]{project\+Name,  }\item[{bool}]{set\+Project\+Name = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse a JSON file and populate the \doxylink{classclang_1_1_tree_node}{Tree\+Node} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tree\+Node} & -\/\texorpdfstring{$>$}{>} The \doxylink{classclang_1_1_tree_node}{Tree\+Node} to populate with the parsed data. \\
+\hline
+{\em base\+Path} & -\/\texorpdfstring{$>$}{>} The base path for the project. \\
+\hline
+{\em project\+Name} & -\/\texorpdfstring{$>$}{>} The name of the project. \\
+\hline
+{\em set\+Project\+Name} & -\/\texorpdfstring{$>$}{>} Flag to set the project name. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Json\+Parser.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Json\+Parser.\+cpp\end{DoxyCompactItemize}

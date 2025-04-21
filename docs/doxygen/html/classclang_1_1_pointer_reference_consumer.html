@@ -80,10 +80,10 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classclang_1_1_pointer_reference_consumer.html" title="PointerReferenceConsumer is an ASTConsumer that processes the AST of a translation unit.">PointerReferenceConsumer</a> is an ASTConsumer that processes the AST of a translation unit.  
+<p>PointerRefernceConsumer class forward declaration.  
  <a href="classclang_1_1_pointer_reference_consumer.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_pointer_reference_consumer_8h_source.html">PointerReferenceConsumer.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_pointer_reference_action_8h_source.html">PointerReferenceAction.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for clang::PointerReferenceConsumer:</div>
 <div class="dyncontent">
@@ -107,13 +107,49 @@ Collaboration diagram for clang::PointerReferenceConsumer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a07a7afc99c4cbf877615b4a3fb9fd6b1" id="r_a07a7afc99c4cbf877615b4a3fb9fd6b1"><td class="memItemLeft" align="right" valign="top"><a id="a07a7afc99c4cbf877615b4a3fb9fd6b1" name="a07a7afc99c4cbf877615b4a3fb9fd6b1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PointerReferenceConsumer</b> (<a class="el" href="classclang_1_1_pointer_reference_action.html">PointerReferenceAction</a> *action)</td></tr>
+<tr class="memdesc:a07a7afc99c4cbf877615b4a3fb9fd6b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that takes a <a class="el" href="classclang_1_1_pointer_reference_action.html" title="The PointerReferenceAction class is responsible for creating an AST consumer and handling the output.">PointerReferenceAction</a> pointer. <br /></td></tr>
+<tr class="separator:a07a7afc99c4cbf877615b4a3fb9fd6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb62b072bef4867378842aa236a5efcc" id="r_afb62b072bef4867378842aa236a5efcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclang_1_1_pointer_reference_consumer.html#afb62b072bef4867378842aa236a5efcc">HandleTranslationUnit</a> (ASTContext &amp;Context) override</td></tr>
 <tr class="memdesc:afb62b072bef4867378842aa236a5efcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the translation unit of the AST.  <br /></td></tr>
 <tr class="separator:afb62b072bef4867378842aa236a5efcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf89efd578e3bc79996597c6a95b7aef" id="r_aaf89efd578e3bc79996597c6a95b7aef"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclang_1_1_pointer_reference_consumer.html#aaf89efd578e3bc79996597c6a95b7aef">getOutput</a> () const</td></tr>
+<tr class="memdesc:aaf89efd578e3bc79996597c6a95b7aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the output of the visitor.  <br /></td></tr>
+<tr class="separator:aaf89efd578e3bc79996597c6a95b7aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classclang_1_1_pointer_reference_consumer.html" title="PointerReferenceConsumer is an ASTConsumer that processes the AST of a translation unit.">PointerReferenceConsumer</a> is an ASTConsumer that processes the AST of a translation unit. </p>
+<div class="textblock"><p>PointerRefernceConsumer class forward declaration. </p>
+<p>The <a class="el" href="classclang_1_1_pointer_reference_consumer.html" title="PointerRefernceConsumer class forward declaration.">PointerReferenceConsumer</a> class is responsible for consuming the AST and processing pointer references. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaf89efd578e3bc79996597c6a95b7aef" name="aaf89efd578e3bc79996597c6a95b7aef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf89efd578e3bc79996597c6a95b7aef">&#9670;&#160;</a></span>getOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string clang::PointerReferenceConsumer::getOutput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the output of the visitor. </p>
+<dl class="section return"><dt>Returns</dt><dd>-&gt; A string with the output </dd></dl>
+
+</div>
+</div>
 <a id="afb62b072bef4867378842aa236a5efcc" name="afb62b072bef4867378842aa236a5efcc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb62b072bef4867378842aa236a5efcc">&#9670;&#160;</a></span>HandleTranslationUnit()</h2>
 
@@ -145,12 +181,17 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classclang_1_1_pointer_reference_consumer_afb62b072bef4867378842aa236a5efcc_cgraph.png" border="0" usemap="#aclassclang_1_1_pointer_reference_consumer_afb62b072bef4867378842aa236a5efcc_cgraph" alt=""/></div>
+</div>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/Adrian/Documents/git/ptrVision/include/<a class="el" href="_pointer_reference_consumer_8h_source.html">PointerReferenceConsumer.h</a></li>
-<li>C:/Users/Adrian/Documents/git/ptrVision/src/<b>PointerReferenceConsumer.cpp</b></li>
+<li>/Users/adriangossl/Documents/git/ptrVision/include/<a class="el" href="_pointer_reference_consumer_8h_source.html">PointerReferenceConsumer.h</a></li>
+<li>/Users/adriangossl/Documents/git/ptrVision/src/<b>PointerReferenceConsumer.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

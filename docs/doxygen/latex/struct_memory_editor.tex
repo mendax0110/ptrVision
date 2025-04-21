@@ -1,0 +1,169 @@
+\doxysection{Memory\+Editor Struct Reference}
+\hypertarget{struct_memory_editor}{}\label{struct_memory_editor}\index{MemoryEditor@{MemoryEditor}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_memory_editor_1_1_sizes}{Sizes}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_memory_editor_ade54baad71f90358aa133f8455542b0c}\label{struct_memory_editor_ade54baad71f90358aa133f8455542b0c} 
+enum {\bfseries Data\+Format} \{ {\bfseries Data\+Format\+\_\+\+Bin} = 0
+, {\bfseries Data\+Format\+\_\+\+Dec} = 1
+, {\bfseries Data\+Format\+\_\+\+Hex} = 2
+, {\bfseries Data\+Format\+\_\+\+COUNT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_memory_editor_aa94140871b5e96f1293fc24d9b880dbb}\label{struct_memory_editor_aa94140871b5e96f1293fc24d9b880dbb} 
+void {\bfseries Goto\+Addr\+And\+Highlight} (size\+\_\+t addr\+\_\+min, size\+\_\+t addr\+\_\+max)
+\item 
+\Hypertarget{struct_memory_editor_a1e56244c3d12791df63ac10a899cdffc}\label{struct_memory_editor_a1e56244c3d12791df63ac10a899cdffc} 
+void {\bfseries Calc\+Sizes} (\mbox{\hyperlink{struct_memory_editor_1_1_sizes}{Sizes}} \&s, size\+\_\+t mem\+\_\+size, size\+\_\+t base\+\_\+display\+\_\+addr)
+\item 
+\Hypertarget{struct_memory_editor_a10cc3abc821a8bfd3ec039f1edf9be05}\label{struct_memory_editor_a10cc3abc821a8bfd3ec039f1edf9be05} 
+void {\bfseries Draw\+Window} (const char \texorpdfstring{$\ast$}{*}title, void \texorpdfstring{$\ast$}{*}mem\+\_\+data, size\+\_\+t mem\+\_\+size, size\+\_\+t base\+\_\+display\+\_\+addr=0x0000)
+\item 
+\Hypertarget{struct_memory_editor_af88cf16dd73532be8942335e8b07a14b}\label{struct_memory_editor_af88cf16dd73532be8942335e8b07a14b} 
+void {\bfseries Draw\+Contents} (void \texorpdfstring{$\ast$}{*}mem\+\_\+data\+\_\+void, size\+\_\+t mem\+\_\+size, size\+\_\+t base\+\_\+display\+\_\+addr=0x0000)
+\item 
+\Hypertarget{struct_memory_editor_a951af23d8eafd95a1d987dc899be77a7}\label{struct_memory_editor_a951af23d8eafd95a1d987dc899be77a7} 
+void {\bfseries Draw\+Options\+Line} (const \mbox{\hyperlink{struct_memory_editor_1_1_sizes}{Sizes}} \&s, void \texorpdfstring{$\ast$}{*}mem\+\_\+data, size\+\_\+t mem\+\_\+size, size\+\_\+t base\+\_\+display\+\_\+addr)
+\item 
+\Hypertarget{struct_memory_editor_a12273d87a9722a48d91ad76d64e2e219}\label{struct_memory_editor_a12273d87a9722a48d91ad76d64e2e219} 
+void {\bfseries Draw\+Preview\+Line} (const \mbox{\hyperlink{struct_memory_editor_1_1_sizes}{Sizes}} \&s, void \texorpdfstring{$\ast$}{*}mem\+\_\+data\+\_\+void, size\+\_\+t mem\+\_\+size, size\+\_\+t base\+\_\+display\+\_\+addr)
+\item 
+\Hypertarget{struct_memory_editor_a96ecb625344df5712231568ed7098107}\label{struct_memory_editor_a96ecb625344df5712231568ed7098107} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Data\+Type\+Get\+Desc} (Im\+Gui\+Data\+Type data\+\_\+type) const
+\item 
+\Hypertarget{struct_memory_editor_ae1be157b9d9c1dcf7cb39238f729cc89}\label{struct_memory_editor_ae1be157b9d9c1dcf7cb39238f729cc89} 
+size\+\_\+t {\bfseries Data\+Type\+Get\+Size} (Im\+Gui\+Data\+Type data\+\_\+type) const
+\item 
+\Hypertarget{struct_memory_editor_a0d7aebd17af36d52663ba581577ae566}\label{struct_memory_editor_a0d7aebd17af36d52663ba581577ae566} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Data\+Format\+Get\+Desc} (Data\+Format data\+\_\+format) const
+\item 
+\Hypertarget{struct_memory_editor_abe4231a90ef54d39afcbbafac5b6b14e}\label{struct_memory_editor_abe4231a90ef54d39afcbbafac5b6b14e} 
+bool {\bfseries Is\+Big\+Endian} () const
+\item 
+\Hypertarget{struct_memory_editor_af672d2dddfdb46ad504448f9a949198b}\label{struct_memory_editor_af672d2dddfdb46ad504448f9a949198b} 
+void \texorpdfstring{$\ast$}{*} {\bfseries Endianness\+Copy} (void \texorpdfstring{$\ast$}{*}dst, void \texorpdfstring{$\ast$}{*}src, size\+\_\+t size) const
+\item 
+\Hypertarget{struct_memory_editor_a6e1b9583952a6aecf9c6f300744bb5dd}\label{struct_memory_editor_a6e1b9583952a6aecf9c6f300744bb5dd} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Format\+Binary} (const Im\+U8 \texorpdfstring{$\ast$}{*}buf, int width) const
+\item 
+\Hypertarget{struct_memory_editor_aac665477c869b5e1f2bc1598bd043d7b}\label{struct_memory_editor_aac665477c869b5e1f2bc1598bd043d7b} 
+void {\bfseries Draw\+Preview\+Data} (size\+\_\+t addr, const Im\+U8 \texorpdfstring{$\ast$}{*}mem\+\_\+data, size\+\_\+t mem\+\_\+size, Im\+Gui\+Data\+Type data\+\_\+type, Data\+Format data\+\_\+format, char \texorpdfstring{$\ast$}{*}out\+\_\+buf, size\+\_\+t out\+\_\+buf\+\_\+size) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_memory_editor_a0d7858f0f5b47c96eea0cb595fb01bed}\label{struct_memory_editor_a0d7858f0f5b47c96eea0cb595fb01bed} 
+static void \texorpdfstring{$\ast$}{*} {\bfseries Endianness\+Copy\+Big\+Endian} (void \texorpdfstring{$\ast$}{*}\+\_\+dst, void \texorpdfstring{$\ast$}{*}\+\_\+src, size\+\_\+t s, int is\+\_\+little\+\_\+endian)
+\item 
+\Hypertarget{struct_memory_editor_a144049b6a8921600b8732cc4cce4a5a6}\label{struct_memory_editor_a144049b6a8921600b8732cc4cce4a5a6} 
+static void \texorpdfstring{$\ast$}{*} {\bfseries Endianness\+Copy\+Little\+Endian} (void \texorpdfstring{$\ast$}{*}\+\_\+dst, void \texorpdfstring{$\ast$}{*}\+\_\+src, size\+\_\+t s, int is\+\_\+little\+\_\+endian)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_memory_editor_a29169833ac94b5e18f1a9d7607af69f9}\label{struct_memory_editor_a29169833ac94b5e18f1a9d7607af69f9} 
+bool {\bfseries Open}
+\item 
+\Hypertarget{struct_memory_editor_a72e81f6d531b3da59270b97b3b7b5442}\label{struct_memory_editor_a72e81f6d531b3da59270b97b3b7b5442} 
+bool {\bfseries Read\+Only}
+\item 
+\Hypertarget{struct_memory_editor_af9fc2f7247e41fede50e2951221434d4}\label{struct_memory_editor_af9fc2f7247e41fede50e2951221434d4} 
+int {\bfseries Cols}
+\item 
+\Hypertarget{struct_memory_editor_a87275c239c0f7bfcc85e27f10cbd6048}\label{struct_memory_editor_a87275c239c0f7bfcc85e27f10cbd6048} 
+bool {\bfseries Opt\+Show\+Options}
+\item 
+\Hypertarget{struct_memory_editor_a919c2aa40c05e9d43622c65f527e9034}\label{struct_memory_editor_a919c2aa40c05e9d43622c65f527e9034} 
+bool {\bfseries Opt\+Show\+Data\+Preview}
+\item 
+\Hypertarget{struct_memory_editor_a1a54026bb6737c62f8a1127be5830ddf}\label{struct_memory_editor_a1a54026bb6737c62f8a1127be5830ddf} 
+bool {\bfseries Opt\+Show\+Hex\+II}
+\item 
+\Hypertarget{struct_memory_editor_ae128d23cdaa613690e1ad0ccfd21539f}\label{struct_memory_editor_ae128d23cdaa613690e1ad0ccfd21539f} 
+bool {\bfseries Opt\+Show\+Ascii}
+\item 
+\Hypertarget{struct_memory_editor_a857ccc06a09e2315c9ad21581cc9540f}\label{struct_memory_editor_a857ccc06a09e2315c9ad21581cc9540f} 
+bool {\bfseries Opt\+Grey\+Out\+Zeroes}
+\item 
+\Hypertarget{struct_memory_editor_ab81ace1439d420c2fca2ba96ff48184a}\label{struct_memory_editor_ab81ace1439d420c2fca2ba96ff48184a} 
+bool {\bfseries Opt\+Upper\+Case\+Hex}
+\item 
+\Hypertarget{struct_memory_editor_a6bf0bab889766181dcfb6849191e2fe9}\label{struct_memory_editor_a6bf0bab889766181dcfb6849191e2fe9} 
+int {\bfseries Opt\+Mid\+Cols\+Count}
+\item 
+\Hypertarget{struct_memory_editor_a847797c21cd8b6f1c85b32f20d831386}\label{struct_memory_editor_a847797c21cd8b6f1c85b32f20d831386} 
+int {\bfseries Opt\+Addr\+Digits\+Count}
+\item 
+\Hypertarget{struct_memory_editor_a3ede4fe179e603bfed34282f89977300}\label{struct_memory_editor_a3ede4fe179e603bfed34282f89977300} 
+float {\bfseries Opt\+Footer\+Extra\+Height}
+\item 
+\Hypertarget{struct_memory_editor_a97a8138c67e6c95232f301749a394853}\label{struct_memory_editor_a97a8138c67e6c95232f301749a394853} 
+Im\+U32 {\bfseries Highlight\+Color}
+\item 
+\Hypertarget{struct_memory_editor_ab4df382733e714cf983def1857f1cb20}\label{struct_memory_editor_ab4df382733e714cf983def1857f1cb20} 
+Im\+U8(\texorpdfstring{$\ast$}{*} {\bfseries Read\+Fn} )(const Im\+U8 \texorpdfstring{$\ast$}{*}mem, size\+\_\+t off, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\Hypertarget{struct_memory_editor_a9c799c6b3d0dde2caf57c4216cdf8789}\label{struct_memory_editor_a9c799c6b3d0dde2caf57c4216cdf8789} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries Write\+Fn} )(Im\+U8 \texorpdfstring{$\ast$}{*}mem, size\+\_\+t off, Im\+U8 d, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\Hypertarget{struct_memory_editor_ace4b93c6d162eea41e16930040b9541a}\label{struct_memory_editor_ace4b93c6d162eea41e16930040b9541a} 
+bool(\texorpdfstring{$\ast$}{*} {\bfseries Highlight\+Fn} )(const Im\+U8 \texorpdfstring{$\ast$}{*}mem, size\+\_\+t off, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\Hypertarget{struct_memory_editor_ae2c8631c374c3ae6aece6a376fb0226a}\label{struct_memory_editor_ae2c8631c374c3ae6aece6a376fb0226a} 
+Im\+U32(\texorpdfstring{$\ast$}{*} {\bfseries Bg\+Color\+Fn} )(const Im\+U8 \texorpdfstring{$\ast$}{*}mem, size\+\_\+t off, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\item 
+\Hypertarget{struct_memory_editor_a0432439bd56edf56202664067e8c0570}\label{struct_memory_editor_a0432439bd56edf56202664067e8c0570} 
+void \texorpdfstring{$\ast$}{*} {\bfseries User\+Data}
+\item 
+\Hypertarget{struct_memory_editor_a140e7695b641b4e16b49f23191bbfe5d}\label{struct_memory_editor_a140e7695b641b4e16b49f23191bbfe5d} 
+bool {\bfseries Mouse\+Hovered}
+\item 
+\Hypertarget{struct_memory_editor_a27e3ded8d75b9c99fe48c5c2a2136697}\label{struct_memory_editor_a27e3ded8d75b9c99fe48c5c2a2136697} 
+size\+\_\+t {\bfseries Mouse\+Hovered\+Addr}
+\item 
+\Hypertarget{struct_memory_editor_a3bc853e46b2a0d961983833058a70aac}\label{struct_memory_editor_a3bc853e46b2a0d961983833058a70aac} 
+bool {\bfseries Contents\+Width\+Changed}
+\item 
+\Hypertarget{struct_memory_editor_aea8ccd86f422f44540784b8040428f1c}\label{struct_memory_editor_aea8ccd86f422f44540784b8040428f1c} 
+size\+\_\+t {\bfseries Data\+Preview\+Addr}
+\item 
+\Hypertarget{struct_memory_editor_a21d7b310066ce323f5dd75fbbfa5d0ed}\label{struct_memory_editor_a21d7b310066ce323f5dd75fbbfa5d0ed} 
+size\+\_\+t {\bfseries Data\+Editing\+Addr}
+\item 
+\Hypertarget{struct_memory_editor_aa6299e661900766ba8de0a4e47bae57b}\label{struct_memory_editor_aa6299e661900766ba8de0a4e47bae57b} 
+bool {\bfseries Data\+Editing\+Take\+Focus}
+\item 
+\Hypertarget{struct_memory_editor_aa039ec01e5e684222744021e8725437e}\label{struct_memory_editor_aa039ec01e5e684222744021e8725437e} 
+char {\bfseries Data\+Input\+Buf} \mbox{[}32\mbox{]}
+\item 
+\Hypertarget{struct_memory_editor_adfecc1808ef24e0c91d710c8a1754794}\label{struct_memory_editor_adfecc1808ef24e0c91d710c8a1754794} 
+char {\bfseries Addr\+Input\+Buf} \mbox{[}32\mbox{]}
+\item 
+\Hypertarget{struct_memory_editor_a5aeef721538485c3b6235a56b7d28ee8}\label{struct_memory_editor_a5aeef721538485c3b6235a56b7d28ee8} 
+size\+\_\+t {\bfseries Goto\+Addr}
+\item 
+\Hypertarget{struct_memory_editor_ac5cffa3aa446c876bd8156fa6cd55a68}\label{struct_memory_editor_ac5cffa3aa446c876bd8156fa6cd55a68} 
+size\+\_\+t {\bfseries Highlight\+Min}
+\item 
+\Hypertarget{struct_memory_editor_ac0b3470452d850a1872bc30f57885104}\label{struct_memory_editor_ac0b3470452d850a1872bc30f57885104} 
+size\+\_\+t {\bfseries Highlight\+Max}
+\item 
+\Hypertarget{struct_memory_editor_ad8816158771daf654fc4b40858e3ec2d}\label{struct_memory_editor_ad8816158771daf654fc4b40858e3ec2d} 
+int {\bfseries Preview\+Endianness}
+\item 
+\Hypertarget{struct_memory_editor_a6197024511813050b7871243790c2c13}\label{struct_memory_editor_a6197024511813050b7871243790c2c13} 
+Im\+Gui\+Data\+Type {\bfseries Preview\+Data\+Type}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/external/imgui\+\_\+club/imgui\+\_\+memory\+\_\+editor/imgui\+\_\+memory\+\_\+editor.\+h\end{DoxyCompactItemize}

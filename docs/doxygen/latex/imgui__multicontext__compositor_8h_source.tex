@@ -1,0 +1,91 @@
+\doxysection{imgui\+\_\+multicontext\+\_\+compositor.\+h}
+\hypertarget{imgui__multicontext__compositor_8h_source}{}\label{imgui__multicontext__compositor_8h_source}\index{/Users/adriangossl/Documents/git/ptrVision/external/imgui\_club/imgui\_multicontext\_compositor/imgui\_multicontext\_compositor.h@{/Users/adriangossl/Documents/git/ptrVision/external/imgui\_club/imgui\_multicontext\_compositor/imgui\_multicontext\_compositor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Multi-\/Context\ Compositor\ v0.11,\ for\ Dear\ ImGui}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Get\ latest\ version\ at\ http://www.github.com/ocornut/imgui\_club}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Licensed\ under\ The\ MIT\ License\ (MIT)}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ When\ using\ and\ displaying\ multiple\ contexts\ simultaneously:}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ -\/\ Manage\ z-\/order\ of\ contexts.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ -\/\ Manage\ input\ routing.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ -\/\ Allow\ drag\ and\ drop\ between\ contexts.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ Tips\ for\ using\ multiple\ contexts\ simultaneously:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ -\/\ Give\ each\ of\ them\ unique\ title\ bar\ colors.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ -\/\ Make\ sure\ they\ each\ have\ their\ individual\ .ini\ file.}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ CHANGELOG:}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ -\/\ v0.10:\ (2024/07/16):\ initial\ version.\ Requires\ dear\ imgui\ 1.90.9+.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ -\/\ v0.11:\ (2024/08/01):\ fixed\ an\ issue\ clicking\ between\ two\ secondary\ viewport\ of\ different\ contexts.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fixed\ an\ issue\ routing\ keyboard\ to\ secondary\ viewports.\ [tom\ bui]}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ TODO:}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ -\/\ Ctrl+Tab\ could\ be\ multi-\/context\ aware}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ -\/\ Focusing\ a\ context\ optionally\ shouldn't\ unfocus\ windows\ in\ other\ context}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ USAGE:}}
+\DoxyCodeLine{00024\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ //\ Store\ persistent\ state\ somewhere}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ static\ ImGuiMultiContextCompositor\ g\_mcc\_instance;}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ ...}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ \ //\ Add\ your\ contexts}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ ImGuiMultiContextCompositor\_AddContext(mcc,\ ctx1);\ //\ Add\ update\ context}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ \ \ ImGuiMultiContextCompositor\_AddContext(mcc,\ ctx2);\ //\ Add\ rendering\ context}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ \ ...}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ \ //\ New\ Frame}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ \ ImGuiMultiContextCompositor\_PreNewFrameUpdateAll(mcc);}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ ImGui::SetCurrentContext(ctx1);}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ ImGui::NewFrame();}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ ImGuiMultiContextCompositor\_PostNewFrameUpdateOne(mcc);}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ \ ...}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ \ ImGui::SetCurrentContext(ctx2);}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ \ ImGui::NewFrame();}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ ImGuiMultiContextCompositor\_PostNewFrameUpdateOne(mcc);}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ ...}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ //\ End\ of\ frame}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ ImGui::Render()/ImGui::EndFrame();}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ ImGuiMultiContextCompositor\_PostEndFrameUpdateAll(mcc);}}
+\DoxyCodeLine{00045\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}imgui.h"{}}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_im_gui_multi_context_compositor}{ImGuiMultiContextCompositor}}}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ List\ of\ context\ +\ sorted\ front\ to\ back}}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{struct_im_vector}{ImVector<ImGuiContext*>}}\ Contexts;}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{struct_im_vector}{ImVector<ImGuiContext*>}}\ ContextsFrontToBack;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ [Internal]}}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ \ \ CtxMouseFirst\ =\ NULL;\ \ \ \ \ \ \ \textcolor{comment}{//\ When\ hovering\ a\ main/shared\ viewport,\ first\ context\ with\ io.WantCaptureMouse}}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ \ \ CtxMouseExclusive\ =\ NULL;\ \ \ \textcolor{comment}{//\ When\ hovering\ a\ secondary\ viewport}}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ \ \ CtxMouseShape\ =\ NULL;\ \ \ \ \ \ \ \textcolor{comment}{//\ Context\ owning\ mouse\ cursor\ shape}}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ \ \ CtxKeyboardExclusive\ =\ NULL;\textcolor{comment}{//\ When\ focusing\ a\ secondary\ viewport}}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ \ \ CtxDragDropSrc\ =\ NULL;\ \ \ \ \ \ \textcolor{comment}{//\ Source\ context\ for\ drag\ and\ drop}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ \ \ CtxDragDropDst\ =\ NULL;\ \ \ \ \ \ \textcolor{comment}{//\ When\ hovering\ a\ main/shared\ viewport,\ second\ context\ with\ io.WantCaptureMouse\ for\ Drag\ Drop\ target}}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{struct_im_gui_payload}{ImGuiPayload}}\ \ \ \ DragDropPayload;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Deep\ copy\ of\ drag\ and\ drop\ payload.}}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ ImGuiMultiContextCompositor\ Interface}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ Add/remove\ context.}}
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ ImGuiMultiContextCompositor\_AddContext(\mbox{\hyperlink{struct_im_gui_multi_context_compositor}{ImGuiMultiContextCompositor}}*\ mcc,\ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ ctx);}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ ImGuiMultiContextCompositor\_RemoveContext(\mbox{\hyperlink{struct_im_gui_multi_context_compositor}{ImGuiMultiContextCompositor}}*\ mcc,\ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ ctx);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ Call\ at\ a\ shared\ sync\ point\ before\ calling\ NewFrame()\ on\ any\ context.}}
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ ImGuiMultiContextCompositor\_PreNewFrameUpdateAll(\mbox{\hyperlink{struct_im_gui_multi_context_compositor}{ImGuiMultiContextCompositor}}*\ mcc);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{comment}{//\ Call\ after\ caling\ NewFrame()\ on\ a\ given\ context.}}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ ImGuiMultiContextCompositor\_PostNewFrameUpdateOne(\mbox{\hyperlink{struct_im_gui_multi_context_compositor}{ImGuiMultiContextCompositor}}*\ mcc,\ \mbox{\hyperlink{struct_im_gui_context}{ImGuiContext}}*\ ctx);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ Call\ at\ a\ shared\ sync\ point\ after\ calling\ EndFrame()\ on\ all\ contexts.}}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ ImGuiMultiContextCompositor\_PostEndFrameUpdateAll(\mbox{\hyperlink{struct_im_gui_multi_context_compositor}{ImGuiMultiContextCompositor}}*\ mcc);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ Debug\ display}}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ ImGuiMultiContextCompositor\_ShowDebugWindow(\mbox{\hyperlink{struct_im_gui_multi_context_compositor}{ImGuiMultiContextCompositor}}*\ mcc);}
+
+\end{DoxyCode}

@@ -1,0 +1,171 @@
+\doxysection{Im\+Gui\+File\+Dialog\+Config.\+h}
+\hypertarget{_im_gui_file_dialog_config_8h_source}{}\label{_im_gui_file_dialog_config_8h_source}\index{/Users/adriangossl/Documents/git/ptrVision/external/ImGuiFileDialog/ImGuiFileDialogConfig.h@{/Users/adriangossl/Documents/git/ptrVision/external/ImGuiFileDialog/ImGuiFileDialogConfig.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ uncomment\ and\ modify\ defines\ under\ for\ customize\ ImGuiFileDialog}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ uncomment\ if\ you\ need\ to\ use\ your\ FileSystem\ Interface}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ if\ commented,\ you\ have\ two\ defualt\ interface,\ std::filesystem\ or\ dirent}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \#define\ USE\_CUSTOM\_FILESYSTEM}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ this\ options\ need\ c++17}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ \#define\ USE\_STD\_FILESYSTEM}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ the\ spacing\ between\ button\ path's\ can\ be\ customized.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ if\ disabled\ the\ spacing\ is\ defined\ by\ the\ imgui\ theme}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ define\ the\ space\ between\ path\ buttons}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ \#define\ CUSTOM\_PATH\_SPACING\ 2}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ \#define\ MAX\_FILE\_DIALOG\_NAME\_BUFFER\ 1024}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ \#define\ MAX\_PATH\_BUFFER\_SIZE\ 1024}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ the\ slash's\ buttons\ in\ path\ cna\ be\ used\ for\ quick\ select\ parallles\ directories}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ \#define\ USE\_QUICK\_PATH\_SELECT}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ \#define\ USE\_THUMBNAILS}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ the\ thumbnail\ generation\ use\ the\ stb\_image\ and\ stb\_resize\ lib\ who\ need\ to\ define\ the\ implementation}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ btw\ if\ you\ already\ use\ them\ in\ your\ app,\ you\ can\ have\ compiler\ error\ due\ to\ "{}implemntation\ found\ in\ double"{}}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ so\ uncomment\ these\ line\ for\ prevent\ the\ creation\ of\ implementation\ of\ these\ libs\ again}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ \#define\ DONT\_DEFINE\_AGAIN\_\_STB\_IMAGE\_IMPLEMENTATION}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \#define\ DONT\_DEFINE\_AGAIN\_\_STB\_IMAGE\_RESIZE\_IMPLEMENTATION}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ \#define\ IMGUI\_RADIO\_BUTTON\ RadioButton}}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \#define\ DisplayMode\_ThumbailsList\_ImageHeight\ 32.0f}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ \#define\ tableHeaderFileThumbnailsString\ "{}Thumbnails"{}}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ \#define\ DisplayMode\_FilesList\_ButtonString\ "{}FL"{}}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ \#define\ DisplayMode\_FilesList\_ButtonHelp\ "{}File\ List"{}}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ \#define\ DisplayMode\_ThumbailsList\_ButtonString\ "{}TL"{}}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ \#define\ DisplayMode\_ThumbailsList\_ButtonHelp\ "{}Thumbnails\ List"{}}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ todo}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ \#define\ DisplayMode\_ThumbailsGrid\_ButtonString\ "{}TG"{}}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ \#define\ DisplayMode\_ThumbailsGrid\_ButtonHelp\ "{}Thumbnails\ Grid"{}}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ \#define\ USE\_EXPLORATION\_BY\_KEYS}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ this\ mapping\ by\ default\ is\ for\ GLFW\ but\ you\ can\ use\ another}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ \#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ Up\ key\ for\ explore\ to\ the\ top}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ \#define\ IGFD\_KEY\_UP\ ImGuiKey\_UpArrow}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ Down\ key\ for\ explore\ to\ the\ bottom}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ \#define\ IGFD\_KEY\_DOWN\ ImGuiKey\_DownArrow}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ Enter\ key\ for\ open\ directory}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ \#define\ IGFD\_KEY\_ENTER\ ImGuiKey\_Enter}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ BackSpace\ for\ comming\ back\ to\ the\ last\ directory}}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ \#define\ IGFD\_KEY\_BACKSPACE\ ImGuiKey\_Backspace}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ \#define\ SelectAllFilesKey\ ImGuiKey\_A}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ by\ ex\ you\ can\ quit\ the\ dialog\ by\ pressing\ the\ key\ excape}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//\ \#define\ USE\_DIALOG\_EXIT\_WITH\_KEY}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ \#define\ IGFD\_EXIT\_KEY\ ImGuiKey\_Escape}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ widget}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ begin\ combo\ widget}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ \#define\ IMGUI\_BEGIN\_COMBO\ ImGui::BeginCombo}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ when\ auto\ resized,\ FILTER\_COMBO\_MIN\_WIDTH\ will\ be\ considered\ has\ minimum\ width}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ FILTER\_COMBO\_AUTO\_SIZE\ is\ enabled\ by\ default\ now\ to\ 1}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ uncomment\ if\ you\ want\ disable}}
+\DoxyCodeLine{00095\ \textcolor{comment}{//\ \#define\ FILTER\_COMBO\_AUTO\_SIZE\ 0}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ filter\ combobox\ width}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ \#define\ FILTER\_COMBO\_MIN\_WIDTH\ 120.0f}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ button\ widget\ use\ for\ compose\ path}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ \#define\ IMGUI\_PATH\_BUTTON\ ImGui::Button}}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ standard\ button}}
+\DoxyCodeLine{00101\ \textcolor{comment}{//\ \#define\ IMGUI\_BUTTON\ ImGui::Button}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ locales\ string}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ \#define\ createDirButtonString\ "{}+"{}}}
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ \#define\ resetButtonString\ "{}R"{}}}
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ \#define\ devicesButtonString\ "{}Devices"{}}}
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ \#define\ editPathButtonString\ "{}E"{}}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ \#define\ searchString\ "{}Search"{}}}
+\DoxyCodeLine{00113\ \textcolor{comment}{//\ \#define\ dirEntryString\ "{}[DIR]\ "{}}}
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ \#define\ linkEntryString\ "{}[LINK]\ "{}}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ \#define\ fileEntryString\ "{}[FILE]\ "{}}}
+\DoxyCodeLine{00116\ \textcolor{comment}{//\ \#define\ fileNameString\ "{}File\ Name\ :\ "{}}}
+\DoxyCodeLine{00117\ \textcolor{comment}{//\ \#define\ dirNameString\ "{}Directory\ Path\ :"{}}}
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ \#define\ buttonResetSearchString\ "{}Reset\ search"{}}}
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ \#define\ buttonDriveString\ "{}Devices"{}}}
+\DoxyCodeLine{00120\ \textcolor{comment}{//\ \#define\ buttonEditPathString\ "{}Edit\ path\(\backslash\)nYou\ can\ also\ right\ click\ on\ path\ buttons"{}}}
+\DoxyCodeLine{00121\ \textcolor{comment}{//\ \#define\ buttonResetPathString\ "{}Reset\ to\ current\ directory"{}}}
+\DoxyCodeLine{00122\ \textcolor{comment}{//\ \#define\ buttonCreateDirString\ "{}Create\ Directory"{}}}
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ \#define\ OverWriteDialogTitleString\ "{}The\ file\ Already\ Exist\ !"{}}}
+\DoxyCodeLine{00124\ \textcolor{comment}{//\ \#define\ OverWriteDialogMessageString\ "{}Would\ you\ like\ to\ OverWrite\ it\ ?"{}}}
+\DoxyCodeLine{00125\ \textcolor{comment}{//\ \#define\ OverWriteDialogConfirmButtonString\ "{}Confirm"{}}}
+\DoxyCodeLine{00126\ \textcolor{comment}{//\ \#define\ OverWriteDialogCancelButtonString\ "{}Cancel"{}}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{comment}{//\ Validation\ buttons}}
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ \#define\ okButtonString\ "{}\ OK"{}}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ \#define\ okButtonWidth\ 0.0f}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ \#define\ cancelButtonString\ "{}\ Cancel"{}}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ \#define\ cancelButtonWidth\ 0.0f}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ alignement\ [0:1],\ 0.0\ is\ left,\ 0.5\ middle,\ 1.0\ right,\ and\ other\ ratios}}
+\DoxyCodeLine{00134\ \textcolor{comment}{//\ \#define\ okCancelButtonAlignement\ 0.0f}}
+\DoxyCodeLine{00135\ \textcolor{comment}{//\ \#define\ invertOkAndCancelButtons\ 0}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{comment}{//\ DateTimeFormat}}
+\DoxyCodeLine{00138\ \textcolor{comment}{//\ see\ strftime\ functionin\ <ctime>\ for\ customize}}
+\DoxyCodeLine{00139\ \textcolor{comment}{//\ "{}\%Y/\%m/\%d\ \%H:\%M"{}\ give\ 2021:01:22\ 11:47}}
+\DoxyCodeLine{00140\ \textcolor{comment}{//\ "{}\%Y/\%m/\%d\ \%i:\%M\%p"{}\ give\ 2021:01:22\ 11:45PM}}
+\DoxyCodeLine{00141\ \textcolor{comment}{//\ \#define\ DateTimeFormat\ "{}\%Y/\%m/\%d\ \%i:\%M\%p"{}}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{//\ theses\ icons\ will\ appear\ in\ table\ headers}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ \#define\ USE\_CUSTOM\_SORTING\_ICON}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//\ \#define\ tableHeaderAscendingIcon\ "{}A|"{}}}
+\DoxyCodeLine{00150\ \textcolor{comment}{//\ \#define\ tableHeaderDescendingIcon\ "{}D|"{}}}
+\DoxyCodeLine{00151\ \textcolor{comment}{//\ \#define\ tableHeaderFileNameString\ "{}\ File\ name"{}}}
+\DoxyCodeLine{00152\ \textcolor{comment}{//\ \#define\ tableHeaderFileTypeString\ "{}\ Type"{}}}
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ \#define\ tableHeaderFileSizeString\ "{}\ Size"{}}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ \#define\ tableHeaderFileDateTimeString\ "{}\ Date"{}}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ \#define\ fileSizeBytes\ "{}o"{}}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ \#define\ fileSizeKiloBytes\ "{}Ko"{}}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//\ \#define\ fileSizeMegaBytes\ "{}Mo"{}}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ \#define\ fileSizeGigaBytes\ "{}Go"{}}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ default\ table\ sort\ field\ (must\ be\ FIELD\_FILENAME,\ FIELD\_TYPE,\ FIELD\_SIZE,\ FIELD\_DATE\ or\ FIELD\_THUMBNAILS)}}
+\DoxyCodeLine{00161\ \textcolor{comment}{//\ \#define\ defaultSortField\ FIELD\_FILENAME}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ default\ table\ sort\ order\ for\ each\ field\ (true\ =>\ Descending,\ false\ =>\ Ascending)}}
+\DoxyCodeLine{00164\ \textcolor{comment}{//\ \#define\ defaultSortOrderFilename\ true}}
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ \#define\ defaultSortOrderType\ true}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ \#define\ defaultSortOrderSize\ true}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ \#define\ defaultSortOrderDate\ true}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ \#define\ defaultSortOrderThumbnails\ true}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ \#define\ USE\_PLACES\_FEATURE}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//\ \#define\ PLACES\_PANE\_DEFAULT\_SHOWN\ false}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ \#define\ placesPaneWith\ 150.0f}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//\ \#define\ IMGUI\_TOGGLE\_BUTTON\ ToggleButton}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ \#define\ placesButtonString\ "{}Place"{}}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ \#define\ placesButtonHelpString\ "{}Places"{}}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//\ \#define\ addPlaceButtonString\ "{}+"{}}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\ \#define\ removePlaceButtonString\ "{}-\/"{}}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//\ \#define\ validatePlaceButtonString\ "{}ok"{}}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ \#define\ editPlaceButtonString\ "{}E"{}}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{comment}{//\ a\ group\ for\ bookmarks\ will\ be\ added\ by\ default,\ but\ you\ can\ also\ create\ it\ yourself\ and\ many\ more}}
+\DoxyCodeLine{00190\ \textcolor{comment}{//\ \#define\ USE\_PLACES\_BOOKMARKS}}
+\DoxyCodeLine{00191\ \textcolor{comment}{//\ \#define\ PLACES\_BOOKMARK\_DEFAULT\_OPEPEND\ true}}
+\DoxyCodeLine{00192\ \textcolor{comment}{//\ \#define\ placesBookmarksGroupName\ "{}Bookmarks"{}}}
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ \#define\ placesBookmarksDisplayOrder\ 0\ \ //\ to\ the\ first}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{comment}{//\ a\ group\ for\ system\ devices\ (returned\ by\ IFileSystem),\ but\ you\ can\ also\ add\ yours}}
+\DoxyCodeLine{00200\ \textcolor{comment}{//\ by\ ex\ if\ you\ would\ like\ to\ display\ a\ specific\ icon\ for\ some\ devices}}
+\DoxyCodeLine{00201\ \textcolor{comment}{//\ \#define\ USE\_PLACES\_DEVICES}}
+\DoxyCodeLine{00202\ \textcolor{comment}{//\ \#define\ PLACES\_DEVICES\_DEFAULT\_OPEPEND\ true}}
+\DoxyCodeLine{00203\ \textcolor{comment}{//\ \#define\ placesDevicesGroupName\ "{}Devices"{}}}
+\DoxyCodeLine{00204\ \textcolor{comment}{//\ \#define\ placesDevicesDisplayOrder\ 10\ \ //\ to\ the\ end}}
+
+\end{DoxyCode}

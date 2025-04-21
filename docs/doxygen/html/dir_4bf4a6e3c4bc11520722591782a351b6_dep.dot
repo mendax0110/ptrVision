@@ -1,0 +1,17 @@
+digraph "/Users/adriangossl/Documents/git/ptrVision/external/imgui_club"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_397d9aeee4af8edecac90968d93b57df {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="external", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_397d9aeee4af8edecac90968d93b57df.html",tooltip=""]
+  subgraph clusterdir_4bf4a6e3c4bc11520722591782a351b6 {
+    graph [ bgcolor="#edf0f7", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_4bf4a6e3c4bc11520722591782a351b6.html",tooltip=""]
+    dir_4bf4a6e3c4bc11520722591782a351b6 [shape=plaintext, label="imgui_club"];
+  dir_dcec2c7bf9669c7e732c393030f9af4b [label="imgui_memory_editor", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_dcec2c7bf9669c7e732c393030f9af4b.html",tooltip=""];
+  dir_6b3ca5c0014928163c5114ba9fff65f5 [label="imgui_multicontext\l_compositor", fillcolor="#a2b4d6", color="grey25", style="filled", URL="dir_6b3ca5c0014928163c5114ba9fff65f5.html",tooltip=""];
+  }
+  }
+}

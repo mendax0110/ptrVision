@@ -17,13 +17,46 @@ static void \mbox{\hyperlink{classclang_1_1_file_system_manager_ad893039bab3dce8
 static void \mbox{\hyperlink{classclang_1_1_file_system_manager_a7c80c78113f34f5247f3986acd39523d}{process\+Directory}} (const std\+::string \&directory\+Path, std\+::vector$<$ std\+::string $>$ \&compile\+Args)
 \begin{DoxyCompactList}\small\item\em Processes a directory, creating a Clang\+Tool to run the \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classclang_1_1_file_system_manager_a81ffe97d6eda13482caa9710a852019c}{process\+Snippet\+From\+Specified\+File}} (const std\+::string \&file\+Path, const std\+::string \&marker)
-\begin{DoxyCompactList}\small\item\em Processes a directory, creating a Clang\+Tool to run the \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Processes a directory, creating a Clang\+Tool to run the \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action}. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classclang_1_1_file_system_manager_a81ef0af2650c98e2e704a1e291de6b8c}{get\+Std\+Err}} ()
+\begin{DoxyCompactList}\small\item\em Just a simple getter for the stderr. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classclang_1_1_file_system_manager_a7fddc0dc7ec272f9f0d80e9b398519ab}{get\+Std\+Out}} ()
+\begin{DoxyCompactList}\small\item\em Just a simple getter for the stdout. \end{DoxyCompactList}\item 
+\Hypertarget{classclang_1_1_file_system_manager_a50fcf90373c015124de62eb92b4afa1a}\label{classclang_1_1_file_system_manager_a50fcf90373c015124de62eb92b4afa1a} 
+static void {\bfseries clear\+All\+Out} ()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \doxylink{classclang_1_1_file_system_manager}{File\+System\+Manager} is a class that processes files and directories. 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_file_system_manager_a81ef0af2650c98e2e704a1e291de6b8c}\label{classclang_1_1_file_system_manager_a81ef0af2650c98e2e704a1e291de6b8c} 
+\index{clang::FileSystemManager@{clang::FileSystemManager}!getStdErr@{getStdErr}}
+\index{getStdErr@{getStdErr}!clang::FileSystemManager@{clang::FileSystemManager}}
+\doxysubsubsection{\texorpdfstring{getStdErr()}{getStdErr()}}
+{\footnotesize\ttfamily std\+::string File\+System\+Manager\+::get\+Std\+Err (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Just a simple getter for the stderr. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A string with the content of the stderr 
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_file_system_manager_a7fddc0dc7ec272f9f0d80e9b398519ab}\label{classclang_1_1_file_system_manager_a7fddc0dc7ec272f9f0d80e9b398519ab} 
+\index{clang::FileSystemManager@{clang::FileSystemManager}!getStdOut@{getStdOut}}
+\index{getStdOut@{getStdOut}!clang::FileSystemManager@{clang::FileSystemManager}}
+\doxysubsubsection{\texorpdfstring{getStdOut()}{getStdOut()}}
+{\footnotesize\ttfamily std\+::string File\+System\+Manager\+::get\+Std\+Out (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Just a simple getter for the stdout. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} A string with the content of the stdout 
+\end{DoxyReturn}
 \Hypertarget{classclang_1_1_file_system_manager_a7c80c78113f34f5247f3986acd39523d}\label{classclang_1_1_file_system_manager_a7c80c78113f34f5247f3986acd39523d} 
 \index{clang::FileSystemManager@{clang::FileSystemManager}!processDirectory@{processDirectory}}
 \index{processDirectory@{processDirectory}!clang::FileSystemManager@{clang::FileSystemManager}}
@@ -41,14 +74,6 @@ Processes a directory, creating a Clang\+Tool to run the \doxylink{classclang_1_
 {\em compile\+Args} & -\/\texorpdfstring{$>$}{>} compilation arguments \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classclang_1_1_file_system_manager_a7c80c78113f34f5247f3986acd39523d_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{classclang_1_1_file_system_manager_ad893039bab3dce8bb255f0388f3a5bd6}\label{classclang_1_1_file_system_manager_ad893039bab3dce8bb255f0388f3a5bd6} 
 \index{clang::FileSystemManager@{clang::FileSystemManager}!processFile@{processFile}}
 \index{processFile@{processFile}!clang::FileSystemManager@{clang::FileSystemManager}}
@@ -66,14 +91,6 @@ Processes a file, creating a Clang\+Tool to run the \doxylink{classclang_1_1_poi
 {\em compile\+Args} & -\/\texorpdfstring{$>$}{>} compilation arguments \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classclang_1_1_file_system_manager_ad893039bab3dce8bb255f0388f3a5bd6_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{classclang_1_1_file_system_manager_a81ffe97d6eda13482caa9710a852019c}\label{classclang_1_1_file_system_manager_a81ffe97d6eda13482caa9710a852019c} 
 \index{clang::FileSystemManager@{clang::FileSystemManager}!processSnippetFromSpecifiedFile@{processSnippetFromSpecifiedFile}}
 \index{processSnippetFromSpecifiedFile@{processSnippetFromSpecifiedFile}!clang::FileSystemManager@{clang::FileSystemManager}}
@@ -93,17 +110,9 @@ Processes a directory, creating a Clang\+Tool to run the \doxylink{classclang_1_
 {\em marker} & -\/\texorpdfstring{$>$}{>} marker to identify the snippet, which will be processed \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classclang_1_1_file_system_manager_a81ffe97d6eda13482caa9710a852019c_icgraph}
-\end{center}
-\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/include/File\+System\+Manager.\+h\item 
-C\+:/\+Users/\+Adrian/\+Documents/git/ptr\+Vision/src/File\+System\+Manager.\+cpp\end{DoxyCompactItemize}
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/File\+System\+Manager.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/File\+System\+Manager.\+cpp\end{DoxyCompactItemize}

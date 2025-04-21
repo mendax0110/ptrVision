@@ -1,0 +1,63 @@
+\doxysection{detail\+::other\+\_\+error Class Reference}
+\hypertarget{classdetail_1_1other__error}{}\label{classdetail_1_1other__error}\index{detail::other\_error@{detail::other\_error}}
+
+
+exception indicating other library errors  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Inheritance diagram for detail\+::other\+\_\+error\+:
+% FIG 0
+
+
+Collaboration diagram for detail\+::other\+\_\+error\+:
+% FIG 1
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classdetail_1_1other__error_a687565ec69bfdf7a15f9a672038b0f0f}\label{classdetail_1_1other__error_a687565ec69bfdf7a15f9a672038b0f0f} 
+{\footnotesize template$<$\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{typename}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{Basic\+Json\+Context}} , enable\+\_\+if\+\_\+t$<$ \mbox{\hyperlink{structdetail_1_1is__basic__json__context}{is\+\_\+basic\+\_\+json\+\_\+context}}$<$ \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{Basic\+Json\+Context}} $>$\+::value, \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{int}} $>$  = 0$>$ }\\\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{static}} \mbox{\hyperlink{classdetail_1_1other__error}{other\+\_\+error}} {\bfseries create} (\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{int}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{id\+\_\+}}, \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{const}} std\+::string \&\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{what\+\_\+arg}}, \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{Basic\+Json\+Context}} context)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{const}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{char}} \texorpdfstring{$\ast$}{*} {\bfseries what} () \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{const}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{noexcept}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{override}}
+\begin{DoxyCompactList}\small\item\em returns the explanatory string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+const int {\bfseries id}
+\begin{DoxyCompactList}\small\item\em the id of the exception \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries exception} (\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{int}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{id\+\_\+}}, \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{const}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{what\+\_\+arg}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{static}} std\+::string {\bfseries name} (\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{const}} std\+::string \&\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{ename}}, \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{int}} \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{id\+\_\+}})
+\item 
+\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{static}} std\+::string {\bfseries diagnostics} (std\+::nullptr\+\_\+t)
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{typename}} Basic\+Json\+Type $>$ }\\\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{static}} std\+::string {\bfseries diagnostics} (\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{const}} Basic\+Json\+Type \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{leaf\+\_\+element}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+exception indicating other library errors 
+
+\begin{DoxySeeAlso}{See also}
+\href{https://json.nlohmann.me/api/basic_json/other_error/}{\texttt{ https\+://json.\+nlohmann.\+me/api/basic\+\_\+json/other\+\_\+error/}} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/json.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\doxysection{clang\+::Pointer\+Reference\+Factory Class Reference}
+\hypertarget{classclang_1_1_pointer_reference_factory}{}\label{classclang_1_1_pointer_reference_factory}\index{clang::PointerReferenceFactory@{clang::PointerReferenceFactory}}
+
+
+\doxylink{classclang_1_1_pointer_reference_factory}{Pointer\+Reference\+Factory} class is responsible for creating and managing \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} instances.  
+
+
+
+
+{\ttfamily \#include $<$Pointer\+Reference\+Factory.\+h$>$}
+
+
+
+Inheritance diagram for clang\+::Pointer\+Reference\+Factory\+:
+% FIG 0
+
+
+Collaboration diagram for clang\+::Pointer\+Reference\+Factory\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ clang\+::\+Frontend\+Action $>$ \mbox{\hyperlink{classclang_1_1_pointer_reference_factory_ae8dd72ca9bbc539cbbd67c014e362454}{create}} () override
+\begin{DoxyCompactList}\small\item\em Creaets a new instance of \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} and stores it in shared storage. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclang_1_1_pointer_reference_action}{clang\+::\+Pointer\+Reference\+Action}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classclang_1_1_pointer_reference_factory_a3a357d18aa81f6da939b29a0a917b5e5}{get\+Last\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Returns the last created \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classclang_1_1_pointer_reference_factory}{Pointer\+Reference\+Factory} class is responsible for creating and managing \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} instances. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_pointer_reference_factory_ae8dd72ca9bbc539cbbd67c014e362454}\label{classclang_1_1_pointer_reference_factory_ae8dd72ca9bbc539cbbd67c014e362454} 
+\index{clang::PointerReferenceFactory@{clang::PointerReferenceFactory}!create@{create}}
+\index{create@{create}!clang::PointerReferenceFactory@{clang::PointerReferenceFactory}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ clang\+::\+Frontend\+Action $>$ clang\+::\+Pointer\+Reference\+Factory\+::create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Creaets a new instance of \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} and stores it in shared storage. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{classclang_1_1_pointer_reference_factory_a3a357d18aa81f6da939b29a0a917b5e5}\label{classclang_1_1_pointer_reference_factory_a3a357d18aa81f6da939b29a0a917b5e5} 
+\index{clang::PointerReferenceFactory@{clang::PointerReferenceFactory}!getLastAction@{getLastAction}}
+\index{getLastAction@{getLastAction}!clang::PointerReferenceFactory@{clang::PointerReferenceFactory}}
+\doxysubsubsection{\texorpdfstring{getLastAction()}{getLastAction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classclang_1_1_pointer_reference_action}{clang\+::\+Pointer\+Reference\+Action}} \texorpdfstring{$\ast$}{*} clang\+::\+Pointer\+Reference\+Factory\+::get\+Last\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the last created \doxylink{classclang_1_1_pointer_reference_action}{Pointer\+Reference\+Action} instance. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Pointer\+Reference\+Factory.\+h\end{DoxyCompactItemize}

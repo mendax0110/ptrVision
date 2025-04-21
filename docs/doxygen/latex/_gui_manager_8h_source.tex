@@ -1,0 +1,149 @@
+\doxysection{Gui\+Manager.\+h}
+\hypertarget{_gui_manager_8h_source}{}\label{_gui_manager_8h_source}\index{/Users/adriangossl/Documents/git/ptrVision/include/GuiManager.h@{/Users/adriangossl/Documents/git/ptrVision/include/GuiManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PTRVISION\_GUIMANAGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PTRVISION\_GUIMANAGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../external/dearimgui/backends/imgui\_impl\_glfw.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../external/dearimgui/backends/imgui\_impl\_opengl3.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <ProjectExplorer.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <JsonParser.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <FileHandler.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../external/ImGuiFileDialog/ImGuiFileDialog.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../external/ImGuiColorTextEdit/TextEditor.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceclang}{clang}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceclang_ae1b19dac41eb00e8bf5f2f349d2a0e28}{ActiveDialog}}}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ None,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ OpenFile,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ CreateFile,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ SaveFile}
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classclang_1_1_gui_manager}{GuiManager}}}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_gui_manager}{GuiManager}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_gui_manager}{\string~GuiManager}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classclang_1_1_gui_manager_abd30e67e10572e9e8abfd57d312a85a7}{Run}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RenderMainMenu();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RenderFileDialog();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ HandleProjectExplorerFileClick(\textcolor{keyword}{const}\ std::filesystem::path\&\ filePath);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Redo();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Undo();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SaveFile();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ RenderPopups();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RenderMainMenuBar();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ HandleFileOpen(\textcolor{keyword}{const}\ std::string\&\ fileName,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ filePath,}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::filesystem::path\&\ selectedPath);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ RenderDockingSpace();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ OpenDocumentation();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsFileOpen(\textcolor{keyword}{const}\ std::string\&\ filePath,\ \textcolor{keyword}{const}\ std::string\&\ fileName);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }OpenFile}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ fileName;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ filePath;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ content;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_text_editor}{TextEditor}}\ editor;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ fileData;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ OpenFile\ CreateNewFile(\textcolor{keyword}{const}\ std::string\&\ fileName,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ filePath,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::filesystem::path\&\ selectedPath);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }MenuItem}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ shortcut;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ std::function<void()>\ action;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ RenderMenu(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ menuName,\ \textcolor{keyword}{const}\ std::vector<MenuItem>\&\ menuItems);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ OpenFileDialog(\mbox{\hyperlink{namespaceclang_ae1b19dac41eb00e8bf5f2f349d2a0e28}{clang::ActiveDialog}}\ dialogType,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dialogTitle);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RunAnalysis(\textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ std::string\&,\ std::vector<std::string>\&)>\&\ analysisFunc);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RenderActiveEditor();}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ RenderOutputWindow();}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RenderAssemblyWindow();}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RenderProjectTree(\mbox{\hyperlink{classclang_1_1_tree_node}{TreeNode}}*\ node);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ExitApp();}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ HandleFileDialog(\mbox{\hyperlink{namespaceclang_ae1b19dac41eb00e8bf5f2f349d2a0e28}{ActiveDialog}}\ dialogType);}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_tree_node}{TreeNode}}*\ BuildProjectTree(\textcolor{keyword}{const}\ std::string\&\ rootPath);}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_memory_editor}{MemoryEditor}}();}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_file_system_manager}{FileSystemManager}}\ fileSystemManager;}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ std::vector<OpenFile>\ openFiles;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentFileIndex\ =\ -\/1;}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ ImGuiFileDialog\ fileDialog;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ std::string\ filePathName;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ std::string\ filePath;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ std::string\ text;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ std::string\ output;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ settingsOpen;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ std::stack<std::string>\ undoStack;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ std::stack<std::string>\ redoStack;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_tree_node}{TreeNode}}*\ rootNode;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_im_vec4}{ImVec4}}\ bgColor;}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowWidth\{\};}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowHeight\{\};}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ std::mutex\ outputMutex;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ std::string\ executableName;}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ std::string\ buildOutput;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_text_editor}{TextEditor}}\ editor;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isNewFileLoaded\{\};}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ std::string\ rootDirectory;}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classclang_1_1_file_handler}{FileHandler}}\ fileHandler;}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ std::vector<uint8\_t>\ data;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ data\_size;}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ std::stringstream\ outputBuffer;}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ std::vector<std::string>\ compileArgs\ =\ \{\};}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \};}
+\DoxyCodeLine{00242\ \}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PTRVISION\_GUIMANAGER\_H}}
+
+\end{DoxyCode}

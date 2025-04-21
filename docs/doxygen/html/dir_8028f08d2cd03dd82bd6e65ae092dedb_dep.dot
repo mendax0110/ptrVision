@@ -1,0 +1,12 @@
+digraph "/Users/adriangossl/Documents/git/ptrVision/external/ImGuiFileDialog/dirent"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_ab32bc4fbc789f175827b962c821b008 {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="ImGuiFileDialog", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_ab32bc4fbc789f175827b962c821b008.html",tooltip=""]
+  dir_8028f08d2cd03dd82bd6e65ae092dedb [label="dirent", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_8028f08d2cd03dd82bd6e65ae092dedb.html",tooltip=""];
+  }
+}

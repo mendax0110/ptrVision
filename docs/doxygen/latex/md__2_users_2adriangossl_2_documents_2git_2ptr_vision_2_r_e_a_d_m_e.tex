@@ -1,0 +1,87 @@
+\chapter{Pointer\+Vision}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e}{}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e}\index{PointerVision@{PointerVision}}
+\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md269}%
+\Hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md269}%
+ Pointer\+Vision is a static analysis tool designed to help developers analyze C++ code for pointer and reference usage, specifically focusing on pointer arithmetic, dereferencing, references, memory allocations, and bitwise operations. It utilizes Clang\textquotesingle{}s tooling to provide a detailed analysis of C++ code and detect various operations related to pointers ({\ttfamily \texorpdfstring{$\ast$}{*}}), references ({\ttfamily \&}), memory management ({\ttfamily new}, {\ttfamily delete}), and bitwise operations ({\ttfamily \&}).\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md270}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md270}
+
+\begin{DoxyItemize}
+\item {\bfseries{Pointer Arithmetic Detection\+:}} Detects pointer arithmetic (e.\+g., {\ttfamily ptr + offset}).
+\item {\bfseries{Dereference Detection\+:}} Identifies pointer dereferencing (e.\+g., {\ttfamily \texorpdfstring{$\ast$}{*}ptr}).
+\item {\bfseries{Reference Detection\+:}} Detects references and their usage.
+\item {\bfseries{Memory Management\+:}} Detects the usage of {\ttfamily new} and {\ttfamily delete} for memory allocation/deallocation.
+\item {\bfseries{Bitwise AND Detection\+:}} Identifies the usage of the bitwise AND operator ({\ttfamily \&}).
+\item {\bfseries{Goto Usage\+:}} Tracks the use of {\ttfamily goto} in code.
+\end{DoxyItemize}\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md271}{}\doxysection{\texorpdfstring{How to Use}{How to Use}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md271}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md272}{}\doxysubsection{\texorpdfstring{1. Clone the Repository}{1. Clone the Repository}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md272}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{git\ clone\ https://github.com/mendax0110/ptrVision.git}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md273}{}\doxysubsection{\texorpdfstring{2. Navigate to the Project Directory}{2. Navigate to the Project Directory}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md273}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{cd\ ptrVision}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md274}{}\doxysubsection{\texorpdfstring{3. Create a Build Directory}{3. Create a Build Directory}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md274}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{mkdir\ build}
+\DoxyCodeLine{cd\ build}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md275}{}\doxysubsection{\texorpdfstring{4. Run CMake}{4. Run CMake}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md275}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{cmake\ ..}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md276}{}\doxysubsection{\texorpdfstring{5. Build the Project}{5. Build the Project}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md276}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md277}{}\doxysubsection{\texorpdfstring{6. Run the Executable}{6. Run the Executable}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md277}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{./ptrVision\ <path-\/to-\/source-\/file>\ or\ ./ptrVision\ <path-\/to-\/source-\/directory>}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md278}{}\doxysection{\texorpdfstring{7. Scan speficic snippets of code}{7. Scan speficic snippets of code}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md278}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{ptrVision.exe\ <path-\/to-\/source-\/file>\ <marker>}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md279}{}\doxysection{\texorpdfstring{Example Usage}{Example Usage}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md279}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md280}{}\doxysubsection{\texorpdfstring{Analyzing a snippet in a file}{Analyzing a snippet in a file}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md280}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{ptrVision.exe\ ..\(\backslash\)..\(\backslash\)test\(\backslash\)snippet\_code\_test.cpp\ CODE}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md281}{}\doxysubsection{\texorpdfstring{Analyzing a file}{Analyzing a file}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md281}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{ptrVision.exe\ ..\(\backslash\)..\(\backslash\)test\(\backslash\)snippet\_code\_test.cpp}
+
+\end{DoxyCode}
+\hypertarget{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md282}{}\doxysubsection{\texorpdfstring{Analyzing a directory}{Analyzing a directory}}\label{md__2_users_2adriangossl_2_documents_2git_2ptr_vision_2_r_e_a_d_m_e_autotoc_md282}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{ptrVision.exe\ ..\(\backslash\)..\(\backslash\)test}
+
+\end{DoxyCode}
+ 

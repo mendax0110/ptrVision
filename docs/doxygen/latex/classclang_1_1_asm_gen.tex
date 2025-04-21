@@ -1,0 +1,88 @@
+\doxysection{clang\+::Asm\+Gen Class Reference}
+\hypertarget{classclang_1_1_asm_gen}{}\label{classclang_1_1_asm_gen}\index{clang::AsmGen@{clang::AsmGen}}
+
+
+The \doxylink{classclang_1_1_asm_gen}{Asm\+Gen} class generates assembly code from C++ source files.  
+
+
+
+
+{\ttfamily \#include $<$Asm\+Gen.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classclang_1_1_asm_gen_ab9335fcdbf48611149430aaba78ae9a7}{generate\+Assembly}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Generate assembly code from a C++ source file. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classclang_1_1_asm_gen_a5ad21f9cd6079e17b9237953fe69f706}{generate\+Store\+Assembly}} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Generate assembly code from a C++ source file and store it in a file. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classclang_1_1_asm_gen_af3df470eddcd4253b736b7815346ab97}{get\+Generated\+Assembly}} ()
+\begin{DoxyCompactList}\small\item\em Get the generated assembly code. \end{DoxyCompactList}\item 
+\Hypertarget{classclang_1_1_asm_gen_ab57ef488288cb4f6bc8a8cf254582c3e}\label{classclang_1_1_asm_gen_ab57ef488288cb4f6bc8a8cf254582c3e} 
+static void {\bfseries clear\+Generated\+Assembly} ()
+\begin{DoxyCompactList}\small\item\em Clear the generated assembly code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{classclang_1_1_asm_gen}{Asm\+Gen} class generates assembly code from C++ source files. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classclang_1_1_asm_gen_ab9335fcdbf48611149430aaba78ae9a7}\label{classclang_1_1_asm_gen_ab9335fcdbf48611149430aaba78ae9a7} 
+\index{clang::AsmGen@{clang::AsmGen}!generateAssembly@{generateAssembly}}
+\index{generateAssembly@{generateAssembly}!clang::AsmGen@{clang::AsmGen}}
+\doxysubsubsection{\texorpdfstring{generateAssembly()}{generateAssembly()}}
+{\footnotesize\ttfamily std\+::string Asm\+Gen\+::generate\+Assembly (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generate assembly code from a C++ source file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/\texorpdfstring{$>$}{>} The path to the C++ source file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} The generated assembly code as a string. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 0
+\Hypertarget{classclang_1_1_asm_gen_a5ad21f9cd6079e17b9237953fe69f706}\label{classclang_1_1_asm_gen_a5ad21f9cd6079e17b9237953fe69f706} 
+\index{clang::AsmGen@{clang::AsmGen}!generateStoreAssembly@{generateStoreAssembly}}
+\index{generateStoreAssembly@{generateStoreAssembly}!clang::AsmGen@{clang::AsmGen}}
+\doxysubsubsection{\texorpdfstring{generateStoreAssembly()}{generateStoreAssembly()}}
+{\footnotesize\ttfamily bool Asm\+Gen\+::generate\+Store\+Assembly (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generate assembly code from a C++ source file and store it in a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & -\/\texorpdfstring{$>$}{>} The path to the C++ source file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} True if the assembly code was generated and stored successfully, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classclang_1_1_asm_gen_af3df470eddcd4253b736b7815346ab97}\label{classclang_1_1_asm_gen_af3df470eddcd4253b736b7815346ab97} 
+\index{clang::AsmGen@{clang::AsmGen}!getGeneratedAssembly@{getGeneratedAssembly}}
+\index{getGeneratedAssembly@{getGeneratedAssembly}!clang::AsmGen@{clang::AsmGen}}
+\doxysubsubsection{\texorpdfstring{getGeneratedAssembly()}{getGeneratedAssembly()}}
+{\footnotesize\ttfamily std\+::string Asm\+Gen\+::get\+Generated\+Assembly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the generated assembly code. 
+
+\begin{DoxyReturn}{Returns}
+-\/\texorpdfstring{$>$}{>} The generated assembly code as a string. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/include/Asm\+Gen.\+h\item 
+/\+Users/adriangossl/\+Documents/git/ptr\+Vision/src/Asm\+Gen.\+cpp\end{DoxyCompactItemize}

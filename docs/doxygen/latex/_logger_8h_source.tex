@@ -1,0 +1,100 @@
+\doxysection{Logger.\+h}
+\hypertarget{_logger_8h_source}{}\label{_logger_8h_source}\index{/Users/adriangossl/Documents/git/ptrVision/include/Logger.h@{/Users/adriangossl/Documents/git/ptrVision/include/Logger.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PTRVISION\_LOGGER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PTRVISION\_LOGGER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <llvm/Support/raw\_os\_ostream.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#if\ \_WIN32}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }loggerInternals}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{enum\ class}\ LogLevel}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ DEBUG,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ INFO,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ WARNING,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ ERROR,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ CRITICAL,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ NONE}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{enum\ class}\ Color}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ RESET,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ RED,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ GREEN,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ YELLOW,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ BLUE,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ MAGENTA,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ CYAN,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ WHITE}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}\&\ \mbox{\hyperlink{classlogger_internals_1_1_logger_acebb37f5538780e6c14f13de6ec497bc}{getInstance}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_a00fdcdbeb39a2d5d4fb27cc36c35c101}{setLogLevel}}(LogLevel\ level);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_ab71481584af2dd9d7fe307a500fe3f5f}{setOutputStream}}(llvm::raw\_ostream\&\ os);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_a38b544d566463a65d0dbf4ff7f867962}{debug}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_ab4c4d86279176eb0ede726bc5b4d5ddb}{info}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_a5164af2f632902fa3c477d5c0cb463f7}{warning}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_ab6042fdfcbb14026098e0df9d6b32f27}{error}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_aed3ed4c4ba36c54a42feff7f2531ff39}{critical}}(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_a4653f1782170550250de4b05c5caad65}{printHighlightedPointer}}(\textcolor{keyword}{const}\ std::string\&\ type);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_ad5437ce0e9d93bbe9a8137f64c45e282}{printHighlightedReference}}(\textcolor{keyword}{const}\ std::string\&\ type);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_af2677ae80c5f0b71aa1454c2148f84a4}{printHighlightedKeyword}}(\textcolor{keyword}{const}\ std::string\&\ keyword);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_a4b1a6621b92aee6b8f5e70848a533c5f}{printHighlightedType}}(\textcolor{keyword}{const}\ std::string\&\ type);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_aed41591b4eaadcc92b7b99a65a03057d}{printHighlightedCast}}(\textcolor{keyword}{const}\ std::string\&\ castType);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classlogger_internals_1_1_logger_ae8f5641a5d974eafc7413e2612916c29}{printCanonicalPath}}(\textcolor{keyword}{const}\ std::filesystem::path\&\ path);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}();}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ log(LogLevel\ level,\ \textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setColor(Color\ color);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ resetColor();}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ LogLevel\ currentLogLevel\ =\ LogLevel::INFO;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ llvm::raw\_ostream*\ outputStream\ =\ \&llvm::outs();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ std::mutex\ logMutex;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ HANDLE\ hConsole;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ WORD\ defaultAttributes;}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00147\ \ \ \ \ \};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{extern}\ \mbox{\hyperlink{classlogger_internals_1_1_logger}{Logger}}\&\ logger;}
+\DoxyCodeLine{00150\ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PTRVISION\_LOGGER\_H}}
+
+\end{DoxyCode}
