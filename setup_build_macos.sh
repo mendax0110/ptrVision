@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "[INFO] Setting up build environment for Linux..."
-export PATH="/usr/lib/llvm-12/bin:$PATH"
-export LLVM_DIR="/usr/lib/llvm-12/lib/cmake/llvm"
-export CLANG_DIR="/usr/lib/llvm-12/lib/cmake/clang"
+echo "[INFO] Setting up build environment for macos..."
+export PATH="/usr/lib/llvm-19/bin:$PATH"
+export LLVM_DIR="/usr/lib/llvm-19/lib/cmake/llvm"
+export CLANG_DIR="/usr/lib/llvm-19/lib/cmake/clang"
 
 echo "[INFO] Verifying LLVM installation and version..."
 llvm_version=$(llvm-config --version)
@@ -11,8 +11,8 @@ if [[ $? -ne 0 ]]; then
     echo "[ERROR] LLVM is not installed or not found in PATH."
     exit 1
 fi
-if [[ $llvm_version != 12.* ]]; then
-    echo "[INFO] LLVM version 12.x is required. Found version: $llvm_version"
+if [[ $llvm_version != 19.* ]]; then
+    echo "[INFO] LLVM version 19.x is required. Found version: $llvm_version"
     exit 1
 fi
 echo "[SUCCESS] LLVM version is $llvm_version"
@@ -41,9 +41,9 @@ popd > /dev/null
 echo "[INFO] Ensuring all submodules are up to date..."
 git submodule update --recursive --remote
 
-echo "[INFO] Creating build_linux directory..."
-mkdir -p build_linux
-cd build_linux
+echo "[INFO] Creating build_macos directory..."
+mkdir -p build_macos
+cd build_macos
 
 echo "[INFO] Running cmake..."
 cmake -DCMAKE_BUILD_TYPE=Release ..

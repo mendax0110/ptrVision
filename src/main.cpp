@@ -1,5 +1,6 @@
 #include <FileSystemManager.h>
 #include <CliManager.h>
+#include <GuiManager.h>
 #include <clang/Tooling/CommonOptionsParser.h>
 #include <llvm/Support/raw_ostream.h>
 #include <llvm/Support/FileSystem.h>
@@ -7,6 +8,7 @@
 #include <filesystem>
 #include <vector>
 #include <cstring>
+#include <algorithm>
 
 namespace fs = std::filesystem;
 
@@ -16,16 +18,28 @@ using namespace llvm;
 
 static cl::OptionCategory Tool("ptrVision");
 
+bool isGuiMode(int argc, const char** argv)
+{
+    // Look for --gui in the argument list
+    return std::any_of(argv + 1, argv + argc, [](const char* arg) {
+        return std::strcmp(arg, "--gui") == 0;
+    });
+}
 
 int main(int argc, const char** argv)
 {
-
 #if LLVM_VERSION_MAJOR >= 14
     auto ExpectedParser = CommonOptionsParser::create(argc, argv, Tool);
 #elif LLVM_VERSION_MAJOR <= 12
-    auto ExpectedParser = CommonOptionsParser::create(argc, argv, Tool,
-        llvm::cl::OneOrMore, nullptr);
+    auto ExpectedParser = CommonOptionsParser::create(argc, argv, Tool, llvm::cl::OneOrMore, nullptr);
 #endif
+
+    if (isGuiMode(argc, argv))
+    {
+        GuiManager guiManager;
+        guiManager.Run();
+        return 0;
+    }
 
     if (!ExpectedParser)
     {

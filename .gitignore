@@ -5,6 +5,9 @@
 /build_linux
 
 # Ignore the build_macos folder
+/build_macos
+
+# Ignore the build_macos folder
 /cmake-build-debug
 
 # Ignore the build folder
@@ -15,3 +18,6 @@
 
 # Ignore the .idea folder on Clion
 .idea
+
+# Ignore .DS_Store files
+.DS_Store

@@ -6,14 +6,12 @@
 #include <clang/Frontend/CompilerInstance.h>
 #include <clang/Frontend/FrontendActions.h>
 #include <clang/Tooling/Tooling.h>
+#include <sstream>
 
 /// @brief The clang namespace \namespace clang
 namespace clang
 {
-    /**
-     * @brief PointerReferenceVisitor is a RecursiveASTVisitor that visits the AST nodes of a translation unit \class PointerReferenceVisitor
-     * 
-     */
+    /// @brief The PointerReferenceVisitor class is responsible for visiting AST nodes and checking for pointer references. \class PointerReferenceVisitor
     class PointerReferenceVisitor : public RecursiveASTVisitor<PointerReferenceVisitor>
     {
     public:
@@ -120,9 +118,20 @@ namespace clang
          */
         //bool VisitCastExpr(const CastExpr* CastExpr) const;
 
+        /**
+         * @brief Get the output of the visitor.
+         * @return -> A string with the output
+         */
+        std::string getOutput() const { return outputStream.str(); }
+
+        /**
+         * @brief Clear the output stream.
+         */
+        void clearOutput() { outputStream.str(""); }
 
     private:
         SourceManager &SM;
+        mutable std::ostringstream outputStream;
     };
 } // namespace clang
 

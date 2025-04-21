@@ -2,6 +2,7 @@
 #define LIBEXPORTER_H
 
 #include <string>
+#include <FileSystemManager.h>
 
 #ifdef _WIN32
 #define NOMINMAX   
@@ -12,6 +13,7 @@
 #define EXPORT_C extern "C" __attribute__((visibility("default")))
 #endif
 
+/// @brief LibExporter is a class that provides methods to process files and directories. \class LibExporter
 class EXPORT_API LibExporter
 {
 public:

@@ -1,10 +1,23 @@
-#include <PointerReferenceConsumer.h>
-#include <PointerReferenceVisitor.h>
+#include "PointerReferenceConsumer.h"
+#include "PointerReferenceVisitor.h"
+#include "PointerReferenceAction.h"
 
 using namespace clang;
 
+PointerReferenceConsumer::PointerReferenceConsumer(PointerReferenceAction* action)
+        : action(action), visitor(nullptr) {}
+
 void PointerReferenceConsumer::HandleTranslationUnit(ASTContext& Context)
 {
-    PointerReferenceVisitor Visitor(Context.getSourceManager());
-    Visitor.TraverseDecl(Context.getTranslationUnitDecl());
+    visitor = std::make_unique<PointerReferenceVisitor>(Context.getSourceManager());
+    visitor->TraverseDecl(Context.getTranslationUnitDecl());
+
+    if (action && visitor)
+    {
+        std::string visitorOutput = visitor->getOutput();
+        if (!visitorOutput.empty())
+        {
+            action->appendOutput(visitorOutput);
+        }
+    }
 }

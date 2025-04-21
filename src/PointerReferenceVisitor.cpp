@@ -3,6 +3,7 @@
 #include <clang/AST/Expr.h>
 #include <clang/Frontend/CompilerInstance.h>
 #include <llvm/Support/raw_ostream.h>
+#include <Logger.h>
 
 using namespace clang;
 
@@ -24,20 +25,41 @@ bool PointerReferenceVisitor::VisitBinaryOperator(const BinaryOperator* BO) cons
             llvm::outs() << "ERROR: Illegal void* arithmetic detected at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << " -> ";
-            printHighlightedPointer(lhsType.getAsString());
+
+            outputStream << "Pointer arithmetic detected at "
+                         << fullLoc.getSpellingLineNumber() << ":"
+                         << fullLoc.getSpellingColumnNumber() << " -> ";
+
+            //printHighlightedPointer(lhsType.getAsString());
+            loggerInternals::logger.printHighlightedPointer(lhsType.getAsString());
+            outputStream << lhsType.getAsString();
             llvm::outs() << " " << BO->getOpcodeStr() << " ";
-            printHighlightedPointer(rhsType.getAsString());
+            outputStream << " " << static_cast<std::string>(BO->getOpcodeStr()) << " ";
+            //printHighlightedPointer(rhsType.getAsString());
+            loggerInternals::logger.printHighlightedPointer(rhsType.getAsString());
             llvm::outs() << " (Pointer arithmetic on void* is not allowed!)\n";
+            outputStream << " (Pointer arithmetic on void* is not allowed!)\n";
         }
         else
         {
             llvm::outs() << "Pointer arithmetic detected at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << " -> ";
-            printHighlightedPointer(lhsType.getAsString());
+
+            outputStream << "Pointer arithmetic detected at "
+                            << fullLoc.getSpellingLineNumber() << ":"
+                            << fullLoc.getSpellingColumnNumber() << " -> ";
+
+            //printHighlightedPointer(lhsType.getAsString());
+            loggerInternals::logger.printHighlightedPointer(lhsType.getAsString());
+            outputStream << lhsType.getAsString();
             llvm::outs() << " " << BO->getOpcodeStr() << " ";
-            printHighlightedPointer(rhsType.getAsString());
+            outputStream << " " << static_cast<std::string>(BO->getOpcodeStr()) << " ";
+            //printHighlightedPointer(rhsType.getAsString());
+            loggerInternals::logger.printHighlightedPointer(rhsType.getAsString());
+            outputStream << rhsType.getAsString();
             llvm::outs() << "\n";
+            outputStream << "\n";
         }
     }
 
@@ -48,10 +70,21 @@ bool PointerReferenceVisitor::VisitBinaryOperator(const BinaryOperator* BO) cons
             llvm::outs() << "Pointer arithmetic detected at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << " -> ";
-            printHighlightedPointer(BO->getLHS()->getType().getAsString());
+
+            outputStream << "Pointer arithmetic detected at "
+                            << fullLoc.getSpellingLineNumber() << ":"
+                            << fullLoc.getSpellingColumnNumber() << " -> ";
+
+            //printHighlightedPointer(BO->getLHS()->getType().getAsString());
+            loggerInternals::logger.printHighlightedPointer(BO->getLHS()->getType().getAsString());
+            outputStream << BO->getLHS()->getType().getAsString();
             llvm::outs() << " " << (BO->getOpcode() == BO_Add ? "+" : "-") << " ";
-            printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            outputStream << (BO->getOpcode() == BO_Add ? "+" : "-") << " ";
+            //printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            loggerInternals::logger.printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            outputStream << BO->getRHS()->getType().getAsString();
             llvm::outs() << "\n";
+            outputStream << "\n";
         }
     }
 
@@ -62,10 +95,20 @@ bool PointerReferenceVisitor::VisitBinaryOperator(const BinaryOperator* BO) cons
             llvm::outs() << "Pointer compound assignment detected at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << " -> ";
-            printHighlightedPointer(BO->getLHS()->getType().getAsString());
+
+            outputStream << "Pointer compound assignment detected at "
+                            << fullLoc.getSpellingLineNumber() << ":"
+                            << fullLoc.getSpellingColumnNumber() << " -> ";
+            //printHighlightedPointer(BO->getLHS()->getType().getAsString());
+            loggerInternals::logger.printHighlightedPointer(BO->getLHS()->getType().getAsString());
+            outputStream << BO->getLHS()->getType().getAsString();
             llvm::outs() << " " << BO->getOpcodeStr() << " ";
-            printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            outputStream << " " << static_cast<std::string>(BO->getOpcodeStr()) << " ";
+            //printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            loggerInternals::logger.printHighlightedPointer(BO->getRHS()->getType().getAsString());
+            outputStream << BO->getRHS()->getType().getAsString();
             llvm::outs() << " (Possible pointer arithmetic issue)\n";
+            outputStream << " (Possible pointer arithmetic issue)\n";
         }
     }
 
@@ -81,6 +124,10 @@ bool PointerReferenceVisitor::VisitBinaryOperator(const BinaryOperator* BO) cons
             llvm::outs() << "Multiplication detected at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << "\n";
+
+            outputStream << "Multiplication detected at "
+                            << fullLoc.getSpellingLineNumber() << ":"
+                            << fullLoc.getSpellingColumnNumber() << "\n";
         }
         else if (lhsPointer || rhsPointer)
         {
@@ -89,21 +136,43 @@ bool PointerReferenceVisitor::VisitBinaryOperator(const BinaryOperator* BO) cons
                 llvm::outs() << "ERROR: Suspicious pointer multiplication detected at "
                              << fullLoc.getSpellingLineNumber() << ":"
                              << fullLoc.getSpellingColumnNumber() << " -> ";
-                printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
+
+                outputStream << "ERROR: Suspicious pointer multiplication detected at "
+                                << fullLoc.getSpellingLineNumber() << ":"
+                                << fullLoc.getSpellingColumnNumber() << " -> ";
+                //printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
+                //                                   : BO->getRHS()->getType().getAsString());
+                loggerInternals::logger.printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
+                                                        : BO->getRHS()->getType().getAsString());
+                outputStream << static_cast<std::string>(lhsPointer ? BO->getLHS()->getType().getAsString()
                                                    : BO->getRHS()->getType().getAsString());
                 llvm::outs() << " * ";
-                printHighlightedPointer(rhsPointer ? BO->getRHS()->getType().getAsString()
-                                                   : BO->getLHS()->getType().getAsString());
+                outputStream << " * ";
+                //printHighlightedPointer(rhsPointer ? BO->getRHS()->getType().getAsString()
+                //                                   : BO->getLHS()->getType().getAsString());
+                loggerInternals::logger.printHighlightedPointer(rhsPointer ? BO->getRHS()->getType().getAsString()
+                                                        : BO->getLHS()->getType().getAsString());
+                outputStream << static_cast<std::string>(rhsPointer ? BO->getRHS()->getType().getAsString()
+                                                    : BO->getLHS()->getType().getAsString());
                 llvm::outs() << " (Invalid operation!)\n";
+                outputStream << " (Invalid operation!)\n";
             }
             else
             {
                 llvm::outs() << "WARNING: Potential pointer scaling detected at "
                              << fullLoc.getSpellingLineNumber() << ":"
                              << fullLoc.getSpellingColumnNumber() << " -> ";
-                printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
-                                                   : BO->getRHS()->getType().getAsString());
+                outputStream << "WARNING: Potential pointer scaling detected at "
+                                << fullLoc.getSpellingLineNumber() << ":"
+                                << fullLoc.getSpellingColumnNumber() << " -> ";
+                //printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
+                //                                   : BO->getRHS()->getType().getAsString());
+                loggerInternals::logger.printHighlightedPointer(lhsPointer ? BO->getLHS()->getType().getAsString()
+                                                        : BO->getRHS()->getType().getAsString());
+                outputStream << static_cast<std::string>(lhsPointer ? BO->getLHS()->getType().getAsString()
+                                                    : BO->getRHS()->getType().getAsString());
                 llvm::outs() << " * integer\n";
+                outputStream << " * integer\n";
             }
         }
     }
@@ -115,12 +184,20 @@ bool PointerReferenceVisitor::VisitBinaryOperator(const BinaryOperator* BO) cons
             llvm::outs() << "Bitwise AND detected at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << "\n";
+
+            outputStream << "Bitwise AND detected at "
+                            << fullLoc.getSpellingLineNumber() << ":"
+                            << fullLoc.getSpellingColumnNumber() << "\n";
         }
         else
         {
             llvm::outs() << "Suspicious AND operation? Possible misuse at "
                          << fullLoc.getSpellingLineNumber() << ":"
                          << fullLoc.getSpellingColumnNumber() << "\n";
+
+            outputStream << "Suspicious AND operation? Possible misuse at "
+                            << fullLoc.getSpellingLineNumber() << ":"
+                            << fullLoc.getSpellingColumnNumber() << "\n";
         }
     }
 
@@ -137,16 +214,30 @@ bool PointerReferenceVisitor::VisitUnaryOperator(const UnaryOperator* UO) const
         llvm::outs() << "Pointer dereference detected at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedPointer(UO->getType().getAsString());
+
+        outputStream << "Pointer dereference detected at "
+                        << fullLoc.getSpellingLineNumber() << ":"
+                        << fullLoc.getSpellingColumnNumber() << " -> ";
+        //printHighlightedPointer(UO->getType().getAsString());
+        loggerInternals::logger.printHighlightedPointer(UO->getType().getAsString());
+        outputStream << UO->getType().getAsString();
         llvm::outs() << "\n";
+        outputStream << "\n";
     }
     else if (UO->getOpcode() == UO_AddrOf)
     {
         llvm::outs() << "Address-of operator detected at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedPointer(UO->getType().getAsString());
+
+        outputStream << "Address-of operator detected at "
+                        << fullLoc.getSpellingLineNumber() << ":"
+                        << fullLoc.getSpellingColumnNumber() << " -> ";
+        //printHighlightedPointer(UO->getType().getAsString());
+        loggerInternals::logger.printHighlightedPointer(UO->getType().getAsString());
+        outputStream << UO->getType().getAsString();
         llvm::outs() << "\n";
+        outputStream << "\n";
     }
 
     return true;
@@ -161,8 +252,14 @@ bool PointerReferenceVisitor::VisitDeclRefExpr(const DeclRefExpr* DRE) const
         llvm::outs() << "Reference detected at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedReference(DRE->getType().getAsString());
+        outputStream << "Reference detected at "
+                        << fullLoc.getSpellingLineNumber() << ":"
+                        << fullLoc.getSpellingColumnNumber() << " -> ";
+        //printHighlightedReference(DRE->getType().getAsString());
+        loggerInternals::logger.printHighlightedReference(DRE->getType().getAsString());
+        outputStream << DRE->getType().getAsString();
         llvm::outs() << "\n";
+        outputStream << "\n";
     }
 
     if (DRE->getType()->isPointerType())
@@ -170,8 +267,14 @@ bool PointerReferenceVisitor::VisitDeclRefExpr(const DeclRefExpr* DRE) const
         llvm::outs() << "Pointer detected at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedPointer(DRE->getType().getAsString());
+        outputStream << "Pointer detected at "
+                        << fullLoc.getSpellingLineNumber() << ":"
+                        << fullLoc.getSpellingColumnNumber() << " -> ";
+        //printHighlightedPointer(DRE->getType().getAsString());
+        loggerInternals::logger.printHighlightedPointer(DRE->getType().getAsString());
+        outputStream << DRE->getType().getAsString();
         llvm::outs() << "\n";
+        outputStream << "\n";
     }
 
     return true;
@@ -186,8 +289,14 @@ bool PointerReferenceVisitor::VisitVarDecl(const VarDecl *VD) const
         llvm::outs() << "Reference variable declared at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " ->";
-        printHighlightedReference(VD->getType().getAsString());
+        outputStream << "Reference variable declared at "
+                        << fullLoc.getSpellingLineNumber() << ":"
+                        << fullLoc.getSpellingColumnNumber() << " ->";
+        //printHighlightedReference(VD->getType().getAsString());
+        loggerInternals::logger.printHighlightedReference(VD->getType().getAsString());
+        outputStream << VD->getType().getAsString();
         llvm::outs() << " " << VD->getNameAsString() << "\n";
+        outputStream << " " << VD->getNameAsString() << "\n";
     }
     return true;
 }
@@ -200,8 +309,14 @@ bool PointerReferenceVisitor::VisitMemberExpr(const MemberExpr* ME) const
         llvm::outs() << "Pointer dereference in member expression detected at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " -> ";
-        printHighlightedPointer(ME->getBase()->getType().getAsString());
+        outputStream << "Pointer dereference in member expression detected at "
+                        << fullLoc.getSpellingLineNumber() << ":"
+                        << fullLoc.getSpellingColumnNumber() << " -> ";
+        //printHighlightedPointer(ME->getBase()->getType().getAsString());
+        loggerInternals::logger.printHighlightedPointer(ME->getBase()->getType().getAsString());
+        outputStream << ME->getBase()->getType().getAsString();
         llvm::outs() << "->" << ME->getMemberDecl()->getName() << "\n";
+        outputStream << "->" << static_cast<std::string>(ME->getMemberDecl()->getName()) << "\n";
     }
     return true;
 }
@@ -216,6 +331,9 @@ bool PointerReferenceVisitor::VisitArraySubscriptExpr(const ArraySubscriptExpr* 
         llvm::outs() << "Pointer array indexing detected at "
                      << fullLoc.getSpellingLineNumber() << ":"
                      << fullLoc.getSpellingColumnNumber() << " -> ";
+        outputStream << "Pointer array indexing detected at "
+                        << fullLoc.getSpellingLineNumber() << ":"
+                        << fullLoc.getSpellingColumnNumber() << " -> ";
 
         QualType elementType;
         if (baseType->isArrayType())
@@ -227,8 +345,11 @@ bool PointerReferenceVisitor::VisitArraySubscriptExpr(const ArraySubscriptExpr* 
             elementType = baseType->getPointeeType();
         }
 
-        printHighlightedPointer(elementType.getAsString() + "[index]");
+        //printHighlightedPointer(elementType.getAsString() + "[index]");
+        loggerInternals::logger.printHighlightedPointer(elementType.getAsString() + "[index]");
+        outputStream << elementType.getAsString() + "[index]";
         llvm::outs() << "\n";
+        outputStream << "\n";
     }
     return true;
 }
@@ -239,8 +360,14 @@ bool PointerReferenceVisitor::VisitCXXNewExpr(const CXXNewExpr* NewExpr) const
     llvm::outs() << "New expression detected at "
                  << fullLoc.getSpellingLineNumber() << ":"
                  << fullLoc.getSpellingColumnNumber() << " -> ";
-    printHighlightedPointer(NewExpr->getAllocatedType().getAsString());
+    outputStream << "New expression detected at "
+                    << fullLoc.getSpellingLineNumber() << ":"
+                    << fullLoc.getSpellingColumnNumber() << " -> ";
+    //printHighlightedPointer(NewExpr->getAllocatedType().getAsString());
+    loggerInternals::logger.printHighlightedPointer(NewExpr->getAllocatedType().getAsString());
+    outputStream << NewExpr->getAllocatedType().getAsString();
     llvm::outs() << "\n";
+    outputStream << "\n";
 
     return true;
 }
@@ -251,8 +378,14 @@ bool PointerReferenceVisitor::VisitCXXDeleteExpr(const CXXDeleteExpr* DeleteExpr
     llvm::outs() << "Delete expression detected at "
                  << fullLoc.getSpellingLineNumber() << ":"
                  << fullLoc.getSpellingColumnNumber() << " -> ";
-    printHighlightedPointer(DeleteExpr->getArgument()->getType().getAsString());
+    outputStream << "Delete expression detected at "
+                    << fullLoc.getSpellingLineNumber() << ":"
+                    << fullLoc.getSpellingColumnNumber() << " -> ";
+    //printHighlightedPointer(DeleteExpr->getArgument()->getType().getAsString());
+    loggerInternals::logger.printHighlightedPointer(DeleteExpr->getArgument()->getType().getAsString());
+    outputStream << DeleteExpr->getArgument()->getType().getAsString();
     llvm::outs() << "\n";
+    outputStream << "\n";
 
     return true;
 }
@@ -263,8 +396,14 @@ bool PointerReferenceVisitor::VisitGotoStmt(const GotoStmt* GS) const
     llvm::outs() << "Goto statement detected at "
                  << fullLoc.getSpellingLineNumber() << ":"
                  << fullLoc.getSpellingColumnNumber() << " -> ";
-    printHighlightedKeyword(static_cast<std::string>(GS->getLabel()->getName()));
+    outputStream << "Goto statement detected at "
+                    << fullLoc.getSpellingLineNumber() << ":"
+                    << fullLoc.getSpellingColumnNumber() << " -> ";
+    //printHighlightedKeyword(static_cast<std::string>(GS->getLabel()->getName()));
+    loggerInternals::logger.printHighlightedKeyword(static_cast<std::string>(GS->getLabel()->getName()));
+    outputStream << static_cast<std::string>(GS->getLabel()->getName());
     llvm::outs() << "\n";
+    outputStream << "\n";
 
     return true;
 }
