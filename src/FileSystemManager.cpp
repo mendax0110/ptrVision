@@ -34,10 +34,10 @@ void FileSystemManager::processFile(const std::string& filePath, std::vector<std
         FixedCompilationDatabase EmptyDB("/tmp", compileArgs);
 #endif
         ClangTool Tool(EmptyDB, sourcePaths);
-        auto factory = std::make_unique<PointerReferenceFactory>();
+        const auto factory = std::make_unique<PointerReferenceFactory>();
         Tool.run(factory.get());
 
-        if (auto action = factory->getLastAction())
+        if (const auto action = factory->getLastAction())
         {
             stdOutContent += action->getOutput();
         }

@@ -4,11 +4,21 @@ project(ptrVision VERSION 1.0 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
-if (__LINUX__ OR __APPLE__)
+cmake_policy(SET CMP0072 NEW)
+cmake_policy(SET CMP0075 NEW)
+
+if (__APPLE__)
     find_package(GLFW3 REQUIRED)
     set(GLFW3_INCLUDE_DIRS "/opt/homebrew/opt/glfw/include")
     set(GLFW3_LIBRARIES "/opt/homebrew/opt/glfw/lib/libglfw.3.dylib")
+endif()
+
+if (__LINUX__)
+    find_package(GLFW3 REQUIRED)
+    set(GLFW3_INCLUDE_DIRS "/usr/include/GLFW")
+    set(GLFW3_LIBRARIES "/usr/lib/x86_64-linux-gnu/libglfw.so.3")
 endif()
 
 if (WIN32)
@@ -73,7 +83,6 @@ set(SOURCE_GUI
         ${IMGUI_CLUB}
 )
 
-
 set(INCLUDE_DIRS include)
 
 if (WIN32)
@@ -92,10 +101,7 @@ if (WIN32)
 
     set(LIBXML2_INCLUDE_DIR "C:/libxml/libxml2-2.9.1-win32-x86_64/include/libxml2")
     set(LIBXML2_LIBRARY "C:/libxml/libxml2-2.9.1-win32-x86_64/lib/libxml2.dll.a")
-
-else()
-    find_program(LLVM_CONFIG llvm-config REQUIRED)
-
+elseif (__APPLE__)
     execute_process(
             COMMAND ${LLVM_CONFIG} --prefix
             OUTPUT_VARIABLE LLVM_PREFIX
@@ -106,6 +112,23 @@ else()
 
     set(LLVM_DIR "${LLVM_PREFIX}/lib/cmake/llvm")
     set(CLANG_DIR "${LLVM_PREFIX}/lib/cmake/clang")
+
+    find_package(LibXml2 REQUIRED)
+    set(LIBXML2_INCLUDE_DIR ${LIBXML2_INCLUDE_DIRS})
+    set(LIBXML2_LIBRARY ${LIBXML2_LIBRARIES})
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    find_program(LLVM_CONFIG /usr/lib/llvm-19/bin/llvm-config REQUIRED)
+
+    execute_process(
+            COMMAND ${LLVM_CONFIG} --prefix
+            OUTPUT_VARIABLE LLVM_PREFIX
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+
+    message(STATUS "LLVM_PREFIX is ${LLVM_PREFIX}")
+
+    set(LLVM_DIR "/usr/lib/llvm-19/lib/cmake/llvm")
+    set(CLANG_DIR "/usr/lib/llvm-19/lib/cmake/clang")
 
     find_package(LibXml2 REQUIRED)
     set(LIBXML2_INCLUDE_DIR ${LIBXML2_INCLUDE_DIRS})
@@ -143,53 +166,80 @@ if (MSVC)
     endif()
 endif()
 
-set(CLANG_LIBS
-        clangFrontend
-        clangTooling
-        clangAST
-        clangBasic
-        clangASTMatchers
-
-        clangCodeGen
-        clangFrontend
-        clangDriver
-        clangSerialization
-        clangParse
-        clangSema
-        clangAnalysis
-        clangAST
-        clangLex
-        clangBasic
-        LLVMCore
-        LLVMSupport
-
-        LLVMAArch64CodeGen
-        LLVMAArch64AsmParser
-        LLVMAArch64Desc
-        LLVMAArch64Disassembler
-        LLVMAArch64Info
-        LLVMAArch64Utils
-)
-
-if (WIN32)
-    llvm_map_components_to_libnames(LLVM_LIBS support core irreader)
-    set(COMMON_LIBS ${LLVM_LIBS} ${CLANG_LIBS})
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
+    message(STATUS "Building for ARM architecture")
+    set(CLANG_LIBS
+            clangFrontend
+            clangTooling
+            clangAST
+            clangBasic
+            clangASTMatchers
+            clangCodeGen
+            clangFrontend
+            clangDriver
+            clangSerialization
+            clangParse
+            clangSema
+            clangAnalysis
+            clangLex
+            LLVMCore
+            LLVMSupport
+            LLVMAArch64CodeGen
+            LLVMAArch64AsmParser
+            LLVMAArch64Desc
+            LLVMAArch64Disassembler
+            LLVMAArch64Info
+            LLVMAArch64Utils
+    )
 else()
-    set(COMMON_LIBS LLVM ${CLANG_LIBS})
+    message(STATUS "Building for x86_64 architecture")
+    set(CLANG_LIBS
+            clangFrontend
+            clangTooling
+            clangAST
+            clangBasic
+            clangASTMatchers
+            clangCodeGen
+            clangFrontend
+            clangDriver
+            clangSerialization
+            clangParse
+            clangSema
+            clangAnalysis
+            clangLex
+            LLVMCore
+            LLVMSupport
+            LLVMTarget
+    )
 endif()
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${COMMON_LIBS} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES} /opt/homebrew/opt/glfw/lib/libglfw.3.dylib)
+
+if (__APPLE__ OR CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(LLVM_LIBS_FLAGS -lLLVM-19)
+else (WIN32)
+
+endif()
 
 if (__APPLE__)
-    target_link_libraries(${PROJECT_NAME} PRIVATE /opt/homebrew/opt/glfw/lib/libglfw.dylib)
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${GLFW3_LIBRARIES} /opt/homebrew/opt/glfw/lib/libglfw.3.dylib)
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    target_link_libraries(${PROJECT_NAME}
+            PRIVATE
+            ${LLVM_LIBS_FLAGS}
+            clang-cpp
+            /usr/lib/x86_64-linux-gnu/libglfw.so.3
+            ${GLFW3_LIBRARIES}
+            ${OPENGL_LIBRARIES}
+
+    )
 elseif (WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE ${GLFW3_LIBRARIES})
 endif()
 
 if (TARGET ${PROJECT_NAME}_dll)
-    target_link_libraries(${PROJECT_NAME}_dll PRIVATE ${COMMON_LIBS})
+    target_link_libraries(${PROJECT_NAME}_dll PRIVATE ${LLVM_LIBS_FLAGS} clang-cpp)
 elseif (TARGET ${PROJECT_NAME}_so)
-    target_link_libraries(${PROJECT_NAME}_so PRIVATE ${COMMON_LIBS})
+    target_link_libraries(${PROJECT_NAME}_so PRIVATE ${LLVM_LIBS_FLAGS} clang-cpp)
 elseif (TARGET ${PROJECT_NAME}_dylib)
-    target_link_libraries(${PROJECT_NAME}_dylib PRIVATE ${COMMON_LIBS})
+    target_link_libraries(${PROJECT_NAME}_dylib PRIVATE ${LLVM_LIBS_FLAGS} clang-cpp)
 endif()
