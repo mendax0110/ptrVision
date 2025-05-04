@@ -9,7 +9,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 cmake_policy(SET CMP0072 NEW)
 cmake_policy(SET CMP0075 NEW)
 
-if (__APPLE__)
+if (APPLE)
     find_package(GLFW3 REQUIRED)
     set(GLFW3_INCLUDE_DIRS "/opt/homebrew/opt/glfw/include")
     set(GLFW3_LIBRARIES "/opt/homebrew/opt/glfw/lib/libglfw.3.dylib")
@@ -220,8 +220,15 @@ else (WIN32)
 
 endif()
 
-if (__APPLE__)
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${GLFW3_LIBRARIES} /opt/homebrew/opt/glfw/lib/libglfw.3.dylib)
+if (APPLE)
+    target_link_libraries(${PROJECT_NAME}
+            PRIVATE
+            ${GLFW3_LIBRARIES}
+            ${OPENGL_LIBRARIES}
+            /opt/homebrew/opt/glfw/lib/libglfw.3.dylib
+            ${CLANG_LIBS}
+            ${LLVM_LIBS_FLAGS}
+    )
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
     target_link_libraries(${PROJECT_NAME}
             PRIVATE
