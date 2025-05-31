@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <iostream>
 #include <utility>
+#include <CliManager.h>
 
 using namespace clang;
 namespace fs = std::filesystem;
@@ -14,7 +15,7 @@ TreeNode::TreeNode(std::string name, const std::string& basePath, NodeType type)
     {
         path += "/";
     }
-    std::cout << "Creating node: " << name << " with path: " << path << std::endl;
+    CliManager::print(OutputLevel::DEBUG, "TreeNode", "Creating node: ", name, " with path: ", path);
 }
 
 TreeNode::~TreeNode()
@@ -57,7 +58,7 @@ TreeNode* TreeNode::ScanDirectory(const fs::path& dirPath)
     }
     catch (const fs::filesystem_error& e)
     {
-        std::cerr << "[ERROR] Directory scan failed: " << e.what() << std::endl;
+        CliManager::print(OutputLevel::ERROR, "Failed to scan directory: ", absolutePath.string(), " Error: ", e.what());
     }
 
     return node;
@@ -69,7 +70,7 @@ TreeNode* TreeNode::BuildProjectTree(const std::string &rootPath)
     fs::path absolutePath = fs::absolute(startPath);
     if (!fs::exists(absolutePath))
     {
-        std::cerr << "[ERROR] Path does not exist: " << absolutePath << std::endl;
+        CliManager::print(OutputLevel::ERROR, "Path does not exist: ", absolutePath.string());
         return nullptr;
     }
     return ScanDirectory(absolutePath);

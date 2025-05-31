@@ -6,6 +6,7 @@
 #include <optional>
 #include <sstream>
 #include "PointerReferenceFactory.h"
+#include <CliManager.h>
 
 namespace fs = std::filesystem;
 using namespace clang;
@@ -44,7 +45,7 @@ void FileSystemManager::processFile(const std::string& filePath, std::vector<std
     }
     catch (const std::exception& e)
     {
-        printError("Exception: " + std::string(e.what()));
+        CliManager::print(OutputLevel::ERROR, "Exception: ", e.what());
         throw std::runtime_error("Exception: " + std::string(e.what()));
     }
 }
@@ -67,7 +68,7 @@ void FileSystemManager::processDirectory(const std::string& directoryPath, std::
 
         if (sourcePaths.empty())
         {
-            printWarning("No .cpp files found in directory: " + directoryPath);
+            CliManager::print(OutputLevel::WARNING, "No .cpp files found in directory: ", directoryPath);
             return;
         }
 
@@ -87,7 +88,7 @@ void FileSystemManager::processDirectory(const std::string& directoryPath, std::
     }
     catch (const std::exception& e)
     {
-        printError("Exception: " + std::string(e.what()));
+        CliManager::print(OutputLevel::ERROR, "Exception: ", e.what());
         throw std::runtime_error("Exception: " + std::string(e.what()));
     }
 }
@@ -101,7 +102,7 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
         std::ifstream file(filePath);
         if (!file.is_open())
         {
-            printError("Error opening file: " + filePath);
+            CliManager::print(OutputLevel::ERROR, "Failed to open file: ", filePath);
             return;
         }
 
@@ -113,7 +114,7 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
         std::smatch match;
         if (!std::regex_search(content, match, markerRegex))
         {
-            printWarning("No function marked with '" + marker + "' in file: " + filePath);
+            CliManager::print(OutputLevel::WARNING, "No function marked with '", marker, "' in file: ", filePath);
             return;
         }
 
@@ -123,14 +124,14 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
         std::optional<size_t> startPos = content.find(functionName + "(");
         if (!startPos.has_value() || startPos == std::string::npos)
         {
-            printError("Function '" + functionName + "' not found in file.");
+            CliManager::print(OutputLevel::ERROR, "Function '", functionName, "' not found in file: ", filePath);
             return;
         }
 
         std::optional<size_t> bracePos = content.find('{', startPos.value());
         if (!bracePos.has_value() || bracePos == std::string::npos)
         {
-            printError("Opening brace '{' not found for function '" + functionName + "'.");
+            CliManager::print(OutputLevel::ERROR, "Opening brace '{' not found for function '", functionName, "'.");
             return;
         }
 
@@ -146,7 +147,7 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
 
         if (braceCount != 0)
         {
-            printError("Mismatched braces in function extraction.");
+            CliManager::print(OutputLevel::ERROR, "Mismatched braces for function '", functionName, "'.");
             return;
         }
 
@@ -161,7 +162,7 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
         tempFile << functionCode;
         tempFile.close();
 
-        printInfo("Extracted Function:\n" + functionCode);
+        CliManager::print(OutputLevel::INFO, "Processing function '", functionName, "' from file: ", filePath);
 
         std::vector<std::string> sourcePaths = { tempFilePath };
 
@@ -187,7 +188,7 @@ void FileSystemManager::processSnippetFromSpecifiedFile(const std::string& fileP
     }
     catch (const std::exception& e)
     {
-        printError("Exception: " + std::string(e.what()));
+        CliManager::print(OutputLevel::ERROR, "Exception: ", e.what());
         throw std::runtime_error("Exception: " + std::string(e.what()));
     }
 }

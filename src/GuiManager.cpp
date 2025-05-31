@@ -17,6 +17,7 @@
 #include "../external/imgui_club/imgui_memory_editor/imgui_memory_editor.h"
 #include "imgui_internal.h"
 #include <AsmGen.h>
+#include <CliManager.h>
 
 using namespace clang;
 namespace fs = std::filesystem;
@@ -56,12 +57,12 @@ GuiManager::GuiManager()
         }
         catch (const std::exception& e)
         {
-            std::cerr << "[ERROR] Failed to parse project.json: " << e.what() << std::endl;
+            CliManager::print(OutputLevel::ERROR, "Failed to parse project.json: ", std::string(e.what()));
         }
     }
     else
     {
-        std::cerr << "[WARNING] project.json not found. Skipping load." << std::endl;
+        CliManager::print(OutputLevel::WARNING, "project.json not found. Skipping load.");
     }
 
     editor.SetLanguageDefinition(TextEditor::LanguageDefinition::CPlusPlus());
@@ -196,10 +197,19 @@ void GuiManager::RenderMainMenuBar()
                 {"Run Directory Analysis", "F6", [this]() {
                     std::vector<std::string> compileArgs = {};
                     RunAnalysis([this, &compileArgs](const std::string& filePath, std::vector<std::string>& args) {
-                        FileSystemManager::processDirectory(filePath, args);
+                        std::filesystem::path path(filePath);
+                        if (std::filesystem::is_directory(path))
+                        {
+                            FileSystemManager::processDirectory(filePath, args);
+                        }
+                        else
+                        {
+                            CliManager::print(OutputLevel::ERROR, "Selected path is not a directory: ", filePath);
+                        }
                     });
                 }},
-                {"Exit", "Alt+F4", [this]() { ExitApp(); }}
+
+        {"Exit", "Alt+F4", [this]() { ExitApp(); }}
         });
 
         RenderMenu("Output",
@@ -209,7 +219,7 @@ void GuiManager::RenderMainMenuBar()
 
         RenderMenu("Assembly",
         {
-                {"Generate Assembly", " ", [this]() { AsmGen::getGeneratedAssembly(); }},
+                {"Generate Assembly", " ", [this]() { shouldGenerateAssembly = true; }},
                 {"Clear Assembly", " ", [this]() { AsmGen::clearGeneratedAssembly(); }}
         });
 
@@ -261,7 +271,7 @@ void GuiManager::OpenDocumentation()
     }
     else
     {
-        std::cerr << "[ERROR] Documentation file not found: " << documentationPath << std::endl;
+        CliManager::print(OutputLevel::ERROR, "Documentation file not found: ", documentationPath);
     }
 }
 
@@ -288,7 +298,7 @@ void GuiManager::OpenFileDialog(clang::ActiveDialog dialogType, const char* dial
         // Set the size using ImGui::SetNextWindowSize
         ImGui::SetNextWindowSize(ImVec2(800.0f, 600.0f), ImGuiCond_FirstUseEver);
 
-        std::cout << "[INFO] Open file dialog opened: " << dialogTitle << std::endl;
+        CliManager::print(OutputLevel::INFO, "Opening file dialog: ", dialogTitle);
     }
 }
 
@@ -308,7 +318,7 @@ void GuiManager::RunAnalysis(const std::function<void(const std::string&, std::v
 
 void GuiManager::ExitApp()
 {
-    std::cout << "[INFO] Exiting application." << std::endl;
+    CliManager::print(OutputLevel::INFO, "Exiting application...");
     glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
@@ -358,7 +368,7 @@ void GuiManager::SaveFile()
 
     if (filePathName.empty())
     {
-        std::cerr << "[ERROR] No file path name available for saving." << std::endl;
+        CliManager::print(OutputLevel::ERROR, "No file name available for saving.");
         return;
     }
 
@@ -367,11 +377,11 @@ void GuiManager::SaveFile()
     {
         text = editor.GetText();
         ofs << text;
-        std::cout << "[INFO] File saved successfully: " << filePathName << std::endl;
+        CliManager::print(OutputLevel::INFO, "File saved successfully: ", filePath, "/", filePathName);
     }
     else
     {
-        std::cerr << "[ERROR] Failed to open file for saving: " << filePathName << std::endl;
+        CliManager::print(OutputLevel::ERROR, "Failed to open file for saving: ", filePath, "/", filePathName);
     }
 }
 
@@ -382,7 +392,7 @@ void GuiManager::Undo()
         redoStack.push(text);
         undoStack.pop();
         text = undoStack.top();
-        std::cout << "[INFO] Undo operation performed." << std::endl;
+        CliManager::print(OutputLevel::INFO, "Undo operation performed.");
     }
 }
 
@@ -393,7 +403,7 @@ void GuiManager::Redo()
         undoStack.push(text);
         text = redoStack.top();
         redoStack.pop();
-        std::cout << "[INFO] Redo operation performed." << std::endl;
+        CliManager::print(OutputLevel::INFO, "Redo operation performed.");
     }
 }
 
@@ -426,7 +436,7 @@ void GuiManager::HandleFileDialog(ActiveDialog dialogType)
                 std::string selectedDirectory = selectedPath.parent_path().string();
                 if (rootNode) delete rootNode;
                 rootNode = rootNode->BuildProjectTree(selectedDirectory);
-                std::cout << "[INFO] Rebuilt project tree for: " << selectedDirectory << std::endl;
+                CliManager::print(OutputLevel::INFO, "Rebuilt project tree for: ", selectedDirectory);
             }
         }
 
@@ -438,7 +448,7 @@ void GuiManager::HandleFileDialog(ActiveDialog dialogType)
 bool GuiManager::IsFileOpen(const std::string& filePath,
                             const std::string& fileName)
 {
-    std::cout << "[INFO] Checking if file is open: " << filePath << " " << fileName << std::endl;
+    CliManager::print(OutputLevel::INFO, "Checking if file is open: ", filePath, " ", fileName);
     return std::any_of(openFiles.begin(), openFiles.end(),
                        [&filePath, &fileName](const OpenFile& file)
                        { return file.filePath == filePath && file.fileName == fileName; });
@@ -453,7 +463,7 @@ void GuiManager::HandleFileOpen(const std::string& fileName,
         OpenFile newFile = CreateNewFile(fileName, filePath, selectedPath);
         if (newFile.fileName.empty())
         {
-            std::cerr << "[ERROR] Failed to open file: " << selectedPath << std::endl;
+            CliManager::print(OutputLevel::ERROR, "Failed to open file: ", fileName);
         }
         else
         {
@@ -523,26 +533,34 @@ void GuiManager::RenderAssemblyWindow()
         OpenFile& currentFile = openFiles[currentFileIndex];
         std::string filePath = currentFile.filePath + "/" + currentFile.fileName;
 
-        if (AsmGen::generateStoreAssembly(filePath))
-        {
-            std::string assGen = AsmGen::getGeneratedAssembly();
+        static std::string cachedAssembly;
 
-            if (assGen.empty())
+        if (shouldGenerateAssembly)
+        {
+            if (AsmGen::generateStoreAssembly(filePath))
             {
-                std::cerr << "[ERROR] Failed to generate assembly code." << std::endl;
-                ImGui::Text("Failed to generate assembly code.");
+                cachedAssembly = AsmGen::getGeneratedAssembly();
+                if (cachedAssembly.empty())
+                {
+                    CliManager::print(OutputLevel::ERROR, "Failed to generate assembly code for: ", filePath);
+                }
             }
-            else
-            {
-                ImGui::BeginChild("AssemblyCode", ImVec2(0, 0), true, ImGuiWindowFlags_HorizontalScrollbar);
-                ImGui::TextUnformatted(assGen.c_str());
-                ImGui::EndChild();
-            }
+            shouldGenerateAssembly = false;
+        }
+
+        if (!cachedAssembly.empty())
+        {
+            ImGui::BeginChild("AssemblyCode", ImVec2(0, 0), true, ImGuiWindowFlags_HorizontalScrollbar);
+            ImGui::TextUnformatted(cachedAssembly.c_str());
+            ImGui::EndChild();
+        }
+        else
+        {
+            ImGui::Text("No assembly available.");
         }
     }
     else
     {
-        std::cerr << "[ERROR] No file is currently open for assembly generation." << std::endl;
         ImGui::Text("No file selected for assembly generation.");
     }
 
@@ -582,7 +600,7 @@ void GuiManager::HandleProjectExplorerFileClick(const std::filesystem::path& fil
 {
     if (!fs::exists(filePath) || !fs::is_regular_file(filePath))
     {
-        std::cerr << "[ERROR] Path is not a valid file: " << filePath << std::endl;
+        CliManager::print(OutputLevel::ERROR, "Path is not a valid file: ", filePath.string());
         return;
     }
 
@@ -598,7 +616,7 @@ void GuiManager::HandleProjectExplorerFileClick(const std::filesystem::path& fil
     if (it != openFiles.end())
     {
         currentFileIndex = std::distance(openFiles.begin(), it);
-        std::cout << "[INFO] File already open, switching to tab: " << fileName << std::endl;
+        CliManager::print(OutputLevel::INFO, "File already open, switching to tab: ", fileName);
     }
     else
     {
@@ -618,11 +636,11 @@ void GuiManager::HandleProjectExplorerFileClick(const std::filesystem::path& fil
 
             openFiles.push_back(newFile);
             currentFileIndex = openFiles.size() - 1;
-            std::cout << "[INFO] Successfully opened file: " << filePath << std::endl;
+            CliManager::print(OutputLevel::INFO, "Opened new file: ", fileName);
         }
         else
         {
-            std::cerr << "[ERROR] Failed to open file: " << filePath << std::endl;
+            CliManager::print(OutputLevel::ERROR, "Failed to open file: ", filePath.string());
             return;
         }
     }
@@ -642,7 +660,7 @@ void GuiManager::MemoryEditor()
     }
     else
     {
-        std::cerr << "[ERROR] No file is currently open for memory editing." << std::endl;
+        CliManager::print(OutputLevel::ERROR, "No file is currently open for memory editing.");
     }
 
     ImGui::End();

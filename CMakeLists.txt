@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(ptrVision VERSION 1.0 LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -65,7 +65,6 @@ set(SOURCE_CORE
         src/PointerReferenceAction.cpp
         src/AsmGen.cpp
         src/FileSystemManager.cpp
-        src/CliManager.cpp
         src/LibExporter.cpp
         src/FileHandler.cpp
         src/Logger.cpp

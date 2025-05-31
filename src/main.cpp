@@ -43,7 +43,7 @@ int main(int argc, const char** argv)
 
     if (!ExpectedParser)
     {
-        errs() << "Error: " << toString(ExpectedParser.takeError()) << "\n";
+        CliManager::print(OutputLevel::ERROR, "Failed to create CommonOptionsParser: ", toString(ExpectedParser.takeError()));
         return 1;
     }
 
@@ -52,7 +52,7 @@ int main(int argc, const char** argv)
 
     if (argc < 2)
     {
-        errs() << "Please provide a file or directory to analyze.\n";
+        CliManager::print(OutputLevel::ERROR, "No input file or directory specified.");
         return 1;
     }
 
@@ -73,7 +73,7 @@ int main(int argc, const char** argv)
     }
     else
     {
-        errs() << "Invalid input path: " << inputPath << "\n";
+        CliManager::print(OutputLevel::ERROR, "Invalid input path: ", inputPath);
         CliManager::showHelp();
         return 1;
     }

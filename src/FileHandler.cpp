@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <filesystem>
+#include <CliManager.h>
 
 using namespace clang;
 
@@ -30,7 +31,7 @@ bool FileHandler::CreateFile(const std::string &filePath, const std::string &fil
 
     if (FileExists(fullPath.string()))
     {
-        std::cerr << "[ERROR] File already exists: " << fullPath << std::endl;
+        CliManager::print(OutputLevel::ERROR, "File already exists: ", fullPath.string());
         return false;
     }
 
@@ -39,12 +40,12 @@ bool FileHandler::CreateFile(const std::string &filePath, const std::string &fil
     {
         newFile << fileContentTemplate;
         newFile.close();
-        std::cout << "[INFO] File created successfully: " << fullPath << std::endl;
+        CliManager::print(OutputLevel::INFO, "File created successfully: ", fullPath.string());
         return true;
     }
     else
     {
-        std::cerr << "[ERROR] Failed to create file: " << fullPath << std::endl;
+        CliManager::print(OutputLevel::ERROR, "Failed to create file: ", fullPath.string());
         return false;
     }
 }

@@ -4,6 +4,7 @@
 #include <JsonParser.h>
 #include <iostream>
 #include <filesystem>
+#include <CliManager.h>
 
 using namespace clang;
 
@@ -26,7 +27,7 @@ void JsonParser::Parse(TreeNode& treeNode, const std::string& basePath, const st
     }
     else
     {
-        std::cerr << "Invalid directory path: " << basePath << std::endl;
+        CliManager::print(OutputLevel::ERROR, "Invalid directory path: ", basePath);
     }
 
     if (setProjectName)

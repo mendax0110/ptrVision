@@ -216,7 +216,7 @@ namespace clang
         std::string filePath;
         std::string text;
         std::string output;
-        bool settingsOpen;
+        bool settingsOpen{};
         std::stack<std::string> undoStack;
         std::stack<std::string> redoStack;
         TreeNode* rootNode;
@@ -237,6 +237,8 @@ namespace clang
         std::stringstream outputBuffer;
 
         std::vector<std::string> compileArgs = {};
+
+        bool shouldGenerateAssembly = false;
 
     };
 }

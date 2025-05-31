@@ -7,6 +7,7 @@
 #include <llvm/Support/FileSystem.h>
 #include <fstream>
 #include <mutex>
+#include <CliManager.h>
 
 using namespace clang;
 
@@ -43,7 +44,7 @@ std::string AsmGen::generateAssembly(const std::string& filename)
 {
     if (!llvm::sys::fs::exists(filename))
     {
-        llvm::errs() << "File not found: " << filename << "\n";
+        CliManager::print(OutputLevel::ERROR, "File not found: ", filename);
         return "";
     }
 
@@ -84,7 +85,7 @@ std::string AsmGen::generateAssembly(const std::string& filename)
 
     if (!compiler.hasTarget())
     {
-        llvm::errs() << "Failed to create target for triple: " << targetOpts.Triple << "\n";
+        CliManager::print(OutputLevel::ERROR, "Failed to create target for triple: ", targetOpts.Triple);
         return "";
     }
 
@@ -98,7 +99,7 @@ std::string AsmGen::generateAssembly(const std::string& filename)
     std::error_code EC = llvm::sys::fs::createTemporaryFile("asm_output", "s", outputPath);
     if (EC)
     {
-        llvm::errs() << "Failed to create temporary file: " << EC.message() << "\n";
+        CliManager::print(OutputLevel::ERROR, "Failed to create temporary file: ", EC.message());
         return "";
     }
     compiler.getFrontendOpts().OutputFile = outputPath.str().str();
@@ -106,7 +107,7 @@ std::string AsmGen::generateAssembly(const std::string& filename)
     auto action = std::make_unique<EmitAssemblyAction>();
     if (!compiler.ExecuteAction(*action))
     {
-        llvm::errs() << "Failed to generate assembly\n";
+        CliManager::print(OutputLevel::ERROR, "Failed to generate assembly for file: ", filename);
         llvm::sys::fs::remove(outputPath);
         return "";
     }
@@ -114,7 +115,7 @@ std::string AsmGen::generateAssembly(const std::string& filename)
     std::ifstream asmFile(outputPath.str().str());
     if (!asmFile.is_open())
     {
-        llvm::errs() << "Failed to open assembly file\n";
+        CliManager::print(OutputLevel::ERROR, "Failed to open assembly file: ", outputPath.str().str());
         llvm::sys::fs::remove(outputPath);
         return "";
     }
