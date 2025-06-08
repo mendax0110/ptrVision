@@ -35,7 +35,7 @@ namespace clang
          *
          * @return -> A string with the output
          */
-        std::string getOutput() const
+        [[nodiscard]] std::string getOutput() const
         {
             return visitor ? visitor->getOutput() : "";
         }

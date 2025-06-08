@@ -39,7 +39,7 @@ namespace clang
          * @brief Forwards the stdout and stderr streams to the output file.
          * @return -> A String with the output
          */
-        std::string getOutput() const { return output; }
+        [[nodiscard]] std::string getOutput() const { return output; }
 
         /**
          * @brief Appends the given string to the output.

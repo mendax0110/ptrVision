@@ -172,7 +172,7 @@ private:
 
         setConsoleColor(level);
         llvm::outs() << oss.str();
-        if (newline) llvm::outs() << "\n";
+        if (1) llvm::outs() << "\n";
         resetConsoleColor();
     }
 };

@@ -99,6 +99,10 @@ void GuiManager::Run()
         MemoryEditor();
         RenderOutputWindow();
         RenderAssemblyWindow();
+        if (settingsOpen)
+        {
+            OpenSettings();
+        }
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -231,7 +235,7 @@ void GuiManager::RenderMainMenuBar()
 
         RenderMenu("Settings",
         {
-            {"Open Settings", " ", [this]() { settingsOpen = true; }}
+                {"Open Settings", " ", [this]() { settingsOpen = true; OpenSettings();}}
         });
 
         RenderMenu("Help",
@@ -259,14 +263,66 @@ void GuiManager::RenderMenu(const char* menuName, const std::vector<GuiManager::
     }
 }
 
+void GuiManager::OpenSettings()
+{
+    if (ImGui::Begin("Settings", &settingsOpen))
+    {
+        ImGui::Text("ImGui Settings");
+        ImGui::Checkbox("Enable Anti-Aliasing", &ImGui::GetStyle().AntiAliasedLines);
+        ImGui::Checkbox("Enable Anti-Aliasing for Lines", &ImGui::GetStyle().AntiAliasedLinesUseTex);
+        ImGui::Checkbox("Enable Anti-Aliasing for Polygons", &ImGui::GetStyle().AntiAliasedFill);
+        ImGui::ColorEdit3("Background Color", (float*)&bgColor, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
+        ImGui::Text("Window Size: %d x %d", windowWidth, windowHeight);
+        if (ImGui::Button("Save Settings"))
+        {
+            CliManager::print(OutputLevel::INFO, "Settings saved.");
+            auto saveSettings = [this]() {
+                std::ofstream settingsFile("settings.json");
+                if (settingsFile.is_open())
+                {
+                    json settingsJson;
+                    settingsJson["bgColor"] = { bgColor.x, bgColor.y, bgColor.z, bgColor.w };
+                    settingsJson["windowWidth"] = windowWidth;
+                    settingsJson["windowHeight"] = windowHeight;
+                    settingsFile << settingsJson.dump(4);
+                    settingsFile.close();
+                    CliManager::print(OutputLevel::INFO, "Settings saved to settings.json");
+                }
+                else
+                {
+                    CliManager::print(OutputLevel::ERROR, "Failed to open settings file for writing.");
+                }
+            };
+
+            saveSettings();
+            ImGui::CloseCurrentPopup();
+        }
+
+        if (ImGui::Button("Close"))
+        {
+            settingsOpen = false;
+            ImGui::CloseCurrentPopup();
+        }
+    }
+
+    ImGui::End();
+}
+
 void GuiManager::OpenDocumentation()
 {
     std::string rootPath = std::filesystem::current_path().parent_path().string();
-    std::string documentationPath = rootPath + "/docs/doxygen/index.html";
+    std::string documentationPath = rootPath + "/docs/doxygen/html/index.html";
 
     if (std::filesystem::exists(documentationPath))
     {
-        std::string command = "start " + documentationPath;
+        CliManager::print(OutputLevel::INFO, "Opening documentation: ", documentationPath);
+        #ifdef _WIN32
+        std::string command = "start \"\" \"" + documentationPath + "\"";
+        #elif __APPLE__
+        std::string command = "open \"" + documentationPath + "\"";
+        #else // For Linux and other Unix-like systems
+        std::string command = "xdg-open \"" + documentationPath + "\"";
+        #endif
         system(command.c_str());
     }
     else
@@ -434,7 +490,7 @@ void GuiManager::HandleFileDialog(ActiveDialog dialogType)
             if (fs::is_regular_file(selectedPath))
             {
                 std::string selectedDirectory = selectedPath.parent_path().string();
-                if (rootNode) delete rootNode;
+                delete rootNode;
                 rootNode = rootNode->BuildProjectTree(selectedDirectory);
                 CliManager::print(OutputLevel::INFO, "Rebuilt project tree for: ", selectedDirectory);
             }

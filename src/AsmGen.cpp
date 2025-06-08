@@ -49,7 +49,7 @@ std::string AsmGen::generateAssembly(const std::string& filename)
     }
 
     CompilerInstance compiler;
-    compiler.createDiagnostics();
+    compiler.createDiagnostics(*llvm::vfs::getRealFileSystem());
 
     auto& targetOpts = compiler.getTargetOpts();
     targetOpts.Triple = llvm::sys::getDefaultTargetTriple();
@@ -108,23 +108,27 @@ std::string AsmGen::generateAssembly(const std::string& filename)
     if (!compiler.ExecuteAction(*action))
     {
         CliManager::print(OutputLevel::ERROR, "Failed to generate assembly for file: ", filename);
-        llvm::sys::fs::remove(outputPath);
-        return "";
+        auto err = llvm::sys::fs::remove(outputPath);
+        return err.message();
     }
 
     std::ifstream asmFile(outputPath.str().str());
     if (!asmFile.is_open())
     {
         CliManager::print(OutputLevel::ERROR, "Failed to open assembly file: ", outputPath.str().str());
-        llvm::sys::fs::remove(outputPath);
-        return "";
+        auto err = llvm::sys::fs::remove(outputPath);
+        return err.message();
     }
 
     std::string assemblyStr((std::istreambuf_iterator<char>(asmFile)),
                             std::istreambuf_iterator<char>());
     asmFile.close();
-    llvm::sys::fs::remove(outputPath);
-
+    auto err = llvm::sys::fs::remove(outputPath);
+    if (!err.operator bool())
+    {
+        CliManager::print(OutputLevel::DEBUG, "Temporary assembly file removed: ", outputPath.str().str());
+        return err.message();
+    }
     return assemblyStr;
 }
 

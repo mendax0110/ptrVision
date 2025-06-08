@@ -62,6 +62,9 @@ namespace clang
          */
         static std::string getStdOut();
 
+        /**
+         * @brief Clears the content of the stdout
+         */
         static void clearAllOut();
 
 

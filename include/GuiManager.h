@@ -205,6 +205,11 @@ namespace clang
          */
         void MemoryEditor();
 
+        /**
+         * @brief Opens the settings window.
+         */
+        void OpenSettings();
+
         FileSystemManager fileSystemManager;
 
         std::vector<OpenFile> openFiles;
@@ -239,7 +244,6 @@ namespace clang
         std::vector<std::string> compileArgs = {};
 
         bool shouldGenerateAssembly = false;
-
     };
 }
 

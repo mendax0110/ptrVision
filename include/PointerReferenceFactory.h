@@ -39,7 +39,7 @@ namespace clang
         class ForwardingAction : public clang::ASTFrontendAction
         {
         public:
-            ForwardingAction(clang::PointerReferenceAction* target) : target(target) {}
+            explicit ForwardingAction(clang::PointerReferenceAction* target) : target(target) {}
 
             /**
              * @brief Creates an AST consumer for the given CompilerInstance and file.

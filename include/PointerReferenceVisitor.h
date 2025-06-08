@@ -15,7 +15,7 @@ namespace clang
     class PointerReferenceVisitor : public RecursiveASTVisitor<PointerReferenceVisitor>
     {
     public:
-        PointerReferenceVisitor(SourceManager &SM);
+        explicit PointerReferenceVisitor(SourceManager &SM);
 
         /**
          * @brief Visit a BinaryOperator node, and check if it is a pointer arithmetic operation
