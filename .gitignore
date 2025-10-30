@@ -1,0 +1,47 @@
+# Ignore the build_windows folder
+/build_windows
+
+# Ignore the build_linux folder
+/build_linux
+
+# Ignore the build_macos folder
+/build_macos
+
+# Ignore the build_macos folder
+/cmake-build-debug
+
+# Ignore all build folders
+/build
+/build_*
+/_codeql_build_dir
+
+# Ignore binaries and libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+*.a
+*.o
+*.obj
+*.exe
+
+# Ignore CMake build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# Allow specific CMake files
+!CMakeLists.txt
+!*.cmake.in
+!cmake/*.cmake
+
+# Ignore the .vscode  folder
+.vscode
+
+# Ignore the .idea folder on Clion
+.idea
+
+# Ignore .DS_Store files
+.DS_Store
