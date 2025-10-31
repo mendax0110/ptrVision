@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "PtrVisionLib.h"
 
+using namespace ptrvision;
+
 class PointerArithmeticTest : public ::testing::Test {
 protected:
     void SetUp() override {}
@@ -16,9 +18,9 @@ TEST_F(PointerArithmeticTest, DetectsPointerIncrement) {
         }
     )";
     
-    auto result = ptrvision::analyzeCode(code);
+    auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
-    EXPECT_TRUE(ptrvision::hasForbiddenConstructs(code));
+    EXPECT_TRUE(PtrVisionLib::hasForbiddenConstructs(code));
     
     // Should detect pointer declaration and pointer arithmetic
     bool hasPointerArithmetic = false;
@@ -40,9 +42,9 @@ TEST_F(PointerArithmeticTest, DetectsPointerDecrement) {
         }
     )";
     
-    auto result = ptrvision::analyzeCode(code);
+    auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
-    EXPECT_TRUE(ptrvision::hasForbiddenConstructs(code));
+    EXPECT_TRUE(PtrVisionLib::hasForbiddenConstructs(code));
     
     bool hasPointerArithmetic = false;
     for (const auto& issue : result.issues) {
@@ -61,7 +63,7 @@ TEST_F(PointerArithmeticTest, DetectsPointerAddition) {
         }
     )";
     
-    auto result = ptrvision::analyzeCode(code);
+    auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
     
     bool hasPointerArithmetic = false;
@@ -82,7 +84,7 @@ TEST_F(PointerArithmeticTest, DetectsPointerSubtraction) {
         }
     )";
     
-    auto result = ptrvision::analyzeCode(code);
+    auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
     
     bool hasPointerArithmetic = false;
@@ -103,7 +105,7 @@ TEST_F(PointerArithmeticTest, DetectsCompoundAssignment) {
         }
     )";
     
-    auto result = ptrvision::analyzeCode(code);
+    auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
     
     bool hasPointerArithmetic = false;
@@ -123,7 +125,7 @@ TEST_F(PointerArithmeticTest, CleanCodeNoPointerArithmetic) {
         }
     )";
     
-    auto result = ptrvision::analyzeCode(code);
+    auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
-    EXPECT_FALSE(ptrvision::hasForbiddenConstructs(code));
+    EXPECT_FALSE(PtrVisionLib::hasForbiddenConstructs(code));
 }

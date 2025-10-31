@@ -3,25 +3,20 @@
 #include <clang/Tooling/Tooling.h>
 #include <memory>
 
-namespace ptrvision
-{
+using namespace ptrvision;
 
-AnalysisResult analyzeCode(const std::string& code, const std::string& filename)
+AnalysisResult PtrVisionLib::analyzeCode(const std::string& code, const std::string& filename)
 {
     AnalysisResult result;
     
     try
     {
-        // Clear any previous issues
-        g_collectedIssues.clear();
+        ptrvision::g_collectedIssues.clear();
 
-        // Create action
         auto action = std::make_unique<CollectorActionWithStorage>();
 
-        // Run the tool on the code
         std::vector<std::string> args = {"-fsyntax-only", "-std=c++14"};
-        bool success = clang::tooling::runToolOnCodeWithArgs(
-            std::move(action), code, args, filename);
+        bool success = clang::tooling::runToolOnCodeWithArgs(std::move(action), code, args, filename);
         
         if (success)
         {
@@ -48,13 +43,13 @@ AnalysisResult analyzeCode(const std::string& code, const std::string& filename)
     return result;
 }
 
-bool hasForbiddenConstructs(const std::string& code, const std::string& filename)
+bool PtrVisionLib::hasForbiddenConstructs(const std::string& code, const std::string& filename)
 {
-    AnalysisResult result = analyzeCode(code, filename);
+    const AnalysisResult result = analyzeCode(code, filename);
     return result.success && !result.issues.empty();
 }
 
-std::string issueTypeToString(IssueType type)
+std::string PtrVisionLib::issueTypeToString(const IssueType type)
 {
     switch (type)
     {
@@ -80,5 +75,3 @@ std::string issueTypeToString(IssueType type)
             return "Unknown";
     }
 }
-
-} // namespace ptrvision

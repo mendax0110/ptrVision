@@ -1,11 +1,12 @@
 #include "CollectorConsumer.h"
 #include <clang/AST/ASTContext.h>
 
-namespace ptrvision
-{
+using namespace ptrvision;
+
 
 CollectorConsumer::CollectorConsumer(clang::SourceManager &SM) : collector(SM)
 {
+
 }
 
 void CollectorConsumer::HandleTranslationUnit(clang::ASTContext& Context)
@@ -17,5 +18,3 @@ const std::vector<CodeIssue>& CollectorConsumer::getIssues() const
 {
     return collector.getIssues();
 }
-
-} // namespace ptrvision

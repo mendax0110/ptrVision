@@ -9,13 +9,13 @@ PointerReferenceCollector::PointerReferenceCollector(SourceManager &SM) : SM(SM)
 {
 }
 
-void PointerReferenceCollector::addIssue(ptrvision::IssueType type, SourceLocation loc, const std::string& description)
+void PointerReferenceCollector::addIssue(const ptrvision::IssueType type, const SourceLocation loc, const std::string& description)
 {
     FullSourceLoc fullLoc(loc, SM);
     if (fullLoc.isValid())
     {
-        unsigned int line = fullLoc.getSpellingLineNumber();
-        unsigned int column = fullLoc.getSpellingColumnNumber();
+        const unsigned int line = fullLoc.getSpellingLineNumber();
+        const unsigned int column = fullLoc.getSpellingColumnNumber();
         issues.push_back(ptrvision::CodeIssue(type, line, column, description));
     }
 }

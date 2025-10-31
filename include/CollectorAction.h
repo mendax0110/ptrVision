@@ -9,19 +9,26 @@
 #include "CollectorConsumer.h"
 #include "PtrVisionLib.h"
 
+/// @brief ptrvision namespace \namespace ptrvision
 namespace ptrvision
 {
-    /**
-     * @brief Action that creates the consumer
-     */
-    class CollectorAction : public clang::ASTFrontendAction
+    /// @brief Collector Frontend Action class \class CollectorAction
+    class CollectorAction final : public clang::ASTFrontendAction
     {
     public:
-        std::unique_ptr<clang::ASTConsumer> CreateASTConsumer(
-            clang::CompilerInstance &CI,
-            llvm::StringRef file) override;
+        /**
+         * @brief Create AST Consumer
+         * @param CI The compiler instance
+         * @param file The source file
+         * @return A unique pointer to the ASTConsumer
+         */
+        std::unique_ptr<clang::ASTConsumer> CreateASTConsumer(clang::CompilerInstance &CI, llvm::StringRef file) override;
 
-        const std::vector<CodeIssue>& getIssues() const;
+        /**
+         * @brief Get collected issues
+         * @return A reference to the vector of CodeIssue
+         */
+        [[nodiscard]] const std::vector<CodeIssue>& getIssues() const;
 
     private:
         CollectorConsumer* consumer = nullptr;

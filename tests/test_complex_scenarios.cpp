@@ -1,14 +1,25 @@
 #include <gtest/gtest.h>
 #include "PtrVisionLib.h"
 
-class ComplexScenariosTest : public ::testing::Test {
+using namespace ptrvision;
+
+class ComplexScenariosTest : public ::testing::Test
+{
 protected:
-    void SetUp() override {}
-    void TearDown() override {}
+    void SetUp() override
+    {
+
+    }
+
+    void TearDown() override
+    {
+
+    }
 };
 
-TEST_F(ComplexScenariosTest, DetectsMultipleViolations) {
-    std::string code = R"(
+TEST_F(ComplexScenariosTest, DetectsMultipleViolations)
+{
+    const std::string code = R"(
         void test() {
             int* p = new int(5);
             p++;
@@ -16,16 +27,17 @@ TEST_F(ComplexScenariosTest, DetectsMultipleViolations) {
             delete p;
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
-    EXPECT_TRUE(ptrvision::hasForbiddenConstructs(code));
+    EXPECT_TRUE(PtrVisionLib::hasForbiddenConstructs(code));
     
     // Should detect: new, pointer arithmetic, dereference, delete
     EXPECT_GE(result.issues.size(), 4);
     
     std::map<ptrvision::IssueType, int> issueCounts;
-    for (const auto& issue : result.issues) {
+    for (const auto& issue : result.issues)
+    {
         issueCounts[issue.type]++;
     }
     
@@ -35,8 +47,9 @@ TEST_F(ComplexScenariosTest, DetectsMultipleViolations) {
     EXPECT_GT(issueCounts[ptrvision::IssueType::DeleteOperator], 0);
 }
 
-TEST_F(ComplexScenariosTest, DetectsLinkedListOperations) {
-    std::string code = R"(
+TEST_F(ComplexScenariosTest, DetectsLinkedListOperations)
+{
+    const std::string code = R"(
         struct Node {
             int data;
             Node* next;
@@ -51,17 +64,18 @@ TEST_F(ComplexScenariosTest, DetectsLinkedListOperations) {
             }
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
-    EXPECT_TRUE(ptrvision::hasForbiddenConstructs(code));
+    EXPECT_TRUE(PtrVisionLib::hasForbiddenConstructs(code));
     
     // Should detect multiple pointer operations
     EXPECT_GT(result.issues.size(), 0);
 }
 
-TEST_F(ComplexScenariosTest, DetectsPointerArithmeticInLoop) {
-    std::string code = R"(
+TEST_F(ComplexScenariosTest, DetectsPointerArithmeticInLoop)
+{
+    const std::string code = R"(
         void test() {
             int arr[10];
             int* p = arr;
@@ -71,17 +85,20 @@ TEST_F(ComplexScenariosTest, DetectsPointerArithmeticInLoop) {
             }
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
     
     bool hasPointerArithmetic = false;
     bool hasDereference = false;
-    for (const auto& issue : result.issues) {
-        if (issue.type == ptrvision::IssueType::PointerArithmetic) {
+    for (const auto& issue : result.issues)
+    {
+        if (issue.type == ptrvision::IssueType::PointerArithmetic)
+        {
             hasPointerArithmetic = true;
         }
-        if (issue.type == ptrvision::IssueType::PointerDereference) {
+        if (issue.type == ptrvision::IssueType::PointerDereference)
+        {
             hasDereference = true;
         }
     }
@@ -89,8 +106,9 @@ TEST_F(ComplexScenariosTest, DetectsPointerArithmeticInLoop) {
     EXPECT_TRUE(hasDereference);
 }
 
-TEST_F(ComplexScenariosTest, CleanComplexCode) {
-    std::string code = R"(
+TEST_F(ComplexScenariosTest, CleanComplexCode)
+{
+    const std::string code = R"(
         struct Data {
             int value;
             double score;
@@ -107,14 +125,15 @@ TEST_F(ComplexScenariosTest, CleanComplexCode) {
             }
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
-    EXPECT_FALSE(ptrvision::hasForbiddenConstructs(code));
+    EXPECT_FALSE(PtrVisionLib::hasForbiddenConstructs(code));
 }
 
-TEST_F(ComplexScenariosTest, DetectsMixedBitwiseAndPointerOps) {
-    std::string code = R"(
+TEST_F(ComplexScenariosTest, DetectsMixedBitwiseAndPointerOps)
+{
+    const std::string code = R"(
         void test() {
             int x = 5;
             int y = 3;
@@ -124,15 +143,16 @@ TEST_F(ComplexScenariosTest, DetectsMixedBitwiseAndPointerOps) {
             *p = 10;
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
     
     bool hasBitwise = false;
     bool hasReference = false;
     bool hasDereference = false;
     
-    for (const auto& issue : result.issues) {
+    for (const auto& issue : result.issues)
+    {
         if (issue.type == ptrvision::IssueType::BitwiseAnd) hasBitwise = true;
         if (issue.type == ptrvision::IssueType::Reference) hasReference = true;
         if (issue.type == ptrvision::IssueType::PointerDereference) hasDereference = true;

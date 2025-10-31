@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+using namespace ptrvision;
+
 int main()
 {
     // Example 1: Code with pointer arithmetic
@@ -15,7 +17,7 @@ int main()
     )";
 
     std::cout << "=== Example 1: Code with pointer arithmetic ===" << std::endl;
-    ptrvision::AnalysisResult result1 = ptrvision::analyzeCode(code1);
+    const AnalysisResult result1 = PtrVisionLib::analyzeCode(code1);
     
     if (result1.success)
     {
@@ -25,7 +27,7 @@ int main()
         for (const auto& issue : result1.issues)
         {
             std::cout << "  - Line " << issue.line << ", Column " << issue.column 
-                      << ": " << ptrvision::issueTypeToString(issue.type)
+                      << ": " << PtrVisionLib::issueTypeToString(issue.type)
                       << " - " << issue.description << std::endl;
         }
     }
@@ -43,14 +45,14 @@ int main()
     )";
 
     std::cout << "\n=== Example 2: Code with new/delete ===" << std::endl;
-    ptrvision::AnalysisResult result2 = ptrvision::analyzeCode(code2);
+    const AnalysisResult result2 = PtrVisionLib::analyzeCode(code2);
     
     if (result2.success)
     {
         std::cout << "Found " << result2.issues.size() << " issue(s):" << std::endl;
         for (const auto& issue : result2.issues)
         {
-            std::cout << "  - " << ptrvision::issueTypeToString(issue.type)
+            std::cout << "  - " << PtrVisionLib::issueTypeToString(issue.type)
                       << ": " << issue.description << std::endl;
         }
     }
@@ -64,7 +66,7 @@ int main()
     )";
 
     std::cout << "\n=== Example 3: Clean code (no forbidden constructs) ===" << std::endl;
-    if (ptrvision::hasForbiddenConstructs(code3))
+    if (PtrVisionLib::hasForbiddenConstructs(code3))
     {
         std::cout << "Code contains forbidden constructs - REJECTED!" << std::endl;
     }
@@ -84,13 +86,13 @@ int main()
     )";
 
     std::cout << "\n=== Example 4: Code with goto ===" << std::endl;
-    if (ptrvision::hasForbiddenConstructs(code4))
+    if (PtrVisionLib::hasForbiddenConstructs(code4))
     {
         std::cout << "Code contains forbidden constructs - REJECTED!" << std::endl;
-        ptrvision::AnalysisResult result4 = ptrvision::analyzeCode(code4);
+        const AnalysisResult result4 = PtrVisionLib::analyzeCode(code4);
         for (const auto& issue : result4.issues)
         {
-            std::cout << "  - " << ptrvision::issueTypeToString(issue.type) << std::endl;
+            std::cout << "  - " << PtrVisionLib::issueTypeToString(issue.type) << std::endl;
         }
     }
 

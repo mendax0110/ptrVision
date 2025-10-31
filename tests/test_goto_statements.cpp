@@ -1,14 +1,25 @@
 #include <gtest/gtest.h>
 #include "PtrVisionLib.h"
 
-class GotoStatementsTest : public ::testing::Test {
+using namespace ptrvision;
+
+class GotoStatementsTest : public ::testing::Test
+{
 protected:
-    void SetUp() override {}
-    void TearDown() override {}
+    void SetUp() override
+    {
+
+    }
+
+    void TearDown() override
+    {
+
+    }
 };
 
-TEST_F(GotoStatementsTest, DetectsSimpleGoto) {
-    std::string code = R"(
+TEST_F(GotoStatementsTest, DetectsSimpleGoto)
+{
+    const std::string code = R"(
         void test() {
             int x = 0;
             label:
@@ -16,22 +27,25 @@ TEST_F(GotoStatementsTest, DetectsSimpleGoto) {
             if (x < 10) goto label;
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
-    EXPECT_TRUE(ptrvision::hasForbiddenConstructs(code));
+    EXPECT_TRUE(PtrVisionLib::hasForbiddenConstructs(code));
     
     bool hasGoto = false;
-    for (const auto& issue : result.issues) {
-        if (issue.type == ptrvision::IssueType::GotoStatement) {
+    for (const auto& issue : result.issues)
+    {
+        if (issue.type == ptrvision::IssueType::GotoStatement)
+        {
             hasGoto = true;
         }
     }
     EXPECT_TRUE(hasGoto);
 }
 
-TEST_F(GotoStatementsTest, DetectsGotoInErrorHandling) {
-    std::string code = R"(
+TEST_F(GotoStatementsTest, DetectsGotoInErrorHandling)
+{
+    const std::string code = R"(
         void test() {
             int* p = nullptr;
             if (!p) goto error;
@@ -40,34 +54,39 @@ TEST_F(GotoStatementsTest, DetectsGotoInErrorHandling) {
             return;
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
     
     bool hasGoto = false;
-    for (const auto& issue : result.issues) {
-        if (issue.type == ptrvision::IssueType::GotoStatement) {
+    for (const auto& issue : result.issues)
+    {
+        if (issue.type == ptrvision::IssueType::GotoStatement)
+        {
             hasGoto = true;
         }
     }
     EXPECT_TRUE(hasGoto);
 }
 
-TEST_F(GotoStatementsTest, CleanCodeNoGoto) {
-    std::string code = R"(
+TEST_F(GotoStatementsTest, CleanCodeNoGoto)
+{
+    const std::string code = R"(
         void test() {
             for (int i = 0; i < 10; i++) {
                 if (i == 5) break;
             }
         }
     )";
-    
-    auto result = ptrvision::analyzeCode(code);
+
+    const auto result = PtrVisionLib::analyzeCode(code);
     ASSERT_TRUE(result.success);
     
     bool hasGoto = false;
-    for (const auto& issue : result.issues) {
-        if (issue.type == ptrvision::IssueType::GotoStatement) {
+    for (const auto& issue : result.issues)
+    {
+        if (issue.type == ptrvision::IssueType::GotoStatement)
+        {
             hasGoto = true;
         }
     }

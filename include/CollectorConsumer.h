@@ -8,18 +8,29 @@
 #include "PointerReferenceCollector.h"
 #include "PtrVisionLib.h"
 
+/// @brief ptrvision namespace \namespace ptrvision
 namespace ptrvision
 {
-    /**
-     * @brief Consumer that uses the collector to gather code issues
-     */
-    class CollectorConsumer : public clang::ASTConsumer
+    /// @brief Collector AST Consumer class \class CollectorConsumer
+    class CollectorConsumer final : public clang::ASTConsumer
     {
     public:
+        /**
+         * @brief Constructor
+         * @param SM The source manager
+         */
         explicit CollectorConsumer(clang::SourceManager &SM);
 
+        /**
+         * @brief Handle Translation Unit
+         * @param Context The AST context
+         */
         void HandleTranslationUnit(clang::ASTContext& Context) override;
 
+        /**
+         * @brief Get collected issues
+         * @return A reference to the vector of CodeIssue
+         */
         const std::vector<CodeIssue>& getIssues() const;
 
     private:

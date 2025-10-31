@@ -9,6 +9,7 @@
 #include "CollectorConsumer.h"
 #include "PtrVisionLib.h"
 
+/// @brief ptrvision namespace \namespace ptrvision
 namespace ptrvision
 {
     /**
@@ -18,13 +19,21 @@ namespace ptrvision
      * by storing collected issues in thread-local storage before the
      * consumer is destroyed.
      */
-    class CollectorActionWithStorage : public clang::ASTFrontendAction
+    class CollectorActionWithStorage final : public clang::ASTFrontendAction
     {
     public:
-        std::unique_ptr<clang::ASTConsumer> CreateASTConsumer(
-            clang::CompilerInstance &CI,
-            llvm::StringRef file) override;
+        /**
+         * @brief Create AST Consumer
+         * @param CI The compiler instance
+         * @param file The source file
+         * @return A unique pointer to the ASTConsumer
+         */
+        std::unique_ptr<clang::ASTConsumer> CreateASTConsumer(clang::CompilerInstance &CI, llvm::StringRef file) override;
 
+        /**
+         * @brief End source file action
+         * Stores collected issues in thread-local storage
+         */
         void EndSourceFileAction() override;
 
     private:

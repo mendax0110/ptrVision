@@ -1,14 +1,11 @@
 #include "CollectorActionWithStorage.h"
 
-namespace ptrvision
-{
+using namespace ptrvision;
 
 // Thread-local storage for issues to avoid lifetime issues
-thread_local std::vector<CodeIssue> g_collectedIssues;
+thread_local std::vector<CodeIssue> ptrvision::g_collectedIssues;
 
-std::unique_ptr<clang::ASTConsumer> CollectorActionWithStorage::CreateASTConsumer(
-    clang::CompilerInstance &CI,
-    llvm::StringRef file)
+std::unique_ptr<clang::ASTConsumer> CollectorActionWithStorage::CreateASTConsumer(clang::CompilerInstance &CI, llvm::StringRef file)
 {
     // Clear previous issues
     g_collectedIssues.clear();
@@ -25,4 +22,3 @@ void CollectorActionWithStorage::EndSourceFileAction()
     }
 }
 
-} // namespace ptrvision
